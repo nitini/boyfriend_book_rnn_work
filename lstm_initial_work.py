@@ -73,7 +73,8 @@ for iteration in range(1, 60):
     print()
     print('-' * 50)
     print('Iteration', iteration)
-    model.fit(X, y, batch_size=128, nb_epoch=1)
+    # Modified to go faster, not training on all data
+    model.fit(X[0:10000], y[0:10000], batch_size=128, nb_epoch=1)
 
     start_index = random.randint(0, len(text) - maxlen - 1)
 
@@ -86,8 +87,7 @@ for iteration in range(1, 60):
         generated += sentence
         print('----- Generating with seed: "' + sentence + '"')
         sys.stdout.write(generated)
-
-        for i in range(400):
+        for i in range(10):
             x = np.zeros((1, maxlen, len(chars)))
             for t, char in enumerate(sentence):
                 x[0, t, char_indices[char]] = 1.
