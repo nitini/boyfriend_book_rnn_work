@@ -69,12 +69,13 @@ def sample(a, temperature=1.0):
     return np.argmax(np.random.multinomial(1, a, 1))
 
 
-for iteration in range(1, 60):
+for iteration in range(1, 2):
     print()
     print('-' * 50)
     print('Iteration', iteration)
     # Modified to go faster, not training on all data
-    model.fit(X[0:10000], y[0:10000], batch_size=128, nb_epoch=1)
+    model.fit(X[0:1000], y[0:1000], batch_size=128, nb_epoch=1)
+
 
     start_index = random.randint(0, len(text) - maxlen - 1)
 
