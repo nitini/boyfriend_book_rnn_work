@@ -14,12 +14,22 @@ from keras.utils.data_utils import get_file
 import numpy as np
 import random
 import sys
+import codecs
+import pandas as pd
 
 #%% Load in training data, setting up char indexes
 
-# path = get_file('nietzsche.txt', origin="https://s3.amazonaws.com/text-datasets/nietzsche.txt")
-path = './boyfriend_data/boyfriend_lines.txt'
-text = open(path).read().lower()
+nietzsche_data = get_file('nietzsche.txt', origin="https://s3.amazonaws.com/text-datasets/nietzsche.txt")
+text = codecs.open(nietzsche_data, encoding='utf-8').read().lower()
+
+boyfriend_data = pd.read_csv('./boyfriend_lines_csv.csv')
+boyfriend_data.drop(['empty1','empty2','empty3','empty4'],axis=1,inplace=True)
+
+text = ''
+for i in range(boyfriend_data.shape[0]):
+    text = text + ' ' + boyfriend_data.line.iloc[i]
+
+
 print('corpus length:', len(text))
 
 chars = set(text)
@@ -30,8 +40,8 @@ indices_char = dict((i, c) for i, c in enumerate(chars))
 
 #%% Chop text into semi-redundant chunks
 
-maxlen = 20
-step = 3
+maxlen = 5
+step = 2
 sentences = []
 next_chars = []
 
@@ -40,24 +50,28 @@ for i in range(0, len(text) - maxlen, step):
     next_chars.append(text[i + maxlen])
 print('nb sequences:', len(sentences))
 
+sentence_data = pd.DataFrame({'sentence':sentences, 'next_char':next_chars})
+
 #%% Vectorization
 
-X = np.zeros((len(sentences), maxlen, len(chars)), dtype=np.bool)
-y = np.zeros((len(sentences), len(chars)), dtype=np.bool)
+X = np.zeros((sentence_data.shape[0], maxlen, len(chars)), dtype=np.bool)
+y = np.zeros((sentence_data.shape[0], len(chars)), dtype=np.bool)
 
 
-for i, sentence in enumerate(sentences):
+for i, sentence in enumerate(sentence_data.sentence):
     for t, char in enumerate(sentence):
         X[i, t, char_indices[char]] = 1
-    y[i, char_indices[next_chars[i]]] = 1
-    
+    y[i, char_indices[sentence_data.next_char.iloc[i]]] = 1
+
 #%% LSTM Model
 
 model = Sequential()
 model.add(LSTM(512, return_sequences=True, input_shape=(maxlen, len(chars))))
-model.add(Dropout(0.3))
+model.add(Dropout(0.2))
+model.add(LSTM(512, return_sequences=True))
+model.add(Dropout(0.2))
 model.add(LSTM(512, return_sequences=False))
-model.add(Dropout(0.3))
+model.add(Dropout(0.2))
 model.add(Dense(len(chars)))
 model.add(Activation('softmax'))
 model.compile(loss='categorical_crossentropy', optimizer='rmsprop')
@@ -75,12 +89,12 @@ for iteration in range(1, 100):
     print('-' * 50)
     print('Iteration', iteration)
     # Modified to go faster, not training on all data
-    model.fit(X, y, batch_size=128, nb_epoch=1)
+    model.fit(X, y, batch_size=256, nb_epoch=1)
 
 
     start_index = random.randint(0, len(text) - maxlen - 1)
 
-    for diversity in [0.5, 1.0, 1.2]:
+    for diversity in [1.0, 1.2]:
         print()
         print('----- diversity:', diversity)
 
