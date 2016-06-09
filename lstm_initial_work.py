@@ -17,7 +17,8 @@ import sys
 
 #%% Load in training data, setting up char indexes
 
-path = get_file('nietzsche.txt', origin="https://s3.amazonaws.com/text-datasets/nietzsche.txt")
+# path = get_file('nietzsche.txt', origin="https://s3.amazonaws.com/text-datasets/nietzsche.txt")
+path = './boyfriend_data/boyfriend_lines.txt'
 text = open(path).read().lower()
 print('corpus length:', len(text))
 
@@ -29,7 +30,7 @@ indices_char = dict((i, c) for i, c in enumerate(chars))
 
 #%% Chop text into semi-redundant chunks
 
-maxlen = 40
+maxlen = 20
 step = 3
 sentences = []
 next_chars = []
@@ -54,9 +55,9 @@ for i, sentence in enumerate(sentences):
 
 model = Sequential()
 model.add(LSTM(512, return_sequences=True, input_shape=(maxlen, len(chars))))
-model.add(Dropout(0.2))
+model.add(Dropout(0.3))
 model.add(LSTM(512, return_sequences=False))
-model.add(Dropout(0.2))
+model.add(Dropout(0.3))
 model.add(Dense(len(chars)))
 model.add(Activation('softmax'))
 model.compile(loss='categorical_crossentropy', optimizer='rmsprop')
@@ -69,17 +70,17 @@ def sample(a, temperature=1.0):
     return np.argmax(np.random.multinomial(1, a, 1))
 
 
-for iteration in range(1, 2):
+for iteration in range(1, 100):
     print()
     print('-' * 50)
     print('Iteration', iteration)
     # Modified to go faster, not training on all data
-    model.fit(X[0:10000], y[0:10000], batch_size=128, nb_epoch=1)
+    model.fit(X, y, batch_size=128, nb_epoch=1)
 
 
     start_index = random.randint(0, len(text) - maxlen - 1)
 
-    for diversity in [0.2, 0.5, 1.0, 1.2]:
+    for diversity in [0.5, 1.0, 1.2]:
         print()
         print('----- diversity:', diversity)
 
@@ -88,7 +89,7 @@ for iteration in range(1, 2):
         generated += sentence
         print('----- Generating with seed: "' + sentence + '"')
         sys.stdout.write(generated)
-        for i in range(10):
+        for i in range(100):
             x = np.zeros((1, maxlen, len(chars)))
             for t, char in enumerate(sentence):
                 x[0, t, char_indices[char]] = 1.
@@ -104,4 +105,5 @@ for iteration in range(1, 2):
             sys.stdout.flush()
         print()
 
+print("Completed running script")
 
