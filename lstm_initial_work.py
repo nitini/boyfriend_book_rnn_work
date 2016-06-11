@@ -40,8 +40,8 @@ indices_char = dict((i, c) for i, c in enumerate(chars))
 
 #%% Chop text into semi-redundant chunks
 
-maxlen = 6
-step = 2
+maxlen = 7
+step = 1
 sentences = []
 next_chars = []
 
@@ -89,35 +89,38 @@ for iteration in range(1, 100):
     print('-' * 50)
     print('Iteration', iteration)
     # Modified to go faster, not training on all data
-    model.fit(X, y, batch_size=256, nb_epoch=1)
+    model.fit(X[0:512], y[0:512], batch_size=256, nb_epoch=1)
 
 
-    start_index = random.randint(0, len(text) - maxlen - 1)
+   #start_index = random.randint(0, len(text) - maxlen - 1)
 
     for diversity in [1.0, 1.2]:
         print()
         print('----- diversity:', diversity)
+        sentence_starts_dict = {' I want':'', ' I like':'',' I need':''}
+        for key, value in sentence_starts_dict:
+            print("Sentence Start: " + key)
+            print('\n')
+            print("Result so far: " + value)
+            print('\n')
+        for sentence in sentence_starts_dict.keys():
+            orig_sentence = sentence
+            print('----- Generating with seed: "' + sentence + '"')
+            for i in range(100):
+                x = np.zeros((1, maxlen, len(chars)))
+                for t, char in enumerate(sentence):
+                    x[0, t, char_indices[char]] = 1.
 
-        generated = ''
-        sentence = text[start_index: start_index + maxlen]
-        sentence = ' I wan'
-        generated += sentence
-        print('----- Generating with seed: "' + sentence + '"')
-        sys.stdout.write(generated)
-        for i in range(100):
-            x = np.zeros((1, maxlen, len(chars)))
-            for t, char in enumerate(sentence):
-                x[0, t, char_indices[char]] = 1.
+                preds = model.predict(x, verbose=0)[0]
+                next_index = sample(preds, diversity)
+                next_char = indices_char[next_index]
 
-            preds = model.predict(x, verbose=0)[0]
-            next_index = sample(preds, diversity)
-            next_char = indices_char[next_index]
+                sentence_starts_dict[orig_sentence] += next_char
+                sentence = sentence[1:] + next_char
 
-            generated += next_char
-            sentence = sentence[1:] + next_char
-
-            sys.stdout.write(next_char)
-            sys.stdout.flush()
+                sys.stdout.write(next_char)
+                sys.stdout.flush()
+            #sys.stdout.write(sentence_starts_dict[orig_sentence])
         print()
 
 print("Completed running script")
