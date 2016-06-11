@@ -89,24 +89,20 @@ for iteration in range(1, 100):
     print('-' * 50)
     print('Iteration', iteration)
     # Modified to go faster, not training on all data
-    model.fit(X[0:512], y[0:512], batch_size=256, nb_epoch=1)
+    model.fit(X[0:1024], y[0:1024], batch_size=256, nb_epoch=1)
 
 
    #start_index = random.randint(0, len(text) - maxlen - 1)
 
-    for diversity in [1.0, 1.2]:
+    for diversity in [1.0]:
         print()
-        print('----- diversity:', diversity)
-        sentence_starts_dict = {' I want':'', ' I like':'',' I need':''}
-        for key, value in sentence_starts_dict:
-            print("Sentence Start: " + key)
-            print('\n')
-            print("Result so far: " + value)
-            print('\n')
-        for sentence in sentence_starts_dict.keys():
-            orig_sentence = sentence
-            print('----- Generating with seed: "' + sentence + '"')
-            for i in range(100):
+        print()
+        sentence_starts_dict = {'I want ':'I want ', 'I like ':'I like ','I need ':'I need '}
+        for s in sentence_starts_dict.keys():
+            orig_sentence = s
+            sentence = s
+            print()
+            for i in range(70):
                 x = np.zeros((1, maxlen, len(chars)))
                 for t, char in enumerate(sentence):
                     x[0, t, char_indices[char]] = 1.
@@ -118,9 +114,13 @@ for iteration in range(1, 100):
                 sentence_starts_dict[orig_sentence] += next_char
                 sentence = sentence[1:] + next_char
 
-                sys.stdout.write(next_char)
-                sys.stdout.flush()
-            #sys.stdout.write(sentence_starts_dict[orig_sentence])
+        for key, value in sentence_starts_dict.iteritems():
+            print("----- Sentence seed: ")
+            print("----- " + key)
+            print()
+            print("----- Generated Sentence: ")
+            print("----- " + value)
+            print()
         print()
 
 print("Completed running script")
