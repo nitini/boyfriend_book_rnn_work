@@ -89,7 +89,7 @@ for iteration in range(1, 100):
     print('-' * 50)
     print('Iteration', iteration)
     # Modified to go faster, not training on all data
-    model.fit(X[0:1024], y[0:1024], batch_size=256, nb_epoch=1)
+    model.fit(X, y, batch_size=256, nb_epoch=1)
 
 
    #start_index = random.randint(0, len(text) - maxlen - 1)
