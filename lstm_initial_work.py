@@ -4,7 +4,6 @@ Created on Mon Jun  6 07:20:56 2016
 
 @author: nitini
 """
-
 #%% Importing necessary libraries
 from __future__ import print_function
 from keras.models import Sequential
@@ -16,11 +15,14 @@ import random
 import sys
 import codecs
 import pandas as pd
+import pydot
+import file_paths as fp
+from keras.utils.visualize_util import plot
 
 #%% Load in training data, setting up char indexes
 
-nietzsche_data = get_file('nietzsche.txt', origin="https://s3.amazonaws.com/text-datasets/nietzsche.txt")
-text = codecs.open(nietzsche_data, encoding='utf-8').read().lower()
+#nietzsche_data = get_file('nietzsche.txt', origin="https://s3.amazonaws.com/text-datasets/nietzsche.txt")
+#text = codecs.open(nietzsche_data, encoding='utf-8').read().lower()
 
 boyfriend_data = pd.read_csv('./boyfriend_lines_csv.csv')
 boyfriend_data.drop(['empty1','empty2','empty3','empty4'],axis=1,inplace=True)
@@ -28,7 +30,6 @@ boyfriend_data.drop(['empty1','empty2','empty3','empty4'],axis=1,inplace=True)
 text = ''
 for i in range(boyfriend_data.shape[0]):
     text = text + ' ' + boyfriend_data.line.iloc[i]
-
 
 print('corpus length:', len(text))
 
@@ -40,8 +41,8 @@ indices_char = dict((i, c) for i, c in enumerate(chars))
 
 #%% Chop text into semi-redundant chunks
 
-maxlen = 6
-step = 2
+maxlen = 7
+step = 1
 sentences = []
 next_chars = []
 
@@ -76,6 +77,10 @@ model.add(Dense(len(chars)))
 model.add(Activation('softmax'))
 model.compile(loss='categorical_crossentropy', optimizer='rmsprop')
 
+# Come up with naming scheme for model
+
+
+
 #%% Random text generation
 
 def sample(a, temperature=1.0):
@@ -84,41 +89,46 @@ def sample(a, temperature=1.0):
     return np.argmax(np.random.multinomial(1, a, 1))
 
 
-for iteration in range(1, 100):
+for iteration in range(1, 3):
     print()
     print('-' * 50)
     print('Iteration', iteration)
     # Modified to go faster, not training on all data
-    model.fit(X, y, batch_size=256, nb_epoch=1)
+    model.fit(X[0:10000], y[0:10000], batch_size=256, nb_epoch=1)
 
 
-    start_index = random.randint(0, len(text) - maxlen - 1)
+   #start_index = random.randint(0, len(text) - maxlen - 1)
 
-    for diversity in [1.0, 1.2]:
+    for diversity in [1.0]:
         print()
-        print('----- diversity:', diversity)
-
-        generated = ''
-        sentence = text[start_index: start_index + maxlen]
-        sentence = ' I wan'
-        generated += sentence
-        print('----- Generating with seed: "' + sentence + '"')
-        sys.stdout.write(generated)
-        for i in range(100):
-            x = np.zeros((1, maxlen, len(chars)))
-            for t, char in enumerate(sentence):
-                x[0, t, char_indices[char]] = 1.
-
-            preds = model.predict(x, verbose=0)[0]
-            next_index = sample(preds, diversity)
-            next_char = indices_char[next_index]
-
-            generated += next_char
-            sentence = sentence[1:] + next_char
-
-            sys.stdout.write(next_char)
-            sys.stdout.flush()
         print()
+        sentence_starts_dict = {'I want ':'I want ', 'I like ':'I like ','I need ':'I need '}
+        for s in sentence_starts_dict.keys():
+            orig_sentence = s
+            sentence = s
+            print()
+            for i in range(70):
+                x = np.zeros((1, maxlen, len(chars)))
+                for t, char in enumerate(sentence):
+                    x[0, t, char_indices[char]] = 1.
+
+                preds = model.predict(x, verbose=0)[0]
+                next_index = sample(preds, diversity)
+                next_char = indices_char[next_index]
+
+                sentence_starts_dict[orig_sentence] += next_char
+                sentence = sentence[1:] + next_char
+
+        for key, value in sentence_starts_dict.iteritems():
+            print("----- Sentence seed: ")
+            print("----- " + key)
+            print()
+            print("----- Generated Sentence: ")
+            print("----- " + value)
+            print()
+        print()
+
+model.save_weights(fp.goog_file_path + 'model_weights.hdf5')
 
 print("Completed running script")
 
