@@ -40,7 +40,7 @@ indices_char = dict((i, c) for i, c in enumerate(chars))
 
 #%% Chop text into semi-redundant chunks
 
-maxlen = 5
+maxlen = 6
 step = 2
 sentences = []
 next_chars = []
@@ -100,6 +100,7 @@ for iteration in range(1, 100):
 
         generated = ''
         sentence = text[start_index: start_index + maxlen]
+        sentence = ' I wan'
         generated += sentence
         print('----- Generating with seed: "' + sentence + '"')
         sys.stdout.write(generated)
