@@ -1,0 +1,54 @@
+body {
+	margin: 0 auto;
+	padding: 0;
+	position: relative;
+}
+
+.main {
+	position: absolute;
+	font-family: 'Raleway', sans-serif;
+	height: 300px;
+	width: 600px;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.container {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: center;
+	align-content: center;
+	justify-content: center;
+	margin-bottom: 50px;
+}
+
+.container div {
+	border: 1px solid #999999;
+	-webkit-user-select: none;
+	cursor: default;
+}
+
+.gender, .option {
+	height: 50px;
+	margin-right: 20px;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 50px;
+	-webkit-user-select: none;
+	cursor: default;
+	opacity: .7;
+}
+
+.gender {
+	width: 100px;
+}
+
+.option {
+	width: 120px;
+}
+
+.option:hover, .gender:hover {
+	opacity: 1;
+}
