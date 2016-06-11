@@ -16,6 +16,8 @@ import random
 import sys
 import codecs
 import pandas as pd
+import pydot
+from keras.utils.visualize_util import plot
 
 #%% Load in training data, setting up char indexes
 
