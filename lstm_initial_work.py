@@ -284,12 +284,17 @@ def main():
     print("Diversities: "  + str(diversities), file=output_file)
     print('', file=output_file)
 
+    notes = "Testing this out"
+    save_model_info(model, notes, output_file)
    
     for i in range(num_epochs):
         print("----- Epoch: " + str(i))
         print("---------- Iteration: " + str(i) + " ---------- ", file=output_file)
         print("", file=output_file)
         train_model(model, X[0:1000], y[0:1000], batch_size)
+        first_thousand_loss = model.test_on_batch(X[0:1000], y[0:1000])
+        print("Loss after training: " + str(first_thousand_loss), file=output_file)
+        print("", file=output_file)
         for seed in sentence_seeds:
             print("----- Sentence seed: " + seed + "----- ", file=output_file)
             print('', file=output_file)
@@ -313,8 +318,6 @@ def main():
                 print("", file=output_file)
                 print()
 
-    notes = "Testing this out"
-    save_model_info(model, notes, output_file)
     
     output_file.close()
     
