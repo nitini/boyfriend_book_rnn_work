@@ -207,7 +207,7 @@ def make_model_name(model_version):
     model_name = 'model_v' + str(model_version) + '_' + current_date
     return model_name
 
-def save_model_info(model, model_name, notes, in_gcp):
+def save_model_info(model, notes, output_file):
     """
     This method saves down the architecture of the model so that it 
     can be referenced in the future. Also can add in any notes to the
@@ -223,31 +223,28 @@ def save_model_info(model, model_name, notes, in_gcp):
         None, just saves the model
         
     """
+    print('---------- Any additional notes: ---------- ', file=output_file)
+    print('', file=output_file)
+    print(notes, file=output_file)
+    print('', file=output_file)
+    print('---------- All model information: ---------- ', file = output_file)
+    print('', file=output_file)
+    print(json.dumps(json.loads(model.to_json()), indent=2, sort_keys=True), file = output_file)
 
-    info_file_name = './' + model_name + '_architecture.txt'
-    if in_gcp:  
-        info_file_name = fp.goog_file_path + model_name + '_architecture.txt'
-        
-    info_file = open(info_file_name, 'wb')
-    print('Any additional notes: ', file=info_file)
-    print(notes, file=info_file)
-    print('\n', file=info_file)
-    print('All model information: ', file = info_file)
-    print('\n', file=info_file)
-    print(json.dumps(json.loads(model.to_json()), indent=2, sort_keys=True), file = info_file)
-    info_file.close()
     
 def save_model_weights(model, model_name, in_gcp):
-    if in_gcp:
+    if in_gcp == 1:
         model.save_weights(fp.goog_file_path + model_name + '_weights.hdf5')
     else: 
         model.save_weights('./' + model_name + '_weights.hdf5')
+
         
 #%%  
 def main():
     
     boyfriend_data = pd.read_csv('./boyfriend_lines.csv')
     in_gcp = sys.argv[1]
+    save_weights = sys.argv[2]
     if in_gcp == 1:
         boyfriend_data = pd.read_csv(fp.goog_file_path + 'boyfriend_lines.csv')
     
@@ -260,21 +257,47 @@ def main():
     X, y = vectorize_training_data(training_data, maxlen, step, chars, char_indices)
     model = get_model_v1(maxlen, chars)
     batch_size = 256
-    num_epochs = 50
+    num_epochs = 1
     
     sentence_seeds = ['I want ', 'I like ', 'I need ']
     sentence_length = 50
     diversities = [0.2, 0.5, 1.0, 1.2]
     
     model_name = make_model_name('3')
-    output_file = open('./' + model_name + 'output.txt')
-    if in_gcp:
-        output_file = open(fp.goog_file_path + model_name + 'output.txt')
-    
+
+    output_file = open('./' + model_name + '_output.txt', 'wb')
+
+    if in_gcp == 1:
+        output_file = open(fp.goog_file_path + model_name + '_output.txt', 'wb')
+
+    print('', file=output_file)
+    print("---------- Training Info: ---------- ", file=output_file)
+    print('', file=output_file)
+    print("Number of examples: " + str(X.shape[0]), file=output_file)
+    print("Length of examples: " + str(maxlen), file=output_file)
+    print("Step size used: " + str(step), file=output_file)
+    print("Character set size: " + str(len(chars)), file=output_file)
+    print("Batch size: " + str(batch_size), file=output_file)
+    print("Number of Iterations: " + str(num_epochs), file=output_file)
+    print("Generated sentence length: " + str(sentence_length), file=output_file)
+    print("Sentence Seeds: " + str(sentence_seeds), file=output_file)
+    print("Diversities: "  + str(diversities), file=output_file)
+    print('', file=output_file)
+
+   
     for i in range(num_epochs):
-        train_model(model, X, y, batch_size)
+        print("----- Epoch: " + str(i))
+        print("---------- Iteration: " + str(i) + " ---------- ", file=output_file)
+        print("", file=output_file)
+        train_model(model, X[0:1000], y[0:1000], batch_size)
         for seed in sentence_seeds:
+            print("----- Sentence seed: " + seed + "----- ", file=output_file)
+            print('', file=output_file)
             for diversity in diversities:
+                print("----- Sentence seed: " + seed + "----- ")
+                print("Diversity: " + str(diversity))
+                print("Diversity: " + str(diversity), file=output_file)
+                
                 random_sentence = generate_random_sentence(
                                                            model,
                                                            seed,
@@ -285,17 +308,19 @@ def main():
                                                            char_indices,
                                                            indices_char
                                                            )
-                
-                
+                print("Generated Sentence: " + random_sentence)
+                print("Generated Sentence: " + random_sentence, file=output_file)
+                print("", file=output_file)
+                print()
+
+    notes = "Testing this out"
+    save_model_info(model, notes, output_file)
     
+    output_file.close()
     
+    if save_weights == 1:
+        save_model_weights(model, model_name, in_gcp)           
     
-    notes = 'Testing out different diversitites'
-    save_model_info(model,model_name, notes, in_gcp)
-    save_model_weights(model, model_name, in_gcp)
-    
-                
-    print(random_sentence)
     
 #%%  
     
