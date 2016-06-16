@@ -300,16 +300,17 @@ def main():
     
     text, chars, char_indices, indices_char = convert_csv_to_text(boyfriend_data)
     
-    maxlen = 7
+    maxlen = 4
     step = 1    
     
     training_data = convert_text_to_train(text, maxlen, step)
     X, y = vectorize_training_data(training_data, maxlen, step, chars, char_indices)
     model = get_model_v1(maxlen, chars)
     batch_size = 256
-    num_epochs = 1
+    num_epochs = 100
     
-    sentence_seeds = ['I want ', 'I like ', 'I need ']
+    # Sentence seeds need to have length = maxlen
+    sentence_seeds = ['I wa', 'I li', 'I ne']
     sentence_length = 50
     diversities = [0.2, 0.5, 1.0, 1.2]
     
@@ -341,9 +342,9 @@ def main():
         print("----- Epoch: " + str(i))
         print("---------- Iteration: " + str(i) + " ---------- ", file=output_file)
         print("", file=output_file)
-        train_model(model, X[0:1000], y[0:1000], batch_size)
+        train_model(model, X, y, batch_size)
         first_thousand_loss = model.test_on_batch(X[0:1000], y[0:1000])
-        print("Loss after training: " + str(first_thousand_loss), file=output_file)
+        print("Loss after iteration " + str(i) + ": " + str(first_thousand_loss), file=output_file)
         print("", file=output_file)
         for seed in sentence_seeds:
             print("----- Sentence seed: " + seed + "----- ", file=output_file)
