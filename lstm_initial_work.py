@@ -125,11 +125,38 @@ def get_model_v1(maxlen, chars):
     return model
 
 def sample(a, temperature=1.0):
+    """
+    Samples an index from a given probability distribution,
+    can modify that distribution by changing the temperature
+
+    Inputs:
+        a: Probability distribution to sample from
+        temperature: Scalar to modify prbability distribution by,
+                     setting temperature to 1 does nothing
+
+    Outputs:
+        val: Index from distribution that has the highest likelihood
+        
+    """
     a = np.log(a) / temperature
     a = np.exp(a) / np.sum(np.exp(a))
-    return np.argmax(np.random.multinomial(1, a, 1))
+    val = np.argmax(np.random.multinomial(1, a, 1))
+    return val
 
 def encode_sentence(sentence, maxlen, chars, char_indices):
+    """
+    Encodes a given sentence into a vector
+
+    Inputs:
+        sentence: The given text sentence, of length maxlen
+        maxlen: The length of the training examples
+        chars: Set of characters in training data
+        char_indices: Mapping of characters to indices
+
+    Outputs:
+        x: A vector representation of a given sentence
+
+    """
     x = np.zeros((1, maxlen, len(chars)))
     for t, char in enumerate(sentence):
         x[0, t, char_indices[char]] = 1.
@@ -203,6 +230,16 @@ def train_model(model, X, y, batch_size):
     model.fit(X, y, batch_size, nb_epoch=1)
 
 def make_model_name(model_version):
+    """
+    Takes the current time and combines that with the model version to 
+    create a name for the model, used to save various associated files
+
+    Inputs:
+        model_version: Version of the model to create name
+    
+    Outputs:
+        model_name: resulting model name
+    """
     current_date = time.strftime('%Y_%m_%d_%I_%M_%S')
     model_name = 'model_v' + str(model_version) + '_' + current_date
     return model_name
@@ -230,19 +267,32 @@ def save_model_info(model, notes, output_file):
     print('---------- All model information: ---------- ', file = output_file)
     print('', file=output_file)
     print(json.dumps(json.loads(model.to_json()), indent=2, sort_keys=True), file = output_file)
-
     
 def save_model_weights(model, model_name, in_gcp):
+    """
+    Saves the model weights so training doesn't need to be done again,
+    can save locally or in google cloud storage
+
+    Inputs:
+        model: The trained keras LSTM model
+        model_name: Name for the model to save the weights
+        in_gcp: Flag for where to save the weights file
+    
+    Outputs:
+        No output is returned, model is saved and function exits
+
+    """
+
     if in_gcp == 1:
         model.save_weights(fp.goog_file_path + model_name + '_weights.hdf5')
     else: 
         model.save_weights('./' + model_name + '_weights.hdf5')
 
-        
 #%%  
 def main():
     
     boyfriend_data = pd.read_csv('./boyfriend_lines.csv')
+
     in_gcp = sys.argv[1]
     save_weights = sys.argv[2]
     if in_gcp == 1:
@@ -325,56 +375,7 @@ def main():
         save_model_weights(model, model_name, in_gcp)           
     
     
-#%%  
-    
-    
 if __name__ == '__main__':
     main()
 
-
-"""
-for iteration in range(1, 3):
-    print()
-    print('-' * 50)
-    print('Iteration', iteration)
-    # Modified to go faster, not training on all data
-    model.fit(X, y, batch_size=256, nb_epoch=1)
-
-
-   #start_index = random.randint(0, len(text) - maxlen - 1)
-
-    for diversity in [1.0]:
-        print()
-        print()
-        sentence_starts_dict = {'I want ':'I want ', 'I like ':'I like ','I need ':'I need '}
-        for s in sentence_starts_dict.keys():
-            orig_sentence = s
-            sentence = s
-            print()
-            for i in range(70):
-                x = np.zeros((1, maxlen, len(chars)))
-                for t, char in enumerate(sentence):
-                    x[0, t, char_indices[char]] = 1.
-
-                preds = model.predict(x, verbose=0)[0]
-                next_index = sample(preds, diversity)
-                next_char = indices_char[next_index]
-
-                sentence_starts_dict[orig_sentence] += next_char
-                sentence = sentence[1:] + next_char
-
-        for key, value in sentence_starts_dict.iteritems():
-            print("----- Sentence seed: ")
-            print("----- " + key)
-            print()
-            print("----- Generated Sentence: ")
-            print("----- " + value)
-            print()
-        print()
-
-model.save_weights(fp.goog_file_path + 'model_weights.hdf5')
-
-print("Completed running script")
-
-"""
 
