@@ -15,40 +15,41 @@ auth.set_access_token(access_token, access_token_secret)
 
 api = tp.API(auth)
 
-#%% Search using REST API
-
-
-
-bf_tweets = api.search('"I%20want%20my%20boyfriend%20to"',lang="en")
-for tweet in bf_tweets:
-    print tweet.text
 
 #%% Creating a Streaming Session
 
 class TPStreamListener(tp.StreamListener):
 
-    def __init__(self, tweet_limit=10, tweet_container=[]):
+    def __init__(self, tweet_limit=10, tweet_file_name = './bf_tweets.txt'):
         self.tweet_limit = tweet_limit
         self.tweet_count = 0
-        self.tweet_container = tweet_container
+        self.tweet_file = open(tweet_file_name, 'wb')
         super(TPStreamListener, self).__init__()
 
     def on_data(self, data):
         if self.tweet_count < self.tweet_limit:
-
             try:
-                self.tweet_count += 1
                 data_dict = json.loads(data)
-                print 'Tweet Number: ' + str(self.tweet_count)
-                print json.dumps(data_dict, indent=2, sort_keys=True)
-                print data_dict['id']
-                print data_dict['text']
-                print ''
-                self.tweet_container.append(data_dict['text'])
+                if 'retweeted_status' not in data_dict.keys():
+                    print 'Tweet Number: ' + str(self.tweet_count)
+                    #print json.dumps(data_dict, indent=2)
+                    if data_dict['is_quote_status'] == True:
+                        tweet = str(data_dict['quoted_status']['text'].encode('ascii','ignore'))
+                        print tweet
+                        self.tweet_file.write(tweet)
+                        self.tweet_file.write('\n')
+                    else:
+                        tweet = str(data_dict['text'].encode('ascii','ignore'))
+                        print tweet
+                        self.tweet_file.write(tweet)
+                        self.tweet_file.write('\n')
+                    print ''
+                    self.tweet_count += 1
             except KeyError:
                 print "No text value for tweet"
             return True
         else:
+            self.tweet_file.close()
             return False
 
     def on_error(self, status_code):
@@ -56,10 +57,8 @@ class TPStreamListener(tp.StreamListener):
             print "Hit an error"
             return False
 
-#%% 743197683884560385
-tweet_container = []
-
-tp_listener = TPStreamListener(tweet_limit=2, tweet_container=tweet_container)
+#%% 
+tp_listener = TPStreamListener(tweet_limit=10000, tweet_file_name='./boyfriend_tweets.txt')
 
 tp_stream = tp.Stream(auth = api.auth, listener = tp_listener)
 
@@ -68,6 +67,17 @@ track_strings = [
                 'want boyfriend my',
                 'like boyfriend my',
                 'hate boyfriend my',
+                'boyfriend like to',
+                'love boyfriend him',
+                'like him when he boyfriend my',
+                'my boyfriend is',
+                'I like when my boyfriend',
+                'I need boyfriend to',
+                'I love boyfriend when'
                 ]
 
 tp_stream.filter(track=[','.join(track_strings)])
+
+
+
+
