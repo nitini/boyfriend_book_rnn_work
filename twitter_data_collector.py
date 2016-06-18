@@ -3,6 +3,7 @@ import numpy as np
 import tweepy as tp
 import file_paths as fp
 import json
+import csv
 
 
 consumer_key = 'HpbA4sFAg5ac0dXG4Sm9hflLD'
@@ -18,29 +19,25 @@ api = tp.API(auth)
 
 class TPStreamListener(tp.StreamListener):
 
-    def __init__(self, tweet_limit=10, tweet_file_name = './bf_tweets.txt'):
+    def __init__(self, tweet_limit=10, tweet_file_name = './bf_tweets.csv'):
         self.tweet_limit = tweet_limit
         self.tweet_count = 0
         self.tweet_file = open(tweet_file_name, 'wb')
+        self.tweet_writer = csv.writer(self.tweet_file, quoting=csv.QUOTE_ALL, delimiter=',')
+        self.tweet_writer.writerow(['tweet'])
         super(TPStreamListener, self).__init__()
 
     def on_data(self, data):
         if self.tweet_count < self.tweet_limit:
             try:
                 data_dict = json.loads(data)
-                if 'retweeted_status' not in data_dict.keys():
+                if (('retweeted_status' not in data_dict.keys() and 
+                    data_dict['is_quote_status'] != True) and
+                    len(data_dict['entities']['urls']) == 0):
                     print 'Tweet Number: ' + str(self.tweet_count)
-                    #print json.dumps(data_dict, indent=2)
-                    if data_dict['is_quote_status'] == True:
-                        tweet = str(data_dict['quoted_status']['text'].encode('ascii','ignore'))
-                        print tweet
-                        self.tweet_file.write(tweet)
-                        self.tweet_file.write('\n')
-                    else:
-                        tweet = str(data_dict['text'].encode('ascii','ignore'))
-                        print tweet
-                        self.tweet_file.write(tweet)
-                        self.tweet_file.write('\n')
+                    tweet = str(data_dict['text'].encode('ascii','ignore'))
+                    print tweet
+                    self.tweet_writer.writerow([tweet])
                     print ''
                     self.tweet_count += 1
             except KeyError:
@@ -55,8 +52,11 @@ class TPStreamListener(tp.StreamListener):
             print "Hit an error"
             return False
 
-#%% 
-tp_listener = TPStreamListener(tweet_limit=10000, tweet_file_name='./boyfriend_tweets.txt')
+
+#%% Basic version of harvesting tweets
+tweet_container = []
+
+tp_listener = TPStreamListener(tweet_limit=10000, tweet_file_name='./boyfriend_tweets_v2.csv')
 
 tp_stream = tp.Stream(auth = api.auth, listener = tp_listener)
 
@@ -75,6 +75,8 @@ track_strings = [
                 ]
 
 tp_stream.filter(track=[','.join(track_strings)])
+
+
 
 
 
