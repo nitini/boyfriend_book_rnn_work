@@ -14,8 +14,6 @@ auth = tp.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 
 api = tp.API(auth)
-
-
 #%% Creating a Streaming Session
 
 class TPStreamListener(tp.StreamListener):
