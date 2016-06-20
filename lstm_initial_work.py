@@ -293,8 +293,9 @@ def main():
     
     boyfriend_data = pd.read_csv('./old_tweet_data_weighted.csv')
 
-    in_gcp = sys.argv[1]
-    save_weights = sys.argv[2]
+    in_gcp = int(sys.argv[1])
+    save_weights = int(sys.argv[2])
+    print("THIS IS SYS ARGV 2 " +  str(sys.argv[2]))
     if in_gcp == 1:
         boyfriend_data = pd.read_csv(fp.goog_file_path + 'old_tweet_data_weighted.csv')
     
@@ -307,10 +308,10 @@ def main():
     X, y = vectorize_training_data(training_data, maxlen, step, chars, char_indices)
     model = get_model_v1(maxlen, chars)
     batch_size = 256
-    num_epochs = 100
+    num_epochs = 1
     
     # Sentence seeds need to have length = maxlen
-    sentence_seeds = ['I want ', 'I like ', 'I need ']
+    sentence_seeds = ['i want ', 'i like ', 'i need ']
     sentence_length = 50
     diversities = [0.2, 0.5, 1.0, 1.2]
     
@@ -342,7 +343,7 @@ def main():
         print("----- Epoch: " + str(i))
         print("---------- Iteration: " + str(i) + " ---------- ", file=output_file)
         print("", file=output_file)
-        train_model(model, X, y, batch_size)
+        train_model(model, X[0:1000], y[0:1000], batch_size)
         first_thousand_loss = model.test_on_batch(X[0:1000], y[0:1000])
         print("Loss after iteration " + str(i) + ": " + str(first_thousand_loss), file=output_file)
         print("", file=output_file)
@@ -367,13 +368,14 @@ def main():
                 print("Generated Sentence: " + random_sentence)
                 print("Generated Sentence: " + random_sentence, file=output_file)
                 print("", file=output_file)
-                print()
 
+        if save_weights == 1:
+            save_model_weights(model, model_name, in_gcp)
+
+        print()
     
     output_file.close()
     
-    if save_weights == 1:
-        save_model_weights(model, model_name, in_gcp)           
     
     
 if __name__ == '__main__':

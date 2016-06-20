@@ -1,0 +1,42 @@
+Using TensorFlow backend.
+THIS IS SYS ARGV 2 1
+----- Epoch: 0
+Epoch 1/1
+ 256/1000 [======>.......................] - ETA: 4s - loss: 4.2094 512/1000 [==============>...............] - ETA: 3s - loss: 3.9357 768/1000 [======================>.......] - ETA: 1s - loss: 5.72201000/1000 [==============================] - 6s - loss: 5.2857     
+----- Sentence seed: i want ----- 
+Diversity: 0.2
+Generated Sentence: i want  s i                 i        i               s   
+----- Sentence seed: i want ----- 
+Diversity: 0.5
+Generated Sentence: i want g   oi si  i  iocsa       s     so i fin a    i  s
+----- Sentence seed: i want ----- 
+Diversity: 1.0
+Generated Sentence: i want  ny semssbis lhmv  dm sce fe es  .einidfykwlha ' o
+----- Sentence seed: i want ----- 
+Diversity: 1.2
+Generated Sentence: i want fbflbiil=%iyseollw'in ssbhbb.7    dprwi bi  i& ayw
+----- Sentence seed: i like ----- 
+Diversity: 0.2
+Generated Sentence: i like                                                   
+----- Sentence seed: i like ----- 
+Diversity: 0.5
+Generated Sentence: i like     i   ii  n  i n an         l ws   s   i sii  i 
+----- Sentence seed: i like ----- 
+Diversity: 1.0
+Generated Sentence: i like cc  pdhoimlng kiea  n sai   h ysh inlbm duaym ro  
+----- Sentence seed: i like ----- 
+Diversity: 1.2
+Generated Sentence: i like olalyyisdsan5uosidmmsip.rh mncd scinl nl nrco,c'l 
+----- Sentence seed: i need ----- 
+Diversity: 0.2
+Generated Sentence: i need   i                                               
+----- Sentence seed: i need ----- 
+Diversity: 0.5
+Generated Sentence: i need i  i   s a ls lis  s         i i      a i i   ii  
+----- Sentence seed: i need ----- 
+Diversity: 1.0
+Generated Sentence: i need hsoe w  =  aewldana nd olici ino?cyco kha  hi i  s
+----- Sentence seed: i need ----- 
+Diversity: 1.2
+Generated Sentence: i need lss ]wmyhaihei  wia uoallswa5irwoah mi phhmdlf5sn 
+
