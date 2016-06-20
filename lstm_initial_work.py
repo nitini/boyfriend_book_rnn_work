@@ -34,7 +34,7 @@ def convert_csv_to_text(data):
     text = ''
 
     for i in range(data.shape[0]):
-        text = text + ' ' + data.line.iloc[i]
+        text = text + ' ' + data.tweet.iloc[i]
 
     chars = set(text)
 
@@ -296,11 +296,11 @@ def main():
     in_gcp = sys.argv[1]
     save_weights = sys.argv[2]
     if in_gcp == 1:
-        boyfriend_data = pd.read_csv(fp.goog_file_path + 'boyfriend_lines.csv')
+        boyfriend_data = pd.read_csv(fp.goog_file_path + 'old_tweet_data_weighted.csv')
     
     text, chars, char_indices, indices_char = convert_csv_to_text(boyfriend_data)
     
-    maxlen = 8
+    maxlen = 7
     step = 1    
     
     training_data = convert_text_to_train(text, maxlen, step)
@@ -310,7 +310,7 @@ def main():
     num_epochs = 100
     
     # Sentence seeds need to have length = maxlen
-    sentence_seeds = ['I wa', 'I li', 'I ne']
+    sentence_seeds = ['I want ', 'I like ', 'I need ']
     sentence_length = 50
     diversities = [0.2, 0.5, 1.0, 1.2]
     
