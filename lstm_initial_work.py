@@ -291,7 +291,7 @@ def save_model_weights(model, model_name, in_gcp):
 #%%  
 def main():
     
-    boyfriend_data = pd.read_csv('./boyfriend_lines.csv')
+    boyfriend_data = pd.read_csv('./old_tweet_data_weighted.csv')
 
     in_gcp = sys.argv[1]
     save_weights = sys.argv[2]
@@ -300,7 +300,7 @@ def main():
     
     text, chars, char_indices, indices_char = convert_csv_to_text(boyfriend_data)
     
-    maxlen = 4
+    maxlen = 8
     step = 1    
     
     training_data = convert_text_to_train(text, maxlen, step)
@@ -378,5 +378,6 @@ def main():
     
 if __name__ == '__main__':
     main()
-
+    
+    
 
