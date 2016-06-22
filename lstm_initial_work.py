@@ -295,20 +295,24 @@ def main():
 
     in_gcp = int(sys.argv[1])
     save_weights = int(sys.argv[2])
-    print("THIS IS SYS ARGV 2 " +  str(sys.argv[2]))
+    use_saved_weights = int(sys.argv[3])
+    model_weights_file = sys.argv[4]
+
     if in_gcp == 1:
         boyfriend_data = pd.read_csv(fp.goog_file_path + 'old_tweet_data_weighted.csv')
     
     text, chars, char_indices, indices_char = convert_csv_to_text(boyfriend_data)
     
     maxlen = 7
-    step = 1    
+    step = 3   
     
     training_data = convert_text_to_train(text, maxlen, step)
     X, y = vectorize_training_data(training_data, maxlen, step, chars, char_indices)
     model = get_model_v1(maxlen, chars)
-    batch_size = 256
-    num_epochs = 1
+    if use_saved_weights == 1:
+        model.load_weights(model_weights_file)
+    batch_size = 512
+    num_epochs = 12
     
     # Sentence seeds need to have length = maxlen
     sentence_seeds = ['i want ', 'i like ', 'i need ']
@@ -316,7 +320,6 @@ def main():
     diversities = [0.2, 0.5, 1.0, 1.2]
     
     model_name = make_model_name('3')
-
     output_file = open('./' + model_name + '_output.txt', 'wb')
 
     if in_gcp == 1:
@@ -336,14 +339,14 @@ def main():
     print("Diversities: "  + str(diversities), file=output_file)
     print('', file=output_file)
 
-    notes = "Testing this out"
+    notes = "Weighted Twitter data, semi-long sentence"
     save_model_info(model, notes, output_file)
    
     for i in range(num_epochs):
         print("----- Epoch: " + str(i))
         print("---------- Iteration: " + str(i) + " ---------- ", file=output_file)
         print("", file=output_file)
-        train_model(model, X[0:1000], y[0:1000], batch_size)
+        train_model(model, X, y, batch_size)
         first_thousand_loss = model.test_on_batch(X[0:1000], y[0:1000])
         print("Loss after iteration " + str(i) + ": " + str(first_thousand_loss), file=output_file)
         print("", file=output_file)
@@ -370,7 +373,8 @@ def main():
                 print("", file=output_file)
 
         if save_weights == 1:
-            save_model_weights(model, model_name, in_gcp)
+            model_weights_name = 'iteration_' + str(i) + '_' + model_name
+            save_model_weights(model, model_weights_name, in_gcp)
 
         print()
     

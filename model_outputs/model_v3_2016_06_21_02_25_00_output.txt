@@ -1,0 +1,715 @@
+
+---------- Training Info: ---------- 
+
+Number of examples: 617373
+Length of examples: 7
+Step size used: 3
+Character set size: 67
+Batch size: 512
+Number of Iterations: 12
+Generated sentence length: 50
+Sentence Seeds: ['i want ', 'i like ', 'i need ']
+Diversities: [0.2, 0.5, 1.0, 1.2]
+
+---------- Any additional notes: ---------- 
+
+Weighted Twitter data, semi-long sentence
+
+---------- All model information: ---------- 
+
+{
+  "class_name": "Sequential", 
+  "config": [
+    {
+      "class_name": "LSTM", 
+      "config": {
+        "U_regularizer": null, 
+        "W_regularizer": null, 
+        "activation": "tanh", 
+        "b_regularizer": null, 
+        "batch_input_shape": [
+          null, 
+          7, 
+          67
+        ], 
+        "consume_less": "cpu", 
+        "dropout_U": 0.0, 
+        "dropout_W": 0.0, 
+        "forget_bias_init": "one", 
+        "go_backwards": false, 
+        "init": "glorot_uniform", 
+        "inner_activation": "hard_sigmoid", 
+        "inner_init": "orthogonal", 
+        "input_dim": 67, 
+        "input_dtype": "float32", 
+        "input_length": null, 
+        "name": "lstm_1", 
+        "output_dim": 512, 
+        "return_sequences": true, 
+        "stateful": false, 
+        "trainable": true, 
+        "unroll": false
+      }
+    }, 
+    {
+      "class_name": "Dropout", 
+      "config": {
+        "name": "dropout_1", 
+        "p": 0.2, 
+        "trainable": true
+      }
+    }, 
+    {
+      "class_name": "LSTM", 
+      "config": {
+        "U_regularizer": null, 
+        "W_regularizer": null, 
+        "activation": "tanh", 
+        "b_regularizer": null, 
+        "consume_less": "cpu", 
+        "dropout_U": 0.0, 
+        "dropout_W": 0.0, 
+        "forget_bias_init": "one", 
+        "go_backwards": false, 
+        "init": "glorot_uniform", 
+        "inner_activation": "hard_sigmoid", 
+        "inner_init": "orthogonal", 
+        "input_dim": 512, 
+        "input_length": null, 
+        "name": "lstm_2", 
+        "output_dim": 512, 
+        "return_sequences": true, 
+        "stateful": false, 
+        "trainable": true, 
+        "unroll": false
+      }
+    }, 
+    {
+      "class_name": "Dropout", 
+      "config": {
+        "name": "dropout_2", 
+        "p": 0.2, 
+        "trainable": true
+      }
+    }, 
+    {
+      "class_name": "LSTM", 
+      "config": {
+        "U_regularizer": null, 
+        "W_regularizer": null, 
+        "activation": "tanh", 
+        "b_regularizer": null, 
+        "consume_less": "cpu", 
+        "dropout_U": 0.0, 
+        "dropout_W": 0.0, 
+        "forget_bias_init": "one", 
+        "go_backwards": false, 
+        "init": "glorot_uniform", 
+        "inner_activation": "hard_sigmoid", 
+        "inner_init": "orthogonal", 
+        "input_dim": 512, 
+        "input_length": null, 
+        "name": "lstm_3", 
+        "output_dim": 512, 
+        "return_sequences": false, 
+        "stateful": false, 
+        "trainable": true, 
+        "unroll": false
+      }
+    }, 
+    {
+      "class_name": "Dropout", 
+      "config": {
+        "name": "dropout_3", 
+        "p": 0.2, 
+        "trainable": true
+      }
+    }, 
+    {
+      "class_name": "Dense", 
+      "config": {
+        "W_constraint": null, 
+        "W_regularizer": null, 
+        "activation": "linear", 
+        "activity_regularizer": null, 
+        "b_constraint": null, 
+        "b_regularizer": null, 
+        "bias": true, 
+        "init": "glorot_uniform", 
+        "input_dim": null, 
+        "name": "dense_1", 
+        "output_dim": 67, 
+        "trainable": true
+      }
+    }, 
+    {
+      "class_name": "Activation", 
+      "config": {
+        "activation": "softmax", 
+        "name": "activation_1", 
+        "trainable": true
+      }
+    }
+  ], 
+  "keras_version": "1.0.4", 
+  "loss": "categorical_crossentropy", 
+  "optimizer": {
+    "epsilon": 1e-08, 
+    "lr": 0.0010000000474974513, 
+    "name": "RMSprop", 
+    "rho": 0.8999999761581421
+  }, 
+  "sample_weight_mode": null
+}
+---------- Iteration: 0 ---------- 
+
+Loss after iteration 0: 1.13981
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Sentence: i want my boyfriend to be the only want to be an apprecia
+
+Diversity: 0.5
+Generated Sentence: i want my boyfriend to be the turns to strong it so cute 
+
+Diversity: 1.0
+Generated Sentence: i want my boyfriend/fws?'s. hamaray ain't to. when i'm wa
+
+Diversity: 1.2
+Generated Sentence: i want my boyfriend my pluse in macks at igtuftoh trying 
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Sentence: i like that my boyfriend is so hot my boyfriend is so har
+
+Diversity: 0.5
+Generated Sentence: i like to my boyfriend is so he can try to never going to
+
+Diversity: 1.0
+Generated Sentence: i like him so guy. yever after is going tweeting that's b
+
+Diversity: 1.2
+Generated Sentence: i like the morny wook. i would loves piirnas. your old. u
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Sentence: i need a boyfriend to be able to him and my boyfriend to 
+
+Diversity: 0.5
+Generated Sentence: i need a boyfriend and because we are my boyfriend to eve
+
+Diversity: 1.0
+Generated Sentence: i need hime ex surnow and my boyfriend is worked at him m
+
+Diversity: 1.2
+Generated Sentence: i need you dired, i love and abseced, aid  don't want op 
+
+---------- Iteration: 1 ---------- 
+
+Loss after iteration 1: 1.11128
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Sentence: i want my boyfriend is so he can show i like that my boyf
+
+Diversity: 0.5
+Generated Sentence: i want my boyfriend is sleeping me i like it when my boyf
+
+Diversity: 1.0
+Generated Sentence: i want my mom, probably everything and oway, "ohm yumpall
+
+Diversity: 1.2
+Generated Sentence: i want it bed ads for meres imagicat is loving shift like
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Sentence: i like that my boyfriend to be in the world because i lik
+
+Diversity: 0.5
+Generated Sentence: i like that my boyfriend to be every morning with my boyf
+
+Diversity: 1.0
+Generated Sentence: i like that my boyfriend is the cat i need in my dedic sc
+
+Diversity: 1.2
+Generated Sentence: i like that my boyfriend sersh! i don't the best me? but 
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Sentence: i need to see my boyfriend to be in the world i want my b
+
+Diversity: 0.5
+Generated Sentence: i need to have drunk i like that my boyfriend and working
+
+Diversity: 1.0
+Generated Sentence: i need is just today, those! loves how to take about hivh
+
+Diversity: 1.2
+Generated Sentence: i need to sit then really don't want my boyfriend time do
+
+---------- Iteration: 2 ---------- 
+
+Loss after iteration 2: 1.08785
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Sentence: i want my boyfriend is so much i want my boyfriend to be 
+
+Diversity: 0.5
+Generated Sentence: i want my boyfriend is a gering me and i want my boyfrien
+
+Diversity: 1.0
+Generated Sentence: i want my boyfriend is that my boyfriend is picking missi
+
+Diversity: 1.2
+Generated Sentence: i want is not mination. i want my moute. ugh i need you n
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Sentence: i like when my boyfriend to be the same is my boyfriend i
+
+Diversity: 0.5
+Generated Sentence: i like that my boyfriend to be friend to be my boyfriend 
+
+Diversity: 1.0
+Generated Sentence: i like you're a girl on fuck off and falls. i like when m
+
+Diversity: 1.2
+Generated Sentence: i like that my boyfriend to be re.syonvisten to be way so
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Sentence: i need a boyfriend is a so much i want my boyfriend is my
+
+Diversity: 0.5
+Generated Sentence: i need him to be i like that is the cute when i say no i 
+
+Diversity: 1.0
+Generated Sentence: i need to person. i'm so michy take for me the nover my b
+
+Diversity: 1.2
+Generated Sentence: i need snapg dowes with grore "how much but i was is pres
+
+---------- Iteration: 3 ---------- 
+
+Loss after iteration 3: 1.08102
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Sentence: i want my boyfriend is the best thing i like that my boyf
+
+Diversity: 0.5
+Generated Sentence: i want my boyfriend to be my boyfriend to be able to have
+
+Diversity: 1.0
+Generated Sentence: i want to look up, taen for i should "plais. to do boyfri
+
+Diversity: 1.2
+Generated Sentence: i want my boyfriend wecks but the chazdehh 21 which tyieg
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Sentence: i like that my boyfriend is the cat i want my boyfriend i
+
+Diversity: 0.5
+Generated Sentence: i like that my boyfriend but i she complice and try to sa
+
+Diversity: 1.0
+Generated Sentence: i like my boyfriend weeks my over , like imw one he doesn
+
+Diversity: 1.2
+Generated Sentence: i like too what just want my boyfriend myself dien't turn
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Sentence: i need to see my boyfriend to be my boyfriend to be my bo
+
+Diversity: 0.5
+Generated Sentence: i need to some i don't want my boyfriend like my instagra
+
+Diversity: 1.0
+Generated Sentence: i need to have a fingers my house. my boyfriend i want my
+
+Diversity: 1.2
+Generated Sentence: i need a cleem intrace because it's single. i just had on
+
+---------- Iteration: 4 ---------- 
+
+Loss after iteration 4: 1.07814
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Sentence: i want my boyfriend is the craziest thing you to be a boy
+
+Diversity: 0.5
+Generated Sentence: i want my boyfriend is my boyfriend is a perfect my boyfr
+
+Diversity: 1.0
+Generated Sentence: i want my boyfriend is so ready date with my boyfriend ke
+
+Diversity: 1.2
+Generated Sentence: i want my boyfriend we got a heak for your poustiess. my 
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Sentence: i like that my boyfriend is the craziest thing you've eve
+
+Diversity: 0.5
+Generated Sentence: i like that my boyfriend is pretty to me but i always bec
+
+Diversity: 1.0
+Generated Sentence: i like when my boyfriend is really wondert done to you're
+
+Diversity: 1.2
+Generated Sentence: i like when my boyfriend but when he's a boyfriend when m
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Sentence: i need to have a boyfriend to be a getting to me and i wa
+
+Diversity: 0.5
+Generated Sentence: i need to have a boyfriend is my boyfriend is going to be
+
+Diversity: 1.0
+Generated Sentence: i need a precert" and my boyfriend. i like when fignts fo
+
+Diversity: 1.2
+Generated Sentence: i need a rasew to prokect his tired i can't be everyone."
+
+---------- Iteration: 5 ---------- 
+
+Loss after iteration 5: 1.07132
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Sentence: i want my boyfriend is the best friends i want my boyfrie
+
+Diversity: 0.5
+Generated Sentence: i want my boyfriend to someone to my boyfriend is my boyf
+
+Diversity: 1.0
+Generated Sentence: i want poke my boyfriend is you heary to embogings in me 
+
+Diversity: 1.2
+Generated Sentence: i want you wall for me beautn ta boyed bc my boyfriend fe
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Sentence: i like that my boyfriend to be the only i want my boyfrie
+
+Diversity: 0.5
+Generated Sentence: i like that my boyfriend to be readly just to be someone 
+
+Diversity: 1.0
+Generated Sentence: i like when i come som i can do me sometomous you better 
+
+Diversity: 1.2
+Generated Sentence: i like we do i know my family buny' ridial boyfriend you 
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Sentence: i need to have a boyfriend is the best friends i like tha
+
+Diversity: 0.5
+Generated Sentence: i need to have from me i like that my boyfriend is going 
+
+Diversity: 1.0
+Generated Sentence: i need him like i call girlfriend is beautiful still will
+
+Diversity: 1.2
+Generated Sentence: i need for me i need my boyfriend amazing when he loves a
+
+---------- Iteration: 6 ---------- 
+
+Loss after iteration 6: 1.03747
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Sentence: i want my boyfriend to be there is my boyfriend is so he 
+
+Diversity: 0.5
+Generated Sentence: i want my boyfriend to come home and i don't know i don't
+
+Diversity: 1.0
+Generated Sentence: i want my bill him baby but cake if my only u hate when m
+
+Diversity: 1.2
+Generated Sentence: i want my boyfriend. i was :face and mumbs in oam3 to is 
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Sentence: i like that my boyfriend to be too into me and i want my 
+
+Diversity: 0.5
+Generated Sentence: i like that my boyfriend is on his art the hell for me i 
+
+Diversity: 1.0
+Generated Sentence: i like when my boyfriend to be mude are boyfriend everyth
+
+Diversity: 1.2
+Generated Sentence: i like that mez you're not to so my boyfriend also be leg
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Sentence: i need a boyfriend to be there is my boyfriend is so boyf
+
+Diversity: 0.5
+Generated Sentence: i need a boyfriend to be my boyfriend who is my boyfriend
+
+Diversity: 1.0
+Generated Sentence: i need a for me is he sucks not my week and i love like j
+
+Diversity: 1.2
+Generated Sentence: i need a boyfriend is one ,) so but i think my boyfriend 
+
+---------- Iteration: 7 ---------- 
+
+Loss after iteration 7: 1.03877
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Sentence: i want my boyfriend is so much i want my boyfriend to be 
+
+Diversity: 0.5
+Generated Sentence: i want my boyfriend is so concert mom is a guy happy for 
+
+Diversity: 1.0
+Generated Sentence: i want my boyfriend to come to be kink my bin an abbreabl
+
+Diversity: 1.2
+Generated Sentence: i want my boyfriend gets to get and i she thing it. she u
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Sentence: i like that my boyfriend is the craziest thing you've eve
+
+Diversity: 0.5
+Generated Sentence: i like when my boyfriend to be the window in literally to
+
+Diversity: 1.0
+Generated Sentence: i like my boyfriend life i like that my boyfriend my boyf
+
+Diversity: 1.2
+Generated Sentence: i like that i shouldnt. my boyfriend to puy is as hey wit
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Sentence: i need to get a boyfriend to be my boyfriend is the best 
+
+Diversity: 0.5
+Generated Sentence: i need is my best friends like he says i like when my boy
+
+Diversity: 1.0
+Generated Sentence: i need chy stay asleep so micoraoy super to do i want my 
+
+Diversity: 1.2
+Generated Sentence: i need get a boyfriend doesn't listen horking from like n
+
+---------- Iteration: 8 ---------- 
+
+Loss after iteration 8: 1.0127
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Sentence: i want my boyfriend is a boyfriend is the best i want my 
+
+Diversity: 0.5
+Generated Sentence: i want my boyfriend is the conflect with my boyfriend is 
+
+Diversity: 1.0
+Generated Sentence: i want that commentice . boyfriend is my best friend one 
+
+Diversity: 1.2
+Generated Sentence: i want clal when person wownd my boyfriend ok me wow vowp
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Sentence: i like when my boyfriend is the best i want my boyfriend 
+
+Diversity: 0.5
+Generated Sentence: i like to talk to my boyfriend to be a cute over the most
+
+Diversity: 1.0
+Generated Sentence: i like when i'm in love when my little girlfriend. we be 
+
+Diversity: 1.2
+Generated Sentence: i like i'm hove about just have out, ugh hahahaha . org 1
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Sentence: i need to see my boyfriend is the craziest thing i like t
+
+Diversity: 0.5
+Generated Sentence: i need to get me a boyfriend who wants to get in the way 
+
+Diversity: 1.0
+Generated Sentence: i need a boyfriend i know showing etcupe. with anyone is 
+
+Diversity: 1.2
+Generated Sentence: i need to soork at what your day at meuit i want. : they'
+
+---------- Iteration: 9 ---------- 
+
+Loss after iteration 9: 0.99652
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Sentence: i want my boyfriend is the best if i want my boyfriend to
+
+Diversity: 0.5
+Generated Sentence: i want my boyfriend should i love him i like that my boyf
+
+Diversity: 1.0
+Generated Sentence: i want my boyfriend sing rl fuck for a first part of an a
+
+Diversity: 1.2
+Generated Sentence: i want my boyfriend was. my o alver never love gomgor onl
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Sentence: i like that my boyfriend is so i can be the way i want my
+
+Diversity: 0.5
+Generated Sentence: i like when my boyfriend is the craziest thing my boyfrie
+
+Diversity: 1.0
+Generated Sentence: i like that my grandma come. would be so happy at canvere
+
+Diversity: 1.2
+Generated Sentence: i like its friends well. my boyfriend for my friends grow
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Sentence: i need to be able to help me a boyfriend is the best boyf
+
+Diversity: 0.5
+Generated Sentence: i need to take me to have a boyfriend is his family and h
+
+Diversity: 1.0
+Generated Sentence: i need portet my boyfriend over duck is i love to like i 
+
+Diversity: 1.2
+Generated Sentence: i need sometimes i really sweet do.s overy. "at me, atear
+
+---------- Iteration: 10 ---------- 
+
+Loss after iteration 10: 0.991489
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Sentence: i want my boyfriend is so sand my boyfriend is so hard ab
+
+Diversity: 0.5
+Generated Sentence: i want my boyfriend i hate my boyfriend and theth i want 
+
+Diversity: 1.0
+Generated Sentence: i want my boyfriend to be work and rub so you hat my boyf
+
+Diversity: 1.2
+Generated Sentence: i want my boyfriend was mad hoo lettirg clilt, i want to 
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Sentence: i like that my boyfriend to be my boyfriend is the best i
+
+Diversity: 0.5
+Generated Sentence: i like to tho my boyfriend is so yeah i like when my boyf
+
+Diversity: 1.0
+Generated Sentence: i like taking of asien trying to stay wrell appering on o
+
+Diversity: 1.2
+Generated Sentence: i like the fact my boyfriend. i know 00&m 2'ye just do ha
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Sentence: i need a boyfriend is always free is my boyfriend is so b
+
+Diversity: 0.5
+Generated Sentence: i need a boyfriend to loose my boyfriend is so weird that
+
+Diversity: 1.0
+Generated Sentence: i need a boyfriend doesn't have none cute we like when my
+
+Diversity: 1.2
+Generated Sentence: i need like my boyfriend. thiss i like he loves his mide 
+
+---------- Iteration: 11 ---------- 
+
+Loss after iteration 11: 0.990172
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Sentence: i want my boyfriend to be too end a boyfriend is my boyfr
+
+Diversity: 0.5
+Generated Sentence: i want my boyfriend is so sweet ms to say the condom like
+
+Diversity: 1.0
+Generated Sentence: i want to keep him just say. why cuddle thinks with hair 
+
+Diversity: 1.2
+Generated Sentence: i want my boyfriend" ) i am urs on my boyfriend's choin..
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Sentence: i like that my boyfriend to be able to speak my boyfriend
+
+Diversity: 0.5
+Generated Sentence: i like the first boyfriend is the cutest, i like that my 
+
+Diversity: 1.0
+Generated Sentence: i like that my boyfriend then bc i want my boyfriend when
+
+Diversity: 1.2
+Generated Sentence: i like to live that heslens my new boyfriend to posting n
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Sentence: i need to someone tag him but he had the only thing is my
+
+Diversity: 0.5
+Generated Sentence: i need to have a boyfriend to be able to stop the way i d
+
+Diversity: 1.0
+Generated Sentence: i need to loose my boyfriend a house at confused words to
+
+Diversity: 1.2
+Generated Sentence: i need to be telling him but enmoy and idn waits out and 
+

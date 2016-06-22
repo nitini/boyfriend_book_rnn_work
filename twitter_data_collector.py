@@ -159,6 +159,21 @@ def main():
                'hate boyfriend my',
                'boyfriend like to',
                'love boyfriend him',
+               'I want my boyfriend to',
+               'I like it when he',
+               'I need him to be',
+               'boyfriend loves',
+               'boyfriend needs to',
+               'boyfriend cannot',
+               'I love when he',
+               'I hate when he',
+               'My boyfriend is',
+               'Love when my boyfriend',
+               'Its cute when my boyfriend',
+               'I like when my bf',
+               'I like when my boyfriend',
+               'I need my man to be',
+               'My boyfriend needs ',
                'please my boyfriend I',
                'refuse my boyfriend I',
                'dislike boyfriend',
@@ -166,13 +181,20 @@ def main():
                'my boyfriend is',
                'I like when my boyfriend',
                'I need boyfriend to',
-               'I love boyfriend when'
+               'I love boyfriend when',
+               'I must have my boyfriend',
+               'My bf is so',
+               'I want my bf',
+               'I like when my bf',
+               'I want my bf to',
+               'I need my bf to',
+               'I need my bf',
                ]
 
     current_date = time.strftime('%Y_%m_%d_%I_%M_%S')
     tweet_file_name = 'boyfriend_tweets_' + str(current_date) + '.csv'
     
-    harvest_tweets(100, filters, tweet_file_name, api, 0)
+    harvest_tweets(20000, filters, tweet_file_name, api, 0)
 
 
 if __name__ == '__main__':
