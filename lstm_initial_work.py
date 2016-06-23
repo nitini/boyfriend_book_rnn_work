@@ -291,7 +291,7 @@ def save_model_weights(model, model_name, in_gcp):
 #%%  
 def main():
     
-    boyfriend_data = pd.read_csv('./old_tweet_data_weighted.csv')
+    boyfriend_data = pd.read_csv('./old_tweet_data_unweighted.csv')
 
     in_gcp = int(sys.argv[1])
     save_weights = int(sys.argv[2])
@@ -303,19 +303,19 @@ def main():
     
     text, chars, char_indices, indices_char = convert_csv_to_text(boyfriend_data)
     
-    maxlen = 7
-    step = 3   
+    maxlen = 15
+    step = 1 
     
     training_data = convert_text_to_train(text, maxlen, step)
     X, y = vectorize_training_data(training_data, maxlen, step, chars, char_indices)
     model = get_model_v1(maxlen, chars)
     if use_saved_weights == 1:
         model.load_weights(model_weights_file)
-    batch_size = 512
-    num_epochs = 12
+    batch_size = 256
+    num_epochs = 20
     
     # Sentence seeds need to have length = maxlen
-    sentence_seeds = ['i want ', 'i like ', 'i need ']
+    sentence_seeds = ['         i want', '         i like', '         i need']
     sentence_length = 50
     diversities = [0.2, 0.5, 1.0, 1.2]
     

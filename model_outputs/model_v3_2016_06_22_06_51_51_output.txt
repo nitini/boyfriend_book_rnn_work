@@ -1,0 +1,300 @@
+
+---------- Training Info: ---------- 
+
+Number of examples: 1320049
+Length of examples: 15
+Step size used: 1
+Character set size: 67
+Batch size: 256
+Number of Iterations: 20
+Generated sentence length: 50
+Sentence Seeds: ['         i want', '         i like', '         i need']
+Diversities: [0.2, 0.5, 1.0, 1.2]
+
+---------- Any additional notes: ---------- 
+
+Weighted Twitter data, semi-long sentence
+
+---------- All model information: ---------- 
+
+{
+  "class_name": "Sequential", 
+  "config": [
+    {
+      "class_name": "LSTM", 
+      "config": {
+        "U_regularizer": null, 
+        "W_regularizer": null, 
+        "activation": "tanh", 
+        "b_regularizer": null, 
+        "batch_input_shape": [
+          null, 
+          15, 
+          67
+        ], 
+        "consume_less": "cpu", 
+        "dropout_U": 0.0, 
+        "dropout_W": 0.0, 
+        "forget_bias_init": "one", 
+        "go_backwards": false, 
+        "init": "glorot_uniform", 
+        "inner_activation": "hard_sigmoid", 
+        "inner_init": "orthogonal", 
+        "input_dim": 67, 
+        "input_dtype": "float32", 
+        "input_length": null, 
+        "name": "lstm_1", 
+        "output_dim": 512, 
+        "return_sequences": true, 
+        "stateful": false, 
+        "trainable": true, 
+        "unroll": false
+      }
+    }, 
+    {
+      "class_name": "Dropout", 
+      "config": {
+        "name": "dropout_1", 
+        "p": 0.2, 
+        "trainable": true
+      }
+    }, 
+    {
+      "class_name": "LSTM", 
+      "config": {
+        "U_regularizer": null, 
+        "W_regularizer": null, 
+        "activation": "tanh", 
+        "b_regularizer": null, 
+        "consume_less": "cpu", 
+        "dropout_U": 0.0, 
+        "dropout_W": 0.0, 
+        "forget_bias_init": "one", 
+        "go_backwards": false, 
+        "init": "glorot_uniform", 
+        "inner_activation": "hard_sigmoid", 
+        "inner_init": "orthogonal", 
+        "input_dim": 512, 
+        "input_length": null, 
+        "name": "lstm_2", 
+        "output_dim": 512, 
+        "return_sequences": true, 
+        "stateful": false, 
+        "trainable": true, 
+        "unroll": false
+      }
+    }, 
+    {
+      "class_name": "Dropout", 
+      "config": {
+        "name": "dropout_2", 
+        "p": 0.2, 
+        "trainable": true
+      }
+    }, 
+    {
+      "class_name": "LSTM", 
+      "config": {
+        "U_regularizer": null, 
+        "W_regularizer": null, 
+        "activation": "tanh", 
+        "b_regularizer": null, 
+        "consume_less": "cpu", 
+        "dropout_U": 0.0, 
+        "dropout_W": 0.0, 
+        "forget_bias_init": "one", 
+        "go_backwards": false, 
+        "init": "glorot_uniform", 
+        "inner_activation": "hard_sigmoid", 
+        "inner_init": "orthogonal", 
+        "input_dim": 512, 
+        "input_length": null, 
+        "name": "lstm_3", 
+        "output_dim": 512, 
+        "return_sequences": false, 
+        "stateful": false, 
+        "trainable": true, 
+        "unroll": false
+      }
+    }, 
+    {
+      "class_name": "Dropout", 
+      "config": {
+        "name": "dropout_3", 
+        "p": 0.2, 
+        "trainable": true
+      }
+    }, 
+    {
+      "class_name": "Dense", 
+      "config": {
+        "W_constraint": null, 
+        "W_regularizer": null, 
+        "activation": "linear", 
+        "activity_regularizer": null, 
+        "b_constraint": null, 
+        "b_regularizer": null, 
+        "bias": true, 
+        "init": "glorot_uniform", 
+        "input_dim": null, 
+        "name": "dense_1", 
+        "output_dim": 67, 
+        "trainable": true
+      }
+    }, 
+    {
+      "class_name": "Activation", 
+      "config": {
+        "activation": "softmax", 
+        "name": "activation_1", 
+        "trainable": true
+      }
+    }
+  ], 
+  "keras_version": "1.0.4", 
+  "loss": "categorical_crossentropy", 
+  "optimizer": {
+    "epsilon": 1e-08, 
+    "lr": 0.0010000000474974513, 
+    "name": "RMSprop", 
+    "rho": 0.8999999761581421
+  }, 
+  "sample_weight_mode": null
+}
+---------- Iteration: 0 ---------- 
+
+Loss after iteration 0: 2.96013
+
+----- Sentence seed:          i want----- 
+
+Diversity: 0.2
+Generated Sentence:          i want                       t         e                
+
+Diversity: 0.5
+Generated Sentence:          i wantee       s h   d  y  st  r   toe      os e  tonft 
+
+Diversity: 1.0
+Generated Sentence:          i want feerks uneto dtoensgnne tsdi s n ti ddonb y rirpa
+
+Diversity: 1.2
+Generated Sentence:          i wantmihueessarnaitdsndk ye u hrsi/ooka irrck lae'hrfc 
+
+----- Sentence seed:          i like----- 
+
+Diversity: 0.2
+Generated Sentence:          i like                                                 n
+
+Diversity: 0.5
+Generated Sentence:          i likedigaiei       r    a st  mi too   n ite      o mei
+
+Diversity: 1.0
+Generated Sentence:          i likef  'i a tiwns h it e ytrnokglpdhori oodigrmrhttao 
+
+Diversity: 1.2
+Generated Sentence:          i liken s h ooa ,i.siehojrb e a haiserneiy.ywhsiy pdgrny
+
+----- Sentence seed:          i need----- 
+
+Diversity: 0.2
+Generated Sentence:          i need                                                  
+
+Diversity: 0.5
+Generated Sentence:          i need s   n  aoe y    r  e  ni tui t   mesfhei  e r ert
+
+Diversity: 1.0
+Generated Sentence:          i needef inbldftt y'omoo.shb,ap-ei i do  kfadrptne ee ya
+
+Diversity: 1.2
+Generated Sentence:          i neednl i riddiayv dtnyr iagreoaunpam q"ymh gfyjikd age
+
+---------- Iteration: 1 ---------- 
+
+Loss after iteration 1: 2.96541
+
+----- Sentence seed:          i want----- 
+
+Diversity: 0.2
+Generated Sentence:          i want                           e                      
+
+Diversity: 0.5
+Generated Sentence:          i want r     oa   h ns    las e ei  yele a iridy      tb
+
+Diversity: 1.0
+Generated Sentence:          i wantgrvciotmi rnat nh ymyfewt bbg  hz hpatvsheao ew  o
+
+Diversity: 1.2
+Generated Sentence:          i wantzy'edrnlrodmltthctu   a x nmwoimolfav sfbynlereuwr
+
+----- Sentence seed:          i like----- 
+
+Diversity: 0.2
+Generated Sentence:          i like              n                  n                
+
+Diversity: 0.5
+Generated Sentence:          i likey e u r t  msse   e lrtbtr   odea ntf    n oe e gf
+
+Diversity: 1.0
+Generated Sentence:          i likeiktculae sfoee  ioain rm e e ly   y y 'ltt ncs tor
+
+Diversity: 1.2
+Generated Sentence:          i likekksfote yg aii ishtnd hekpg anynuynkrl eony aiifuo
+
+----- Sentence seed:          i need----- 
+
+Diversity: 0.2
+Generated Sentence:          i need                                                  
+
+Diversity: 0.5
+Generated Sentence:          i needh ne o ytt o .oo is  o o a  tfn e hdt tn e  ln e  
+
+Diversity: 1.0
+Generated Sentence:          i needmw ihfl e io  i   aiastldmfnfin' cn hnfoapbm pn.r 
+
+Diversity: 1.2
+Generated Sentence:          i needeyi,er m limwxoe  ribnimnrmorhlbrbts adhgrf  nniya
+
+---------- Iteration: 2 ---------- 
+
+Loss after iteration 2: 2.96342
+
+----- Sentence seed:          i want----- 
+
+Diversity: 0.2
+Generated Sentence:          i want  e                                               
+
+Diversity: 0.5
+Generated Sentence:          i want   tl  i ion r   eah   t i  r onw   e  y    a .  t
+
+Diversity: 1.0
+Generated Sentence:          i wantdbmle ycm t yolmd n tomgdnoawade   hyikedph  cbtyy
+
+Diversity: 1.2
+Generated Sentence:          i want s'lltygaahautrg srhd ed ynetf nhgntiwsrmsoea bln.
+
+----- Sentence seed:          i like----- 
+
+Diversity: 0.2
+Generated Sentence:          i liket         i                                       
+
+Diversity: 0.5
+Generated Sentence:          i like aaon n   etbe a  ro  li y   r d   t ns  s     iy 
+
+Diversity: 1.0
+Generated Sentence:          i likeo ahoyynr miaadahltfs strf  mltriahoai   !teeskd o
+
+Diversity: 1.2
+Generated Sentence:          i like ertronoewvdeltl nlkychusge ra rsika.rno,tt  b ,f!
+
+----- Sentence seed:          i need----- 
+
+Diversity: 0.2
+Generated Sentence:          i need   i                                              
+
+Diversity: 0.5
+Generated Sentence:          i need sn n  r    t    h mentee    oce y af       otl a 
+
+Diversity: 1.0
+Generated Sentence:          i need nbi er evhiiu oohenatectr rufoetorwplnibiobdii rt
+
+Diversity: 1.2
+Generated Sentenc
