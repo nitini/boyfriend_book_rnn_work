@@ -287,6 +287,8 @@ def save_model_weights(model, model_name, in_gcp):
         model.save_weights(fp.goog_file_path + model_name + '_weights.hdf5')
     else: 
         model.save_weights('./' + model_name + '_weights.hdf5')
+        
+
 
 #%%  
 def main():
@@ -351,10 +353,10 @@ def main():
         print("Loss after iteration " + str(i) + ": " + str(first_thousand_loss), file=output_file)
         print("", file=output_file)
         for seed in sentence_seeds:
-            print("----- Sentence seed: " + seed + "----- ", file=output_file)
+            print("----- Sentence seed: " + seed + " ----- ", file=output_file)
             print('', file=output_file)
             for diversity in diversities:
-                print("----- Sentence seed: " + seed + "----- ")
+                print("----- Sentence seed: " + seed + " ----- ")
                 print("Diversity: " + str(diversity))
                 print("Diversity: " + str(diversity), file=output_file)
                 

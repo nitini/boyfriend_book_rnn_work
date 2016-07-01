@@ -80,3 +80,36 @@ bf_rules = pd.concat([bf_rules]*1, ignore_index=True)
 bf_tweets = pd.concat([bf_tweets, bf_rules], axis=0)
 
 bf_tweets = bf_tweets.sample(frac=1).copy()
+
+
+
+
+
+
+
+#%%
+bf_tweets = pd.read_csv('./old_tweet_data/old_tweet_data_unweighted.csv')
+
+bf_tweets = bf_tweets.iloc[0:128].copy()    
+
+NUM_SAMPLES = bf_tweets.shape[0]  
+  
+chars, char_indices, indices_char = get_chars(bf_tweets)
+
+SEQ_LEN = 32
+BATCH_SIZE = 32
+VOCAB_SIZE = len(chars)
+LAYERS = 3
+LSTM_SIZE = 128
+
+weights_file = './lstm_model_weights.hdf5'
+
+test_model = build_model(1,
+                         BATCH_SIZE,
+                         SEQ_LEN,
+                         VOCAB_SIZE,
+                         LSTM_SIZE,
+                         LAYERS)
+
+print(sample(test_model, weights_file, char_indices, indices_char))
+
