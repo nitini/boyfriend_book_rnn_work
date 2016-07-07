@@ -89,7 +89,7 @@ def build_model(infer, batch_size, seq_len, vocab_size, lstm_size, num_layers):
 
     model.add(TimeDistributed(Dense(vocab_size)))
     model.add(Activation('softmax'))
-    model.compile(loss='categorical_crossentropy', optimizer='adagrad')
+    model.compile(loss='categorical_crossentropy', optimizer='rmsprop')
     return model
 
 def modify_prob_dist(a, temperature=1.0):
@@ -161,8 +161,8 @@ def sample_given_model(test_model,
         softmax = test_model.predict_on_batch(batch)[0].ravel()
         softmax = modify_prob_dist(softmax, temperature)
 
-        sample = np.random.choice(range(len(char_indices)), p=softmax)
-        #sample = np.argmax(np.random.multinomial(1,softmax,1))
+        #sample = np.random.choice(range(len(char_indices)), p=softmax)
+        sample = np.argmax(np.random.multinomial(1,softmax,1))
 
         sampled.append(sample)
     
@@ -245,10 +245,10 @@ def main():
        
     chars, char_indices, indices_char = get_chars(bf_tweets)
     
-    SEQ_LEN = 80
+    SEQ_LEN = 75
     BATCH_SIZE = 256
     VOCAB_SIZE = len(chars)
-    LAYERS = 2
+    LAYERS = 3
     LSTM_SIZE = 256
     NUM_SAMPLES = (bf_tweets.shape[0]  / BATCH_SIZE) * BATCH_SIZE
     EPOCHS = 75
@@ -272,12 +272,12 @@ def main():
                                  LSTM_SIZE,
                                  LAYERS)
                                  
-    primer_texts = ['i want',
-                    'i need', 
-                    'i like']
+    primer_texts = ['my',
+                    'his', 
+                    'when']
     sample_length = 80
     diversities = [0.2, 0.5, 1.0, 1.2]
-    
+
     model_name = make_model_name('5')
     output_file = open('./output_' + model_name + '.txt', 'wb')
     
