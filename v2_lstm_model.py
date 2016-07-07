@@ -134,6 +134,33 @@ def sample(test_model,
         softmax = test_model.predict_on_batch(batch)[0].ravel()
         softmax = modify_prob_dist(softmax, temperature)
 
+        #sample = np.random.choice(range(len(char_indices)), p=softmax)
+        sample = np.argmax(np.random.multinomial(1,softmax,1))
+
+        sampled.append(sample)
+    
+    return ''.join([indices_char[c] for c in sampled])
+    
+
+def sample_given_model(test_model,
+                       char_indices, 
+                       temperature=1.0,
+                       sample_chars=40,
+                       primer_text='i'):
+
+    sampled = [char_indices[c] for c in primer_text]
+
+    for c in primer_text:
+        batch = np.zeros((1, 1, len(char_indices)))
+        batch[0, 0, char_indices[c]] = 1
+        test_model.predict_on_batch(batch)
+
+    for i in range(sample_chars):
+        batch = np.zeros((1, 1, len(char_indices)))
+        batch[0, 0, sampled[-1]] = 1
+        softmax = test_model.predict_on_batch(batch)[0].ravel()
+        softmax = modify_prob_dist(softmax, temperature)
+
         sample = np.random.choice(range(len(char_indices)), p=softmax)
         #sample = np.argmax(np.random.multinomial(1,softmax,1))
 
