@@ -134,8 +134,8 @@ def sample(test_model,
         softmax = test_model.predict_on_batch(batch)[0].ravel()
         softmax = modify_prob_dist(softmax, temperature)
 
-        #sample = np.random.choice(range(len(char_indices)), p=softmax)
-        sample = np.argmax(np.random.multinomial(1,softmax,1))
+        sample = np.random.choice(range(len(char_indices)), p=softmax)
+        #sample = np.argmax(np.random.multinomial(1,softmax,1))
 
         sampled.append(sample)
     
@@ -246,12 +246,12 @@ def main():
     chars, char_indices, indices_char = get_chars(bf_tweets)
     
     SEQ_LEN = 80
-    BATCH_SIZE = 128
+    BATCH_SIZE = 256
     VOCAB_SIZE = len(chars)
-    LAYERS = 3
-    LSTM_SIZE = 128
+    LAYERS = 2
+    LSTM_SIZE = 256
     NUM_SAMPLES = (bf_tweets.shape[0]  / BATCH_SIZE) * BATCH_SIZE
-    EPOCHS = 50
+    EPOCHS = 75
     
     bf_tweets['tweet'] = pad_sequences(bf_tweets, 'tweet', SEQ_LEN)
     bf_tweets['shifted_tweet'] = shift_sequences(bf_tweets, 'tweet', SEQ_LEN)
@@ -278,7 +278,7 @@ def main():
     sample_length = 80
     diversities = [0.2, 0.5, 1.0, 1.2]
     
-    model_name = make_model_name('4')
+    model_name = make_model_name('5')
     output_file = open('./output_' + model_name + '.txt', 'wb')
     
     if in_gcp == 1:
