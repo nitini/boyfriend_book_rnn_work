@@ -1,0 +1,751 @@
+
+---------- Training Info: ---------- 
+
+Number of examples: 13952
+Length of examples: 80
+Character set size: 67
+Batch size: 128
+Number of epochs: 50
+Number of batches per epoch: 109
+Generated sentence length: 80
+Sentence Seeds: ['i want', 'i need', 'i like']
+Diversities: [0.2, 0.5, 1.0, 1.2]
+
+---------- Any additional notes: ---------- 
+
+Unweighted Twitter data, semi-long sentence
+
+---------- All model information: ---------- 
+
+{
+  "class_name": "Sequential", 
+  "config": [
+    {
+      "class_name": "LSTM", 
+      "config": {
+        "U_regularizer": null, 
+        "W_regularizer": null, 
+        "activation": "tanh", 
+        "b_regularizer": null, 
+        "batch_input_shape": [
+          128, 
+          80, 
+          67
+        ], 
+        "consume_less": "cpu", 
+        "dropout_U": 0.0, 
+        "dropout_W": 0.0, 
+        "forget_bias_init": "one", 
+        "go_backwards": false, 
+        "init": "glorot_uniform", 
+        "inner_activation": "hard_sigmoid", 
+        "inner_init": "orthogonal", 
+        "input_dtype": "float32", 
+        "name": "lstm_1", 
+        "output_dim": 128, 
+        "return_sequences": true, 
+        "stateful": true, 
+        "trainable": true, 
+        "unroll": false
+      }
+    }, 
+    {
+      "class_name": "Dropout", 
+      "config": {
+        "name": "dropout_1", 
+        "p": 0.2, 
+        "trainable": true
+      }
+    }, 
+    {
+      "class_name": "LSTM", 
+      "config": {
+        "U_regularizer": null, 
+        "W_regularizer": null, 
+        "activation": "tanh", 
+        "b_regularizer": null, 
+        "batch_input_shape": [
+          128, 
+          80, 
+          128
+        ], 
+        "consume_less": "cpu", 
+        "dropout_U": 0.0, 
+        "dropout_W": 0.0, 
+        "forget_bias_init": "one", 
+        "go_backwards": false, 
+        "init": "glorot_uniform", 
+        "inner_activation": "hard_sigmoid", 
+        "inner_init": "orthogonal", 
+        "name": "lstm_2", 
+        "output_dim": 128, 
+        "return_sequences": true, 
+        "stateful": true, 
+        "trainable": true, 
+        "unroll": false
+      }
+    }, 
+    {
+      "class_name": "Dropout", 
+      "config": {
+        "name": "dropout_2", 
+        "p": 0.2, 
+        "trainable": true
+      }
+    }, 
+    {
+      "class_name": "LSTM", 
+      "config": {
+        "U_regularizer": null, 
+        "W_regularizer": null, 
+        "activation": "tanh", 
+        "b_regularizer": null, 
+        "batch_input_shape": [
+          128, 
+          80, 
+          128
+        ], 
+        "consume_less": "cpu", 
+        "dropout_U": 0.0, 
+        "dropout_W": 0.0, 
+        "forget_bias_init": "one", 
+        "go_backwards": false, 
+        "init": "glorot_uniform", 
+        "inner_activation": "hard_sigmoid", 
+        "inner_init": "orthogonal", 
+        "name": "lstm_3", 
+        "output_dim": 128, 
+        "return_sequences": true, 
+        "stateful": true, 
+        "trainable": true, 
+        "unroll": false
+      }
+    }, 
+    {
+      "class_name": "Dropout", 
+      "config": {
+        "name": "dropout_3", 
+        "p": 0.2, 
+        "trainable": true
+      }
+    }, 
+    {
+      "class_name": "TimeDistributed", 
+      "config": {
+        "layer": {
+          "class_name": "Dense", 
+          "config": {
+            "W_constraint": null, 
+            "W_regularizer": null, 
+            "activation": "linear", 
+            "activity_regularizer": null, 
+            "b_constraint": null, 
+            "b_regularizer": null, 
+            "bias": true, 
+            "init": "glorot_uniform", 
+            "input_dim": null, 
+            "name": "dense_1", 
+            "output_dim": 67, 
+            "trainable": true
+          }
+        }, 
+        "name": "timedistributed_1", 
+        "trainable": true
+      }
+    }, 
+    {
+      "class_name": "Activation", 
+      "config": {
+        "activation": "softmax", 
+        "name": "activation_1", 
+        "trainable": true
+      }
+    }
+  ], 
+  "keras_version": "1.0.4", 
+  "loss": "categorical_crossentropy", 
+  "optimizer": {
+    "epsilon": 1e-08, 
+    "lr": 0.009999999776482582, 
+    "name": "Adagrad"
+  }, 
+  "sample_weight_mode": null
+}
+
+---------- Epoch: 0 ---------- 
+
+Loss on first batch after epoch 0: 2.58019161224
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i want                                                                                
+
+Diversity: 0.5
+Generated Tweet: i wantv                                                                               
+
+Diversity: 1.0
+Generated Tweet: i wantms nk k   vbs i    g    p y  l on e'i ki l  emn s s  s y hsb eoer   tsbg  uaitu 
+
+Diversity: 1.2
+Generated Tweet: i wantimrnr y]o ld p]f  dh ly.notitswzior loreo tp danm sakb7armts ot,r t ltskwwjegeel
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i need                                                                                
+
+Diversity: 0.5
+Generated Tweet: i need                                                                                
+
+Diversity: 1.0
+Generated Tweet: i needk                                 i  k   ey   pcedawnsto bidwtd yloeip i'eadw uy
+
+Diversity: 1.2
+Generated Tweet: i needma yswftoy h'eoo, yame id0miars ranet&bw twfie to oene d gyebo  m s e myndg yeu 
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i like                                                                                
+
+Diversity: 0.5
+Generated Tweet: i like                                                                                
+
+Diversity: 1.0
+Generated Tweet: i likeb  y                          h ow oudiesd4nyeaw xnacnafyku hyw otiun egs ot  ed
+
+Diversity: 1.2
+Generated Tweet: i like'  yib ote so ntediiinvuaiyolsdufihnyob(dtfi?amdl f?wd4 s gfw p y ,feu nnlraa  t
+
+---------- Epoch: 1 ---------- 
+
+Loss on first batch after epoch 1: 2.53150177002
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i want                                                                                
+
+Diversity: 0.5
+Generated Tweet: i want                                                                                
+
+Diversity: 1.0
+Generated Tweet: i want u            t                      pt egnis eac t  m        a                 
+
+Diversity: 1.2
+Generated Tweet: i wanti     h a le    '               l     aqoa d g wedehoirlye c  bode  lfta|w  dem 
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i need                                                                                
+
+Diversity: 0.5
+Generated Tweet: i need                                                                                
+
+Diversity: 1.0
+Generated Tweet: i need:               i kod  n                i         m  r mhirfgetvlotwom yo ecv ws
+
+Diversity: 1.2
+Generated Tweet: i needlg ahevo ka asy"f t'a t/oeyrvt  h    l   w sl9rdolsob eia deays,egiio s w mty du
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i like                                                                                
+
+Diversity: 0.5
+Generated Tweet: i like                                                                                
+
+Diversity: 1.0
+Generated Tweet: i like                  m                 + phiy  few eebeis uro   .y              tn 
+
+Diversity: 1.2
+Generated Tweet: i likeh y                   f    a  sdn fiaoyp'eern fyadovw;otwt a lr ir   snknkgysbfb
+
+---------- Epoch: 2 ---------- 
+
+Loss on first batch after epoch 2: 2.35948324203
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i want                                                                                
+
+Diversity: 0.5
+Generated Tweet: i want                                                                                
+
+Diversity: 1.0
+Generated Tweet: i wantp mngasfe u avul wt o nheeeg iydail n aao r,k  nebhbbireinewds  mbmhoo'n a dietg
+
+Diversity: 1.2
+Generated Tweet: i want5  s                   y^ylj i gie  m`m t&s- pou czshe pemhttyh gfo'yi eyii  ofi
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i need                                                                                
+
+Diversity: 0.5
+Generated Tweet: i need                                                                                
+
+Diversity: 1.0
+Generated Tweet: i need i                  y nt         o :.wti  initc thybyipnked  tv^ard wub ie g  oc
+
+Diversity: 1.2
+Generated Tweet: i need    w                   s  )  hhsslinrig cu. ded6 pbb rienmieleaes ;ei yis  igei
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i like                                                                                
+
+Diversity: 0.5
+Generated Tweet: i like                                                                                
+
+Diversity: 1.0
+Generated Tweet: i like                        h   lt r a yh el ;mlidren s g                          k
+
+Diversity: 1.2
+Generated Tweet: i liker                           yc nsfdld   e yhmbas'yhbvrgnthikmga 6m1hasng lie& sm
+
+---------- Epoch: 3 ---------- 
+
+Loss on first batch after epoch 3: 2.16279172897
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i want                                                                                
+
+Diversity: 0.5
+Generated Tweet: i want                                                                                
+
+Diversity: 1.0
+Generated Tweet: i want            i  mau lin ie  a b pffinnds yoos ataos i  n   baf t t de lgn sr hu.l
+
+Diversity: 1.2
+Generated Tweet: i want oo                     dmyceyiia boy ried & ews toce: onook tis byryrinn att' h
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i need                                                                                
+
+Diversity: 0.5
+Generated Tweet: i need                                                                                
+
+Diversity: 1.0
+Generated Tweet: i need b                                                       ide ws enese i  i aadig
+
+Diversity: 1.2
+Generated Tweet: i needd.&i " iebnatttyroo y t      h ymn ylryrorl             l ee   a bfryiidd:d'iu g
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i like                                                                                
+
+Diversity: 0.5
+Generated Tweet: i like                                                                                
+
+Diversity: 1.0
+Generated Tweet: i likem                ywyrf ry idn, lht:d wwltt otgetn gor a oybymyin sbsoek toen  e 
+
+Diversity: 1.2
+Generated Tweet: i like  v                           iaslil +oekeng's  hy(merwlolnst  in s oips detsi e
+
+---------- Epoch: 4 ---------- 
+
+Loss on first batch after epoch 4: 2.02126121521
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i want                                                                                
+
+Diversity: 0.5
+Generated Tweet: i want                                                                                
+
+Diversity: 1.0
+Generated Tweet: i wantnva hapte byyoe ind te                      yyetfi x yiha hy aokrs lehee atlodt 
+
+Diversity: 1.2
+Generated Tweet: i want  he                      yyrhrfiek. 2 ie lonp ayh un         ny to b fyy enln t
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i need                                                                                
+
+Diversity: 0.5
+Generated Tweet: i need                                                                                
+
+Diversity: 1.0
+Generated Tweet: i needn hbaografnalaee tsaspyttu a ued bfyfeirnd  em mynbefr ie  u as hao  bu hbopui p
+
+Diversity: 1.2
+Generated Tweet: i needs]bciret 'hlw/ wo 0hgspies  rm,e hotko ei |ou gyroyrfiendder?m            g mvsn
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i like                                                                                
+
+Diversity: 0.5
+Generated Tweet: i like                                                                                
+
+Diversity: 1.0
+Generated Tweet: i liket  i                                                            s bfrfreed se'ms
+
+Diversity: 1.2
+Generated Tweet: i like aud rmtetd#selr gol hytr tit " ak nfeak net.tah hitkhd hida moktsdittn.gsdr, qe
+
+---------- Epoch: 5 ---------- 
+
+Loss on first batch after epoch 5: 1.90838563442
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i want                                                                                
+
+Diversity: 0.5
+Generated Tweet: i wantt                                                                               
+
+Diversity: 1.0
+Generated Tweet: i want                                                                                
+
+Diversity: 1.2
+Generated Tweet: i wantt                          my ioagdetkfezmz bis burnyue bfyfriendis fulue!w? ime
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i need                                                                                
+
+Diversity: 0.5
+Generated Tweet: i need                                                                                
+
+Diversity: 1.0
+Generated Tweet: i need               i whrrennnos pinid 5 mitni pio. ioe boofreedd ity is ou atg coytm
+
+Diversity: 1.2
+Generated Tweet: i neednlzskm!rdo tenkaors sifci tskigg mht be"rel oy%1nsi hu neoefing woeh unn yoe boy
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i like                                                                                
+
+Diversity: 0.5
+Generated Tweet: i like                                                                                
+
+Diversity: 1.0
+Generated Tweet: i likemb                                               2  lhel chr me a'h hoc         
+
+Diversity: 1.2
+Generated Tweet: i likezm^s isstryri hyrdok khd\es tsfte ,t" lreme syty fonrn mir mv wokdganc ofut     
+
+---------- Epoch: 6 ---------- 
+
+Loss on first batch after epoch 6: 1.82558643818
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i want                                                                                
+
+Diversity: 0.5
+Generated Tweet: i want                                                                                
+
+Diversity: 1.0
+Generated Tweet: i wantm                                        my civt i wem  myy beyfrinnd  ! ct then
+
+Diversity: 1.2
+Generated Tweet: i wantwiyx z          sdy6mtjtettsxpin yinm is, kocms wo kutnr     oe{  s iokege bbofr
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i need                                                                                
+
+Diversity: 0.5
+Generated Tweet: i need                                                                                
+
+Diversity: 1.0
+Generated Tweet: i needrwes my boyffieed                                    inarlytlhy rascimn -       
+
+Diversity: 1.2
+Generated Tweet: i needehygidislslwyfaret densy h: hood rovuni a'v mon toen pirtrt ;            ilcs nc
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i like                                                                                
+
+Diversity: 0.5
+Generated Tweet: i like                                                                                
+
+Diversity: 1.0
+Generated Tweet: i like!espitgesd bace' asd ce bamg thonh wiruns boyhri'n it isss tann to tond lato ouw
+
+Diversity: 1.2
+Generated Tweet: i likeby ahm   a      m        wutw'y n arheygnfenr ttteldnugen, tr tach wlilt coct ce
+
+---------- Epoch: 7 ---------- 
+
+Loss on first batch after epoch 7: 1.77350580692
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i want                                                                                
+
+Diversity: 0.5
+Generated Tweet: i want                                                                                
+
+Diversity: 1.0
+Generated Tweet: i want                               "irte dit ni'd an, is shiy (ica boyfriend .sos li
+
+Diversity: 1.2
+Generated Tweet: i wantvfen d                 p wu . isk hin macw mo'lssrans lvunn fdou3ptletey ney se 
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i need                                                                                
+
+Diversity: 0.5
+Generated Tweet: i need                                                                                
+
+Diversity: 1.0
+Generated Tweet: i neede                        yoo me toeg chelet whene my aacd yyawciot a'g boyfriend
+
+Diversity: 1.2
+Generated Tweet: i need'tgveyla ghkn mi boyrriend deud,a cemi iy hojtr ae isan0fhgrelg al lokn annae oe
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i like                                                                                
+
+Diversity: 0.5
+Generated Tweet: i like                                                                                
+
+Diversity: 1.0
+Generated Tweet: i like b d                                                    mt boyfriend iss wenen m
+
+Diversity: 1.2
+Generated Tweet: i likeh|sith xhy coutst/ irhut a ho)heazn od"live totwa'oino wmy.tnit               ti
+
+---------- Epoch: 8 ---------- 
+
+Loss on first batch after epoch 8: 1.73092079163
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i want                                                                                
+
+Diversity: 0.5
+Generated Tweet: i want                                                                                
+
+Diversity: 1.0
+Generated Tweet: i want: m                                        e thitly pewlores ast a tthawher acki
+
+Diversity: 1.2
+Generated Tweet: i wantyh?toy' whid hassotf i hak sapery vrotl fukk le i goong'm      i donl ty s watt 
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i need                                                                                
+
+Diversity: 0.5
+Generated Tweet: i need                                                                  my boyfriend i
+
+Diversity: 1.0
+Generated Tweet: i needintoredu 2m fyyybriend los hha selehhen pauezs bite itdhes anh siml go kit sorag
+
+Diversity: 1.2
+Generated Tweet: i need"e t .                                    topo enee hann boyfe(adme'd homld jotx
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i like                                                                                
+
+Diversity: 0.5
+Generated Tweet: i like s                                                                              
+
+Diversity: 1.0
+Generated Tweet: i likea wd                         a mowe img my los weilcung am                      
+
+Diversity: 1.2
+Generated Tweet: i like                           lyveflenes           "bvyfriend lotenti koit khad me 
+
+---------- Epoch: 9 ---------- 
+
+Loss on first batch after epoch 9: 1.69627249241
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i want                                                                                
+
+Diversity: 0.5
+Generated Tweet: i want                                                                                
+
+Diversity: 1.0
+Generated Tweet: i wantnwk               my jofrinnd i o ind boofrien tokes buuouhh mam hip heevoy fawk
+
+Diversity: 1.2
+Generated Tweet: i want: ub r               hy ka d'os tsha'l. my 2 atacaig thol mlyeunn a dto an seafl
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i need                                                                                
+
+Diversity: 0.5
+Generated Tweet: i needo                                                                               
+
+Diversity: 1.0
+Generated Tweet: i needda dib anrditg. fottg to losh tning my boyfriend. shanl my my ton foi ancenly je
+
+Diversity: 1.2
+Generated Tweet: i needsu pt               y    i beespmring; aokhn''gi'd hase .er wryetpoenwe makivy y
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i like                                                                                
+
+Diversity: 0.5
+Generated Tweet: i like                                                                                
+
+Diversity: 1.0
+Generated Tweet: i likeh                       i iv in my boyf,i dhe jotzu      i't, jhrevind to bay fe
+
+Diversity: 1.2
+Generated Tweet: i like: w ihg   it pake my meol dhove s peart; bos  w         her                   bi
+
+---------- Epoch: 10 ---------- 
+
+Loss on first batch after epoch 10: 1.66985177994
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i want                                                                                
+
+Diversity: 0.5
+Generated Tweet: i want                                                                                
+
+Diversity: 1.0
+Generated Tweet: i wantw                          i toke liwe it. himhen is goseo a doney hins o decand
+
+Diversity: 1.2
+Generated Tweet: i want          n            i del my cor'n seitelnost &ot colt alded my boyf;ind??d r
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i need                                                                                
+
+Diversity: 0.5
+Generated Tweet: i need w                                                                              
+
+Diversity: 1.0
+Generated Tweet: i need                        wie'n wave to boyfriend is my bett                  tdal
+
+Diversity: 1.2
+Generated Tweet: i needfa'th.p. hided mot watep arh te0'nis'ng. toad myme i bikf fy beit foiwlty anecer
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i like                                                                                
+
+Diversity: 0.5
+Generated Tweet: i likep" m                                                                            
+
+Diversity: 1.0
+Generated Tweet: i like 6                              wlet in bnhht" it!ds wous my boyf ied is me gin'
+
+Diversity: 1.2
+Generated Tweet: i liked0/&myfoyr wfeedhk arefet ohe 3ne yheut hef my boyfriend woikk shoin gant i boef
+
+---------- Epoch: 11 ---------- 
+
+Loss on first batch after epoch 11: 1.64361488819
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i want                                                                                
+
+Diversity: 0.5
+Generated Tweet: i wantw                                                                               
+
+Diversity: 1.0
+Generated Tweet: i want "                                       my mos my boyfriend os boyfriend is now
+
+Diversity: 1.2
+Generated Tweet: i wantmrs  w       i! mesno geeme a simha wuntereab beer yorfrinnd bay boyfriend hbe t
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i need                                                                                
+
+Diversity: 0.5
+Generated Tweet: i need                                                                                
+
+Diversity: 1.0
+Generated Tweet: i need mit w                                                      hamh wind thant in m
+
+Diversity: 1.2
+Generated Tweet: i needqea wabroeds wuptet)d"letxy boyfriend ikfune"my poer i mive shaagewa my boyfrien
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i like                                                                                
+
+Diversity: 0.5
+Generated Tweet: i like'-                                                                              
+
+Diversity: 1.0
+Generated Tweet: i likeg:                              my foyfriend. cabapy eipe eldwet i yo! hime a ci
+
+Diversity: 1.2
+Generated Tweet: i likevm 3leuslhar thhis sein ! deepyof? gedha want   i aaparens mo tevaring boyfriend
+
+---------- Epoch: 12 ---------- 
+
+Loss on first batch after epoch 12: 1.61902344227
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i want                                                                                
+
+Diversity: 0.5
+Generated Tweet: i want                                                                                
+
+Diversity: 1.0
+Generated Tweet: i wantm         my jet ty boyfriend is shole sirutero alot she ton wuft te than tabke 
+
+Diversity: 1.2
+Generated Tweet: i want,                     my boy boyfriedd roke ouk ouksfy t?t nlet way pike 'ndtlin
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i need                                                                                
+
+Diversity: 0.5
+Generated Tweet: i need                                                  

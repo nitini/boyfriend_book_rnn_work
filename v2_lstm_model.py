@@ -20,7 +20,7 @@ import sys
 
 
 def pad_sequences(data, feat, fixed_length):
-    padded_tweets = data.apply(lambda x: str(' ' * (fixed_length - len(x[feat]))) + x[feat] 
+    padded_tweets = data.apply(lambda x: x[feat] + str('~' * (fixed_length - len(x[feat])))
                                if len(x[feat]) < fixed_length else x[feat][0:fixed_length],
                                axis=1)
     return padded_tweets
@@ -223,11 +223,13 @@ def main():
     VOCAB_SIZE = len(chars)
     LAYERS = 3
     LSTM_SIZE = 128
-    NUM_SAMPLES = bf_tweets.shape[0] 
+    NUM_SAMPLES = (bf_tweets.shape[0]  / BATCH_SIZE) * BATCH_SIZE
     EPOCHS = 50
     
     bf_tweets['tweet'] = pad_sequences(bf_tweets, 'tweet', SEQ_LEN)
     bf_tweets['shifted_tweet'] = shift_sequences(bf_tweets, 'tweet', SEQ_LEN)
+
+    bf_tweets = bf_tweets.iloc[0:NUM_SAMPLES].copy()
     
     X_seq_vectors = vectorize_sequences(bf_tweets['tweet'], 
                                         chars, 
@@ -235,7 +237,6 @@ def main():
     y_seq_vectors = vectorize_sequences(bf_tweets['shifted_tweet'],
                                         chars,
                                         char_indices)
-
 
     training_model = build_model(0, 
                                  BATCH_SIZE, 
@@ -276,10 +277,13 @@ def main():
     print('', file=output_file)
     
     print("Number of epochs: " + str(EPOCHS))
+    sys.stdout.flush()
     print("Number of batches per epoch: " + str(NUM_SAMPLES / BATCH_SIZE))
+    sys.stdout.flush()
     
     for epoch in range(EPOCHS):
         print("----- Epoch: " + str(epoch))
+        sys.stdout.flush()
         print("---------- Epoch: " + str(epoch) + " ---------- ", file=output_file)
         
         print("", file=output_file)
@@ -287,8 +291,10 @@ def main():
             batch_X = X_seq_vectors[start:end,:,:]
             batch_y = y_seq_vectors[start:end,:,:]
             loss = training_model.train_on_batch(batch_X, batch_y)
-            print("Batch " + str(i) + ' of Epoch ' + str(epoch))
+            print("Batch " + str(i) + ' / ' + str(NUM_SAMPLES / BATCH_SIZE) + ' of Epoch ' + str(epoch))
+            sys.stdout.flush()
             print('Loss on batch ' + str(i) + ':' + str(loss))
+            sys.stdout.flush()
 
         first_batch_loss = training_model.test_on_batch(X_seq_vectors[0:BATCH_SIZE,:,:], y_seq_vectors[0:BATCH_SIZE,:,:])
         print("Loss on first batch after epoch " + str(epoch) + ": " + str(first_batch_loss), file=output_file)
@@ -309,7 +315,9 @@ def main():
             print('', file=output_file)
             for diversity in diversities:
                 print("----- Sentence seed: " + primer + " ----- ")
+                sys.stdout.flush()
                 print("Diversity: " + str(diversity))
+                sys.stdout.flush()
                 print("Diversity: " + str(diversity), file=output_file)
 
                 sampled_tweet = sample(test_model, 
@@ -321,6 +329,7 @@ def main():
                                        primer)
 
                 print("Generated Tweet: " + sampled_tweet)
+                sys.stdout.flush()
                 print("Generated Tweet: " + sampled_tweet, file=output_file)
                 print("", file=output_file)
 

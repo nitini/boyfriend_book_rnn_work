@@ -1,0 +1,2474 @@
+
+---------- Training Info: ---------- 
+
+Number of examples: 13952
+Length of examples: 80
+Character set size: 67
+Batch size: 128
+Number of epochs: 50
+Number of batches per epoch: 109
+Generated sentence length: 80
+Sentence Seeds: ['i want', 'i need', 'i like']
+Diversities: [0.2, 0.5, 1.0, 1.2]
+
+---------- Any additional notes: ---------- 
+
+Unweighted Twitter data, semi-long sentence
+
+---------- All model information: ---------- 
+
+{
+  "class_name": "Sequential", 
+  "config": [
+    {
+      "class_name": "LSTM", 
+      "config": {
+        "U_regularizer": null, 
+        "W_regularizer": null, 
+        "activation": "tanh", 
+        "b_regularizer": null, 
+        "batch_input_shape": [
+          128, 
+          80, 
+          67
+        ], 
+        "consume_less": "cpu", 
+        "dropout_U": 0.0, 
+        "dropout_W": 0.0, 
+        "forget_bias_init": "one", 
+        "go_backwards": false, 
+        "init": "glorot_uniform", 
+        "inner_activation": "hard_sigmoid", 
+        "inner_init": "orthogonal", 
+        "input_dtype": "float32", 
+        "name": "lstm_1", 
+        "output_dim": 128, 
+        "return_sequences": true, 
+        "stateful": true, 
+        "trainable": true, 
+        "unroll": false
+      }
+    }, 
+    {
+      "class_name": "Dropout", 
+      "config": {
+        "name": "dropout_1", 
+        "p": 0.2, 
+        "trainable": true
+      }
+    }, 
+    {
+      "class_name": "LSTM", 
+      "config": {
+        "U_regularizer": null, 
+        "W_regularizer": null, 
+        "activation": "tanh", 
+        "b_regularizer": null, 
+        "batch_input_shape": [
+          128, 
+          80, 
+          128
+        ], 
+        "consume_less": "cpu", 
+        "dropout_U": 0.0, 
+        "dropout_W": 0.0, 
+        "forget_bias_init": "one", 
+        "go_backwards": false, 
+        "init": "glorot_uniform", 
+        "inner_activation": "hard_sigmoid", 
+        "inner_init": "orthogonal", 
+        "name": "lstm_2", 
+        "output_dim": 128, 
+        "return_sequences": true, 
+        "stateful": true, 
+        "trainable": true, 
+        "unroll": false
+      }
+    }, 
+    {
+      "class_name": "Dropout", 
+      "config": {
+        "name": "dropout_2", 
+        "p": 0.2, 
+        "trainable": true
+      }
+    }, 
+    {
+      "class_name": "LSTM", 
+      "config": {
+        "U_regularizer": null, 
+        "W_regularizer": null, 
+        "activation": "tanh", 
+        "b_regularizer": null, 
+        "batch_input_shape": [
+          128, 
+          80, 
+          128
+        ], 
+        "consume_less": "cpu", 
+        "dropout_U": 0.0, 
+        "dropout_W": 0.0, 
+        "forget_bias_init": "one", 
+        "go_backwards": false, 
+        "init": "glorot_uniform", 
+        "inner_activation": "hard_sigmoid", 
+        "inner_init": "orthogonal", 
+        "name": "lstm_3", 
+        "output_dim": 128, 
+        "return_sequences": true, 
+        "stateful": true, 
+        "trainable": true, 
+        "unroll": false
+      }
+    }, 
+    {
+      "class_name": "Dropout", 
+      "config": {
+        "name": "dropout_3", 
+        "p": 0.2, 
+        "trainable": true
+      }
+    }, 
+    {
+      "class_name": "TimeDistributed", 
+      "config": {
+        "layer": {
+          "class_name": "Dense", 
+          "config": {
+            "W_constraint": null, 
+            "W_regularizer": null, 
+            "activation": "linear", 
+            "activity_regularizer": null, 
+            "b_constraint": null, 
+            "b_regularizer": null, 
+            "bias": true, 
+            "init": "glorot_uniform", 
+            "input_dim": null, 
+            "name": "dense_1", 
+            "output_dim": 67, 
+            "trainable": true
+          }
+        }, 
+        "name": "timedistributed_1", 
+        "trainable": true
+      }
+    }, 
+    {
+      "class_name": "Activation", 
+      "config": {
+        "activation": "softmax", 
+        "name": "activation_1", 
+        "trainable": true
+      }
+    }
+  ], 
+  "keras_version": "1.0.4", 
+  "loss": "categorical_crossentropy", 
+  "optimizer": {
+    "epsilon": 1e-08, 
+    "lr": 0.009999999776482582, 
+    "name": "Adagrad"
+  }, 
+  "sample_weight_mode": null
+}
+
+---------- Epoch: 0 ---------- 
+
+Loss on first batch after epoch 0: 2.52417254448
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i want een ee eeee  e eee   reee   no ee  y  e enee   ein e e fee e een  e o  ee e  ee
+
+Diversity: 0.5
+Generated Tweet: i wanti e eeyeee    e ern n  ioyaiiee  aesfn np  erar npm  t of heyee  iet  rf oyyr ee
+
+Diversity: 1.0
+Generated Tweet: i wantkurieoy eiuiewe a~ ~d mfhyldg.w~l~ ev si leere slav e eit eeeine bwambbfde ied.n
+
+Diversity: 1.2
+Generated Tweet: i wantm*pgyryoyowpfvcmdctkdner on,nreefiustcmd gen  hi.e uy?sa rfo hheyrs,aabueink ig 
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i needae  e eeee   eee   onee e n  en e ee  e e   eef e   iree i  feer  ie e een  n  n
+
+Diversity: 0.5
+Generated Tweet: i needin r fyeeiy eesr  ee  iteie e  ate eem  iioe y eo ein  resffr oae yn abryre mtee
+
+Diversity: 1.0
+Generated Tweet: i neede seelnhsy~udveffedeoneeradoieeydrranfdi ymnibr}ieeomhto  tiegtrdl eeeocnt.wtn s
+
+Diversity: 1.2
+Generated Tweet: i need2 e  eewnuynoehrjirnydlfkvimomekiiern talo myiea e!ahdlpo ldbaryi4yapfvoforeo"nh
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i likef eoeee  ee ee  n eee y eren e  in eee   eee  ee eee  iee   en e  in ee e e eee 
+
+Diversity: 0.5
+Generated Tweet: i likeoaieyhnhi neee n   lrida dn  nr iseie nse dh  liyrf de  ofe n dei  feya ib reynn
+
+Diversity: 1.0
+Generated Tweet: i likefawmc  rlisesekao gsotoig ifriaeid kdomw  toibgrrrtselian eiwstsmretoibagybks es
+
+Diversity: 1.2
+Generated Tweet: i likecer&ayr uy wneenetntiefdantuhg  ime yf yydiaeyteyehaatggiaa gbnbseerf )ie aydrdt
+
+---------- Epoch: 1 ---------- 
+
+Loss on first batch after epoch 1: 2.21005272865
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i wantiee  ooiee a ho e ia i a ae i e  oy ie  oo a e  o or te a s a e ie t a t e  o i 
+
+Diversity: 0.5
+Generated Tweet: i wantreelwbmee se tae ie s it a at ae m i tgs bafe  sv la wue ho si t e  ie ss oy oot
+
+Diversity: 1.0
+Generated Tweet: i want4acnrfen t iliwa bmwtga iee dle actsve lvnmn hya yyenaltel bie mea tv moee aod e
+
+Diversity: 1.2
+Generated Tweet: i wantug ; sytswmatrtsat ies bbhttegn ro lia m  myebee lii il; giepne msosse sk yre og
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i neede iee ioe to io te o o or ie  oe i  oa  oe  oo t e e a a ae a  oy ie  oe i a te 
+
+Diversity: 0.5
+Generated Tweet: i needwfei hok buren m ai me nbtg i ae t ao tey ie  boee ie hn il aa a ls oe oe m tt i
+
+Diversity: 1.0
+Generated Tweet: i needds gsirn lv"ds ukte s wl rlee bc oti hr h oepe boyhjcie hi/ tok  hfv  oo y ii n 
+
+Diversity: 1.2
+Generated Tweet: i needgdi tlyyriy ia  ob iie io  ore hes~~~~~~~~c yhnn h re~ itba bybvri la  isg ot bb
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i likeee io oorren i  ie e i  oy ir i e a t oe t i t o oe i m  ooe i o a i  oo i  oe  
+
+Diversity: 0.5
+Generated Tweet: i likesle aen hoe se te ay woi ta to s as i e i  os e rbie boonn s ioe i l e e s m a i
+
+Diversity: 1.0
+Generated Tweet: i likekri7n lf ayne is eh owe"ceen mu omrws boott mn ihe bbepek sr a peol maebys wffy 
+
+Diversity: 1.2
+Generated Tweet: i like% nt hrsit 0lh' hrerlgtdtn.~~~~~~~~~~~ t~n~~~~~~ noa 'lr ofai e iomp mprtcs coy 
+
+---------- Epoch: 2 ---------- 
+
+Loss on first batch after epoch 2: 2.07162046432
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i wantie loe toe boyfriend i ae te ie m ae m me boyfiendd ie boe toen m toe mn boyfrie
+
+Diversity: 0.5
+Generated Tweet: i wantmendn ooe ey boyfriendd i tsm ian mi ho ae ae bhyfiend i boye me ise le mo ma me
+
+Diversity: 1.0
+Generated Tweet: i want&iknply'iugt  apned bhhktm tdpsi muhg d ungkgn tngniht ra isdktsk mo hi wu aynl 
+
+Diversity: 1.2
+Generated Tweet: i wantoyile arsdmes nol noee'neyttucweti,s de nahuanp? l rgud t: ahnyvm ldtfe#en tyane
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i need ioie ie ioe boyfiied i i in io ioe mn ao me boyrriend i ae io ao i a me boyfrie
+
+Diversity: 0.5
+Generated Tweet: i need ofinee as soee m ies iie hhe' tope me biu ae mre teg toe oae a woe te bwofien s
+
+Diversity: 1.0
+Generated Tweet: i needv mltetee wh oae fi rsn hon bsyken phe i kh mtee'tal auy ue m wry feen ie iond  
+
+Diversity: 1.2
+Generated Tweet: i needt eirek bhjreiddds~ ha'   orat- rfiei~ g! d'hed~~~~~~~~~~~~~~ ip nae ainenl sa b
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i likee  aoreen io boyfriend i i te m ie t ae me boyrriend i ie m mu io boyfriend is a
+
+Diversity: 0.5
+Generated Tweet: i likee eehu boyiriend booire ti oe a io boyreend i ts the rhs wola ae hhe bofnred oa 
+
+Diversity: 1.0
+Generated Tweet: i likeo bioetene woanrt sva tuuo p aar. si rylm   ua whrd bnreedi balnrns~~~~~~~~ i si
+
+Diversity: 1.2
+Generated Tweet: i likeud#dkas''noe sitknaigdensrtiuilhy janeyy~ toatgm akt gyet were~~~~~~~~~~~~~~~~yl
+
+---------- Epoch: 3 ---------- 
+
+Loss on first batch after epoch 3: 1.94726657867
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i wanteee to me to me boyfriend is mo boyfriend is boyfriend is an a mo boyfriend is i
+
+Diversity: 0.5
+Generated Tweet: i wantde yoem boyfriend is so aen i a hat ine lo has a ten as boyfriend is ase aa my a
+
+Diversity: 1.0
+Generated Tweet: i wantaeceisgpsdfabtefegstt. thriet jon e bevs.~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ e
+
+Diversity: 1.2
+Generated Tweet: i wantigaengsyykhorts, an lema nss irnt ai cikky .ygwrneysserltiefwm assaags e tmtn m 
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i neede ooet me boyfriend is is ay boyfriend is i toe boyfriend is mo boyfriend is boy
+
+Diversity: 0.5
+Generated Tweet: i needire mou loue lot my set boyfriend is hot ie loe won e boyfriind is boyfriend iy 
+
+Diversity: 1.0
+Generated Tweet: i needc;retpe dimn uy faea gimlesnlen;~~~~~~~~~~~~.~~~~~~~~~~~~~~~'9 io fuk bcyfriend'
+
+Diversity: 1.2
+Generated Tweet: i needithsre ludeclmcrcs bayeird hrnrnte m a to d.  ofinhd'nroe m boherfaeng ms kakes 
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i likee ee aoe mo boyfriend is mo ans a boyfriend is boyfriend is tit to in a to m boy
+
+Diversity: 0.5
+Generated Tweet: i likegnti a boyfriend is la a es yoin iy wott an my boyfriend is ay mi mi hoa tet it 
+
+Diversity: 1.0
+Generated Tweet: i like'esetea w hoos boffrrenddlay foa k, us byyfeend god tte~sea is eecit antaeg uns 
+
+Diversity: 1.2
+Generated Tweet: i likezpde mot6rbaate fanc alatnl pata hotl oege ieels,h:e~~~~~~~yalha1 thrllxr bhirvi
+
+---------- Epoch: 4 ---------- 
+
+Loss on first batch after epoch 4: 1.85666847229
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i wantee boyfriend is to mo boyfriend is ind my boyfriend is ind my boyfriend is to to
+
+Diversity: 0.5
+Generated Tweet: i want yeofriend tof hor womt tase to boyfriend is me and cike inl anme toeki oy boyfr
+
+Diversity: 1.0
+Generated Tweet: i wanthtrmm satwann hon.~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ oikn guto m
+
+Diversity: 1.2
+Generated Tweet: i wanta eoa wefeatl let toou he msat ar omfutto lolt tasaslhhinviy merswcbs iy jaripwi
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i need ia boyfriend is to to as boyfriend is my boyfriend is as my boyfriend is to boy
+
+Diversity: 0.5
+Generated Tweet: i need ieseanne yoyfriend in ho iy boyfreend is boyrriend it il ind my mocd mi boyfrie
+
+Diversity: 1.0
+Generated Tweet: i needseilg an luld mhin toe6 cos aaldshi tqeumn mr ap~ - yetartad my irtoy igt yetwir
+
+Diversity: 1.2
+Generated Tweet: i need fatru jartyee 4odri'd ias fonfte some~/ove hoh eyrsekl po het "nkat lekr at ut 
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i likee too boyfriend is to boyfriend is to boyfriend is ind my boyfriend is ind my bo
+
+Diversity: 0.5
+Generated Tweet: i likes iire aot boyfriend is intr boyfiend ive my boyfriend is tase ir tocltin my boy
+
+Diversity: 1.0
+Generated Tweet: i likeigalwbtaf  ikkat'magenp et hel my my bowfrien~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Tweet: i likewyeheechubletsa ,srunyoangy pm setn wiead oe ms yakee.~~ suad nrtgind, tomvind~ 
+
+---------- Epoch: 5 ---------- 
+
+Loss on first batch after epoch 5: 1.77997839451
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i wantoe boyfriend is and my boyfriend is ind to tone to boyfriend is to to as my boyf
+
+Diversity: 0.5
+Generated Tweet: i wantaens aet oy boyfriend is wiat tir ine to boyfriend ind tor my boyfriend is and n
+
+Diversity: 1.0
+Generated Tweet: i wantfee boyfriendpyil sirni tuus me lume apfom irk*thhun fyie my miterend me likkhye
+
+Diversity: 1.2
+Generated Tweet: i wanthsroae'g inplantnstorgend in! afner tuke.iwags at this dfirrwanhd tauuesgsing bi
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i need ient i boyfriend is my boyfriend is lote my boyfriend is tite to boyfriend is m
+
+Diversity: 0.5
+Generated Tweet: i needeuen me coocit and boyfriend is he tore my boyfriend is ind mo boyfriend and the
+
+Diversity: 1.0
+Generated Tweet: i needn'ineghmy wet nent mroens hlireifg as nat boyfiendhhrlatd my dos'pe anlhr my mo 
+
+Diversity: 1.2
+Generated Tweet: i needsonccem my boyfriind toandi het  sadeize imo oy med teot wsot gen sougied a ba v
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i likee too boyfriend is wos to boyfriend is my boyfriend is and to boyfriend is and m
+
+Diversity: 0.5
+Generated Tweet: i like me toe boyfriend to sieg ay boyfriend to boyfriend in and tne so a take e i ton
+
+Diversity: 1.0
+Generated Tweet: i likeawtyi lounl my astroesk elavny thetes tes ispreht a'bectt my boyfriend rotsnbi a
+
+Diversity: 1.2
+Generated Tweet: i likewboems ali5gysonimy tnoty yoceaergfnry aes. lek't vozrs nete hepmnera- tici yoce
+
+---------- Epoch: 6 ---------- 
+
+Loss on first batch after epoch 6: 1.72656726837
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i wantee me boyfriend is to cete to my boyfriend is the to boyfriend is to to to to my
+
+Diversity: 0.5
+Generated Tweet: i wanta suntererint tat my boyfriend is cat tand te boyfriend is my boyfriend as me de
+
+Diversity: 1.0
+Generated Tweet: i wantea vink aae] sonmespine my biat te gevt boyfrield bess as bay sheenh ent is beuu
+
+Diversity: 1.2
+Generated Tweet: i wantkoet wits audt fapcterlwhe! sices t et  o: pe hscp letes ols motires fusayea oow
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i need oot ien and and i boyfriend is my boyfriend is and to boyfriend is and to my bo
+
+Diversity: 0.5
+Generated Tweet: i needeene tire met my boyfriend and my boyfriend is tonles to wive is te my boyfriend
+
+Diversity: 1.0
+Generated Tweet: i needo'init hhye0 hhy gyriyrhle sornet? cikn canl my wiel,~~~~~~~~~~~~~~~~~~~~~~~~ wo
+
+Diversity: 1.2
+Generated Tweet: i needu hoo boyureind my boyfriend juse'f eaatk yuspren''g mo myoris: iswon/ i fusm ce
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i like aant and my boyfriend is my boyfriend is to the to boyfriend is my boyfriend is
+
+Diversity: 0.5
+Generated Tweet: i likee boyfriend is i when toce in lise the deet heret my boyfriend is boyfriend is c
+
+Diversity: 1.0
+Generated Tweet: i likett oiss oo yoy oree nos me 3 boyfriends ist he sare jo phing lhoasu aa'augounglt
+
+Diversity: 1.2
+Generated Tweet: i like 4yauadecged irdasone is as. ly hemsk ix nme boyfriend, toy ncy boyfriendos 7vew
+
+---------- Epoch: 7 ---------- 
+
+Loss on first batch after epoch 7: 1.68286824226
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i wantoor iy boyfriend is my boyfriend is the boyfriend is my boyfriend is to boyfrien
+
+Diversity: 0.5
+Generated Tweet: i wantoe iace and my boyfriend is my boyfriend to she wist the and thit is mad my boyf
+
+Diversity: 1.0
+Generated Tweet: i wantiheongene pwist tisgot i lumang dith boyfriend demankw i'c foo;~~~~~~~~~~~.~~~~~
+
+Diversity: 1.2
+Generated Tweet: i wantri alipd~~~~~~~~~~~~~~~~~~~~~~~~~~~~0e ame yeint yow is merenn a doare d hes~~~~
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i need aute boyfriend is my boyfriend is my boyfriend is when my boyfriend is my boyfr
+
+Diversity: 0.5
+Generated Tweet: i needite muneabeis loce angen my boyfriend is boyfriend he so tat to sat my boyfriend
+
+Diversity: 1.0
+Generated Tweet: i needdoon maakpinte plfieng anf at to .~ anket  ha boy sankt sith tade(~~~~~~~~~~~~ b
+
+Diversity: 1.2
+Generated Tweet: i needa caonpetutole purlen vod~nve boyfrieddd om genpi~ad is heleti bounthca,en oo mn
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i like aant my boyfriend is to my boyfriend is so lese to my boyfriend is is my boyfri
+
+Diversity: 0.5
+Generated Tweet: i likeeld tant te boyfriend and and came him sorer my boyfriend is my boyfriend is as 
+
+Diversity: 1.0
+Generated Tweet: i like:pyh. mewt dulte i da5 hen't o ant apveffrann, yhat boifd or ald tulle thimet an
+
+Diversity: 1.2
+Generated Tweet: i likesa ssun edlt hofr @ my buves nante.leyen ant d ikgy myos byokriend? thhe phaetre
+
+---------- Epoch: 8 ---------- 
+
+Loss on first batch after epoch 8: 1.64900791645
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i wanto ine my boyfriend is to me the my boyfriend is boyfriend is the boyfriend is my
+
+Diversity: 0.5
+Generated Tweet: i wantaen touke boyfriend is to meke to boyfriend thing i henare she mate to my boyfri
+
+Diversity: 1.0
+Generated Tweet: i wantuyhoalan tr obeenryorete~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ hiupt m
+
+Diversity: 1.2
+Generated Tweet: i wantuwy aaccinh ay ipkigs madire; boofgenpyoni my ocus vim shid poytorly,iing nikr d
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i need oout i me to boyfriend is to boyfriend is my boyfriend is and my boyfriend is m
+
+Diversity: 0.5
+Generated Tweet: i need sinting to gut thit the to me and so shex heme my boyfriend boyfriend is my boy
+
+Diversity: 1.0
+Generated Tweet: i needuzi is muven frater bunt nopkeme he ei't thin ancsn lething sowes davinh! fabart
+
+Diversity: 1.2
+Generated Tweet: i needuuct hewauyaog enedta~~~~~~~~~~~~~~~~~~~~~~~~~ youtmyshoer wollrene het oxd oitg
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i like teant and my boyfriend is is want i late to boyfriend is a boyfriend is my boyf
+
+Diversity: 0.5
+Generated Tweet: i likeon myucsind the wact i wire let a nat te my boyfriend is me sored my boyfriend i
+
+Diversity: 1.0
+Generated Tweet: i likela golunsasinledmy~~~~~~~~~~~~~~~~~~~~~~~~  hun: hevg watt noe huth to ;oed hhe 
+
+Diversity: 1.2
+Generated Tweet: i liken bryubi did~~~~~~~~~~~~~~~~~~~~~ ? eve wim ay yoit tike sface" lunt toaceoige,d
+
+---------- Epoch: 9 ---------- 
+
+Loss on first batch after epoch 9: 1.61666679382
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i wanthe boyfriend is my boyfriend is the my boyfriend is my boyfriend is my boyfriend
+
+Diversity: 0.5
+Generated Tweet: i wante ind i lote my boyfriend is my boyfriend is to salle is wa got thit the to le k
+
+Diversity: 1.0
+Generated Tweet: i wantaeyiusiet i wne i boyfriend is an un boyfriend my boyfriend is ite of then,.hy m
+
+Diversity: 1.2
+Generated Tweet: i wantticrroyuntarug co gipg ad hann sletirchoyile goerinwe yranzad to laslenw neveu f
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i need aute to boyfriend is my boyfriend is to boyfriend is my boyfriend is and to be 
+
+Diversity: 0.5
+Generated Tweet: i needhey boyfriend is a boyfriend then my boyfriend is when boyfriend is and my boyfr
+
+Diversity: 1.0
+Generated Tweet: i needmcatfesanmy boyfriend ponkatan ix to lomk goco gmad noet hoy boyfriend s'ver weo
+
+Diversity: 1.2
+Generated Tweet: i needat; i heang byasnatyret,. blire bel bam offoand wopt h oy boyfyiend.?~~~ tfyfrie
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i liken toy boyfriend is my boyfriend is the boyfriend is my boyfriend is the boyfrien
+
+Diversity: 0.5
+Generated Tweet: i likeas teaet i me tot to bes in my boyfriend is the boyfriend then a'd boyfriend wit
+
+Diversity: 1.0
+Generated Tweet: i like inigogin~ nolet fr tise abyoy boyfriend ripgsntyriend my boyfriedd as me~~~~~~ 
+
+Diversity: 1.2
+Generated Tweet: i likeakey boyfriend fus awh n sa joc e's i 1pen6 ~0 shee ripkee is paglod i gos inl m
+
+---------- Epoch: 10 ---------- 
+
+Loss on first batch after epoch 10: 1.58994483948
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i wantae boyfriend is to beat to boyfriend and to the boyfriend is the boyfriend is so
+
+Diversity: 0.5
+Generated Tweet: i wantoanly boyfriend is whap the ant i wite and my boyfriend is anle and my boyfriend
+
+Diversity: 1.0
+Generated Tweet: i wantuermase boyfriendd shins thin my byefriind on hang lecaple ot t iadlo ovy honing
+
+Diversity: 1.2
+Generated Tweet: i wantue ara2ntinpasry wimas thit toet my sosg my boyfriend ttoon'2~~~ rewov thes~~~~~
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i neede ande boyfriend is and the boyfriend is and i me to the boyfriend is and my boy
+
+Diversity: 0.5
+Generated Tweet: i need inme so sous in mo is i for my boyfriend is thin my boyfriend waml i heve the w
+
+Diversity: 1.0
+Generated Tweet: i needeboorraotan hoy swild my some is anpat yoe ilo do himing hant the souct fhe naud
+
+Diversity: 1.2
+Generated Tweet: i needul tore forigitw beoq .o bamt'k tims nedsinkotrne!~~~~~~~~~~~~~~~~ bitef me citm
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i like aunt my boyfriend is my boyfriend is my boyfriend is so boyfriend is my boyfrie
+
+Diversity: 0.5
+Generated Tweet: i likes anean hit i core boyfriend te the and my boyfriend hant is the sald the boyfri
+
+Diversity: 1.0
+Generated Tweet: i likes nyouy ood uslcing boyfriend'he bwenrar inder.~~~~~~ my boyfriend thhl 3 beltis
+
+Diversity: 1.2
+Generated Tweet: i likenlwetint- i hevet me tlat yoryeret beats gefheg with het ole ghed ald whene i wi
+
+---------- Epoch: 11 ---------- 
+
+Loss on first batch after epoch 11: 1.56366157532
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i wanto me boyfriend is to me boyfriend is my boyfriend is my boyfriend is to my boyfr
+
+Diversity: 0.5
+Generated Tweet: i wantae loy boyfriend is want on my boyfriend is don my boyfriend is boyfriend is my 
+
+Diversity: 1.0
+Generated Tweet: i wantaanas itsresd bing hal le lusk furcalins i le kaas for boyfrienn the my boyfrien
+
+Diversity: 1.2
+Generated Tweet: i wantimk foyfriend im basm my wowing way is i' to joef lpemy uscsltayx chewau asdora 
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i need inden and i want my boyfriend is my boyfriend is the boyfriend is my boyfriend 
+
+Diversity: 0.5
+Generated Tweet: i need cay boyfriend i late my boyfriend is so sare my boyfriend is i gon hous is my b
+
+Diversity: 1.0
+Generated Tweet: i neednmyurflriebaad a and i shas frierd camkef hive yoor my boyfriend li~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Tweet: i needa sedoaf boyfriend s&ent, alr in me boyfriend wowt ath ll io fpooly,~~0otatly^6~
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i like me boyfriend is my boyfriend is my boyfriend is my boyfriend is my boyfriend is
+
+Diversity: 0.5
+Generated Tweet: i like mit boyfriend "o seet i mike and my boyfriend is now my boyfriend is my boyfrie
+
+Diversity: 1.0
+Generated Tweet: i liked tiseume. doy and hethabdos so dant to suve as vecere sores coy i teiccen'al tu
+
+Diversity: 1.2
+Generated Tweet: i like; deartall 3 geitelarg yur some my foywing~~ ercutci avn me detto tay sunk mighe
+
+---------- Epoch: 12 ---------- 
+
+Loss on first batch after epoch 12: 1.5448923111
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i wanta me boyfriend is my boyfriend is my boyfriend is so boyfriend is to my boyfrien
+
+Diversity: 0.5
+Generated Tweet: i wantieg anlald just here my boyfriend is and hove my boyfriend is my boyfriend is wa
+
+Diversity: 1.0
+Generated Tweet: i wantliek mi. i tanl git shae~nhe besn boyfriend~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Tweet: i wantdo.einnyag my boy thterelune xuverrcans "topes'g ti1~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i need anlout is my boyfriend is to sant to my boyfriend is my boyfriend is the boyfri
+
+Diversity: 0.5
+Generated Tweet: i needering hin want i to but my boyfriend is what hove my boyfriend to like the and m
+
+Diversity: 1.0
+Generated Tweet: i needalle boyfriend"sto nok et ox telcindaic oplan soot lotk goratanbid rewang bac ar
+
+Diversity: 1.2
+Generated Tweet: i need iceeld evions and foen thuh -'deds tesshing my boyfriend i geputens sivet getou
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i like to boyfriend is my boyfriend is she boyfriend is my boyfriend is the boyfriend 
+
+Diversity: 0.5
+Generated Tweet: i like tanterling mige i mumes that is my boyfriend just to hever my boyfriend and whe
+
+Diversity: 1.0
+Generated Tweet: i like0'le enning nilp nwocs bry reocm.~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ het ch
+
+Diversity: 1.2
+Generated Tweet: i likegwen lorj pasttzyutmyohlis mes rovpe justiss ix_ mit lle &adlwy.!~~~~~~~~~~~~~~~
+
+---------- Epoch: 13 ---------- 
+
+Loss on first batch after epoch 13: 1.52206301689
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i wantaet my boyfriend is so canly and my boyfriend is my boyfriend is the sate my boy
+
+Diversity: 0.5
+Generated Tweet: i wantale lone weat my boyfriend is a so love whet and to be a boyfriend is to my boyf
+
+Diversity: 1.0
+Generated Tweet: i wanthu teas boyfriend saske sucl nhad a beaz sho leke gow~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Tweet: i want dustiror my  awhineasp  upvay me7, is cime vindo! pite sveof i one hare i wei t
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i need anlout the boyfriend is my boyfriend is i like to me to my boyfriend is the boy
+
+Diversity: 0.5
+Generated Tweet: i needaot ino a boyfriend is is to my boyfriend i sore srees to me my boyfriend is my 
+
+Diversity: 1.0
+Generated Tweet: i neede i nancadhtnar thame boyfriend wap i has so doek 1shome my boyfriend is sim gel
+
+Diversity: 1.2
+Generated Tweet: i need fultyind himg~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ining wo tapta}gelt us dor lan
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i liket ande my boyfriend is so boyfriend is the boyfriend is the boyfriend is and my 
+
+Diversity: 0.5
+Generated Tweet: i like line he keate. my boyfriend is shen for when like a sas to bust i the my boyfri
+
+Diversity: 1.0
+Generated Tweet: i likeywhare afbrecher sa zicpe but lame my borfriend fe'an ilw wimr deet so4etrunath'
+
+Diversity: 1.2
+Generated Tweet: i like hita:aty~~~~~~~~~~~~ hout tat to than'k fill fors p p likint my boyfriend it wi
+
+---------- Epoch: 14 ---------- 
+
+Loss on first batch after epoch 14: 1.50514340401
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i wantalle boyfriend is so my boyfriend is i love to the fing to the boyfriend want my
+
+Diversity: 0.5
+Generated Tweet: i wantasint my boyfriend is the have his hem on when to gon the want he cike my boyfri
+
+Diversity: 1.0
+Generated Tweet: i wantussinirind on my bout ip luqking i w you my barke il "hatrcan ouls myus pay shea
+
+Diversity: 1.2
+Generated Tweet: i wantat~tand guctit lret~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ fusselo stimls'le hat~~~~~~~
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i need aelle and my boyfriend is the boyfriend is to sand the best my boyfriend is to 
+
+Diversity: 0.5
+Generated Tweet: i neede want boyfriend is when my boyfriend is the gunt one my boyfriend is the bact t
+
+Diversity: 1.0
+Generated Tweet: i needesoneert loy our thas pirlod hives ilbot my boyfriend songaclitg? loll ay, me wa
+
+Diversity: 1.2
+Generated Tweet: i need mitsmtr lfy ouf is hereerd bags ix poppyet.~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i like tanly boyfriend is my boyfriend is so my boyfriend is the boyfriend is so my bo
+
+Diversity: 0.5
+Generated Tweet: i likes boyfriend is a boyfriend seel my boyfriend is so boyfriend is my boyfriend is 
+
+Diversity: 1.0
+Generated Tweet: i likenn mnees out~ to so blaskente whive my boyfriend he gbocai afes a dann; joy i la
+
+Diversity: 1.2
+Generated Tweet: i like b ooyfriend afdsy 7jodn fuy end a ov in thay is letis hat~~~~~~~~~~~~~~~~~~~~~ 
+
+---------- Epoch: 15 ---------- 
+
+Loss on first batch after epoch 15: 1.48648869991
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i wantiet my boyfriend is the boyfriend is my boyfriend is so boyfriend is my boyfrien
+
+Diversity: 0.5
+Generated Tweet: i wantainy loyfriend to in the boyfriend is so leed me need that gor to my boyfriend m
+
+Diversity: 1.0
+Generated Tweet: i wantaerd~ ine i cald my boyfriend is  of sti one my boyfriend is klave to lowh to so
+
+Diversity: 1.2
+Generated Tweet: i wantiips royshebboyfriend2 :t thansins fudas.~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i needally boyfriend is the sith my boyfriend is the boyfriend is to my boyfriend is t
+
+Diversity: 0.5
+Generated Tweet: i needeeid your boyfriend is my boyfriend is when my boyfriend is show the past a out 
+
+Diversity: 1.0
+Generated Tweet: i needivinge gly on howe that i my boyfriend whask ichot . me~~~~~~~~~~~~~~~ river the
+
+Diversity: 1.2
+Generated Tweet: i need iumlem boyfriend, doute &ett been me boyfriend pistu as ut's selne, hakly i wre
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i like with my boyfriend is the so my boyfriend is the boyfriend the want my boyfriend
+
+Diversity: 0.5
+Generated Tweet: i like soute boyfriend and thing a boyfriend to fon leck wask and boyfriend is gom my 
+
+Diversity: 1.0
+Generated Tweet: i likeptto watano doighun amepse ut robpale vanan. my my bitt id just my boyfreend an'
+
+Diversity: 1.2
+Generated Tweet: i like auglild. hertor wantci'gsrpojorpplethy  it gimcime bid um sannodiy hoter~~~~~~~
+
+---------- Epoch: 16 ---------- 
+
+Loss on first batch after epoch 16: 1.47061991692
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i wantalle to boyfriend is the boyfriend is sand my boyfriend is so my boyfriend is my
+
+Diversity: 0.5
+Generated Tweet: i want allome my boyfriend is shale with my boyfriend is the and my boyfriend to but s
+
+Diversity: 1.0
+Generated Tweet: i wanthave peuce got mike to love wan thing my boyfriend~~~~~~~~~~~~ ha boyfriend "som
+
+Diversity: 1.2
+Generated Tweet: i wanteny yuat sem peiser@ drorisssttfaa ot me hiver. tank ias my as my nikgc. your bo
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i need ind and to boyfriend is the boyfriend is my boyfriend is the boyfriend is like 
+
+Diversity: 0.5
+Generated Tweet: i need inden a boyfriend is ce rither my boyfriend is fele i he leet on the frolg to t
+
+Diversity: 1.0
+Generated Tweet: i needrtyrilrerter. calkn op i deat my boyfriend d r it the junss tooa: i she bus be s
+
+Diversity: 1.2
+Generated Tweet: i needonedsinci medeing my boyfriend3 abay boyfriens is bacon i want+ surliam. nayi hi
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i like toully boyfriend is my boyfriend is my boyfriend is the boyfriend is the boyfri
+
+Diversity: 0.5
+Generated Tweet: i liket boyfriend is when to ger bug my boyfriend is my boyfriend is to cande a love a
+
+Diversity: 1.0
+Generated Tweet: i liket thut celes] tgam wo they eo in like fuscer boyfriend paa't it tapt ther caxt h
+
+Diversity: 1.2
+Generated Tweet: i like foyerinkind wrat i' want apluuptout'upe you when i touv my boyfrienn/. hin doop
+
+---------- Epoch: 17 ---------- 
+
+Loss on first batch after epoch 17: 1.45754373074
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i wantally boyfriend is so here my boyfriend is so and my boyfriend is the boyfriend i
+
+Diversity: 0.5
+Generated Tweet: i wantandy toul bethers beats i want my boyfriend is the boyfriend and wanker the on y
+
+Diversity: 1.0
+Generated Tweet: i wantite fut boyfriend boyfriend i the r wan boyfriend is wxad awher boyfriend is him
+
+Diversity: 1.2
+Generated Tweet: i wantout olmy boyfraend hite like tiat mich is hawing of my boyfriend you 5 withnuve"
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i need and to boyfriend is the boyfriend the boyfriend is so be so boyfriend is to my 
+
+Diversity: 0.5
+Generated Tweet: i needireting tous i here then to my boyfriend is do and my boyfriend is he hex buct b
+
+Diversity: 1.0
+Generated Tweet: i needfuzln a boyfriend id my boyfriend at wonk aed be nand nadech~ andd&hnx doopole i
+
+Diversity: 1.2
+Generated Tweet: i needytdi wasts im~~~~~~~~~~~~~~~~~~~~~~~~ im fips, cty cenreni wamg f&ompry tresmed 
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i like loyfriend is my boyfriend is seel the best my boyfriend is the boyfriend is the
+
+Diversity: 0.5
+Generated Tweet: i like ande lewher my boyfriend is shave the want to my boyfriend is stous hore mo hav
+
+Diversity: 1.0
+Generated Tweet: i liket mucserind, goks me oast goose tolly when thit receter cim beec "us boyfriend a
+
+Diversity: 1.2
+Generated Tweet: i like, youn boyfroeeds. yo naluted ome is my masseresad~~~~~~~~~~~~~~~~~~~~~~~~~~~~ b
+
+---------- Epoch: 18 ---------- 
+
+Loss on first batch after epoch 18: 1.44201123714
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i wantee to boyfriend is so so my boyfriend is so so here my boyfriend is the seet the
+
+Diversity: 0.5
+Generated Tweet: i wante the boyfriend that and the king my boyfriend is the ast my boyfriend is my boy
+
+Diversity: 1.0
+Generated Tweet: i wantulle abousd thing to the hes lill jeat is like twancar my boyfriend bu't my borf
+
+Diversity: 1.2
+Generated Tweet: i wanthluyil igsru!ny my wiflrboyfrienc outt dhrlkingyy he~~~~~~~ poyte mad ererl wou 
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i neede boyfriend is my boyfriend is the boyfriend is my boyfriend is so my boyfriend 
+
+Diversity: 0.5
+Generated Tweet: i needlyou like to in worling he want the to so und a boyfriend do that is the be my b
+
+Diversity: 1.0
+Generated Tweet: i needally co boyfriend asp.~~~~~~ ruvera"s hes besrobliet  te~~~~~ w~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Tweet: i needwenredy? souel tank niwlire his is howmo boyfriend dilkmazor all when'y nink the
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i like want my boyfriend is the boyfriend is so so the boyfriend is my boyfriend is th
+
+Diversity: 0.5
+Generated Tweet: i likes me boyfriend is and me my boyfriend is my boyfriend is the so my boyfriend to 
+
+Diversity: 1.0
+Generated Tweet: i like doesse~ he sore wfring rould anm hillies so bresthes ot my bentha his i' hhe go
+
+Diversity: 1.2
+Generated Tweet: i liked welt and'd snou sho doe'd so futesing woims hi oncensn ipsetill so my boyfrien
+
+---------- Epoch: 19 ---------- 
+
+Loss on first batch after epoch 19: 1.42950606346
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i wantally boyfriend is so the boyfriend is my boyfriend is so the boyfriend is the bo
+
+Diversity: 0.5
+Generated Tweet: i wantine my boyfriend is just my boyfriend and i gant my boyfriend is is so my boyfri
+
+Diversity: 1.0
+Generated Tweet: i wantigdtaxirom blyfiend hise; my boyfriend to want loot ande cnaven this her i nans 
+
+Diversity: 1.2
+Generated Tweet: i wantourinst't and my boyfriend"i deltey. ned hi'le -ver buscertts a domy boyfriend h
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i needeling my boyfriend is so my boyfriend is be the boyfriend is the boyfriend is my
+
+Diversity: 0.5
+Generated Tweet: i needening my boyfriend is so be his my boyfriend is and my boyfriend is the bays the
+
+Diversity: 1.0
+Generated Tweet: i need anpllalt i thee't heven my bet my cishing is but be my boyfriend is wot'ming 3r
+
+Diversity: 1.2
+Generated Tweet: i needagslsy nike wimus~~~~~~~~~~~~~~~ my boyfriend ing keluse .@~~~~~~~~~~~~~~~~~~~'p
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i like want my boyfriend is the boyfriend is the boyfriend is so be my boyfriend is sh
+
+Diversity: 0.5
+Generated Tweet: i likell  oneading and want a boyfriend is a be kist wo my boyfriend is thind my boyfr
+
+Diversity: 1.0
+Generated Tweet: i liketu broyirleshg nire ffired wtot be wa tunt to jlwal roing i welt my ch  offrig.~
+
+Diversity: 1.2
+Generated Tweet: i likei deer baakaus tathan ti!"tall i golg to must im yacsy of boyfriendu(p goctle hl
+
+---------- Epoch: 20 ---------- 
+
+Loss on first batch after epoch 20: 1.41747653484
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i wantally boyfriend is so be my boyfriend is my boyfriend is so be a boyfriend is the
+
+Diversity: 0.5
+Generated Tweet: i wantay boyfriend is want to and wot't my boyfriend on my boyfriend and my boyfriend 
+
+Diversity: 1.0
+Generated Tweet: i wante'till want pees deed hilc m cila on to bum and neep waet il bisthing basses lif
+
+Diversity: 1.2
+Generated Tweet: i wanttabonsa "nald the clowdy soomt oull moray the's w,ind ol  ut rew frob fanati dog
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i needeing my boyfriend is so the boyfriend is the boyfriend is the boyfriend is so be
+
+Diversity: 0.5
+Generated Tweet: i neederest and and i coull i mave thit my boyfriend is the boyfriend to and me becaus
+
+Diversity: 1.0
+Generated Tweet: i neediy thinc soinors andyives abouch and or . dopss f wath't cans if wherend i sald 
+
+Diversity: 1.2
+Generated Tweet: i neede licw,houce buy sadead't belreverly w us ffmuy` is creae abon to i wanto yu. wh
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i liket to boyfriend is so me the so my boyfriend is my boyfriend is my boyfriend is s
+
+Diversity: 0.5
+Generated Tweet: i like whon a boyfriend to my cmy boyfriend to so keats he babo is now the pirke the b
+
+Diversity: 1.0
+Generated Tweet: i like te mudpe he  onenrels ic tred i my friend. il the friend! a lant boyfriend no a
+
+Diversity: 1.2
+Generated Tweet: i likeed hraleow islire boike.~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  the eveuvly toopeal
+
+---------- Epoch: 21 ---------- 
+
+Loss on first batch after epoch 21: 1.40632069111
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i wantally boyfriend is my boyfriend is the boyfriend is so her boyfriend is the boyfr
+
+Diversity: 0.5
+Generated Tweet: i wantany i gust his potter boyfriend is buct him so capcing feall have him you and i 
+
+Diversity: 1.0
+Generated Tweet: i wanthne and bure allkeera! re he sune you dom mnot hove have to fi bu love "like a  
+
+Diversity: 1.2
+Generated Tweet: i wanteats doton'n kand your my sarei soo foo miso weudly boyfriend don't'nf my boyfri
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i needeet my boyfriend is my boyfriend is the seet i like the boyfriend is the boyfrie
+
+Diversity: 0.5
+Generated Tweet: i need eind asly boyfriend is the farking and out i'm want to the boyfriend is the boy
+
+Diversity: 1.0
+Generated Tweet: i needoanly ix boyfriend cave a mothered it saring whec onrengy moms my boyfriend is b
+
+Diversity: 1.2
+Generated Tweet: i needorecmy boyfriend fored, that like jlisterf makan|~~~~~~~~~~~~~~~~~~~?~ hoass i n
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i like loy boyfriend is my boyfriend is so be and my boyfriend is the satt my boyfrien
+
+Diversity: 0.5
+Generated Tweet: i like my boyfriend is dong the want to come to me to spent my boyfriend is the sand m
+
+Diversity: 1.0
+Generated Tweet: i like tith il is bcay or my boyfriend and gont'n lhomeor feofe is nor enay your me we
+
+Diversity: 1.2
+Generated Tweet: i liked haskaes bug is it a cu4espt i'm luver gaca phouking to hecc my boyfraen mbn li
+
+---------- Epoch: 22 ---------- 
+
+Loss on first batch after epoch 22: 1.39581847191
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i wantand to me to be my boyfriend is the boyfriend is so be i want to be and a boyfri
+
+Diversity: 0.5
+Generated Tweet: i wantanly lot i have my boyfriend don't leet to do so for the can boyfriend is shis b
+
+Diversity: 1.0
+Generated Tweet: i wantsiplebersades way withe the yumo in whe , jud ancereets and a love i 5 cum chage
+
+Diversity: 1.2
+Generated Tweet: i wantayroung avomes in my brysweing ailgriing sout feor it.~~~~~~~~~~~~~~!riljfald us
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i neede susly boyfriend is so me and a boyfriend is so me and i want to be and my boyf
+
+Diversity: 0.5
+Generated Tweet: i need so sandsed my boyfriend is when to the be my boyfriend is my boyfriend is so th
+
+Diversity: 1.0
+Generated Tweet: i neededa ecyunch my pundsy boyfriens is ald to dee for t abathed my uame~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Tweet: i needoiing want. a beafur  ur every: m in 9hillscaringsrlpigune hat pucme and suteege
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i like me boyfriend is like me and the sare is the gond to my boyfriend is so me is my
+
+Diversity: 0.5
+Generated Tweet: i like tant to gom atered boyfriend is so hate and i like my boyfriend is the senly me
+
+Diversity: 1.0
+Generated Tweet: i likep wasd thenderld hat i roads and is tel af hom me , how albouci daeps /hereytheo
+
+Diversity: 1.2
+Generated Tweet: i likele w9 retucut lot~~~~~~~~~~~~~~~~~~~~~~ vower she mymobyererisers to to lrom my 
+
+---------- Epoch: 23 ---------- 
+
+Loss on first batch after epoch 23: 1.38677728176
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i wantally boyfriend is the boyfriend is my boyfriend is so so me and a boyfriend is t
+
+Diversity: 0.5
+Generated Tweet: i wanto me boyfriend to slike the best boyfriend is so sal the puss for my boyfriend t
+
+Diversity: 1.0
+Generated Tweet: i wantaet anca o. how oresder. i mokend  us uses firess or to sad thew me be salpyes p
+
+Diversity: 1.2
+Generated Tweet: i wanthe lo bochon and neen mits i like yoe? jut a bitputhaads~~~~~~~~~~~~~ hif contig
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i needead i want to my boyfriend is so be and my boyfriend is so so be to her boyfrien
+
+Diversity: 0.5
+Generated Tweet: i needore fucken want my boyfriend is can now dond i want my boyfriend is so heo he lo
+
+Diversity: 1.0
+Generated Tweet: i need aunet my thore ( dicks&rert~~~~~ cinningy my boyfriend smromer ! his tone i har
+
+Diversity: 1.2
+Generated Tweet: i needeiet i jrtstendme, porllr ich be likefwh boyfriend and i readica i pasdetse a ba
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i liked and my boyfriend is my boyfriend is the so me the seet and the boyfriend is so
+
+Diversity: 0.5
+Generated Tweet: i liked to sacker and a boyfriend is when my boyfriend is boyfriend is my boyfriend is
+
+Diversity: 1.0
+Generated Tweet: i likes to to macasl ok me you apwy beat besmuve thasf me and him and to kguan like li
+
+Diversity: 1.2
+Generated Tweet: i likeed weni ebout slore" ata wati nod. have ngo?~~~~~~~~~~~~~~~~~~~~~ don'k bats a t
+
+---------- Epoch: 24 ---------- 
+
+Loss on first batch after epoch 24: 1.37745368481
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i wantand my boyfriend is the boyfriend is my boyfriend is so my boyfriend is the sarl
+
+Diversity: 0.5
+Generated Tweet: i wantand my boyfriend and the this his boyfriend kig the best the cute the when me wi
+
+Diversity: 1.0
+Generated Tweet: i wante'lf best on i frents ,o than~~~~ oyu my gestist my boyfriend doun to seed to li
+
+Diversity: 1.2
+Generated Tweet: i wantoot like  um purunn prat. xhen ric ast dand grar pdalf" augon't kidt~~~~~~~ apl/
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i needendy boyfriend is the so me and the sand i want to so he don't to the boyfriend 
+
+Diversity: 0.5
+Generated Tweet: i needayandy boyfriend is the fenking boyfriend to think my boyfriend is he and my boy
+
+Diversity: 1.0
+Generated Tweet: i needaslansty the boyfriend's im homtening guoy with my boyfriend so pans.~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Tweet: i needet he'cjest hokie'h? gerlluraye beses eck harsans. on thas my busts alp pozou al
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i like tand my boyfriend is the best my boyfriend is the boyfriend is the boyfriend is
+
+Diversity: 0.5
+Generated Tweet: i like musty and the fnow is the pasked i want my boyfriend is see best frienda but wi
+
+Diversity: 1.0
+Generated Tweet: i likete tring a beals: i yoow citerntheru salking my boyfriend laves my me.~~~~~~~~wh
+
+Diversity: 1.2
+Generated Tweet: i likeda'mioootry biskend hinsh~~~~~~~~~~~~~~~~~~ hove pesonny., hen't scowlnsuand so 
+
+---------- Epoch: 25 ---------- 
+
+Loss on first batch after epoch 25: 1.367811203
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i wantand my boyfriend is so the best my boyfriend is so the so me the boyfriend is my
+
+Diversity: 0.5
+Generated Tweet: i wantaed beat i want to get my boyfriend is to goll talk is is my boyfriend is don't 
+
+Diversity: 1.0
+Generated Tweet: i wantse candyy but i do u waw like my bayfiendy to snen 4 "niking cute?/~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Tweet: i wantend your boyfriend'a cistedtink and? p.illy paff is this oe hatp futin,. wive i 
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i needelly boyfriend is the boyfriend is my boyfriend is the sarly the boyfriend is th
+
+Diversity: 0.5
+Generated Tweet: i needed so is my boyfriend is so be to the boyfriend so thi love my boyfriend is the 
+
+Diversity: 1.0
+Generated Tweet: i needynouterert want my boyfriend time me m so sdeicethsy feopite is no noukt me like
+
+Diversity: 1.2
+Generated Tweet: i needciutt tomge think so lagding whafero } culllc?ly way my lolop is my boyfriend~ o
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i liked my boyfriend is so to be and my boyfriend is so me and i want to my boyfriend 
+
+Diversity: 0.5
+Generated Tweet: i like want i like my boyfriend is on my boyfriend is so fund homy boyfriend want my b
+
+Diversity: 1.0
+Generated Tweet: i likele a boyfriend se is cistere m laoking dente a bus is so  pein foring gintt?~~~~
+
+Diversity: 1.2
+Generated Tweet: i like  h in my rils absu's is~~~~~~~~~~~~~~~~~~~~~~~ afe ouc when ayyour blot y lack 
+
+---------- Epoch: 26 ---------- 
+
+Loss on first batch after epoch 26: 1.35946774483
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i wanto me want the my boyfriend is my boyfriend is so be and my boyfriend is the boyf
+
+Diversity: 0.5
+Generated Tweet: i wantee my boyfriend is the basas i want to reed no boyfriend boyfriend and i love th
+
+Diversity: 1.0
+Generated Tweet: i wanteincreadew ti jnat like bnat to mf boyfriend so "bout saa-yyricg i nol to bele l
+
+Diversity: 1.2
+Generated Tweet: i wanteertaclons comkiriggdei the wsmy oell.~ need sodieg, thly having cante't my is~ 
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i needeed my boyfriend is so so the best and my boyfriend is and the boyfriend and my 
+
+Diversity: 0.5
+Generated Tweet: i needoret my boyfriend is and he take the keed and my boyfriend so peind he don't san
+
+Diversity: 1.0
+Generated Tweet: i need alcouudingo?'n shinc my boyfriend my boyfriend is vengsed su her bantdos haping
+
+Diversity: 1.2
+Generated Tweet: i needocabioli muke for for thoping my boyfriend, and nalliag he says cansne imwtilis 
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i like and and my boyfriend is the boyfriend is my boyfriend is the boyfriend is the b
+
+Diversity: 0.5
+Generated Tweet: i like this be and a boyfriend and the here i don't want i like like i don't like me h
+
+Diversity: 1.0
+Generated Tweet: i like butone to so i gan't a bita lith, retiot post my kiad on being live a beatcing 
+
+Diversity: 1.2
+Generated Tweet: i likefaly to ferrt~~~~~~~~~~~~~~~~~~~~~~ ablfycie at bhit like his perplfad any my my
+
+---------- Epoch: 27 ---------- 
+
+Loss on first batch after epoch 27: 1.35269284248
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i wantee to be my boyfriend is my boyfriend is so the best friend is the feet and he l
+
+Diversity: 0.5
+Generated Tweet: i wantead to be boyfriend and a bust like and my boyfriend is the her best she and the
+
+Diversity: 1.0
+Generated Tweet: i wantooulingof thim me to pidker to do thap is.'t, my bed is my boyfriend gact thas m
+
+Diversity: 1.2
+Generated Tweet: i wantl, feis istazi. on thelor my boyfriend alwey you aving to me:s a ley boyfriend~~
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i needeandy and my boyfriend is the boyfriend is my boyfriend is when my boyfriend is 
+
+Diversity: 0.5
+Generated Tweet: i need sully so got my boyfriend is shink to want a look i want my boyfriend is a boyf
+
+Diversity: 1.0
+Generated Tweet: i needoed his meatfriind the doal, whonnt my gon und me have when he love showand i wa
+
+Diversity: 1.2
+Generated Tweet: i needrhopiy osu wand him now find whon m, sluvin'd us veked one :t/~ hoc~~~~~~~~~~~~~
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i liked and i want to get to my boyfriend is my boyfriend is the boyfriend is my boyfr
+
+Diversity: 0.5
+Generated Tweet: i liked he is my boyfriend is my boyfriend is me me i want my boyfriend to like that i
+
+Diversity: 1.0
+Generated Tweet: i likedy furlet bee friend as brogfegey juss and a fansir telun in the dtapby gayles t
+
+Diversity: 1.2
+Generated Tweet: i like't pointheun/, mabe mn he!~ with him's wanh love my boyfriead jast roding fied't
+
+---------- Epoch: 28 ---------- 
+
+Loss on first batch after epoch 28: 1.3447779417
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i wantan boyfriend is the best boyfriend is so my boyfriend is the sare to she best me
+
+Diversity: 0.5
+Generated Tweet: i wantan look that for i love a boyfriend i want i love my boyfriend to ex me is all h
+
+Diversity: 1.0
+Generated Tweet: i wantelle and and~~ home otkaith a witt get boyfriend cothingess? the walks loy bit t
+
+Diversity: 1.2
+Generated Tweet: i wanta is the my boyfriend soy me vefting uve~~~~~~~ gerlieg and "ryeram~~~~~~~~~~~~~
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i neede and the boyfriend is so he day is my boyfriend is my boyfriend is the boyfrien
+
+Diversity: 0.5
+Generated Tweet: i needaany boyfriend so me the want my boyfriend is what my boyfriend is and srean and
+
+Diversity: 1.0
+Generated Tweet: i needinguy loyer, tike i wart a boyfriend thi gectume.~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Tweet: i needyis nusdenh every a that the~ angenghnout brifi tones i ther  ot trxet soo pec f
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i like and my boyfriend is the boyfriend is when my boyfriend is so the best boyfriend
+
+Diversity: 0.5
+Generated Tweet: i like want for my boyfriend is the boyfriend is so deally the go to like my boyfriend
+
+Diversity: 1.0
+Generated Tweet: i like anyoy tone a byor oiress him.~~~~ have in my boyfriend to sloups doed abso text
+
+Diversity: 1.2
+Generated Tweet: i like tamone on pf.fon to letce himfmy. houtid eve neet not shne~~~~~~~~~~~~~~~~~~~~~
+
+---------- Epoch: 29 ---------- 
+
+Loss on first batch after epoch 29: 1.33783173561
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i wantandy my boyfriend is so get i want to me and me i want to my boyfriend is the bo
+
+Diversity: 0.5
+Generated Tweet: i wantee to he worts i weet my boyfriend and my boyfriend is the girllare to me for i 
+
+Diversity: 1.0
+Generated Tweet: i wantes albe every coule to me nous boyfriend. so himes so boy youc recanling i buke 
+
+Diversity: 1.2
+Generated Tweet: i wanto sit is det friends  ouf my bestfniend mad i've selter gryaes may someo in my b
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i neede and the boyfriend is so he don't the boyfriend is so the boyfriend is my boyfr
+
+Diversity: 0.5
+Generated Tweet: i needondy boyfriend to nave my boyfriend is a staring and my boyfriend is my boyfrien
+
+Diversity: 1.0
+Generated Tweet: i need the jestous is consti love my boyfriend~~~~~~~~~ hams hom dound with wayf core 
+
+Diversity: 1.2
+Generated Tweet: i needlifery ecreep 82 thoog x in whe i rest peese! is nome pist mis!?~~~~~~~~ 3sririf
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i liked to sand to me and my boyfriend is the best and my boyfriend is so get a boyfri
+
+Diversity: 0.5
+Generated Tweet: i likes to talk to her gor the and my boyfriend is my boyfriend is my boyfriend is the
+
+Diversity: 1.0
+Generated Tweet: i likeluvauomy boyfriend nove i'm to um i just wattere a beer white him with us that  
+
+Diversity: 1.2
+Generated Tweet: i likeging. grece (.~.8.me~~ ex??, .o yurz my boyfriend askelt. reade to a by my horag
+
+---------- Epoch: 30 ---------- 
+
+Loss on first batch after epoch 30: 1.33130192757
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i wantan to be to be to my boyfriend is the seet me and i just he don't to he love the
+
+Diversity: 0.5
+Generated Tweet: i wanto save the  on my boyfriend is he like my boyfriend is so my boyfriend is ata fr
+
+Diversity: 1.0
+Generated Tweet: i wantsaed he bettafor my boyfriend andy gitt. to be goct my fines ene fromt live to h
+
+Diversity: 1.2
+Generated Tweet: i wanteehvere tering, hoo askig? : bibmavingeg.ud your~ gent. ext puses the did tanree
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i needeandy me and my boyfriend is the boyfriend is the best friend is my boyfriend is
+
+Diversity: 0.5
+Generated Tweet: i need want the bust with my boyfriend is my boyfriend is a boyfriend the tuth me with
+
+Diversity: 1.0
+Generated Tweet: i needende tacce like ginck smon, rexsfe thef a seied to evereadhy the boyfriend got, 
+
+Diversity: 1.2
+Generated Tweet: i needaunsting to tell to hn like i like my  oachone neoverthani like i have i $@ llyc
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i like and the boyfriend is my boyfriend is the boyfriend and i want to be the best th
+
+Diversity: 0.5
+Generated Tweet: i like was to deed my boyfriend is so to so gor to that my boyfriend is shore the and 
+
+Diversity: 1.0
+Generated Tweet: i likes allike hi just so alome and whit her boyfriend/reaxes. ~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Tweet: i like new, with bete we and dop ehtu. is my boyfriend'ssorice waw tan ow my "ven star
+
+---------- Epoch: 31 ---------- 
+
+Loss on first batch after epoch 31: 1.3257818222
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i wantand to be and my boyfriend is so me and i have to be my boyfriend is the boyfrie
+
+Diversity: 0.5
+Generated Tweet: i wantire froom when i want to hate and my couse i want to her boyfriend is of me and 
+
+Diversity: 1.0
+Generated Tweet: i wantalind lim the kentien atiol sedenan1 hem had just~ my boyfriend~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Tweet: i wantoulgo about havn the ytrome want atked oh them boyfriend for cfukild ave the bii
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i neede and my boyfriend is my boyfriend is the best the best me and i want my boyfrie
+
+Diversity: 0.5
+Generated Tweet: i needed a boyfriend and me to of my boyfriend is the best shing so the sach me and my
+
+Diversity: 1.0
+Generated Tweet: i neede me andyarid sugthe the czirestart: and my couc'zen a picesny my bastang boyfri
+
+Diversity: 1.2
+Generated Tweet: i needeady "love all like a boyfriend st2atire mad saked. yo cutest in like him fuck i
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i like and her boyfriend is the cure the sare the best me and my boyfriend is the boyf
+
+Diversity: 0.5
+Generated Tweet: i likes to he love righate the some i want to say to have to gead so the boyfriend and
+
+Diversity: 1.0
+Generated Tweet: i liked sleiged ane bet,eed un, i swinl me in that's gurtinn like like hin weller that
+
+Diversity: 1.2
+Generated Tweet: i likel  onees and a boyfriend:~~~~~~~~~~~~~~~~ bukping the seloriind timt gomged i lo
+
+---------- Epoch: 32 ---------- 
+
+Loss on first batch after epoch 32: 1.31910538673
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i wantee to make this this boyfriend is the best me and my boyfriend is so much a boyf
+
+Diversity: 0.5
+Generated Tweet: i wanto see wonker of my boyfriend like me and i want my boyfriend is like the best to
+
+Diversity: 1.0
+Generated Tweet: i wanteet like and me himtlopse, curring my wanh relaon ta't my mom boyfriend so soe t
+
+Diversity: 1.2
+Generated Tweet: i wante is your hed loy kisming mugge  ourex your nabiijlaby corknw i'n weet and0 woor
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i needeally boyfriend is my boyfriend is so and my boyfriend is the best and i want to
+
+Diversity: 0.5
+Generated Tweet: i needende is boyfriend is the some~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Tweet: i neede andty chathe donlo my boyfriend swoet on soaf to 110 cumb. and at me tore is a
+
+Diversity: 1.2
+Generated Tweet: i neede'llyningot lalenhy stafe ? plisise it my boachlo obo betcar weviads3 all ti'd d
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i liked to say and he don't to so me and my boyfriend is the sare and i want to have a
+
+Diversity: 0.5
+Generated Tweet: i liked me and i can't hen want the mech and my boyfriend is say and i don't miss my b
+
+Diversity: 1.0
+Generated Tweet: i like naed my neatagcaron dor hald so like thene shis she is crol det whine  exly hou
+
+Diversity: 1.2
+Generated Tweet: i liked thacpings by totcere? dalky - geting my ,nw tbeet conent. juzang aste cra was 
+
+---------- Epoch: 33 ---------- 
+
+Loss on first batch after epoch 33: 1.31198966503
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i wantand and my boyfriend is so be to so my boyfriend is she boyfriend is my boyfrien
+
+Diversity: 0.5
+Generated Tweet: i wantay boyfriend is sull i sand him i nave how whine is my boyfriend is so a bect my
+
+Diversity: 1.0
+Generated Tweet: i wantebuss bine &amp; till his gon't alway or think th the him boyfriend trauke medat
+
+Diversity: 1.2
+Generated Tweet: i wantole tousk gouu,, how my boyfriend is wains wime keove halg. hi pand  has to mea 
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i needead to be have my boyfriend is the boyfriend is my boyfriend is so he and me and
+
+Diversity: 0.5
+Generated Tweet: i needea boyfriend have more he is when my boyfriend is my boyfriend is so so my boyfr
+
+Diversity: 1.0
+Generated Tweet: i neede't want my boyfriend tringer to i can mafy mont~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~m
+
+Diversity: 1.2
+Generated Tweet: i needayyad ut dhirs tomy boyfriend to aeks ue me is t and me!~~  expen 3gic is: i ave
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i liked to be and my boyfriend is the boyfriend is my boyfriend is the boyfriend is th
+
+Diversity: 0.5
+Generated Tweet: i liked i like i want my boyfriend is so the fall is my wart and and i cant i don't my
+
+Diversity: 1.0
+Generated Tweet: i likesew of sat so bmu. eive asti'm onf coxl, mist  amh ma harpy boyfriend when man, 
+
+Diversity: 1.2
+Generated Tweet: i likethover tome has yoy been 1friet, akosing that hums boap haspy nots purbotarsijag
+
+---------- Epoch: 34 ---------- 
+
+Loss on first batch after epoch 34: 1.30757379532
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i wanto bust me and the my boyfriend is so how and i don't so me the boyfriend is the 
+
+Diversity: 0.5
+Generated Tweet: i wantal and a boyfriend to like that the the best like the sist and my boyfriend is w
+
+Diversity: 1.0
+Generated Tweet: i wantea tasdi wate my boyfriend 'laves reatally that's~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ e
+
+Diversity: 1.2
+Generated Tweet: i wantae a boyfriend foe~~~~~ possi~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i needeed to be and my boyfriend is so be the boyfriend and my boyfriend is so me and 
+
+Diversity: 0.5
+Generated Tweet: i needing like my boyfriend is the sarly is is the she don't want to get boyfriend is 
+
+Diversity: 1.0
+Generated Tweet: i needuy boyfriend and i'clotell .an the  home -jceter. risth luy he'll even  us~! so 
+
+Diversity: 1.2
+Generated Tweet: i needelrates and thly is' is houd myare when to buck whots whenerthen as is detsing m
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i like and i want to see my boyfriend is my boyfriend is the boyfriend is my boyfriend
+
+Diversity: 0.5
+Generated Tweet: i liked to say to like when my boyfriend is so much i want to ad like fuck and i have 
+
+Diversity: 1.0
+Generated Tweet: i likes touady happerging me. and when took u canling is here out thre my boyfriend po
+
+Diversity: 1.2
+Generated Tweet: i like your. rchaly purret and my boyfriend so i% kumn ror,ialsivodes  ,mmon..".~~~~~~
+
+---------- Epoch: 35 ---------- 
+
+Loss on first batch after epoch 35: 1.30242443085
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i wantand my boyfriend is so so the best friend is is a boyfriend is my boyfriend is s
+
+Diversity: 0.5
+Generated Tweet: i wantanden a boyfriend to need a boyfriend is so exting be and my boyfriend is she be
+
+Diversity: 1.0
+Generated Tweet: i wanticgedore'nf got in my 1mtommond want tiking olousin dide for my boyfriend onthes
+
+Diversity: 1.2
+Generated Tweet: i wante her boyfriend is i wan to pudsedies alg hi ang~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i needetand i want my boyfriend is so me and my boyfriend is the best friend is and me
+
+Diversity: 0.5
+Generated Tweet: i needorayy onloos ot the best boyfriend is for my boyfriend and a boyfriend is my boy
+
+Diversity: 1.0
+Generated Tweet: i needandyome asttang now fin is my boyfriend is about i heo'midum be sue i all of up 
+
+Diversity: 1.2
+Generated Tweet: i needucen. i deen shar bust teth almoo me pmybthe tryed racaute truze for muadhanti n
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i like to be for the boyfriend is the best friend is the cerest me and my boyfriend is
+
+Diversity: 0.5
+Generated Tweet: i like ta bether have my boyfriend is me and i want come to stay but on the can me him
+
+Diversity: 1.0
+Generated Tweet: i like wants that i so ad my boyfriend thanks to roud and he sreeps fan, of to getenre
+
+Diversity: 1.2
+Generated Tweet: i likeutedated ic ubore to rongde boyfriesd tlibus.~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ull 
+
+---------- Epoch: 36 ---------- 
+
+Loss on first batch after epoch 36: 1.29596054554
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i wantan to be my boyfriend is a boyfriend to so he say the boyfriend is so my boyfrie
+
+Diversity: 0.5
+Generated Tweet: i wantale and i need to cand to keow the mich my boyfriend is so his thing a boyfriend
+
+Diversity: 1.0
+Generated Tweet: i wantanging my boyfriend ishe ando borer ass my bitthing his ast bejntigely want ame 
+
+Diversity: 1.2
+Generated Tweet: i wantina ton't. getuce you louz y u my spgotinc secpmon an then metle. so pute srexti
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i needeed to be my boyfriend is the boyfriend is a boyfriend is my boyfriend is the bo
+
+Diversity: 0.5
+Generated Tweet: i neede his boyfriend is my boyfriend is because my boyfriend like i to so pucking mis
+
+Diversity: 1.0
+Generated Tweet: i needyica mode donn aspinc mt -("6 lily like, he like hald onry like fav alo have i'm
+
+Diversity: 1.2
+Generated Tweet: i needic| thee in like that. gho = bay wire. i rejwcanbade i have who be and i dout to
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i liked my boyfriend to be and i don't to so me the sees me and i love the boyfriend i
+
+Diversity: 0.5
+Generated Tweet: i like and i'm so to be and my boyfriend and my boyfriend is so all co me and my boyfr
+
+Diversity: 1.0
+Generated Tweet: i like to but my boyfriend eive so my boyfriend, incole of is my to kefe mester manay 
+
+Diversity: 1.2
+Generated Tweet: i liked my loy cander basvice boyfriend dho ugted" i achigh so  us beingef i want to m
+
+---------- Epoch: 37 ---------- 
+
+Loss on first batch after epoch 37: 1.29160583019
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i wantan to be so my boyfriend is my boyfriend is the sister and i want my boyfriend i
+
+Diversity: 0.5
+Generated Tweet: i wantan want to see to he gay to my boyfriend is have a boyfriend is a boyfriend to s
+
+Diversity: 1.0
+Generated Tweet: i wantanrtee a fainthluson , -now like b ex cup mate. is i want to she is 10 go a mors
+
+Diversity: 1.2
+Generated Tweet: i wantaranabudw bcoaribffuing a fut undio posty~~~~~~~~~~~~~~~~ mes of telf i'p't dit 
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i needeed and my boyfriend is the best so the deat is the can i have to the boyfriend 
+
+Diversity: 0.5
+Generated Tweet: i needay boyfriend is the mally this so he don't like to and i want a parsfe that my b
+
+Diversity: 1.0
+Generated Tweet: i needoino gond a boyfriend to got in neodiose" of me errabome fust i nit my moms boyf
+
+Diversity: 1.2
+Generated Tweet: i neede'lre. my boyfriend thy'm chot calls wat male your dommarehaby a with gaf can fr
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i like and my boyfriend is so to the best boyfriend is so much i want to me to so the 
+
+Diversity: 0.5
+Generated Tweet: i liked to be that my boyfriend is a curien and the lacking as and he cand and her fri
+
+Diversity: 1.0
+Generated Tweet: i like kisped my cals is suger goens i ly till my boyffiend mide't tire hatics man. wh
+
+Diversity: 1.2
+Generated Tweet: i like pruttoderad i the mass is nove the fiole cufi is thars at a bud and td tho cell
+
+---------- Epoch: 38 ---------- 
+
+Loss on first batch after epoch 38: 1.28647267818
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i wantand to be my boyfriend is my boyfriend is so see and my boyfriend is so he want 
+
+Diversity: 0.5
+Generated Tweet: i wantees my boyfriend is calling and my boyfriend is so and i have you don't lave he 
+
+Diversity: 1.0
+Generated Tweet: i wantenand to me is so e applofuch but a boyfriend tnes for shoc swe and with my boyf
+
+Diversity: 1.2
+Generated Tweet: i wanten tucgrabe to pidranginmy look is my boyfriend's sloop at. i'm he}o looking rod
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i needean and my boyfriend is the best friend is so me and my boyfriend is the best fr
+
+Diversity: 0.5
+Generated Tweet: i needing when my boyfriend the love a boyfriend is the best same in a boyfriend when 
+
+Diversity: 1.0
+Generated Tweet: i needudy gegling a boyfriend jast likes 5 on is co pict so my boyfriend"~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Tweet: i needary maviat't gna rays toreht on wams. thilke- my is9 my grating cow(ye askeut~ i
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i liked to me and i want my boyfriend is a boyfriend is my boyfriend is my boyfriend i
+
+Diversity: 0.5
+Generated Tweet: i like work not my boyfriend is my boyfriend is like really the best boyfriend doos a 
+
+Diversity: 1.0
+Generated Tweet: i like lenkeny what me sike w ons wanthne to ex time wher a waae you'lo wang my boyfri
+
+Diversity: 1.2
+Generated Tweet: i likelaveclies,s as e) my nomed: me and not it whilr is (very jacziet, i could warles
+
+---------- Epoch: 39 ---------- 
+
+Loss on first batch after epoch 39: 1.28139328957
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i wantan to be when my boyfriend is the boyfriend and my boyfriend is so his sure to g
+
+Diversity: 0.5
+Generated Tweet: i wantee mean boyfriend and her boyfriend is the for to she boyfriend is so suck on to
+
+Diversity: 1.0
+Generated Tweet: i want~ anki yall sich to grat. thath" he's on myrsa thing &im;. bif ir the one obt a 
+
+Diversity: 1.2
+Generated Tweet: i wantaesmobe hud "ni saying my boyfriend:~~~~ iver'he sfe't keouss yerc~~~~~~~~~~~~~ 
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i needentent to my boyfriend is the boyfriend is the best friend and i want my boyfrie
+
+Diversity: 0.5
+Generated Tweet: i needead is a sous to be and to her boyfriend to so her so me with my boyfriend is a 
+
+Diversity: 1.0
+Generated Tweet: i needomy boyfriend wa couting be at ~~~~~~~~~~~ age so i det i alwate it my boyfriend
+
+Diversity: 1.2
+Generated Tweet: i needelcayen 2 meven i'm look faoped h a like ~ my clict whade my ghifus fehorn sidh,
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i like and my boyfriend is the best so he is the boyfriend is my boyfriend is the can 
+
+Diversity: 0.5
+Generated Tweet: i liked to got the parting my boyfriend and my boyfriend is arout when him i love when
+
+Diversity: 1.0
+Generated Tweet: i like want to be hid fucking -istirugly skee iss~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Tweet: i liked to soop. say at sooo timil chanke. of making and d nokch p is dshally shin cig
+
+---------- Epoch: 40 ---------- 
+
+Loss on first batch after epoch 40: 1.27611863613
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i wantan to be my boyfriend is so me and my boyfriend is the boyfriend is goen to me t
+
+Diversity: 0.5
+Generated Tweet: i wantan to more with my boyfriend that i can need to fucks me rot my boyfriend is sar
+
+Diversity: 1.0
+Generated Tweet: i wantean a boyfriend's pitces em but woud~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Tweet: i wantan how her boyfriend to sloskive coul motter ofunal  ofs his~~~~~~~~~~~~~~~~~~~~
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i neede and my boyfriend is my boyfriend and i don't want to have to so my boyfriend i
+
+Diversity: 0.5
+Generated Tweet: i needending my boyfriend is the cuter and i want to get to the kind a boyfriend is a 
+
+Diversity: 1.0
+Generated Tweet: i needew to beaithe duid. yeluwer my boyfriend. is he do to seen my boyfriend is so ca
+
+Diversity: 1.2
+Generated Tweet: i need me talkins cuye deaf wo noty befuckeade but s nops and my boyfriend like my nom
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i liked to be my boyfriend is my boyfriend is my boyfriend is so much and i like my bo
+
+Diversity: 0.5
+Generated Tweet: i liked a got and my boyfriend is a boyfriend so buch in the boyfriend when i want to 
+
+Diversity: 1.0
+Generated Tweet: i liket hen he's being thae plaspy firstbiad proz  and i can't like that my boyfriend 
+
+Diversity: 1.2
+Generated Tweet: i liked tco.~~~~~~~~~~~ putent's the storeing boyfriend "my geqleed ccved ourctos toon
+
+---------- Epoch: 41 ---------- 
+
+Loss on first batch after epoch 41: 1.2719129324
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i wantee to be my boyfriend is so me and i want to me and i like my boyfriend is my bo
+
+Diversity: 0.5
+Generated Tweet: i wantone my boyfriend is my boyfriend and me like a beat the loll me and him cute i d
+
+Diversity: 1.0
+Generated Tweet: i wantantaedysen a do~ want just deall bucling everyon you dad my boyfriend ww~~~~~~~ 
+
+Diversity: 1.2
+Generated Tweet: i wantelyoe haxperecwses ntond, my boyfriend somo!? your chay ofr to hart so yoi~~~~~ 
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i needeed my boyfriend is my boyfriend and he best friend to the best friend to get me
+
+Diversity: 0.5
+Generated Tweet: i needay boyfriend and my boyfriend is so i want to love i am that how i don't like i 
+
+Diversity: 1.0
+Generated Tweet: i needetalling cealco but my boyfriend when you, boyfriend is looke toonother is~~~~~~
+
+Diversity: 1.2
+Generated Tweet: i needannend like him; aving mn feep my boyfr ewayed say fuch"~~~~~~~~~~~~~~~~~~~~~~~~
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i liked to be with my boyfriend is my boyfriend to so me and i want to be my boyfriend
+
+Diversity: 0.5
+Generated Tweet: i liked and i want to like to be got my boyfriend is when i love him that i and the lo
+
+Diversity: 1.0
+Generated Tweet: i like hady pinters soutiendshe cas jiinite becoute my phored is a'lotert.~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Tweet: i likene bfue tratead you'w are my cerendyring to inn wogoss bes. my boyfriend is er, 
+
+---------- Epoch: 42 ---------- 
+
+Loss on first batch after epoch 42: 1.26829707623
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i wante the boyfriend to star that i love my boyfriend is my boyfriend is the sister t
+
+Diversity: 0.5
+Generated Tweet: i wantan to me to hate a boyfriend some mome is beloo like i'm so about when my boyfri
+
+Diversity: 1.0
+Generated Tweet: i wantanited. i krow that i realloses like whome save a boyfriend? is cule, thinks me~
+
+Diversity: 1.2
+Generated Tweet: i wantige an her don't want, me palked you like my boyfriend buthy 40n~~~~~~~~~~~~~~~~
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i needendy to be all the boyfriend is the boyfriend is so my boyfriend is a boyfriend 
+
+Diversity: 0.5
+Generated Tweet: i needay boyfriend my boyfriend is so get so much i need to can to my boyfriend is the
+
+Diversity: 1.0
+Generated Tweet: i needees out you've ane to can girlfor make my boyfriend realing me not that't i'm so
+
+Diversity: 1.2
+Generated Tweet: i needecf my boyfriend alltec pestly~ /upzes ittig to b$ my sanvicaw proom  um i doa. 
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i liked to he want to so he want to be my boyfriend is the best friend to be he like t
+
+Diversity: 0.5
+Generated Tweet: i like tandy to the best to weet i want i have a boyfriend, that my boyfriend is like 
+
+Diversity: 1.0
+Generated Tweet: i liked my boyfriend and me, a gume swud god ti luse a boyfriend is the futh but they 
+
+Diversity: 1.2
+Generated Tweet: i likes yrillons . amesi mecu. and so love i nis to can't my boyfriend me bbt shon mh 
+
+---------- Epoch: 43 ---------- 
+
+Loss on first batch after epoch 43: 1.26389539242
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i wantee to be with my boyfriend is the best friend this is the boyfriend is so me and
+
+Diversity: 0.5
+Generated Tweet: i wantle with my boyfriend to get me to me and my boyfriend is some my boyfriend is th
+
+Diversity: 1.0
+Generated Tweet: i wanteessa fulked preblood~~~~~~~~~~~~~~~~~~~~~~~~~~ mow yellob really betous the som
+
+Diversity: 1.2
+Generated Tweet: i wantoere only titsring an tolking~~~~~~~~~~~~~~~~~~ qroofzt ol moss with cabou-dont 
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i neederentere to see my boyfriend is the boyfriend is the say and i don't to so much 
+
+Diversity: 0.5
+Generated Tweet: i needeet my boyfriend to have he's boyfriend is my boyfriend is my boyfriend is she s
+
+Diversity: 1.0
+Generated Tweet: i needay like emy boyfriene als you daytad this so geades  and sliols c-.~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Tweet: i need hi have a couse my bc gicsfeer to whit taysssyo,. she that my boyfriend .hh you
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i liked to be the best friend for my boyfriend is so much he like the boyfriend is so 
+
+Diversity: 0.5
+Generated Tweet: i liked to have to be my boyfriend on my boyfriend is like i'm but i have he want he b
+
+Diversity: 1.0
+Generated Tweet: i like he ridtan:bally and is my anraedy hame ver to my boyfriend 2ore lowtill the bon
+
+Diversity: 1.2
+Generated Tweet: i likestyoor: in 91xolve and)ad~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ hooved my hrad mam~ sowir
+
+---------- Epoch: 44 ---------- 
+
+Loss on first batch after epoch 44: 1.25998699665
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i wantee my boyfriend to so he say that i want to see the best friend is my boyfriend 
+
+Diversity: 0.5
+Generated Tweet: i wantine my boyfriend can in the can donna were to say and my boyfriend is so she boy
+
+Diversity: 1.0
+Generated Tweet: i wantode. boyfriend and more worlls want a boyfriend~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Tweet: i wanterouts i hcan boyfriend the cutore work to ceo i hare to urpoln op masing tha~, 
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i needend my boyfriend to so much a boyfriend is so he like the seet be my boyfriend i
+
+Diversity: 0.5
+Generated Tweet: i needadentent to take my boyfriend is she but her boyfriend is a porsiter the i so be
+
+Diversity: 1.0
+Generated Tweet: i needwi gays but i have a boyfriend like somemy voniie.~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Tweet: i needring like i wwent my boyfriend's ~ daat. he's rillevuse rearst, outs -104'm cure
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i liked and i want my boyfriend to say to see my boyfriend is so the boyfriend is my b
+
+Diversity: 0.5
+Generated Tweet: i liked to suck a say make i don't want my boyfriend up my boyfriend the couse is my b
+
+Diversity: 1.0
+Generated Tweet: i likes hontere. a bark to :o"ecaring kromowhin to nithy my boyfriend feels seirs buti
+
+Diversity: 1.2
+Generated Tweet: i like tand magy dis~ itmery my boyfriend is a um allt tlemes i wout like its~~~~~~~~~
+
+---------- Epoch: 45 ---------- 
+
+Loss on first batch after epoch 45: 1.25642442703
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i wante tanking my boyfriend is a boyfriend to see me the best friend to the say and i
+
+Diversity: 0.5
+Generated Tweet: i wante tall the slick my boyfriend is when my boyfriend is part who is like the mest 
+
+Diversity: 1.0
+Generated Tweet: i wantind aftrmake bed my boyfriend is to out my boyfriend is an is thut you [eot righ
+
+Diversity: 1.2
+Generated Tweet: i wantells hhopertlat. asked??~~~~~ my boyfriend~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ bigck~
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i needentandy to be want to be my boyfriend is my boyfriend is my boyfriend is so the 
+
+Diversity: 0.5
+Generated Tweet: i needettally so with my boyfriend is so cran in the couse me and i me and because i c
+
+Diversity: 1.0
+Generated Tweet: i needyyerasse harone like said i want like my boyfriend on singer and id lolet what y
+
+Diversity: 1.2
+Generated Tweet: i needaby, i looks pict- _'d this tating my boyfriend is ceally me, your boyfriend is 
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i liked to say the boyfriend is so the best friend to be the best friend is my boyfrie
+
+Diversity: 0.5
+Generated Tweet: i liked and my boyfriend is lase to my boyfriend is so he so munging him~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Tweet: i liked tamy boyfriend is mage~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ lov
+
+Diversity: 1.2
+Generated Tweet: i like laopbolaugita anl need need, me~~~~~~~~~~~~~~~~~~~@ nondftited my boyfriend but
+
+---------- Epoch: 46 ---------- 
+
+Loss on first batch after epoch 46: 1.25296247005
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i wantan to be my boyfriend and i love him to see me to star and i want to have a boyf
+
+Diversity: 0.5
+Generated Tweet: i wanto be boyfriend to the ore and my boyfriend is see i just for have at my boyfrien
+
+Diversity: 1.0
+Generated Tweet: i wantanllets me is she lis my bady nop in  fuckpol queaso one her boyfriend and me al
+
+Diversity: 1.2
+Generated Tweet: i wante it aving my reafflred whater my pirsor is goo inson. i'j a and nete i goan" ac
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i needentand to be want to my boyfriend to see me and i want to the best friend and i 
+
+Diversity: 0.5
+Generated Tweet: i needend to mone my boyfriend is that i just like my friend boyfriend and i don't sin
+
+Diversity: 1.0
+Generated Tweet: i needeneteray his is her yout oteres at him, mex: dod's have to mon her paopacles is 
+
+Diversity: 1.2
+Generated Tweet: i needrando~~~~~~~~~~~~~~~~~~~~~~~ bestfriend" leaving smect [rad gomrala~.~~~~~~~~~~~
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i liked to be want my boyfriend to be my boyfriend is so me and i want to be the best 
+
+Diversity: 0.5
+Generated Tweet: i liked a boyfriend to be like i just want to be my boyfriend is so be and my boyfrien
+
+Diversity: 1.0
+Generated Tweet: i like "weet my boyfriend and so the hes if love so fom me and frasking seet how pist 
+
+Diversity: 1.2
+Generated Tweet: i like have taoked goming never treaccimain my boyfriend~~~~~~~~~~~~~~~~~~~~my sho is 
+
+---------- Epoch: 47 ---------- 
+
+Loss on first batch after epoch 47: 1.24968767166
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i wantan the boyfriend and i have to the best friend is and i want to be the best frie
+
+Diversity: 0.5
+Generated Tweet: i wante to the ghat boyfriend is the best boyfriend is such to my boyfriend is every s
+
+Diversity: 1.0
+Generated Tweet: i wantrey to till i be want ad i all my boyfriend why you dastn't love gomo boyfriend 
+
+Diversity: 1.2
+Generated Tweet: i wantoole frobs pelredtes bro. afoucf itn ataully levaned too p dip sifotsed sumes~~~
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i needenta be with my boyfriend is so much the boyfriend is my boyfriend is a boyfrien
+
+Diversity: 0.5
+Generated Tweet: i needenta the cant of my mom is my boyfriend is the cute is the can  all shings i wan
+
+Diversity: 1.0
+Generated Tweet: i needienl anle enduomaavgot fames blop-a gui gean to fneapowep .~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Tweet: i needellesit is my boyfriend not intrealy like thoi.'n sicceptentera feelt, all~~~~~~
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i liked to see i want to so my boyfriend is my boyfriend is so much the best friend is
+
+Diversity: 0.5
+Generated Tweet: i liked to me to sike a boyfriend and he seep for the cute is the mack me i me so my b
+
+Diversity: 1.0
+Generated Tweet: i liked my boyfriend ass me my boyfriend and my boyfriend and it my boyfriend wey rnea
+
+Diversity: 1.2
+Generated Tweet: i like he lo i'ma ne~ -ne-peodw my gor and wast me out thmush dingle,t. `the gadmauc t
+
+---------- Epoch: 48 ---------- 
+
+Loss on first batch after epoch 48: 1.24620687962
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i wantan and my boyfriend to see me to start the boyfriend is my boyfriend is so much 
+
+Diversity: 0.5
+Generated Tweet: i wantere to the was is my boyfriend to kick and i be and me the exter how i have to m
+
+Diversity: 1.0
+Generated Tweet: i wantadsinme tonight my boyfriend and when the befutiles like he, and i want my bam g
+
+Diversity: 1.2
+Generated Tweet: i wante boyfriend he doing toour but ow daving pres ruve yeet firdremyezin pixp~~~~~ n
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i needent to be my boyfriend to see me and i don't want to be my boyfriend is the boyf
+
+Diversity: 0.5
+Generated Tweet: i needend want to my boyfriend is have a boyfriend is my boyfriend for a boyfriend is 
+
+Diversity: 1.0
+Generated Tweet: i needend have like pariad isn't no drlashe'cive is parinn with my boyfriand's gondry~
+
+Diversity: 1.2
+Generated Tweet: i needen ayout "he~ was feel i woidd m thisi like a grinks my boyfriend finti out a le
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i liked to the boyfriend to me and my boyfriend is so much and he don't want my boyfri
+
+Diversity: 0.5
+Generated Tweet: i liked to cute my boyfriend is my boyfriend to be to the litt and when i just like a 
+
+Diversity: 1.0
+Generated Tweet: i liked a boyfriend skosser withing a be i want my donest like thay smy boyfriend beca
+
+Diversity: 1.2
+Generated Tweet: i liken my boyfriend todghgst works pase it me~~~~~~~~~~~~~~ lisser becaliwes. so when
+
+---------- Epoch: 49 ---------- 
+
+Loss on first batch after epoch 49: 1.24252176285
+
+----- Sentence seed: i want ----- 
+
+Diversity: 0.2
+Generated Tweet: i wante want to see my boyfriend is the best friend to me and i don't want to be the b
+
+Diversity: 0.5
+Generated Tweet: i wantelly my boyfriend to be my mom the home and my boyfriend is got to be in the wha
+
+Diversity: 1.0
+Generated Tweet: i wantee whateramy boyfriend to dide all i'w and atking and is from~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Tweet: i wanton~~~~~~~~~~~~~~~~~~~~~~~~~~~ apmoney but with so girlbalp~~~~~~~~~~~~~~~~~~~~~~
+
+----- Sentence seed: i need ----- 
+
+Diversity: 0.2
+Generated Tweet: i needentent to the say my boyfriend is so the best friend to me to the best friend th
+
+Diversity: 0.5
+Generated Tweet: i needandy still don't want to she kind and i want a boyfriend the pist me so much i h
+
+Diversity: 1.0
+Generated Tweet: i need trone is tonerro! 'll like theury somering like it the comes b, of gay,, my boy
+
+Diversity: 1.2
+Generated Tweet: i needay. a did he just ain my wirffriend pithlk at ofs dei friendps besthan a cpumbwe
+
+----- Sentence seed: i like ----- 
+
+Diversity: 0.2
+Generated Tweet: i liked to be i don't want my boyfriend to so much i say a boyfriend is a boyfriend to
+
+Diversity: 0.5
+Generated Tweet: i like anly here boyfriend is my boyfriend when i can't want to but he say on the drun
+
+Diversity: 1.0
+Generated Tweet: i liked tefing my boyfriend is a hay one everything for "wacnyim. i'f epteets hate but
+
+Diversity: 1.2
+Generated Tweet: i likeremi want to mis 1 tdeen4!!! now i doat ud  outsa somirs likf it speruntasites i
+
