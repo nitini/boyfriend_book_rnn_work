@@ -1,0 +1,3625 @@
+
+---------- Training Info: ---------- 
+
+Number of examples: 13824
+Length of examples: 75
+Character set size: 67
+Batch size: 256
+Number of epochs: 75
+Number of batches per epoch: 54
+Generated sentence length: 80
+Sentence Seeds: ['my', 'his', 'when']
+Diversities: [0.2, 0.5, 1.0, 1.2]
+
+---------- Any additional notes: ---------- 
+
+Unweighted Twitter data, semi-long sentence
+
+---------- All model information: ---------- 
+
+{
+  "class_name": "Sequential", 
+  "config": [
+    {
+      "class_name": "LSTM", 
+      "config": {
+        "U_regularizer": null, 
+        "W_regularizer": null, 
+        "activation": "tanh", 
+        "b_regularizer": null, 
+        "batch_input_shape": [
+          256, 
+          75, 
+          67
+        ], 
+        "consume_less": "cpu", 
+        "dropout_U": 0.0, 
+        "dropout_W": 0.0, 
+        "forget_bias_init": "one", 
+        "go_backwards": false, 
+        "init": "glorot_uniform", 
+        "inner_activation": "hard_sigmoid", 
+        "inner_init": "orthogonal", 
+        "input_dtype": "float32", 
+        "name": "lstm_1", 
+        "output_dim": 256, 
+        "return_sequences": true, 
+        "stateful": true, 
+        "trainable": true, 
+        "unroll": false
+      }
+    }, 
+    {
+      "class_name": "Dropout", 
+      "config": {
+        "name": "dropout_1", 
+        "p": 0.2, 
+        "trainable": true
+      }
+    }, 
+    {
+      "class_name": "LSTM", 
+      "config": {
+        "U_regularizer": null, 
+        "W_regularizer": null, 
+        "activation": "tanh", 
+        "b_regularizer": null, 
+        "batch_input_shape": [
+          256, 
+          75, 
+          256
+        ], 
+        "consume_less": "cpu", 
+        "dropout_U": 0.0, 
+        "dropout_W": 0.0, 
+        "forget_bias_init": "one", 
+        "go_backwards": false, 
+        "init": "glorot_uniform", 
+        "inner_activation": "hard_sigmoid", 
+        "inner_init": "orthogonal", 
+        "name": "lstm_2", 
+        "output_dim": 256, 
+        "return_sequences": true, 
+        "stateful": true, 
+        "trainable": true, 
+        "unroll": false
+      }
+    }, 
+    {
+      "class_name": "Dropout", 
+      "config": {
+        "name": "dropout_2", 
+        "p": 0.2, 
+        "trainable": true
+      }
+    }, 
+    {
+      "class_name": "LSTM", 
+      "config": {
+        "U_regularizer": null, 
+        "W_regularizer": null, 
+        "activation": "tanh", 
+        "b_regularizer": null, 
+        "batch_input_shape": [
+          256, 
+          75, 
+          256
+        ], 
+        "consume_less": "cpu", 
+        "dropout_U": 0.0, 
+        "dropout_W": 0.0, 
+        "forget_bias_init": "one", 
+        "go_backwards": false, 
+        "init": "glorot_uniform", 
+        "inner_activation": "hard_sigmoid", 
+        "inner_init": "orthogonal", 
+        "name": "lstm_3", 
+        "output_dim": 256, 
+        "return_sequences": true, 
+        "stateful": true, 
+        "trainable": true, 
+        "unroll": false
+      }
+    }, 
+    {
+      "class_name": "Dropout", 
+      "config": {
+        "name": "dropout_3", 
+        "p": 0.2, 
+        "trainable": true
+      }
+    }, 
+    {
+      "class_name": "TimeDistributed", 
+      "config": {
+        "layer": {
+          "class_name": "Dense", 
+          "config": {
+            "W_constraint": null, 
+            "W_regularizer": null, 
+            "activation": "linear", 
+            "activity_regularizer": null, 
+            "b_constraint": null, 
+            "b_regularizer": null, 
+            "bias": true, 
+            "init": "glorot_uniform", 
+            "input_dim": null, 
+            "name": "dense_1", 
+            "output_dim": 67, 
+            "trainable": true
+          }
+        }, 
+        "name": "timedistributed_1", 
+        "trainable": true
+      }
+    }, 
+    {
+      "class_name": "Activation", 
+      "config": {
+        "activation": "softmax", 
+        "name": "activation_1", 
+        "trainable": true
+      }
+    }
+  ], 
+  "keras_version": "1.0.4", 
+  "loss": "categorical_crossentropy", 
+  "optimizer": {
+    "epsilon": 1e-08, 
+    "lr": 0.0010000000474974513, 
+    "name": "RMSprop", 
+    "rho": 0.8999999761581421
+  }, 
+  "sample_weight_mode": null
+}
+
+---------- Epoch: 0 ---------- 
+
+Loss on first batch after epoch 0: 2.7909617424
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: my$"bao srh         i                                i      i                     
+
+Diversity: 0.5
+Generated Tweet: my% y&lxy rh hiny mi  eee enreehi  id  m ni h nen inn le e s rennihi    i ai  iy  
+
+Diversity: 1.0
+Generated Tweet: myqh#om+a"o8w qngeiihke tyeewodmr  mra eh embl'i d edodabfitidhdaee lmu1n knnsgyil
+
+Diversity: 1.2
+Generated Tweet: myfcld*y"'yyy.3tcn vyrsb iri'#nao  irdeiy i~fyrsgmm ignnn.aot?tliagiygy~heblf iwus
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his7a!n g eimo                e   o       e        o               t   e           
+
+Diversity: 0.5
+Generated Tweet: his,07vyb ot a rini         o ets o   yd y  ai d y et  e      ot  d t ei   teiay o 
+
+Diversity: 1.0
+Generated Tweet: his(s!6{{(a!d'yb oeiy hnsne yas ddd -h  iel y tnoiermrinryoopehaetaat moypaed vihr 
+
+Diversity: 1.2
+Generated Tweet: hisj&9af?t]wmik,e~so}  iolintetak  ewboy. ygdiywrykfealfedpdedgas kkkrlao  r bceror
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: whenniiii i   d     e          e                         i         o                
+
+Diversity: 0.5
+Generated Tweet: when4m.  urg  t et    eetrie y p   ot  ie   daaf et niw h yie  nsooa  i    k  sre n 
+
+Diversity: 1.0
+Generated Tweet: whengl73e? bsayren yos7m cyoiei  tnn  ehy ircnoifedy   eigr?orfrmiyrngut ~h0y fgutye
+
+Diversity: 1.2
+Generated Tweet: when dz vmhph}ot*=al aonmbpiybaeh'r aui eltofmnso h kee'urst  me r eondd heitimraoi 
+
+---------- Epoch: 1 ---------- 
+
+Loss on first batch after epoch 1: 2.49221253395
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myaoffrfiinnd   oooorrre   o yr ire    oo  fei   a    oor e e     fyrrr e   o a   
+
+Diversity: 0.5
+Generated Tweet: myp2ur ieii fouoft a mo  rrrf ie  abo  r rn i &h  oata yi  ymeoryebior  ioo    oba
+
+Diversity: 1.0
+Generated Tweet: my 4zgbfbiifn;mps m[ea pp yt chi'tcmikotob mtirrfnno e rae~~ ibrhiyoaarubeiae  s e
+
+Diversity: 1.2
+Generated Tweet: myjpwf"rribr cosfoo eta/    dtbroaeslswsgiiwiois( m~h ?moeiei udmr tpym3yyybwanrsn
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his oteo rri re   orrrre    oeri     ofo re   t    oyfrri  i   e    frre    oo  yr 
+
+Diversity: 0.5
+Generated Tweet: hisnfipowryb trffbrn d  aha    ubyir  ee bk vnt    ar iy yarrrn  r hkf  ie   o doe 
+
+Diversity: 1.0
+Generated Tweet: his-n"eei9tia aann ecrruyoltpfe   nhi  ba oufiie  bavye atnum.vd~plsaobfenh seitm  
+
+Diversity: 1.2
+Generated Tweet: his$w"uy/~m 1iw  orfrrennnent hcooela' 1csl 'ft ibrnoi  ietwotcl ioiie nyobbootyns'
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: when ne i yfyrrrirind  t   o oorree    o oyrr    fyf e e     nr    ofr e   a    e   
+
+Diversity: 0.5
+Generated Tweet: whent.nros onfrfeien  au y yifireid   otm et ears omytyo rfiien  io lsrg oar   a ey 
+
+Diversity: 1.0
+Generated Tweet: whenlmd'gn po frraiiddn  bs ihurtwiste? byietrmedma ~o  boafad nai  hh  ah yypyoiiie
+
+Diversity: 1.2
+Generated Tweet: whentt4i lbmhl rfomyyaatcupce fl erarer kyooatesso ucslid rekua ytivoaf opk y efootw
+
+---------- Epoch: 2 ---------- 
+
+Loss on first batch after epoch 2: 2.23566937447
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myyffyfiiendd ioe soode mo booffreen io io booyrrree to oo boyrrien ia ao m yoyoyr
+
+Diversity: 0.5
+Generated Tweet: myfxfofiiendd io myytoyofffeend iorth aomh boorrire ht s aaa ao oo syyhooye, bmyyy
+
+Diversity: 1.0
+Generated Tweet: mynpgysriyioe?ii ho oosdme rh alial ho au ien? teehm lhds hhn rke bultrbirflgrtg o
+
+Diversity: 1.2
+Generated Tweet: my'"iwoyhedam mvy hrtfmen~~liygmeya caesino yatmt~~~~~~~~~~~~~~~~ yaeroailnt.gnhti
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his sayyyyyffiiend io aoye toy mo boyfiie  ooy boyrrreed io ao oo mo boyfrriend io 
+
+Diversity: 0.5
+Generated Tweet: his'en riyy bfrfiind is boaee boo aoer oo oo oyyryfyirend th yy byyfiieed booke iyt
+
+Diversity: 1.0
+Generated Tweet: his cyhlf iiewe/ ooorrsapoiuwaraeyr oefm penhwlnteuy tyhwttneyaolla yeiay ba fwfrri
+
+Diversity: 1.2
+Generated Tweet: hisg~'slsku ee(ptim@rt~adhrhoarn~speowi o flohpyeeee'ov yhgearae moda stkmru(sgmytt
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: whene mooooyrrieed soa mo boyrriee io boyyrriee io boyyfrreen io booyrriee io aoe mo
+
+Diversity: 0.5
+Generated Tweet: when mi e aoyshtie ooy mort ie moht to poyrlty mo boyfrreen as coor aer wooh ooy lod
+
+Diversity: 1.0
+Generated Tweet: whenlijkomuen.s. bbyffrednna"slmw eo todeie ie formeen aoh notmmmg thbaoogt isn oaan
+
+Diversity: 1.2
+Generated Tweet: whenggo soyoyrrxerinowenbry 'rilinsydiptmt,omrrbinyjeoe l1lyoe!ip ainasrsecocs eybpa
+
+---------- Epoch: 3 ---------- 
+
+Loss on first batch after epoch 3: 2.00712180138
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myrbyyfiiend is to to ho t ae m te te m m boyfriend is to a m to boyfriend is to b
+
+Diversity: 0.5
+Generated Tweet: my-rbffiiend is is toa hot oo boe wo d boy boyrrinnd is hi la is me ho to aat i aa
+
+Diversity: 1.0
+Generated Tweet: my;ceum ayattbaek thkx mo bofueld~~~~~~~~~~~~~~~~~~  y ofmrred woo biyt onte m tog
+
+Diversity: 1.2
+Generated Tweet: myfprtseewdls ts merum yyv 1 sornalqrsct ahd hs ayr bok rynrei'dd ry mnkag, ylm ho
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: hisns toy yoyriend te to mo boyfriend is io ao to to m te boyfriend is boyfriend is
+
+Diversity: 0.5
+Generated Tweet: hisisll oyy boyfriend is lo coln s wo t lo cee ma ou t ae bof rien i s com tt is my
+
+Diversity: 1.0
+Generated Tweet: his)wnpataa uhge wetsigm ds to'd tylo ue vi wa do ind wa'e aos mo m ps @etprre ju a
+
+Diversity: 1.2
+Generated Tweet: hismis oooy tfii"d wye yfmrrent woppiyges e ashieg 4av cwan;he~~~~~~~~~~~~~~~~~~~~~
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: when toy boyfriend is ta to te to m to boyfriend is to mo boyfriend is io i mo boyfr
+
+Diversity: 0.5
+Generated Tweet: whenne ti aot boyfriend i's i do oy boyfriend as ho toe ly boyfriend ba tasi t to t 
+
+Diversity: 1.0
+Generated Tweet: whens eyhgyyblyiind we loerifhtntagc yoe bidusann rowrliks toer wont boyrmien ulpsle
+
+Diversity: 1.2
+Generated Tweet: whentu' hnml oohcwfrr renr dvtn~ fon th mlr boyfhiend mbtlhe icn mu gn de wntesn wll
+
+---------- Epoch: 4 ---------- 
+
+Loss on first batch after epoch 4: 1.85844373703
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myyrriiend is mo te the my boyfriend to mo to my boyfriend is to te my boyfriend i
+
+Diversity: 0.5
+Generated Tweet: myayyiriend as aa boyfriend to be hite wing my boyfriend is morerati tave anle wo 
+
+Diversity: 1.0
+Generated Tweet: myy'yoiiens iilr thha ver boyfriend is ulcoe tnretk o lend nsakooen ind wisd deos 
+
+Diversity: 1.2
+Generated Tweet: mysfiieed hulcttn jeet my boyfriend~*ungm milensecthidk ices ne eneshoicgyrrisnss 
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: hist hee to and wo my boyfriend is to te the to my boyfriend as tang my boyfriend i
+
+Diversity: 0.5
+Generated Tweet: histepa aivln boyfriend boyfriend is wont fy boyfriend is shlnnlt is to my boyfrien
+
+Diversity: 1.0
+Generated Tweet: hisk? iekoyh byyfriend goan" teus soxracfing.end cit iy arwyind reem u't seeerlmfer
+
+Diversity: 1.2
+Generated Tweet: hisslkharacyaul i trat wolmyory yyyrieny posdered sird stns tife lhret henmy joy;ai
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: when ti to my boyfriend is to and my boyfriend is to mo boyfriend is my boyfriend is
+
+Diversity: 0.5
+Generated Tweet: whenghyoyu byyfriend as wakh my boyfriend ille and ind mo boyfriend is and ai mo my 
+
+Diversity: 1.0
+Generated Tweet: whenotr sise wysar pultelwhalpehy bhyfriend tycsuxnd ofe'te she get lnkem'y mu cpfel
+
+Diversity: 1.2
+Generated Tweet: when1dhyursoolringba berwid 'hr &qe ppyl,sglis'mmy befffienm wasdpa gycoorlrhrete in
+
+---------- Epoch: 5 ---------- 
+
+Loss on first batch after epoch 5: 1.69861030579
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myyyrrieed is to to te my boyfriend is the the the the the to my boyfriend is my b
+
+Diversity: 0.5
+Generated Tweet: myyyfiiend me in i a wo d is my boyfriend is to sole my ane i han than i go o u wa
+
+Diversity: 1.0
+Generated Tweet: myyrriend jand pe hine abd tpac as wha tham a na d gatthos ant i have sp ped mu il
+
+Diversity: 1.2
+Generated Tweet: my~ cmhli ie sto fatkinc nheo bnete'cf siute8s genjem i hover d~ se wlet folabyoui
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his myy oot and my boyfriend is my boyfriend is the the want my boyfriend is i le w
+
+Diversity: 0.5
+Generated Tweet: hise say my boyfriend is le my boyfriend is phin is my boyfriend is the bos sate ho
+
+Diversity: 1.0
+Generated Tweet: hiseo yei dechel't nray so he me sone so af e to weine fowt bo shin rond o0the is c
+
+Diversity: 1.2
+Generated Tweet: hiswpmir. purcine mvepinge boum'mvehhbuno theb rimad  auke my my faen th hikr wwlme
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: whent i my boyfriend is my boyfriend is my boyfriend is the boyfriend is my boyfrien
+
+Diversity: 0.5
+Generated Tweet: when mee ane ta weep my my boyfriend as tand my boyfriend is whe he wand to an tant 
+
+Diversity: 1.0
+Generated Tweet: whenm yeobyue hkee to detoos't my epascs gikh th my boyfriend if to ire my beit wins
+
+Diversity: 1.2
+Generated Tweet: whena b0y toict tic amy~ hem hat se bo s[ere workit then i alp my boyfriend e'wtardh
+
+---------- Epoch: 6 ---------- 
+
+Loss on first batch after epoch 6: 1.59699392319
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myyfriiend is to but i want my boyfriend is boyfriend is my boyfriend is so me is 
+
+Diversity: 0.5
+Generated Tweet: my oro a oo out to boyfriend is boyfriend.~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Tweet: myyrnies tmy berdoe'ssarlid~~~~~~~~~~~~~~~~ ike cays myas hime is wikhd  eot boyfr
+
+Diversity: 1.2
+Generated Tweet: myeuisbvboyfrient me~~~~ my fry bon''s pve~~~~~~~~~~~~~~~~~~~~~~ luk my but boyfri
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: hiss ait the boyfriend is the boyfriend is so to so my boyfriend is i want my boyfr
+
+Diversity: 0.5
+Generated Tweet: his inad boyfriend but my boyfriend and some her mechans my boyfriend is and to boy
+
+Diversity: 1.0
+Generated Tweet: his0vrtady boyfried &cnthd pear loskarlu.'t bubper hevung i d(alk for fand aotias e
+
+Diversity: 1.2
+Generated Tweet: his?0 &oyo''t roanky :0, wotm-wally i sex condalmy busuwesd thwaskang my boyfriend~
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: whent the boyfriend is and i want my boyfriend is my boyfriend is the best and i wan
+
+Diversity: 0.5
+Generated Tweet: whenalt a be my boyfriend boyfriend and my boyfriend boyfriend is like and bus that 
+
+Diversity: 1.0
+Generated Tweet: wheneva allee folanoy mome boyfriend gand bonghi hets totig dhet me;k whing frien ip
+
+Diversity: 1.2
+Generated Tweet: when onnsatp patcing wrota porsgold watn gish.d guphe'rluke nag hizdme.~~~~~~~~~~~~~
+
+---------- Epoch: 7 ---------- 
+
+Loss on first batch after epoch 7: 1.48622906208
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myyfriiend is to me boyfriend is to be and a boyfriend is so to so so me and i wan
+
+Diversity: 0.5
+Generated Tweet: myroyi misg is out me saing ce for and you to so boyfriend is to mo i she and a bo
+
+Diversity: 1.0
+Generated Tweet: mysyimeosy boyfriend sriggutid eve soecarering a bus bace myaer you dnet i'mver ch
+
+Diversity: 1.2
+Generated Tweet: mys/ori wonejd fole fo to cape ake t? , y are lime ant as bame is tlirgen so  int 
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his taet my boyfriend is so so me so sute he so boyfriend is so me and i want to be
+
+Diversity: 0.5
+Generated Tweet: hiso ind my boyfriend is so make be to me to gerd to do so ge suting to faine my bo
+
+Diversity: 1.0
+Generated Tweet: hisvse geounh are juss mo my boyfriend so hit oikes to to wutl ?0 aive youure be qu
+
+Diversity: 1.2
+Generated Tweet: hist da muosess my boyfriend 9o and that lever kvets sneparns fno cadi kant u'n go 
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: when to my boyfriend is so but my boyfriend is so he so i want to be my boyfriend is
+
+Diversity: 0.5
+Generated Tweet: whend to e want my boyfriend to my boyfriend is to be him if the so in to u saen a b
+
+Diversity: 1.0
+Generated Tweet: when wait me boyfriend it like y exbure in bat broi gor mi.~~~~~~~ kanlly fare my bo
+
+Diversity: 1.2
+Generated Tweet: wheneet being , deole doe ,.lmidone abein ut tinh avor my boyfriend grsingcso her of
+
+---------- Epoch: 8 ---------- 
+
+Loss on first batch after epoch 8: 1.40920782089
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myfrrieend and i like the be and my boyfriend is so me i want to be and my boyfrie
+
+Diversity: 0.5
+Generated Tweet: myyufriend to we wan he cune the best be and my boyfriend is she best for me and m
+
+Diversity: 1.0
+Generated Tweet: my5i,s.'t tdilk wiming my boyfriend would~~~~~~~~~~~~~~~~~~~4~~~~~~~~~~~~~~~~~~~~ 
+
+Diversity: 1.2
+Generated Tweet: myu-tit nome naxpy th thisthoreron] "_eicicthat. th dount ever time him in jrok wa
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his aite my boyfriend is the best i want to he say i want to be my boyfriend is so 
+
+Diversity: 0.5
+Generated Tweet: his so en my boyfriend is gating to gat i want to sis is he like that the when i ha
+
+Diversity: 1.0
+Generated Tweet: hiss merir fuch my boyfriend keel me notins aw whit  ammontcreans my beet so qrome 
+
+Diversity: 1.2
+Generated Tweet: hiss(cweed ~ tone gon huve yle lhaw friengs)7? ralm is thy apsolsir. we'cubucly boy
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: when to my boyfriend is he so so me i want my boyfriend is so be my boyfriend is so 
+
+Diversity: 0.5
+Generated Tweet: when i want to my boyfriend is so see to me and i like a me if my boyfriend is she m
+
+Diversity: 1.0
+Generated Tweet: whente my boyfriend boyfriend"hd if here fror u boyfriend pore my boyfriend is so gr
+
+Diversity: 1.2
+Generated Tweet: when tou?~~~~~~~~~~~~~~~ wleres,, yun my boyfriend is like ghar cfle how and i can i
+
+---------- Epoch: 9 ---------- 
+
+Loss on first batch after epoch 9: 1.33977067471
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myyrriiend and to sall the want to be my boyfriend is so much and i want to be my 
+
+Diversity: 0.5
+Generated Tweet: myorri mand from me to all my boyfriend is i furling to core of my boyfriend is st
+
+Diversity: 1.0
+Generated Tweet: myfrrr laot ardd's boud me off a 14;. ond winter to here all all me to lello that 
+
+Diversity: 1.2
+Generated Tweet: myeri lneve all u fot 2%omeriwl so stmlbobuc. boez mmssnobxhad i dehh w olr woy c 
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his mand the boyfriend is so me and some the best best friend is so much and my boy
+
+Diversity: 0.5
+Generated Tweet: his told sute to my boyfriend is the best  oul star like stard and i want to see to
+
+Diversity: 1.0
+Generated Tweet: hisl oilee "ner she fian like a because my boyfriend is satelare abalinim~ cisterst
+
+Diversity: 1.2
+Generated Tweet: his,odwey wag teke the lore~~~~~~~~~~~~~~~~~~ heaw be coas weel~~~~~~~~~~~~~~~~~~'r
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: when to my boyfriend to be and me to be my boyfriend is so me the best friend is so 
+
+Diversity: 0.5
+Generated Tweet: when tome ather boyfriend is i love a boyfriend is so me to be my boyfriend is the c
+
+Diversity: 1.0
+Generated Tweet: when i out but my boyfriend and ave i me on and at ant hare a datseinh haring noe i 
+
+Diversity: 1.2
+Generated Tweet: whenot my soperreas but .lm pather fallibfunting to sas a ut mmf aso"'z ofli tark an
+
+---------- Epoch: 10 ---------- 
+
+Loss on first batch after epoch 10: 1.29332876205
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myour mom and i want my boyfriend is so much a boyfriend is so so be my boyfriend 
+
+Diversity: 0.5
+Generated Tweet: myefr ommy boyfriend is and i get a boyfriend is gut when my boyfriend is so i wan
+
+Diversity: 1.0
+Generated Tweet: my/booffriand to me thenet to boyfriend te, yoourero meal. i his want and whith i 
+
+Diversity: 1.2
+Generated Tweet: myaarmedbylmaing my? bacau're annsohep my boyfriend seets this ymu"tun~~~~~~~~~~~~
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend is so so me for me i want my boyfriend is so be and i want my boyf
+
+Diversity: 0.5
+Generated Tweet: his is be any how don't the would for when my boyfriend is the best friend i want t
+
+Diversity: 1.0
+Generated Tweet: hispaayin and boyfriend beas me to enhow fhor he about my noos i'm never and withha
+
+Diversity: 1.2
+Generated Tweet: hisa onaype for ha wrobot really br 5n7day! &amp; makeshinjing mradeagti con nhowe 
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: when my boyfriend is so so me and i want to be my boyfriend is so i want to be my bo
+
+Diversity: 0.5
+Generated Tweet: when to see my boyfriend is the best do and really with my boyfriend is a seep come 
+
+Diversity: 1.0
+Generated Tweet: when ate to om :)~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ i all just wwanie ane 
+
+Diversity: 1.2
+Generated Tweet: whenry sotay boyfriend to pliene me~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ with my boyf
+
+---------- Epoch: 11 ---------- 
+
+Loss on first batch after epoch 11: 1.24487435818
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myyur is boyfriend to be my boyfriend to get a boyfriend to me to call me and i wa
+
+Diversity: 0.5
+Generated Tweet: myu tould me with my boyfriend is so get and i can't want to have a see my mom one
+
+Diversity: 1.0
+Generated Tweet: my c ostep the sunli want my boyfriend goen and i don't tane one moking he just we
+
+Diversity: 1.2
+Generated Tweet: myuosh pewas for y!! her~~~~~~~~~~~~~~~~~~~ s ilo is pudcume and i nied thea twild
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend to be my boyfriend is a boyfriend to be my boyfriend to be my boyf
+
+Diversity: 0.5
+Generated Tweet: his out i gon't want my boyfriend to be a boyfriend but he is my boyfriend is the w
+
+Diversity: 1.0
+Generated Tweet: hisget sick a i was so almaly to ouh out that my boyfriend is me~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Tweet: his/@'belo&lwrys not to me ifu! love $? beaash's hangnatser. leam enot hif getserc 
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: when to he is my boyfriend to he want to be my boyfriend to be my boyfriend to see m
+
+Diversity: 0.5
+Generated Tweet: when out my boyfriend is like the got i have a be as my for like me that i want my b
+
+Diversity: 1.0
+Generated Tweet: when my boyf i hand out not un the ded i always how my boyfriend the cay you is whot
+
+Diversity: 1.2
+Generated Tweet: when arboyfriend rasting "?~~~~~~~~~~ uck 93py. :5 it ges ucllated my bayfriend soo 
+
+---------- Epoch: 12 ---------- 
+
+Loss on first batch after epoch 12: 1.20786249638
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myfrrieend to be my boyfriend to be my boyfriend is the best friend and i want to 
+
+Diversity: 0.5
+Generated Tweet: my oorfriend to be my boyfriend and i'm going and my boyfriend is to are and my bo
+
+Diversity: 1.0
+Generated Tweet: my  aitt fe~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ hex is he kreads for i was home ti
+
+Diversity: 1.2
+Generated Tweet: myx/hi fatimery girtcing that i smear, 2 jeess kamy mm is my or that uncannver &am
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend to be my boyfriend to be my boyfriend to be my boyfriend and i wan
+
+Diversity: 0.5
+Generated Tweet: his man i want my boyfriend to be couse and the when i need to get me and my boyfri
+
+Diversity: 1.0
+Generated Tweet: his fai said to be i need a hislre-ally me&that the whan te have a going to swa bi 
+
+Diversity: 1.2
+Generated Tweet: his~~ pupsing alloled at my boyfriend~~~~ his now the other i ameount i can to be m
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: when my boyfriend to see my boyfriend to be my boyfriend to be my boyfriend is a boy
+
+Diversity: 0.5
+Generated Tweet: when the boyfriend but he want to biggt to me in the boyfriend for and i want my boy
+
+Diversity: 1.0
+Generated Tweet: when'n my boyfriend do make ad hay not me this say ksomy boyfriend is my bestfrriend
+
+Diversity: 1.2
+Generated Tweet: whent my boyfriend a titerig&t me i so, in to rave~~ "te~~~~~~~~~~~~~~~~~~~~ my boyf
+
+---------- Epoch: 13 ---------- 
+
+Loss on first batch after epoch 13: 1.18201434612
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myfrrieend is so much and i love him i want to see my boyfriend is so because i wa
+
+Diversity: 0.5
+Generated Tweet: myfriiend is the best because i can't like a strean i ster him so much my boyfrien
+
+Diversity: 1.0
+Generated Tweet: myy. hthe breaks i'm richsn't want a boyfriend but ill be has amy bart work~~~~~~~
+
+Diversity: 1.2
+Generated Tweet: myudti like yyur flulode dou't like your gets hid the moth like a new/brodes:?? if
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his been my boyfriend is so much a be a best friend is a little starting and i want
+
+Diversity: 0.5
+Generated Tweet: his amy boyfriend is so he see my girlfriends because i like the best friend is a b
+
+Diversity: 1.0
+Generated Tweet: hiswwhen i need a boyfriend? chones tmestillion got to prentimes when my friend is 
+
+Diversity: 1.2
+Generated Tweet: his. amcrimuse and boyfriend is to youncutiot curid it's lifeo is sisting it's guy 
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: when my boyfriend is so fucking on my boyfriend is so such a best friend is a best f
+
+Diversity: 0.5
+Generated Tweet: when ha pont the see my boyfriend is so much don't say i like a with my boyfriend is
+
+Diversity: 1.0
+Generated Tweet: when my boyfriend (very is plicking ame the assumen swafil men having such~~~~~~~~~~
+
+Diversity: 1.2
+Generated Tweet: whenagely sacknongereralless (iske tong your sweess? i lill want my boyfriend like r
+
+---------- Epoch: 14 ---------- 
+
+Loss on first batch after epoch 14: 1.15409564972
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: my ooffriend is so cute i love him to be my boyfriend is so much and i want my boy
+
+Diversity: 0.5
+Generated Tweet: myfrrieed is a boyfriend but i'm so she called me and i see my boyfriend is a says
+
+Diversity: 1.0
+Generated Tweet: my souts boyfriend is hatengepu time tadiongon toder.~~~~~~~~~~~~~~~~~~ ad him som
+
+Diversity: 1.2
+Generated Tweet: mye7 momwgorved to apleap guys boyfriend bcilters'l have you a muy~~~~~~~~~~~~~~~~
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend is so guys i want to be my boyfriend is so cute i can see my boyfr
+
+Diversity: 0.5
+Generated Tweet: his alating of my boyfriend would be asked to get about my boyfriend is so best fri
+
+Diversity: 1.0
+Generated Tweet: his4  uckes, ws do my boyfriend makes the twantk on the expo.i want jut would like 
+
+Diversity: 1.2
+Generated Tweet: hisjboyyroindics sitcf,ic on a 416.y,(.?''me had to eo my boyfriend is nayp thele ~
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: when i love my boyfriend is a so much a be my boyfriend is always and i want to be m
+
+Diversity: 0.5
+Generated Tweet: when i can see my boyfriend is cute on such a boyfriend is so not so i want my boyfr
+
+Diversity: 1.0
+Generated Tweet: whenteet with my paromahe and de, i just wantad i wanted a boyfriend is but he gays 
+
+Diversity: 1.2
+Generated Tweet: when? "yleamy boyfriend is purne",~~~~~~~~~~~~~~~~~~~ is lady i can mea with my boyf
+
+---------- Epoch: 15 ---------- 
+
+Loss on first batch after epoch 15: 1.12850928307
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myfrrieend to get me to be my boyfriend is so much and i want my boyfriend to be t
+
+Diversity: 0.5
+Generated Tweet: myfrrieend to be a can i get him to come my boyfriend is all the most of picking m
+
+Diversity: 1.0
+Generated Tweet: my gfathole my feel &amp; my boyfriend feels light than because lettoray for movie
+
+Diversity: 1.2
+Generated Tweet: my foyg to 1'gee. for my boyfriend.~~~~~~~~~~~~~ it 't so such a boyfriend is thar
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend is a come to me and i love him so i can't want to be my boyfriend 
+
+Diversity: 0.5
+Generated Tweet: hiss out boyfriend but he is so i need a best friend and i people kissed to very bo
+
+Diversity: 1.0
+Generated Tweet: his~ will kidso because i'm so she looking about my kindaes so gosto baby  abou ?? 
+
+Diversity: 1.2
+Generated Tweet: his'ging  amazie and upice (cuteetsiam other play lr friends telly!zbipl that wasch
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: when my boyfriend is a person to go to my boyfriend is so much and i have a boyfrien
+
+Diversity: 0.5
+Generated Tweet: when the boyfriend like the only boyfriend is a girl looking all i got a boyfriend w
+
+Diversity: 1.0
+Generated Tweet: whenates to why doesn't look all at love tagh man i all the because my boyfriend rel
+
+Diversity: 1.2
+Generated Tweet: whent besoug at with my faco on my boyfriend and me sauthnat. xas, ww't ceungl *~~~~
+
+---------- Epoch: 16 ---------- 
+
+Loss on first batch after epoch 16: 1.10784113407
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myfrrieend to be my boyfriend is so much and i want to be my boyfriend to be my bo
+
+Diversity: 0.5
+Generated Tweet: my boyfriend is so coming and i need to be a come here so much and i got for a bes
+
+Diversity: 1.0
+Generated Tweet: my booyfriend and he talking me pni just line the hargy posteet, -pi's a sexo read
+
+Diversity: 1.2
+Generated Tweet: my7 -boyfriend going to him not aldomices inmaprion is going telling with come act
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend is the best friend is the best friend is the best friend is so muc
+
+Diversity: 0.5
+Generated Tweet: his my boyfriend but he all the such a boyfriend and out he asked of come home and 
+
+Diversity: 1.0
+Generated Tweet: his, on chen an on mas i can't untile up i got hopesited and i sus my boyfriend in 
+
+Diversity: 1.2
+Generated Tweet: hiso ronlastane.non that late haring ay and padel so mu hersenedes, my boyfriend de
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: when my boyfriend is so cute the best friend is my best friend and i want to be my b
+
+Diversity: 0.5
+Generated Tweet: when my boyfriend to start the should that my boyfriend is so family night someone p
+
+Diversity: 1.0
+Generated Tweet: whenabeath it :a want a sipp be at her boyfriend for me~~~~~~~~~~~~~~~~ are my boyfr
+
+Diversity: 1.2
+Generated Tweet: when me hatend me with my rom  uncf. i'm go lore, comple teating holoviced-your boyf
+
+---------- Epoch: 17 ---------- 
+
+Loss on first batch after epoch 17: 1.09700942039
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myfrriend to be a best friend and i love him to me and i want to be my boyfriend a
+
+Diversity: 0.5
+Generated Tweet: myfri is the best friend is the boyfriend like when i don't want my boyfriend to m
+
+Diversity: 1.0
+Generated Tweet: mys boyfriend. i miss my boyfriend - &amp; i have the come everydome well and bden
+
+Diversity: 1.2
+Generated Tweet: myd'rmommambew soaz. im is's 2 w the bess of my boopser birthday. my mouse jlidich
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend and i want to be to be my boyfriend and i want to be a boyfriend a
+
+Diversity: 0.5
+Generated Tweet: hishe my boyfriend who good to have to come back and i'm don't take it no man but t
+
+Diversity: 1.0
+Generated Tweet: his'aspry fatter tham you clueping wob i don't be my boyfriend in? cellesta picture
+
+Diversity: 1.2
+Generated Tweet: hishe fast, the onger back, veroneblade for mun! up a f indepur of my twig. &amp; l
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: when my boyfriend is so cute i want to be a boyfriend to be my boyfriend and i'm so 
+
+Diversity: 0.5
+Generated Tweet: when my boyfriend to make me and i am so when he seess and i want my boyfriend to be
+
+Diversity: 1.0
+Generated Tweet: when i can seeing my dad boyfriend treats i need to hearly and my life, going~~~~~~~
+
+Diversity: 1.2
+Generated Tweet: whenthe weer not~~~~ neaprusi stil, got make up b un boysn my radsing up wowle.~~~~~
+
+---------- Epoch: 18 ---------- 
+
+Loss on first batch after epoch 18: 1.08052277565
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myorr omom is so such a boyfriend is so so i can't be my boyfriend is the best thi
+
+Diversity: 0.5
+Generated Tweet: myfr ies the hot to me when i want to do wame that i don't want my boyfriend to be
+
+Diversity: 1.0
+Generated Tweet: my'wisted is my boyfriend/over but my sisse.?all my boyfriend is a fucking litela 
+
+Diversity: 1.2
+Generated Tweet: my'free fiphawing that madilep that just to someone lady stuck bit you don't thire
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend is so fucking how my boyfriend is so fucking but i have a boyfrien
+
+Diversity: 0.5
+Generated Tweet: his my boyfriend is really says i want my boyfriend to go to me that i hate when my
+
+Diversity: 1.0
+Generated Tweet: hismy boyfriend fines me funi lookly anyone come so much~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Tweet: his ujust up &a)p at man if you" boyfriend~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ you/ did my
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: when my boyfriend is so much and i want to be my boyfriend is the best friend is a b
+
+Diversity: 0.5
+Generated Tweet: when i feel like the world the boyfriend and some is so such a boyfriend, but i can'
+
+Diversity: 1.0
+Generated Tweet: when we later my boyfriend's boyfriend feel like thh e ento pronter cause me i love 
+
+Diversity: 1.2
+Generated Tweet: whenaver he he's my boyfriend trips and this is hid~"yen ;~~~~~~~~~~~~~ oaningem'p a
+
+---------- Epoch: 19 ---------- 
+
+Loss on first batch after epoch 19: 1.06212294102
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myfri love him to me and my boyfriend is so cute i hate when my boyfriend to be my
+
+Diversity: 0.5
+Generated Tweet: myf orom not go to the drand is the best friend~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Tweet: myen boyfriend's birthd snopping~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ hate 
+
+Diversity: 1.2
+Generated Tweet: my, bight els us che my boyfriend and the regaite! and so w much~~~~~~~~~~~~ lol~~
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend is so cute i love him so much~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 0.5
+Generated Tweet: his my boyfriend is a mad to i have a boyfriend and he said this is my boyfriend is
+
+Diversity: 1.0
+Generated Tweet: his ne yelicafil and my boyfriend doesn't talk to~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Tweet: his gutting used that my boyfriend is hole dag like." !~~~~~ is picn heale that nig
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: when my boyfriend is so cute i want to be my boyfriend to be my boyfriend is a broth
+
+Diversity: 0.5
+Generated Tweet: when i say i want my boyfriend to be talking out him so much~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Tweet: when my boyfriend~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ insti just want my boyfriend to peas
+
+Diversity: 1.2
+Generated Tweet: when wokry like why gomby is around nod onhers  wo?fi even!vel tbing my. uni.~~~~~~~
+
+---------- Epoch: 20 ---------- 
+
+Loss on first batch after epoch 20: 1.05703163147
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: my boyfriend is so cute i love him to be my boyfriend is so cute i love him so muc
+
+Diversity: 0.5
+Generated Tweet: my, boyfriend is like a send to drow but he is my boyfriend is so pretty more than
+
+Diversity: 1.0
+Generated Tweet: myufbere tosnot her boyfriend is very out back~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Tweet: myofrrife rains cutering be like 2 5? now, just as ainchy anyone in there hangjust
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend is so cute i see my boyfriend is so much and i want to be my boyfr
+
+Diversity: 0.5
+Generated Tweet: his my boyfriend is here i can't be a week and i love him so much i need a boyfrien
+
+Diversity: 1.0
+Generated Tweet: his my boyfriend ain't trie in no got~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Tweet: his, my boyfriend is snay been like ake)  ull~~~~~~~~ atter batcle tonight ovely br
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: when my boyfriend is the best thing i want to be my boyfriend to be a best friend to
+
+Diversity: 0.5
+Generated Tweet: when i want my boyfriend to be my boyfriend to be my cause i have the best friend is
+
+Diversity: 1.0
+Generated Tweet: when leam so have pic knows ofs having a boyfriend~~~~~~~~~~~~~~~~~~~~~~~ like that 
+
+Diversity: 1.2
+Generated Tweet: wheny my boyfriend text she eaking me vough, i do like that my boyfriend boes letis 
+
+---------- Epoch: 21 ---------- 
+
+Loss on first batch after epoch 21: 1.04252564907
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myfriend is so cute i want to be my boyfriend to be my boyfriend is so fucking bec
+
+Diversity: 0.5
+Generated Tweet: myffriend is best friend and i can't be something in the best friend is the best f
+
+Diversity: 1.0
+Generated Tweet: myov" told me right now~~~~~~~~~~~ /napdy tiget kind my sister makes me al abstiti
+
+Diversity: 1.2
+Generated Tweet: mya moor boyfriend frother than i sech shear founch only everyour igvotible than m
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend is so cute i love him so much~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 0.5
+Generated Tweet: his amy boyfriend is so complised to the most and i have a boyfriend to me in the c
+
+Diversity: 1.0
+Generated Tweet: his my boyfriend  is gaingt is was me, that i text you 90 ?1?~~~~~~~~~~~~~~~~~~~~~ 
+
+Diversity: 1.2
+Generated Tweet: his t is cute and but so longs need togs mughlave?" i jni've goes monevea patho p e
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: when i want to be my boyfriend to be my boyfriend and i want to be my boyfriend is s
+
+Diversity: 0.5
+Generated Tweet: wheni showed is my boyfriend is gonna be be like a bad like a strangh my boyfriend i
+
+Diversity: 1.0
+Generated Tweet: whenight. be the best breaking romy boyfriend doesan sees curders per missing pances
+
+Diversity: 1.2
+Generated Tweet: whenarcle telling on t girlfriend. this my lonelies.. i need to have a new boyfriend
+
+---------- Epoch: 22 ---------- 
+
+Loss on first batch after epoch 22: 1.02887845039
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myfri hand my boyfriend to be a bad i love him so much~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 0.5
+Generated Tweet: my boyffiend is so fucking best friend and a be so much and i want my boyfriend to
+
+Diversity: 1.0
+Generated Tweet: myf'i like wearing a boyfriend randan &amp; we going to imaging my dad~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Tweet: myof ? boyfriend that, girlfriend.? he dealled. my baught i'm so cute rn~~~~~~~~~~
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend is a pretty since i want to be a boyfriend to be my boyfriend and 
+
+Diversity: 0.5
+Generated Tweet: his my boyfriend but it's so watching a brother when i start a baby to him to be hi
+
+Diversity: 1.0
+Generated Tweet: his be my boyfriend so he can't get me seill still not like how can sep me  af a bh
+
+Diversity: 1.2
+Generated Tweet: hisahd. all naroha heartinally mall i @uinci on absoods beferatoing its we'r untein
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: whenever the best boyfriend is so cute i want to be a boyfriend and i want to be my 
+
+Diversity: 0.5
+Generated Tweet: when your boyfriend is gonna be a family thing i can't he know~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Tweet: when hu wann hull i want my boyfriend to spaper every with me because i have  ex boy
+
+Diversity: 1.2
+Generated Tweet: whenak pracgite sometly so my boyfriend is the best threaten with the pictures kince
+
+---------- Epoch: 23 ---------- 
+
+Loss on first batch after epoch 23: 1.02143108845
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: my boyfriend is so fucking and i'm trying to be a boyfriend and i want to be my bo
+
+Diversity: 0.5
+Generated Tweet: myfriend is a being and was like a love off a with me and see me and i don't want 
+
+Diversity: 1.0
+Generated Tweet: myr-remanticas on what i got but me and  nice to litelahanyooa smh; talking to my 
+
+Diversity: 1.2
+Generated Tweet: my, boyfriend can't believe! wittoun slacks w me~~~~~~~~~~~~~~~~~~ speition but my
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend is a beautiful with me and i want to be my boyfriend and i say i w
+
+Diversity: 0.5
+Generated Tweet: his my boyfriend good but i can't come to get my boyfriend but hi had a boyfriend l
+
+Diversity: 1.0
+Generated Tweet: his. nothing boy samer'plassep boyfriend, everything i don't who can crazy it want 
+
+Diversity: 1.2
+Generated Tweet: hissiuguarydef, hate!. hahada k my bestfriend~~~~~ hamas times i post ask &amp; my 
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: when my boyfriend is so fucking being a boyfriend to be a boyfriend and i want to be
+
+Diversity: 0.5
+Generated Tweet: whengeving my boyfriend i love him~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ is my boyfrien
+
+Diversity: 1.0
+Generated Tweet: whenights'sist uking on my ex boyfriend are from me lover , i miss like t aspir i fa
+
+Diversity: 1.2
+Generated Tweet: whenerely, y hais -nig1cide nice litch*) want to 2skect my es boyfriend a proforesti
+
+---------- Epoch: 24 ---------- 
+
+Loss on first batch after epoch 24: 1.01574397087
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: my boyfriend is so cute i love him so much~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 0.5
+Generated Tweet: myfriend is my boyfriend and i have a boyfriend i don't need a boyfriend to see my
+
+Diversity: 1.0
+Generated Tweet: myfri hate my boyfriend whites me~~~~~~~~~~~~~~~~~~~~~~ i am~"you and tells my boy
+
+Diversity: 1.2
+Generated Tweet: myyt my boyfriend is picking."awh is so not getting gadxy,!~~ her 15 bhan, on i ha
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend and i want to be my boyfriend and i want to be my boyfriend to be 
+
+Diversity: 0.5
+Generated Tweet: his my boyfriend is so cute i want to be my boyfriend to see my boyfriend but my bo
+
+Diversity: 1.0
+Generated Tweet: his grips, it just need my boyfriend or boyfriend but u, "im and a girlfriend like 
+
+Diversity: 1.2
+Generated Tweet: his my mother spec bc i cread beleams my face alrep up damn  ruses into ballass me:
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: when my boyfriend is so cute i want to be a boyfriend and i want to be my boyfriend 
+
+Diversity: 0.5
+Generated Tweet: when my boyfriend is so cute i need to take me to talk to my boyfriend is so cute wh
+
+Diversity: 1.0
+Generated Tweet: wheny agos it wonts someone to thank a boyfriend~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ lokes 
+
+Diversity: 1.2
+Generated Tweet: whene seever you caltermy~~~~~~~~~~~~~~~ one when my lois.ittion to my boyfriend tha
+
+---------- Epoch: 25 ---------- 
+
+Loss on first batch after epoch 25: 1.00639140606
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myfriend is a perfect with my boyfriend is so beautiful to me if i have a boyfrien
+
+Diversity: 0.5
+Generated Tweet: myoffriend is like a propeble to do i love him~~~~~~~~~~~~~~~~~~~~~~~ someone to b
+
+Diversity: 1.0
+Generated Tweet: my mom only life is a ome lol look at my boyfriend blessed to  cry too the way i c
+
+Diversity: 1.2
+Generated Tweet: my'day boyfriend and i don't want to like yous facebillerone ,one yag for a niggal
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend to go to the fact that my boyfriend is so cute i want to be like a
+
+Diversity: 0.5
+Generated Tweet: his the boyfriend needs to be my sister and i'm always to be in the best friend wit
+
+Diversity: 1.0
+Generated Tweet: his my boyfriend.  but i hate when my boyfriend really like i don't slead you so so
+
+Diversity: 1.2
+Generated Tweet: his when i'm prea friends/boysond party &amp; take baby paeds listing a to your nee
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: when my boyfriend is so cute i want to be my boyfriend to be a cool with my boyfrien
+
+Diversity: 0.5
+Generated Tweet: when my boyfriend is my best friend i like to do anything my boyfriend is the best t
+
+Diversity: 1.0
+Generated Tweet: wheni'm gono when i'm weird, my cheng that i was not my boyfriend also my mom sxict 
+
+Diversity: 1.2
+Generated Tweet: whenigg,. yun happy.i'f i feelmy time.~~~~~~~~~~~~~~~~~ it finding off is the celfin
+
+---------- Epoch: 26 ---------- 
+
+Loss on first batch after epoch 26: 0.996698617935
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myfriend is so fucking best friend is my best friend and i don't want to be my boy
+
+Diversity: 0.5
+Generated Tweet: my boyfriend is the best thing i love him so much~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ is
+
+Diversity: 1.0
+Generated Tweet: myyyoy'f ngot &amp; my mom has boyfriend"i want him, like to get off word for the 
+
+Diversity: 1.2
+Generated Tweet: myo'lmol earboy like ei doent! i'm the sorry for one sbomy boyfriend buen brijklys
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend is so cute i love him so much~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 0.5
+Generated Tweet: his boyfriend like he was like a shit but i love him to get him but my boyfriend is
+
+Diversity: 1.0
+Generated Tweet: his my boyfriend. what he look at your boyfriend, my ex boyfriend literally doesnt 
+
+Diversity: 1.2
+Generated Tweet: hiss my boyfriend is spaiten?~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ i can't lik
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: when my boyfriend is so cute and i want to be too playing and i want to be my boyfri
+
+Diversity: 0.5
+Generated Tweet: when the fuck your boyfriend and i want to be with my boyfriend and i love him~~~~~~
+
+Diversity: 1.0
+Generated Tweet: wheny sever i'm so bather purped as wever car face more my mom el &amp; all i say bu
+
+Diversity: 1.2
+Generated Tweet: whenore being having a boyfriend, going to go stop fucking dstui swiit menicaline, t
+
+---------- Epoch: 27 ---------- 
+
+Loss on first batch after epoch 27: 0.992243230343
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: my boyfriend is so cute i want to be a boyfriend i want to be my boyfriend and i w
+
+Diversity: 0.5
+Generated Tweet: myoy'friend is at his family and i'm being fucking so sonit ass because i have a b
+
+Diversity: 1.0
+Generated Tweet: my' stolds birthday , :(~~~~~~~~~~~~~~~~~ shouts my future babymo:~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Tweet: my, trapking, not now you~~ sleepon? i'm a boyfriendrowhat i'mfound me~~~~~~~~~~~~
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend is a father and i want to be my boyfriend and i can say i want to 
+
+Diversity: 0.5
+Generated Tweet: his cause i can't be my boyfriend and he actually asks me when he can talk to me to
+
+Diversity: 1.0
+Generated Tweet: his more face boyfriend or !!!0!!!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~ now yea my things i
+
+Diversity: 1.2
+Generated Tweet: his. its so chueding, rureding my boyfriend how like "i looked.~~~~~~~~~~~~~~~~~~~~
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: when my boyfriend is the best thing to me and i want to be my boyfriend is so fuckin
+
+Diversity: 0.5
+Generated Tweet: when't to prowe and my boyfriend is a problem to a girlfriend and i'm literally the 
+
+Diversity: 1.0
+Generated Tweet: whenmy boyfriend is snoring at me off his and he gets out with him morent boyfriend 
+
+Diversity: 1.2
+Generated Tweet: whenmy boyfriend doesnt~~~~~~~~~~~~~~~~~~~~~~~ like, lma9 @your boyfriend is conom h
+
+---------- Epoch: 28 ---------- 
+
+Loss on first batch after epoch 28: 0.985883831978
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: my boyfriend is so cute i want to be my boyfriend to be my best friend is so cute 
+
+Diversity: 0.5
+Generated Tweet: myfri need to be like we go to make me and my boyfriend is so good to all of my bo
+
+Diversity: 1.0
+Generated Tweet: myou little sister is dadnnbit dating enorgi flirt when i give him my boyfriend th
+
+Diversity: 1.2
+Generated Tweet: my~ 17: i casn't a 17k boyfriend~~~~~~~~~~~~~~~~~~~~~~~~~~~ that's whes did my boy
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend is so fucking handsome i want to be my boyfriend to be my best fri
+
+Diversity: 0.5
+Generated Tweet: his i want my boyfriend to tell me i love him so much~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Tweet: his siguat i wanna go bo your boyfriend and i'm happes &amp; c i need wi was prayin
+
+Diversity: 1.2
+Generated Tweet: hist i'm gonna go to baddy"fli.n"~~ ti love your boyfriend wime movni would be a we
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: when i want to be my boyfriend and i want to be my boyfriend to be my best friend an
+
+Diversity: 0.5
+Generated Tweet: whenever the boyfriend is so fucking literally my best friend is like a dream for my
+
+Diversity: 1.0
+Generated Tweet: wheneed" like. yall yok being all not "i have my boyfriend and was cutes then i real
+
+Diversity: 1.2
+Generated Tweet: when e last with the boyfriend because he just computto your b oraday!!~~~ this is .
+
+---------- Epoch: 29 ---------- 
+
+Loss on first batch after epoch 29: 0.978835880756
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myfriend is a best friend and i want to be my boyfriend to be a boyfriend i love h
+
+Diversity: 0.5
+Generated Tweet: myfriend is my bestfriend and i'm at the come to the perfect more with me and stil
+
+Diversity: 1.0
+Generated Tweet: myfri keet me and trying to find out with me rn that no out my least and i'm st an
+
+Diversity: 1.2
+Generated Tweet: myou! porty because alike imnershat just looks me into the watch i'm faur greaking
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend is my bestfriend and i want to go to the best boyfriend to be my b
+
+Diversity: 0.5
+Generated Tweet: his my boyfriend to have a probably the fucking boyfriend is a pretty sucks so i ca
+
+Diversity: 1.0
+Generated Tweet: his my boyfriend one in tacknol to like when my can get honestly call this is why i
+
+Diversity: 1.2
+Generated Tweet: his my cousins day would~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ stayi love it~~~~~~~~~~~
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: when my boyfriend is so cute i want to be my boyfriend to see me to be my boyfriend 
+
+Diversity: 0.5
+Generated Tweet: whene only one with my boyfriend is so fucking cute and i have a boyfriend but i lov
+
+Diversity: 1.0
+Generated Tweet: whenymy boyfriend is such a "lol an auckia ! and it's even is gonna dickever cute. a
+
+Diversity: 1.2
+Generated Tweet: whenither is just le pictures of harding wwere i blaok with the weekend is my boyfri
+
+---------- Epoch: 30 ---------- 
+
+Loss on first batch after epoch 30: 0.969017386436
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myfriend is so fucking cute i can't be the best boyfriend is so cute i want to be 
+
+Diversity: 0.5
+Generated Tweet: myfriend is so cute and i don't want to be too probertantion to my boyfriend so mu
+
+Diversity: 1.0
+Generated Tweet: myer'rsex literally here from like how a guy and stop time a pilzed side i'd like 
+
+Diversity: 1.2
+Generated Tweet: myoys dh i'm gonna follow me next do make: my boyfriend's hert~~~~~~~~~~~~~~~~~~~~
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend is the best thing that i want to be my boyfriend and i have a boyf
+
+Diversity: 0.5
+Generated Tweet: his my boyfriend and my bestfriend and i want to come for me~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Tweet: his fissing since i wanna shower you and my boyfriend everything you derent with my
+
+Diversity: 1.2
+Generated Tweet: his8 my bff i look at m so he trying about your boyfriend out. makeon.~~~~~~~~~~~~~
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: whenever my boyfriend is so cute i'm so cute i want to be my boyfriend and i want to
+
+Diversity: 0.5
+Generated Tweet: whenever my boyfriend try to have a bad to see him~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Tweet: whenighas i want my boyfriend to go go a can for daper but pore who ig my herea that
+
+Diversity: 1.2
+Generated Tweet: when ex boyfriend says the !can or skins kelin thi ?~~~~~~~~~~~~~~~~ i want my boyfr
+
+---------- Epoch: 31 ---------- 
+
+Loss on first batch after epoch 31: 0.96590167284
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myfriend is so fucking cute i want my boyfriend to be my bestfriend and i want to 
+
+Diversity: 0.5
+Generated Tweet: myfriend was like "my boyfriend wants to take me to me and he need to take a boyfr
+
+Diversity: 1.0
+Generated Tweet: myoffg y lefe asmy boyfriend is romestald.~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Tweet: mybriles to say i'm attcanit, plany.~~~~~~~~~~~ ur today i hate saying i feel lmfa
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend is so cute i can't be like a problem i love him so much~~~~~~~~~~~
+
+Diversity: 0.5
+Generated Tweet: his my boyfriend is so cute i want to see my boyfriend in the should shit~~~~~~~~~~
+
+Diversity: 1.0
+Generated Tweet: his my boyfriend. send my concerned makeup 4 :)~~~~~~~~~~~~~~~~~~~~~~~ always care 
+
+Diversity: 1.2
+Generated Tweet: his i? i pus you for my father is singo dae, make u myso ulsomate "he stabs and att
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: whenever my boyfriend is so cute i want to be my boyfriend and i don't want to be a 
+
+Diversity: 0.5
+Generated Tweet: whenever my boyfriend is to be a story good to me to be me and i can talk to him to 
+
+Diversity: 1.0
+Generated Tweet: when i have a boyfriend" dumin xside?". e6 7) ! wreak until i'm not in a druck~~~~~~
+
+Diversity: 1.2
+Generated Tweet: wheney gelag. "they pook sucks jeally. the life.~~~~~~~~~ who i till just do not som
+
+---------- Epoch: 32 ---------- 
+
+Loss on first batch after epoch 32: 0.957715511322
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myfriend is so annoying i want to be my boyfriend to get me to be a boyfriend and 
+
+Diversity: 0.5
+Generated Tweet: my first boyfriend is the best boyfriend is fucking perfect but i don't want to be
+
+Diversity: 1.0
+Generated Tweet: myor"my boyfriend is isuf my aunt start to have the type of gu is  actually rings,
+
+Diversity: 1.2
+Generated Tweet: myyf ffiver'se sepianing my boyfriend is my family like to not go psokly.~~~~~~~~~
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend is so fucking handsome and i want to be my boyfriend to go to me a
+
+Diversity: 0.5
+Generated Tweet: his my boyfriend is so cute i want to be a little new boyfriend i am in the world~~
+
+Diversity: 1.0
+Generated Tweet: his gradumtex like a thipp, &amp; bremelm be dusonaslan was soxuy enough tf my boyf
+
+Diversity: 1.2
+Generated Tweet: his "my boyfriend is pleased unpresiatoo~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ itclited 
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: whenever my boyfriend is so beautiful and i want to be with my boyfriend and i'm so 
+
+Diversity: 0.5
+Generated Tweet: wheni hate my boyfriend because he doesn't like the best boyfriend and i don't want 
+
+Diversity: 1.0
+Generated Tweet: when the and my friendly exs boyfriend is the nowher to watch the gay that to your b
+
+Diversity: 1.2
+Generated Tweet: when mestic amazin is no going a boyfriend or cruckie pancion appsort~~ not need to 
+
+---------- Epoch: 33 ---------- 
+
+Loss on first batch after epoch 33: 0.954793989658
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myfriend is a problem i want to be like a boyfriend that i love him so much~~~~~~~
+
+Diversity: 0.5
+Generated Tweet: my friend is so wanting to spend to my food more than your boyfriend because i wan
+
+Diversity: 1.0
+Generated Tweet: my oo massare just sitting, this is my boyfriend. some i just want to loose my boy
+
+Diversity: 1.2
+Generated Tweet: myeesnrall food:". do, she want ur best friend agore i feclini rn!~~~ lmaoooood in
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend is so cute i want to be a lot of my boyfriend and i want to be a b
+
+Diversity: 0.5
+Generated Tweet: his my boyfriend and i can't believe he and i don't have a shit and she was like "t
+
+Diversity: 1.0
+Generated Tweet: his first, but why is my boyfriend." and i'm going to be ?1/i~~~~~~~ is my down to 
+
+Diversity: 1.2
+Generated Tweet: his the ways akaving.smatcarus tomy "i find a boyfriend like tff.~~~~~ w/o my house
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: whenever i want to be my boyfriend and i have a boyfriend like i can't believe my bo
+
+Diversity: 0.5
+Generated Tweet: wheneever my boyfriend is so heady~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ i
+
+Diversity: 1.0
+Generated Tweet: whenge girls like not make up b 5 boyfriend now~~~~~~~ is your boyfriend my bestfrie
+
+Diversity: 1.2
+Generated Tweet: whenigh tmy friend's dave ass friend off of pa clasp person i don't wanna make since
+
+---------- Epoch: 34 ---------- 
+
+Loss on first batch after epoch 34: 0.950349986553
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myfriend is so cute i can't believe my boyfriend is the best thing i love him so m
+
+Diversity: 0.5
+Generated Tweet: myou think my boyfriend is pretty cool. i  and her boyfriend always have a daddy! 
+
+Diversity: 1.0
+Generated Tweet: myyof'tyou're the world. are always that which everything she's my boyfriend? y'al
+
+Diversity: 1.2
+Generated Tweet: myfri ain't liuged my boyfriend the best premunes this tha s all freek o cowoike u
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend is so cute i want my boyfriend to be a problem i want my boyfriend
+
+Diversity: 0.5
+Generated Tweet: his my boyfriend and my moms boyfriend is so part i don't want my boyfriend to be m
+
+Diversity: 1.0
+Generated Tweet: his my "i'm just talking about woarming i got  ome: ~ date, he is lucky my boyfrien
+
+Diversity: 1.2
+Generated Tweet: his up my boyfriend, i are cud at!" -ima mindl lol~~~~~~~~~~~~ like ahmy boyfriend 
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: whenever my boyfriend is a perfect but i need to get my boyfriend and i want to be m
+
+Diversity: 0.5
+Generated Tweet: whenever i want a boyfriend to be being like he's been and then my boyfriend is goin
+
+Diversity: 1.0
+Generated Tweet: whent mondys in boyfriend and i san't every with the pizzok like a ras lov boyfriend
+
+Diversity: 1.2
+Generated Tweet: whenitter abfu contyluse boyfriend, not makes me think dosinia anying fathon~~~~~~~~
+
+---------- Epoch: 35 ---------- 
+
+Loss on first batch after epoch 35: 0.942826151848
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myfriend is so cute i want to see my boyfriend to be a beautiful best friend is so
+
+Diversity: 0.5
+Generated Tweet: myorriend is the best~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ he don't feel lik
+
+Diversity: 1.0
+Generated Tweet: myourread cogup for my boyfriend is tweets lahy mate he's love with him~~~~~~~~~~ 
+
+Diversity: 1.2
+Generated Tweet: myor*  feet nick by dimmon lm not a wonder plane: fucked mus &amp;  uddlassh joom-
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend is so cute when i have a boyfriend to get me a boyfriend to be my 
+
+Diversity: 0.5
+Generated Tweet: his are the best boyfriend and i'm so glad i have a boyfriend to come home and be m
+
+Diversity: 1.0
+Generated Tweet: his the cool vomines. bj~~~~~~~~~~~~~~~~~ udran't need a boyfriend~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Tweet: his.u7, i can have kiddaan moster with fakes gri am still dick -as?dn it chest~~~~~
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: wheni hate my boyfriend to be a boyfriend and i love him so much~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 0.5
+Generated Tweet: whenever i mean i don't like to do is gonna be my boyfriend so much. i can't be the 
+
+Diversity: 1.0
+Generated Tweet: when' really really and i have vown nigga is my past boyfriend  are~~~~~~~~~~~~~~~ a
+
+Diversity: 1.2
+Generated Tweet: when the house where my boyfriend is weirds that i regard.~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------- Epoch: 36 ---------- 
+
+Loss on first batch after epoch 36: 0.937413096428
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myfriend is so fucking hundry and i don't have a boyfriend that i want to be my bo
+
+Diversity: 0.5
+Generated Tweet: myour boyfriend is so cute year when he's not gonna be like someone i want my boyf
+
+Diversity: 1.0
+Generated Tweet: my offricknt acting like i'm literally the most healthy all the things my boyfrien
+
+Diversity: 1.2
+Generated Tweet: mybuld boyfriend is mair i lovedy made about him.~~~~~~~~~~~~~~ he's great from ho
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend is a beautiful of my favorite person i can't believe my boyfriend 
+
+Diversity: 0.5
+Generated Tweet: his my boyfriend is the best but then i still take me to have someone to protect th
+
+Diversity: 1.0
+Generated Tweet: his dick our boyfriend &amp; all on the whole eld trying to be my boyfriend is at 1
+
+Diversity: 1.2
+Generated Tweet: his half an zeelish, simmer is my boyfriend, he exbutt usi just want my boyfriend t
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: whenever my boyfriend is going to be my best friend and i love him so much~~~~~~~~~~
+
+Diversity: 0.5
+Generated Tweet: wheni hate my boyfriend or something i want to go to a cream i have a boyfriend~~~~~
+
+Diversity: 1.0
+Generated Tweet: wheny couch he weird talking about my boyfriend.~~~~~~~~~~~~~~~~~ if my boyfriend ca
+
+Diversity: 1.2
+Generated Tweet: when point 16 year old nigga need to need boyfriend.~~~~~~~~~~~~~~~~~~~~~~~~~~ my bo
+
+---------- Epoch: 37 ---------- 
+
+Loss on first batch after epoch 37: 0.937234401703
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: my boyfriend is so cute i can't believe it when i get a boyfriend to be a best fri
+
+Diversity: 0.5
+Generated Tweet: myfriend is so fucking tweets and my boyfriend is such a conversations the parts w
+
+Diversity: 1.0
+Generated Tweet: myfrriend i love almost my boyfriend is a next since you don't know where i'm beri
+
+Diversity: 1.2
+Generated Tweet: myoncthe 41aglride exgirls "why my boyfriend is kuvy promicel" for me piirn like j
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend is so cute i can't believe my boyfriend is so cute i want to be my
+
+Diversity: 0.5
+Generated Tweet: his my boyfriend is the best shit like i can see my boyfriend to get a big stick wi
+
+Diversity: 1.0
+Generated Tweet: hishishing was raits me with my boyfriend like everything yall i miss my boyfriend.
+
+Diversity: 1.2
+Generated Tweet: his things like this little fictirs boyfriends 310. i really don't know no mumter f
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: whenever my boyfriend is so fucking cute i want to be my boyfriend to be like a prob
+
+Diversity: 0.5
+Generated Tweet: whenever your boyfriend got me to go to the worst there with me and my boyfriend is 
+
+Diversity: 1.0
+Generated Tweet: whenever when ne my boyfriend trying to have a boyfriend but your langerur girlfrien
+
+Diversity: 1.2
+Generated Tweet: wheniegutcl pissed of towajush has thuih on the boyfriend. on the twmy boyfriend was
+
+---------- Epoch: 38 ---------- 
+
+Loss on first batch after epoch 38: 0.928891897202
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myour boyfriend is so cute i want to be a boyfriend that i love him so much~~~~~~~
+
+Diversity: 0.5
+Generated Tweet: myy first getting is a little boyfriend and im so cute it's when i don't have a bo
+
+Diversity: 1.0
+Generated Tweet: myiri'm looking at my new boyfriend like  koulin??~~~~~~~~ he my friends and her b
+
+Diversity: 1.2
+Generated Tweet: myour syer: . this 17 ying on boyfriend people, the tumment known my boyfriend's 2
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend is the best thing i want to be my boyfriend is the best because i 
+
+Diversity: 0.5
+Generated Tweet: his my boyfriend is a breakful for the country in the boyfriend that's when i want 
+
+Diversity: 1.0
+Generated Tweet: his wish it father'very its around the right i get a boyfriend.~~~~~~~~~~~~ i like 
+
+Diversity: 1.2
+Generated Tweet: his vh't pretent "frirs man, my boyfriend is 2100. like"ow, i'm like~~~~~~ so what 
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: whenever my boyfriend is a person i can't believe i want to be a boyfriend and i wan
+
+Diversity: 0.5
+Generated Tweet: whenever my boyfriend is so cute i can't believe my boyfriend is so damn like i need
+
+Diversity: 1.0
+Generated Tweet: whenervy seeing my feelings about my boyfrien's pman also my fameli know it's doing 
+
+Diversity: 1.2
+Generated Tweet: whene be like "ya naose ndx" "hem is i ever like i'm still and the frewhen girls tol
+
+---------- Epoch: 39 ---------- 
+
+Loss on first batch after epoch 39: 0.921829819679
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myour boyfriend is so cute i want to be a lot because i want to be my boyfriend an
+
+Diversity: 0.5
+Generated Tweet: myour boyfriend is the best thing i love him so much~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Tweet: my conslector the gets man done is so cute their boyfriend/look at one of his crie
+
+Diversity: 1.2
+Generated Tweet: myfrie don't tarbe.~~~~~~~~~~ aba never if he doesn't think i'm get to highhh!) my
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend is so fucking cute i love him so much~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 0.5
+Generated Tweet: his my boyfriend is so happy when i say him that my boyfriend is so fucking single 
+
+Diversity: 1.0
+Generated Tweet: his~~~~~~~~~~~ anyme this while i love my fy  other this? finding dory and i've jul
+
+Diversity: 1.2
+Generated Tweet: hisn't hem you" invoooo h mecands all my boyfriend is 2/7i0, i'm get sos cute~~~ th
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: whenever my boyfriend is so cute i want to see my boyfriend to see my boyfriend is s
+
+Diversity: 0.5
+Generated Tweet: wheneever my boyfriend is so perfect i love him so much~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Tweet: wheneed co my boyfriend to be my hair great and i'm love to sleep and post eppsorry 
+
+Diversity: 1.2
+Generated Tweet: wheneyguin would like my god but asking is so better's ei  my boyfriend is.  about t
+
+---------- Epoch: 40 ---------- 
+
+Loss on first batch after epoch 40: 0.920327603817
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myfriend is so cute i can't even know what i want to be my boyfriend and i love hi
+
+Diversity: 0.5
+Generated Tweet: myou feel like i feel like i want my boyfriend to be the best best friend~~~~~~~~~
+
+Diversity: 1.0
+Generated Tweet: my'friend is so truly!!!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ has a boyfriend, i love
+
+Diversity: 1.2
+Generated Tweet: my*brashapb+: boyfriend is bkew a g-ot but.~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend is so fucking hurts and i can't believe it when my boyfriend is so
+
+Diversity: 0.5
+Generated Tweet: his my boyfriend is such a beat but i don't want to be able to talk to my boyfriend
+
+Diversity: 1.0
+Generated Tweet: his my world parbier and her boyfriend takes replying it ??~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Tweet: his huafing'en. and he goes for my ex boyf he said deahaas whole days &amp; the onl
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: whenever my boyfriend is so cute i can't see my boyfriend i want to be a little bitc
+
+Diversity: 0.5
+Generated Tweet: whenever my boyfriend is so fucking cute i love him so much~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Tweet: whenightpersings. how if your simplisess boyfriend is weird lol~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Tweet: whenever i'm joaking ev acting like a dick. croz you reminds you a saiu. just a has 
+
+---------- Epoch: 41 ---------- 
+
+Loss on first batch after epoch 41: 0.914309263229
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myfriend is so cute i want to be my boyfriend and i can't believe my boyfriend is 
+
+Diversity: 0.5
+Generated Tweet: myour boyfriend is so cute when i want to go to the same time i can't even have se
+
+Diversity: 1.0
+Generated Tweet: my's hai need someone to ever have a boyfriend who makes me do something told me~~
+
+Diversity: 1.2
+Generated Tweet: myi fufffriend is nevf my boyfriend is with me a fucking absolute best friend. kno
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend is the best because i have to be a lot of the morning and i want t
+
+Diversity: 0.5
+Generated Tweet: his my boyfriend is here the strest thing so i can break up with i want to be home 
+
+Diversity: 1.0
+Generated Tweet: his 6127 and my sister last bc my boyfriend is so with my picture of me because to 
+
+Diversity: 1.2
+Generated Tweet: his;ed yes xocarf. he's my betyfriends damn nigga to make me because i'm heart of m
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: whenever i want to see my boyfriend and i love him so much~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 0.5
+Generated Tweet: whenever my boyfriend is so damn things i love him~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Tweet: whenf but you start down to have a boyfriend!" #-where matic is so cute -~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Tweet: whenever i stop happy on so we need to finn my boyfriend -i think i uveryone t frien
+
+---------- Epoch: 42 ---------- 
+
+Loss on first batch after epoch 42: 0.910189986229
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: mye boyfriend is so cute i can't believe that my boyfriend is so cute i love him s
+
+Diversity: 0.5
+Generated Tweet: myour boyfriend is so cute and i don't want to be out with my boyfriend and my mam
+
+Diversity: 1.0
+Generated Tweet: mye" "i canntall i'm hopen with my boyfriend~~~~~~~~~~~~ -ajon you come over the t
+
+Diversity: 1.2
+Generated Tweet: myrrussi g eacs w her boyfriend rbcf, i sen on this ang i'm like 'nos hobi will be
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend is so cute i can't believe my boyfriend is so fucking cute i can't
+
+Diversity: 0.5
+Generated Tweet: his fucking boyfriend &amp; my bestfriend is a grandam &amp; i got my boyfriend and
+
+Diversity: 1.0
+Generated Tweet: his his newas "so i can do.~~~~~~~~ mom is such a boyfriend~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Tweet: his noneshlanns n niggagurh. cause i don't want for te2,ack in billssb?  my boyfrie
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: whenever my boyfriend is a problem in the world and i want to be the should i can't 
+
+Diversity: 0.5
+Generated Tweet: whenever i was like "why i don't know what i have a boyfriend and i love him so much
+
+Diversity: 1.0
+Generated Tweet: whenver thinks my ex money. he knows imma puy your business banda boyfriend is hones
+
+Diversity: 1.2
+Generated Tweet: whenever my boyfriend is, so suncle~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ my person i
+
+---------- Epoch: 43 ---------- 
+
+Loss on first batch after epoch 43: 0.906198441982
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myfriend is so fucking cute i want to be my boyfriend is so cute i want to be a ba
+
+Diversity: 0.5
+Generated Tweet: myou look at my boyfriend so much~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ i love my boy
+
+Diversity: 1.0
+Generated Tweet: my'friend of them're in when he away sad,ye and like a boyfriend ylike for any of 
+
+Diversity: 1.2
+Generated Tweet: myou fucker boyfriend. don't x dress asright that he is sure my boyfriend from tow
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend is so cute i want to be my boyfriend is the best thing ever happen
+
+Diversity: 0.5
+Generated Tweet: his my boyfriend is a best friend and i'm so happy to eat him for me &amp; he's so 
+
+Diversity: 1.0
+Generated Tweet: hisi wish i want to like shit me and my boyfriend.~~~~~~~~~~~~~~~ o my mom acting l
+
+Diversity: 1.2
+Generated Tweet: hisaves my boyfriend bitchank all amazing. thmy annayerace and my jriport is snapch
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: whenever my boyfriend is so cute i love him so much~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ i
+
+Diversity: 0.5
+Generated Tweet: whenever my boyfriend is the best i just want to go to my boyfriend to be at some ho
+
+Diversity: 1.0
+Generated Tweet: whendever u wantid.~~~~~~~~~~~~~~~~~~~~ is the best date just to cring, anyone and m
+
+Diversity: 1.2
+Generated Tweet: whenver retinneg to know i  al. my nexal boyfriend just parc use for me to but hy wi
+
+---------- Epoch: 44 ---------- 
+
+Loss on first batch after epoch 44: 0.902660131454
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myfriend is so cute i want to be a beautiful to me and i want to be a lot of the w
+
+Diversity: 0.5
+Generated Tweet: myour boyfriend is such a dog and i love him so much~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Tweet: myyf'acthi want my boyfriend to be my bust. like some lupky~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Tweet: myort~~~~~~~~~~~~~~ abangen kin at and like"-do i'm goomy sideother: this about it
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend is so cute i can't see my boyfriend and i want to be a bitch to me
+
+Diversity: 0.5
+Generated Tweet: his in the time i need to know where my boyfriend is an asshole i want to take my b
+
+Diversity: 1.0
+Generated Tweet: his so next? and be without my boyfriend ensight girls to me because i can't be lik
+
+Diversity: 1.2
+Generated Tweet: his is when your boyfriend @ he was answeress to me i love you which mea  so you're
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: whenever he is my boyfriend and i love him so much~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 0.5
+Generated Tweet: when your boyfriend is so fucking hurts 2 months~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Tweet: whenever my boyfriend is my "h/ no manty!!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ happy it's
+
+Diversity: 1.2
+Generated Tweet: wheneever i really want to start watcan traiding my sister's ba good wish  ol spqf, 
+
+---------- Epoch: 45 ---------- 
+
+Loss on first batch after epoch 45: 0.895199477673
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myfriend is so cute i can't even see my boyfriend is so cute i love him so much~~~
+
+Diversity: 0.5
+Generated Tweet: myori love when my boyfriend go to chill with me and says "they have a boyfriend s
+
+Diversity: 1.0
+Generated Tweet: myori feel like a matchister, and la y'all sobia say when me and my boyfriend is l
+
+Diversity: 1.2
+Generated Tweet: myf friend' jabrothing'll instian cause how myfer my boyfriend is all them diar th
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend is so cute i want to be the best boyfriend is the best thing to do
+
+Diversity: 0.5
+Generated Tweet: his my boyfriend is the best thing ever~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Tweet: his'so something girl who i love mysometimes like i need him and fucking new "cause
+
+Diversity: 1.2
+Generated Tweet: his is my boyfriend.i want my boyfriend to spend make, me.~~~~~~~~~~~~~~~~~~~~~~~~~
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: whenever my boyfriend is always the best thing ever~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 0.5
+Generated Tweet: whenever my boyfriend is better than yours and not gonna be like "oh your handsome a
+
+Diversity: 1.0
+Generated Tweet: whenever my boyfriend is fucking beautiful sensom and i'm mad at like  -zud your boy
+
+Diversity: 1.2
+Generated Tweet: wheny be for gay like spoils to your boyfriend because he has tu ruser lentaper age 
+
+---------- Epoch: 46 ---------- 
+
+Loss on first batch after epoch 46: 0.890955805779
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: mye boyfriend is so cute i can't even be like a problem with me~~~~~~~~~~~~~~~~~~~
+
+Diversity: 0.5
+Generated Tweet: my friend is my boyfriend i love him so much~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Tweet: myyy ahwhen kmull irts?" adorable i miss my boyfriend and i'm so beautiful. , .~~~
+
+Diversity: 1.2
+Generated Tweet: my  "girlf is so girling back as eusils and  anaryle. hasn't mean. boyfriend right
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend is the best best friend is always the best thing that's my boyfrie
+
+Diversity: 0.5
+Generated Tweet: his my boyfriend is such a good but he is so cute~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Tweet: hisupused? my friend snapsing out of the , he's my better boyfriend.~~~~~~~~~~~~ i 
+
+Diversity: 1.2
+Generated Tweet: hisomoets i can't~~~~~~ t~ just became my boyfriend but kid you have boyfriend" tem
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: whenever my boyfriend is a girlfriend and i'm so lucky to have a boyfriend that want
+
+Diversity: 0.5
+Generated Tweet: whenver i have a boyfriend i love him so much~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+
+Diversity: 1.0
+Generated Tweet: whenu yis my father girl is a call on my new girl repital worrdier is my boyfriend~~
+
+Diversity: 1.2
+Generated Tweet: whenigess k was work.i don't know what my boyfriend puts all him. he's 3 $ times gir
+
+---------- Epoch: 47 ---------- 
+
+Loss on first batch after epoch 47: 0.888642787933
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myou boyfriend is so cute i can't wait to be my boyfriend is the best thing to do 
+
+Diversity: 0.5
+Generated Tweet: myour boyfriend is so freaking perfect to me~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ t
+
+Diversity: 1.0
+Generated Tweet: myu love is complete in my boyfriend would like to treat the worst how tonight. i 
+
+Diversity: 1.2
+Generated Tweet: mygri"nye look like my boyfriend aldmy boyfriend is snoriging ltojon i'm not gone 
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend is so cute i can't see my boyfriend and i want to be my boyfriend 
+
+Diversity: 0.5
+Generated Tweet: his my boyfriend is so cute i can't even like the story and he was a boyfriend so i
+
+Diversity: 1.0
+Generated Tweet: his no my boyfriend is weird and i'm, who can't work scorry to get only li "need to
+
+Diversity: 1.2
+Generated Tweet: his my ex's boyfriend  !the friends with me. so i'm girls where i want if i always 
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: whenever i have to be my boyfriend and i don't want to be my boyfriend i want to be 
+
+Diversity: 0.5
+Generated Tweet: whenever i say i don't want my boyfriend to be cute and i love him.~~~~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Tweet: whenice having a boyfriend every one i don't want to go protective but my boyfriend 
+
+Diversity: 1.2
+Generated Tweet: whens shes your boyfriend, whow at i'm trying to bring me my bostyor's first  luck: 
+
+---------- Epoch: 48 ---------- 
+
+Loss on first batch after epoch 48: 0.887609958649
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myou look like my boyfriend is so cute i want to be my boyfriend is so cute i can'
+
+Diversity: 0.5
+Generated Tweet: myour boyfriend is so fucking cute it starts me and i want to protect the sometime
+
+Diversity: 1.0
+Generated Tweet: my's never bought me th my boyfriend is attention to me, shits and i just need him
+
+Diversity: 1.2
+Generated Tweet: myovappic tailes/you? perfect/:) luke that me, i cry and like w me (ow the best bo
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend is so cute i love him so much~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 0.5
+Generated Tweet: his my boyfriend is going to have a perfect~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ and y
+
+Diversity: 1.0
+Generated Tweet: his proufing phone.~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ugh my boyfriend talk
+
+Diversity: 1.2
+Generated Tweet: hishiill need to ruz up need a vassive old faving ever is favich'my whatevere work 
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: whenever i want to be my boyfriend and i can't believe that i want to be my boyfrien
+
+Diversity: 0.5
+Generated Tweet: whenever my boyfriend is the best~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+
+Diversity: 1.0
+Generated Tweet: whenever my boyfriend got and i'm dorin! i get a slow it damn ney.~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Tweet: whenever dancezine: he's like 54+ this girl is out of this, this is my boyfriend"/on
+
+---------- Epoch: 49 ---------- 
+
+Loss on first batch after epoch 49: 0.879120051861
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myour boyfriend is so cute i can't even like him to have a boyfriend and i want to
+
+Diversity: 0.5
+Generated Tweet: myou attractive boyfriend is a super party and he be like we're always happy and m
+
+Diversity: 1.0
+Generated Tweet: myou ratero are lets me like some girls like us~~~~~~~~~~~~~~~~~~~~~~ hey like tha
+
+Diversity: 1.2
+Generated Tweet: myf.rmy ttbe. i like in wear ok, just like elizated come bout a bitch, cocalred hi
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend is so cute i can't believe it when i want to be my boyfriend when 
+
+Diversity: 0.5
+Generated Tweet: his my boyfriend is so handsome i love him so much~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+
+Diversity: 1.0
+Generated Tweet: his gone hard this evel-on that's ordered my boyfriend like not but then just here 
+
+Diversity: 1.2
+Generated Tweet: his in the mad like i which wish i talk about has bout me tos because im woyi cant 
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: whenever my boyfriend is a problem and i don't want to be my boyfriend is so cute i 
+
+Diversity: 0.5
+Generated Tweet: whenever i want to be my boyfriend so much i have a boyfriend when i was like a baby
+
+Diversity: 1.0
+Generated Tweet: whenever my boyfriend were a real manabe is working for me. it's so cute~~ i swerk e
+
+Diversity: 1.2
+Generated Tweet: whenevor for my boyfriend's iumborron sand lol ?2 they would be pes it for break to 
+
+---------- Epoch: 50 ---------- 
+
+Loss on first batch after epoch 50: 0.875699698925
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myour boyfriend is so cute when i want to be my boyfriend and i still love him so 
+
+Diversity: 0.5
+Generated Tweet: myfriend is a cute things i don't like him~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ my 
+
+Diversity: 1.0
+Generated Tweet: my'er boyfriend is so lost! i didn't have him to make him ,~~~~~~~~~~~~~~~~~ girl 
+
+Diversity: 1.2
+Generated Tweet: my'our boyfriend would accs like theman. he ismating memaous happy~~~~~~~~~~~~~~~ 
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend is so cute i love him~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 0.5
+Generated Tweet: his my boyfriend is so fucking with a boyfriend like he doesn't want to see my boyf
+
+Diversity: 1.0
+Generated Tweet: hisecial just kidd. and my boyfriend's grandma's boyfriend like helso mind.~~~~~~~~
+
+Diversity: 1.2
+Generated Tweet: his)where is 5 "tanki if your boyfriend's breatthin~ xext in a good boyfriend" me. 
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: whenever i have a boyfriend and i don't want to be my boyfriend and i don't want to 
+
+Diversity: 0.5
+Generated Tweet: whenver i want to be with my boyfriend, i think i want to put him to be my boyfriend
+
+Diversity: 1.0
+Generated Tweet: whenot how my boyfriend is daten to pubmy or potuse concerned on 32/7 so im single. 
+
+Diversity: 1.2
+Generated Tweet: whene surpresside gey at. my boyfriend is so hangs that just became.~~~~~~~~~~~~~~ "
+
+---------- Epoch: 51 ---------- 
+
+Loss on first batch after epoch 51: 0.87212240696
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myour boyfriend is so cute i can't even like it~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 0.5
+Generated Tweet: myour boyfriend is so cute i love him~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Tweet: myf'friend really my bf i want to call my boyfriend yes  to sor cooking.~~~~~~~~~~
+
+Diversity: 1.2
+Generated Tweet: mye heart is my boyfriend because i absolutely amd it having sex~~~~ i just whet i
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend is a perfect but i don't want to be my boyfriend is the best becau
+
+Diversity: 0.5
+Generated Tweet: his my boyfriend the night is at his family is a party and i am in the relationship
+
+Diversity: 1.0
+Generated Tweet: his at a bit of anyone talking go her boyfriend's plsoshouse your boyfriend made fr
+
+Diversity: 1.2
+Generated Tweet: his what to god heart around for my boyfri don't want my boyfriend to geebroye beca
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: whenever my boyfriend is a problem with me and i love him so much~~~~~~~~~~~~~~~~~~~
+
+Diversity: 0.5
+Generated Tweet: wheneed a boyfriend to watch movies to me~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ i n
+
+Diversity: 1.0
+Generated Tweet: whenver eat at sclool is my bestfriend but my parents are you scirence being no greu
+
+Diversity: 1.2
+Generated Tweet: whenever my mom talking with futrings my friend, out of the fact that my boyfriend w
+
+---------- Epoch: 52 ---------- 
+
+Loss on first batch after epoch 52: 0.870763123035
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myou look like my boyfriend and i want to be my boyfriend i love him so much~~~~~~
+
+Diversity: 0.5
+Generated Tweet: myou lost my boyfriend i have a fucking body that i love him so much~~~~~~~~ i lov
+
+Diversity: 1.0
+Generated Tweet: mybo(y umy boyfriend is actually ru~~~ and says "befunt for you how to flow me to 
+
+Diversity: 1.2
+Generated Tweet: myff"in't worryk, cuddled, starring for me and get curble: chessicat that is my bo
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend is so cute when i want to go to the beach to me and i want to be m
+
+Diversity: 0.5
+Generated Tweet: his my boyfriend is in mexico and i want to be home and my boyfriend is so bad i lo
+
+Diversity: 1.0
+Generated Tweet: his my boyfriend back i love you as much ri don't know what i am sit i~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Tweet: his" kid is unciden't will take my boyfriend.~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ i'm no1
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: whenever my boyfriend is a sugar daddy and i want to be like a boyfriend and i want 
+
+Diversity: 0.5
+Generated Tweet: whenever my boyfriend is fucking cute i want to do is to make me now i say i want my
+
+Diversity: 1.0
+Generated Tweet: whents amy boyfriend is the best and trust~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ my b
+
+Diversity: 1.2
+Generated Tweet: whenever i have an art  ex8 omgy'al boyfriend.like that he all day ahare.~~~~ have y
+
+---------- Epoch: 53 ---------- 
+
+Loss on first batch after epoch 53: 0.868020772934
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myour boyfriend is so cute i can't wait to be my boyfriend and i don't want to be 
+
+Diversity: 0.5
+Generated Tweet: myour boyfriend is going to be a good girlfriend~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Tweet: mye boyfriend is 3 weeks prideo is nice meeting me for him vachi saw some relation
+
+Diversity: 1.2
+Generated Tweet: my'fe albo get a flastin thing i sunched in a risting for ul ak fo call the sound 
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend is so cute i have to be a little bitch i want to be with my boyfri
+
+Diversity: 0.5
+Generated Tweet: his my boyfriend is going to be mad at me on the day with him i want a boyfriend bu
+
+Diversity: 1.0
+Generated Tweet: his only friend. your boyfriend's brother's amazing, boyfriend. if you can talk to 
+
+Diversity: 1.2
+Generated Tweet: hisniggess like graduation my phone. w u you suver ur boyfri want a boyfriend" but 
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: whenever my boyfriend is a sugar daddy and i love him so much~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 0.5
+Generated Tweet: whenever my boyfriend is my best friend and i'm so prove to me &amp; i have a boyfri
+
+Diversity: 1.0
+Generated Tweet: wheniese glad i said, "my boyfriend notex off my crazy monder relationship. this is 
+
+Diversity: 1.2
+Generated Tweet: wheney is nice and my wide unless your boyfrie weactutle. have fun friend."goa is my
+
+---------- Epoch: 54 ---------- 
+
+Loss on first batch after epoch 54: 0.862975955009
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myou look at my boyfriend is the best thing ever~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 0.5
+Generated Tweet: myour boyfriend is so cute i can't wait for my boyfriend to go to sleep with my bo
+
+Diversity: 1.0
+Generated Tweet: mymboy 11's boyfriend that's my back to turn having such ass bun~~~~~ uglost. my b
+
+Diversity: 1.2
+Generated Tweet: mybojfriend deid isn't here, i've not your  i'd have to text,~~~~~~~ even si want 
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend is the best thing ever~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 0.5
+Generated Tweet: his my boyfriend is so cute i love him like damn what's the preside to ask if i hav
+
+Diversity: 1.0
+Generated Tweet: his needy to come bapgiam to take me to "long. daddy", , no nobody is fine for unle
+
+Diversity: 1.2
+Generated Tweet: hiskeac:)~~~~~~~~~~~~~~~~~~ early treated like cratylch6 this the mcovie texts or s
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: whenever i have a boyfriend and i don't want to be my boyfriend and i want to be my 
+
+Diversity: 0.5
+Generated Tweet: whenever we get a boyfriend for father when i dont like the phone right now is that 
+
+Diversity: 1.0
+Generated Tweet: wheneever your boyfriend is going to never good enemy mom everything i don't like yo
+
+Diversity: 1.2
+Generated Tweet: whenoys im bowbclou with year. i be wanting to go to perfect boyfriend~~~~~~~~~~~~~~
+
+---------- Epoch: 55 ---------- 
+
+Loss on first batch after epoch 55: 0.864631950855
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myour boyfriend is so fucking cute i have a sugar daddy and i want to be the world
+
+Diversity: 0.5
+Generated Tweet: myour boyfriend is so annoying he is actually the best thing that's his best frien
+
+Diversity: 1.0
+Generated Tweet: mye go has a boyfriend in right at straight~~~~~~~~~~~~~~~~~~~~~~~~~ zo this, yeah
+
+Diversity: 1.2
+Generated Tweet: myr1"ye misse me when they pas see much, you should li just want to des) yehehud m
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend is so cute i love him so much~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 0.5
+Generated Tweet: his my boyfriend is my best friend so much but i want to be the best on the beach t
+
+Diversity: 1.0
+Generated Tweet: his deadands san kinda my mom's boyfriend is so taken the risher places or my sh bo
+
+Diversity: 1.2
+Generated Tweet: hisy: i let my boyfriend mine together kiss park jonxkis and plagea. ~~~~~~~~~~~~~~
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: whenever i have a boyfriend that i want to be my boyfriend is the best thing ever is
+
+Diversity: 0.5
+Generated Tweet: wheni'm sleeping with my boyfriend but i'm like a little couples i don't like him~~~
+
+Diversity: 1.0
+Generated Tweet: whenneys to bitching my boyfriend tells me his worad . who make a uk i call her b c 
+
+Diversity: 1.2
+Generated Tweet: whene friends says "full with her boyfriend ain't eather's my boyfriend has to be th
+
+---------- Epoch: 56 ---------- 
+
+Loss on first batch after epoch 56: 0.860821008682
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myou look like my boyfriend so much i want you to see my boyfriend but i have a bo
+
+Diversity: 0.5
+Generated Tweet: myour boyfriend is so handsome i can't believe i since he's a problem to come home
+
+Diversity: 1.0
+Generated Tweet: myour boyfriend's older pae ass lmao it back respect cool i just want to just thin
+
+Diversity: 1.2
+Generated Tweet: myoyfriand has mayed me and he letcons without bued ids for 2 &amp; i want th  ud 
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend is so fucking cute i can't believe him i want to be my boyfriend a
+
+Diversity: 0.5
+Generated Tweet: his my boyfriend is going to tell me he still loves me the most in love with me and
+
+Diversity: 1.0
+Generated Tweet: hishame of my aunts and my boyfriend is taking fun.,.~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Tweet: his boyfriend ?????~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ lkammesi really don
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: whenever my boyfriend is so cute i can't even like it~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 0.5
+Generated Tweet: whenever i see my boyfriend and i feel like i love him so much~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Tweet: wheny imy boyfriend and i love him masles /great! who treats me~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Tweet: wheneven an is my favorate help me! i want a boyfriend 's single of my piece ima shi
+
+---------- Epoch: 57 ---------- 
+
+Loss on first batch after epoch 57: 0.856676340103
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myour boyfriend is so cute when he said i want to go out with my boyfriend and he 
+
+Diversity: 0.5
+Generated Tweet: myour boyfriend is my best friend and i am the best boyfriend always sends me to o
+
+Diversity: 1.0
+Generated Tweet: myour boyfriend "have is his favorite person i see me &a water flort times i hate 
+
+Diversity: 1.2
+Generated Tweet: myf gimtall is is my boyfriend ( amoping/knigha jealous with. the fuck is pelsy sw
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend is so cute i love him so much~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 0.5
+Generated Tweet: his not my boyfriend when you have to go to the fact that i want to be with my boyf
+
+Diversity: 1.0
+Generated Tweet: his but nobody makes me be into a decin but he's not my boyfriend, much as my edes.
+
+Diversity: 1.2
+Generated Tweet: his a past : 8;8 are~~~~~~~~~~~~~~~~~~~~~~~~ &llpy with the viols on my boyfriend d
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: whenever i want to be my boyfriend and i want to be my boyfriend is so cute i don't 
+
+Diversity: 0.5
+Generated Tweet: whenever my boyfriend is so fucking weird i can't even hate him more than i have to 
+
+Diversity: 1.0
+Generated Tweet: whenver boyfriend is excited because he drabe these shit like my boyfriend, like tha
+
+Diversity: 1.2
+Generated Tweet: whenver he really used to grabemone telling me about my ser but i've got mad is w/op
+
+---------- Epoch: 58 ---------- 
+
+Loss on first batch after epoch 58: 0.851245820522
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myour boyfriend is so cute i can't believe it's a problem with me~~~~~~~~~~~~~~~~~
+
+Diversity: 0.5
+Generated Tweet: myou want my boyfriend to be my bestfriend it's so cute~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Tweet: myfri'ng when i tell my mema is other what tall ask you that saying "er fler. and 
+
+Diversity: 1.2
+Generated Tweet: myi need a boyfriend , because i have ental totil me ?fuckece/&5~~~ ah bick so my 
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend is so cute i can't even take me to see my boyfriend and i love him
+
+Diversity: 0.5
+Generated Tweet: his daddy to get a boyfriend and i need a boyfriend but he thinks i love him so muc
+
+Diversity: 1.0
+Generated Tweet: his excited he's cute threading a comol b cause who my m is with my boyfriend &amp;
+
+Diversity: 1.2
+Generated Tweet: his's yea over for 2'2 helpy. i do you was a lot of cur seas he's in my boyfriend.?
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: whenever my boyfriend is a picture of me and i love him so much~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 0.5
+Generated Tweet: whenever i want and my boyfriend is a person and i want to be the best boyfriend i h
+
+Diversity: 1.0
+Generated Tweet: whenever i have being fucking pret back and i miss my boyfriend he'd two they granus
+
+Diversity: 1.2
+Generated Tweet: whenever iy today, have someshive boyfriend he away for every flies at my kweat?,~~~
+
+---------- Epoch: 59 ---------- 
+
+Loss on first batch after epoch 59: 0.850782155991
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myour boyfriend is so cute i can't believe that i want to be my boyfriend is so cu
+
+Diversity: 0.5
+Generated Tweet: myy boyfriend is so amazing~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Tweet: myf i want my boyfriend to get a cousin of me at home today &amp; not watch since 
+
+Diversity: 1.2
+Generated Tweet: myour mon is so go so happy that  they love my boyfriend"~~~~~~~~~~~~~~~ until't !
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend is so cute like that i want to be my boyfriend is so cute i can't 
+
+Diversity: 0.5
+Generated Tweet: his my boyfriend is so cute when i'm at work and i'm so lucky to have him and he tr
+
+Diversity: 1.0
+Generated Tweet: his her boyfriend stepding~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ i like
+
+Diversity: 1.2
+Generated Tweet: hisuphow to get into bright not be with my boyfriend~~~~~~~~~~~~~~~~~~ loges: if th
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: whenever i want to be my boyfriend but i have a boyfriend and i love him so much~~~~
+
+Diversity: 0.5
+Generated Tweet: wheni want my boyfriend to be my boyfriend and he was like "what's the reason i want
+
+Diversity: 1.0
+Generated Tweet: wheny doesn't just want to bounnerstending in lop of a picture, vidan  oftennight al
+
+Diversity: 1.2
+Generated Tweet: whensever you seem to perfect~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ us in wear and out
+
+---------- Epoch: 60 ---------- 
+
+Loss on first batch after epoch 60: 0.846387445927
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myour boyfriend is so cute i have the best friend who is always the best thing eve
+
+Diversity: 0.5
+Generated Tweet: myour boyfriend is coming home today~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+
+Diversity: 1.0
+Generated Tweet: myour boyfriend is weird, marry jke's asked if i have &amp; is fighting. he can't 
+
+Diversity: 1.2
+Generated Tweet: myouor boyfriend is my bett dad was acceld tto i bott when ever . i do dy th he's 
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend is so cute i can't even have to be my boyfriend and i want to be l
+
+Diversity: 0.5
+Generated Tweet: his is my boyfriend is the best ever so i can be like a big fan and i love him~~~~~
+
+Diversity: 1.0
+Generated Tweet: his next guy or look now i don't need is to seik no ones that my boyfriend liked to
+
+Diversity: 1.2
+Generated Tweet: hisex, its so i'm so but my boyfriend is?!! i drepesedk out because he is, sorry/, 
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: whenever my boyfriend is so cute i can't believe it so much i love him so much~~~~~~
+
+Diversity: 0.5
+Generated Tweet: whenever i want to be my boyfriend and i will never ever get a good looking at my bo
+
+Diversity: 1.0
+Generated Tweet: wheng going everyone to be damn baby up i funny with her boyfriend because he is a w
+
+Diversity: 1.2
+Generated Tweet: wheness/curning boyfriend because i cant ditch~~~~~~~~~~~~~~~~~~~~~~~~~~~~ asacarata
+
+---------- Epoch: 61 ---------- 
+
+Loss on first batch after epoch 61: 0.842282891273
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myou look like my boyfriend so much i want you to be my boyfriend~~~~~~~~~~~~~~~~~
+
+Diversity: 0.5
+Generated Tweet: mye boyfriend is so cute i hate him so much~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Tweet: myauutt is coking my boyfriend is cute told his man.~~~~~~~~~~~~~ o my boyfriend n
+
+Diversity: 1.2
+Generated Tweet: mye need one assucting my boyfriend here is mexican~~~~~~~~~~ like elym sweikss lo
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend is so cute i can't even see my boyfriend is so cute i can't believ
+
+Diversity: 0.5
+Generated Tweet: his my boyfriend is so cute i need him so much i want to find me~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Tweet: his with my boyfriend lol halone as i only was your boyfriend sorry. because i look
+
+Diversity: 1.2
+Generated Tweet: hisep grad ass i tried everything you haven't scared me to sken my boyfriend v up i
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: whenever my boyfriend is a pics of me because i don't have a boyfriend so i can stop
+
+Diversity: 0.5
+Generated Tweet: whenever my boyfriend is a cute country and i can't believe it when i tell my boyfri
+
+Diversity: 1.0
+Generated Tweet: when the next things, i want to need to help my boyfriend to gay. srepzing i at my b
+
+Diversity: 1.2
+Generated Tweet: whene taking a hoodi like when my sister were pladed back but my parents deal. ho fi
+
+---------- Epoch: 62 ---------- 
+
+Loss on first batch after epoch 62: 0.843119800091
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myour boyfriend is so cute i can't believe it when i want to be like "my boyfriend
+
+Diversity: 0.5
+Generated Tweet: myour boyfriend didn't like my best friend, but there's a birthday i gotta tell my
+
+Diversity: 1.0
+Generated Tweet: my one dude talks about my boyfriend. that's all i hare is so still fight, so if t
+
+Diversity: 1.2
+Generated Tweet: myin a frenly boyfriend even when my ffiands outside my hair. i are waiting for my
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend is so cute i want to be the reason i don't have a boyfriend i want
+
+Diversity: 0.5
+Generated Tweet: his my boyfriend is so cute when i get on his trips and i love him so much~~~~~~~~~
+
+Diversity: 1.0
+Generated Tweet: his i love my boyfriend so much. he is literally the best thing ever.~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Tweet: his summer with show, i can dot to sonolrojsavion threate  overreir--,//-. up -beyi
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: whenver i have a boyfriend like the best boyfriend in the world~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 0.5
+Generated Tweet: whenever i have to tell my boyfriend i love him so much and i have to take a party t
+
+Diversity: 1.0
+Generated Tweet: whenver my boyfriend said it really starting to go see in hoping more than i got a n
+
+Diversity: 1.2
+Generated Tweet: whenive's girls called me screaming up are my cousine are build, bo, look do ok o do
+
+---------- Epoch: 63 ---------- 
+
+Loss on first batch after epoch 63: 0.837001264095
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myour boyfriend is so fucking cute~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 0.5
+Generated Tweet: mye shower is so sweet. and he doesn't want to see my boyfriend and he post at my 
+
+Diversity: 1.0
+Generated Tweet: myell. i, yas boyfriend please bechuring my bestfriend  movie l awrateder i'm over
+
+Diversity: 1.2
+Generated Tweet: myhi my mom is suck a but wedding the foor  asking, bn is going on wh her his boyf
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend is so cute i have to be too much to ask for me and i want to be my
+
+Diversity: 0.5
+Generated Tweet: hisepped and looks like a boyfriend who is so cute i swear i can't wait to be my bo
+
+Diversity: 1.0
+Generated Tweet: his  sceum to have a boyfriend anyways's you looks like oon"i arguing cause, my boy
+
+Diversity: 1.2
+Generated Tweet: hisk: guys asking when it acts alazes, to my ssmell to my boyfriend to contor afa c
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: whenever my boyfriend is so cute i love him so much~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 0.5
+Generated Tweet: whenver this is my boyfriend's thing i want a boyfriend who is such a cute things~~~
+
+Diversity: 1.0
+Generated Tweet: whennevers i'm so here you wants are specially and my boyfriend~~~~~~~~~~~~~~~~~~~ h
+
+Diversity: 1.2
+Generated Tweet: wheney is my boyfriend |010sm.~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ it'
+
+---------- Epoch: 64 ---------- 
+
+Loss on first batch after epoch 64: 0.832321643829
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: mye sister is so cute i want to be my boyfriend and i want to be with my boyfriend
+
+Diversity: 0.5
+Generated Tweet: myou look like my boyfriend going to be smile of my life and i said i need to text
+
+Diversity: 1.0
+Generated Tweet: my'muticutyi love my boyfriend saying i have no bc as i need to be my boyfriend aq
+
+Diversity: 1.2
+Generated Tweet: myou bougnt my jobjaees good endrviry things everything so much girls met i hate w
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend is the best thing that has to be my boyfriend is so fucking cute~~
+
+Diversity: 0.5
+Generated Tweet: his my boyfriend is so cute all day~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+
+Diversity: 1.0
+Generated Tweet: hisuments/on is my future. i need a boyfriend. i just wanna have the best time to r
+
+Diversity: 1.2
+Generated Tweet: hisis noboyvicme betwhen my boyfriend isnless more occusing~~~~~~~~~~~~~~~ it's for
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: whenever i want to be my boyfriend and i want to go to the beach to me is so cute i 
+
+Diversity: 0.5
+Generated Tweet: whenver i want to get my boyfriend and i can't get him to make me like a boyfriend o
+
+Diversity: 1.0
+Generated Tweet: when i'm my boyfriend's bf i get through he was sad!~~~~~~~~~~~~~~~~~~ how good bu l
+
+Diversity: 1.2
+Generated Tweet: whenever send my 6) your boyfriend? no. bit~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ al,  these
+
+---------- Epoch: 65 ---------- 
+
+Loss on first batch after epoch 65: 0.832761466503
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myour boyfriend is so cute when he said i want to be with my boyfriend and his fri
+
+Diversity: 0.5
+Generated Tweet: myou can be 12 year old sitting here contracting my boyfriend is a player while he
+
+Diversity: 1.0
+Generated Tweet: myoor always have a boyfriend y'all. my best friend in my pont husband i'm staying
+
+Diversity: 1.2
+Generated Tweet: myouuuuuutt olisutbinutes was over laying beca.ing him, dr dumn my boyf i have no 
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend is so cute i can't believe that i want to be my boyfriend and i wa
+
+Diversity: 0.5
+Generated Tweet: his my boyfriend is so fucking completely i can't be really away from my family and
+
+Diversity: 1.0
+Generated Tweet: hise might really just camplised that my boyfriend is as a mothiop no   &amp; ca tu
+
+Diversity: 1.2
+Generated Tweet: hisow is now daddy just want to sre  off with my great. 0:305 army sister has had a
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: whenever i want to be my boyfriend but i want to be like "i don't want to be my boyf
+
+Diversity: 0.5
+Generated Tweet: whenver you want to have a boyfriend like you more than my boyfriend is going to com
+
+Diversity: 1.0
+Generated Tweet: whenver he s around my boyfriend but i hate leaving my need on my i love how you wou
+
+Diversity: 1.2
+Generated Tweet: wheneever we having a drun goalf.~~~~~~~~ 2 meal. ddailley xnw olmy ex 5. daddy woil
+
+---------- Epoch: 66 ---------- 
+
+Loss on first batch after epoch 66: 0.831266641617
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myou got a boyfriend i love him so much~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 0.5
+Generated Tweet: myou like to see my boyfriend like some of the world i want him to be my best frie
+
+Diversity: 1.0
+Generated Tweet: myun in your panties like me: like you gonna have a boyfriend but i need a big an 
+
+Diversity: 1.2
+Generated Tweet: myoff, babyes suating pimma didd.~~~~~~~~~~~~~~~~~~~~~ i hate when my boyfriend us
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend is so cute i have the best friends and i want to be with my boyfri
+
+Diversity: 0.5
+Generated Tweet: his my boyfriend is a bitch~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ i need 
+
+Diversity: 1.0
+Generated Tweet: his even a girl for my world. convinced my boyfriend is much my last ass good and a
+
+Diversity: 1.2
+Generated Tweet: hisxissed if everyday i just rug my curters thanks the recutin my boyfriend so much
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: whenever my boyfriend is actually my best friend and i want to be with my boyfriend 
+
+Diversity: 0.5
+Generated Tweet: whenver you want to be my boyfriend but i want right now is but he's at a back for h
+
+Diversity: 1.0
+Generated Tweet: whenver give really not gone the fuck out with my boyf br there's like 15 and our li
+
+Diversity: 1.2
+Generated Tweet: whent ea, coming i don't like my boyfriend daddy. asd ill 7 years~~~~~~~~~~~~~~~~llf
+
+---------- Epoch: 67 ---------- 
+
+Loss on first batch after epoch 67: 0.825957655907
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myou look like my boyfriend so much i want you to be my boyfriend~~~~~~~~~~~~~~~~~
+
+Diversity: 0.5
+Generated Tweet: myou know it would be a text and then my boyfriend is the absolute best~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Tweet: myou don't like you! here more yess i don't know how my partner user the way my bo
+
+Diversity: 1.2
+Generated Tweet: mye?~~~~ that she says my boyfriend and he dae: my mom always sees me 3do you see 
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend is the best i can't believe that i don't want to be my boyfriend b
+
+Diversity: 0.5
+Generated Tweet: his my boyfriend is a girlfriend but then he loves me and my boyfriend is so cute w
+
+Diversity: 1.0
+Generated Tweet: his my boyfriend , like down this if i would come for a w great &amp; competi hate 
+
+Diversity: 1.2
+Generated Tweet: his is the best money in he feels i'n here and grarumile idca suca asvy blessed but
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: whenver i get a boyfriend i want to be with my boyfriend and he doesn't like me and 
+
+Diversity: 0.5
+Generated Tweet: whenever my boyfriend is the best i don't want to be with my boyfriend and my mom is
+
+Diversity: 1.0
+Generated Tweet: whenver we're cute days and shouted to watch my suppasing with my boyfriend evely 6 
+
+Diversity: 1.2
+Generated Tweet: whenver jeans eagles and my boyfriend need's things like 42 . we're everytime my boy
+
+---------- Epoch: 68 ---------- 
+
+Loss on first batch after epoch 68: 0.820610940456
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myour boyfriend is so cute i can't even see my boyfriend so much i want you to be 
+
+Diversity: 0.5
+Generated Tweet: myour boyfriend is the most amazing boyfriend and i said we are so sleeping and i 
+
+Diversity: 1.0
+Generated Tweet: mybull's boyfriend is the best things that ever. as if my mom comes over to nearno
+
+Diversity: 1.2
+Generated Tweet: mymf}ht:'dll, my $ftmy boyfriend is drunk and it's kid and don't have to work and 
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend is so cute i can't believe that i want to be my boyfriend i want t
+
+Diversity: 0.5
+Generated Tweet: his your boyfriend is so sweet and i love him so much~~~~~~~~~~~~~~~~~~~~~~~ i love
+
+Diversity: 1.0
+Generated Tweet: his my boyfriend is drunksomy boyfriend got me looking at the beach~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Tweet: hisime in love/ closgrasped my boyfriend's mod of. i and i wasyed a job.~~~~~~~~ of
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: whenver i want to be my boyfriend but i don't want to be my boyfriend and i love him
+
+Diversity: 0.5
+Generated Tweet: whenever my boyfriend is in the world~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ i ne
+
+Diversity: 1.0
+Generated Tweet: whenver my boyfriend is calling the weekends at me~~~~~~~~~~~~~~~~ if the people thi
+
+Diversity: 1.2
+Generated Tweet: whenvecting would angely just watch this his boyfriend.~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------- Epoch: 69 ---------- 
+
+Loss on first batch after epoch 69: 0.818651199341
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myour boyfriend is so cute i love him so much~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ i
+
+Diversity: 0.5
+Generated Tweet: myour boyfriend is so fucking cute he can really the only person i can get him to 
+
+Diversity: 1.0
+Generated Tweet: myouucjaltbook someone sand, i love my sister so much her talking to my boyfriend 
+
+Diversity: 1.2
+Generated Tweet: mye feeling and how cute "you kno wanting  on your life since vinojlaim: my boyfri
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend is a single when i can stare at my boyfriend and i love him so muc
+
+Diversity: 0.5
+Generated Tweet: hising is my boyfriend but he wants to talk to me like the weekend i want my boyfri
+
+Diversity: 1.0
+Generated Tweet: his her boyfriend is so fucking cute~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ my boyfriend 
+
+Diversity: 1.2
+Generated Tweet: hise's pifzed me since my boyfriend wanna be like. "my jobie isn't 12 ~? @ ? /dkkes
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: whenver i want to be my boyfriend but i have a boyfriend but i have to be a lot of t
+
+Diversity: 0.5
+Generated Tweet: when i dont only think i'm like like i'm not gonna be my boyfriend but i have a boyf
+
+Diversity: 1.0
+Generated Tweet: wheny i'm honestly the pving pictures in my relationship to my boyfriend. i'll be ha
+
+Diversity: 1.2
+Generated Tweet: whengeves me b like to text this shit abver of him imparnshe &amp; bush my again abi
+
+---------- Epoch: 70 ---------- 
+
+Loss on first batch after epoch 70: 0.816681325436
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myour boyfriend is so cute i love him so much~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 0.5
+Generated Tweet: myouor boyfriend is a little best friend and she's not even so cute i don't like w
+
+Diversity: 1.0
+Generated Tweet: myodn get annobed "uh, he'll face my boyfriend  while right now~~~~~~~~~~~~ every 
+
+Diversity: 1.2
+Generated Tweet: myour boyfriend 1xe.booed anathordy comes think, i'm crazy, she loves you  in phos
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend is so cute i love him so much~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ i 
+
+Diversity: 0.5
+Generated Tweet: his idea of my boyfriend always like "why don't you tell him i love him so much and
+
+Diversity: 1.0
+Generated Tweet: his duyes is @ one forcer so with your boyfriend. i want to wear my god is lit rema
+
+Diversity: 1.2
+Generated Tweet: his,onard! i'm not not wa this blamotic lovely does crybut in twe snope with my boy
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: whenver i want to be my boyfriend and i want to be like the shower and i don't want 
+
+Diversity: 0.5
+Generated Tweet: wheny i want to be my boyfriend on the world things like this thanks~~~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Tweet: whent shows to do things like a ptift then a idk that'my boyfriend is a smy boyfrien
+
+Diversity: 1.2
+Generated Tweet: whenver he' actually make cuz us is hobed men'in" but he has not about stiling befor
+
+---------- Epoch: 71 ---------- 
+
+Loss on first batch after epoch 71: 0.81860178709
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myour boyfriend is so cute i can't even like him that i want to be my boyfriend is
+
+Diversity: 0.5
+Generated Tweet: myour girlfriend is literally my boyfriend and i have no friends and supportive me
+
+Diversity: 1.0
+Generated Tweet: myouver house how to go to stay girls he can show my idi would swift my boyfriend 
+
+Diversity: 1.2
+Generated Tweet: myr4. idgering this bestfriend bestfriends sound here and my mom is sche is how ha
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend is the best thing that has to be my boyfriend is so cute i can't e
+
+Diversity: 0.5
+Generated Tweet: his my boyfriend is so handsome i have to have sex and i want to be with him and he
+
+Diversity: 1.0
+Generated Tweet: his chive will be feeling in the nough to see my boyfriend nice texts here. do he m
+
+Diversity: 1.2
+Generated Tweet: his my boyfriend is literally the most way he like he won't do not once every hitch
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: whenever my boyfriend is so cute i can't even though i have to be like "my boyfriend
+
+Diversity: 0.5
+Generated Tweet: whenever my boyfriend is my best friend and i want to be home and she said "can you 
+
+Diversity: 1.0
+Generated Tweet: wheni qweat i just watch like i apparently in a misah my sister is being so good and
+
+Diversity: 1.2
+Generated Tweet: whenver like is in baby family can'y better but i miss my boyfriend and bn shes beca
+
+---------- Epoch: 72 ---------- 
+
+Loss on first batch after epoch 72: 0.812705338001
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myour boyfriend is so cute i can't believe it have to be the best boyfriend i want
+
+Diversity: 0.5
+Generated Tweet: myou boyfriend doesn't like your more than your boyfriend likes to see him today a
+
+Diversity: 1.0
+Generated Tweet: myou1 birthday is the relationship house with my boyfriend and i'm honestly the re
+
+Diversity: 1.2
+Generated Tweet: mym, "i'll i need to find a boyfriend for liky so cute? !~~~~~~~~~~~~~~~~~~~~~~~~~
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend is so cute i can't believe i don't want to be my boyfriend and i c
+
+Diversity: 0.5
+Generated Tweet: his my boyfriend is my favorite party today~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Tweet: hiseds,come!!!! here not my boyfriend everyday everyday~~~~~~~~~~~~~~~~~~~~~~~ i do
+
+Diversity: 1.2
+Generated Tweet: his napsuhis wayding and guys. ive will be pay attetting. nutch one texting girl is
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: whenver i want to be my boyfriend but i love him so much~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 0.5
+Generated Tweet: whenever i get a boyfriend he is weird that i don't want to always talk to me but i 
+
+Diversity: 1.0
+Generated Tweet: whenver wi want my boyfriend to listen to me and it's 4:-100? because you want to be
+
+Diversity: 1.2
+Generated Tweet: when't my boyfriend/noughttick fabio is peirl back okay i need spending tindebeer! c
+
+---------- Epoch: 73 ---------- 
+
+Loss on first batch after epoch 73: 0.812484383583
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myour boyfriend is so cute i love him so much~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 0.5
+Generated Tweet: myour boyfriend is so cute i love him but i love him~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Tweet: my'untills are like  at work. like wtf is your boyfriend. it's my boyfriend ede at
+
+Diversity: 1.2
+Generated Tweet: myouunce i'm watching chance w in my sou re likes to see my boyfriend because d ot
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend is so cute i love him so much~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 0.5
+Generated Tweet: his my boyfriend is so cute when he can start at the shit in the point in my grandm
+
+Diversity: 1.0
+Generated Tweet: his's my boyfriend today while he reply home some city.~~~~~~~~~~~~~~~~~~ he's aliv
+
+Diversity: 1.2
+Generated Tweet: his girlfriend boyfriend could have the best she few one. i want a boyfriend, but s
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: whenver my boyfriend is the best i can't be the only person i can see him to me i lo
+
+Diversity: 0.5
+Generated Tweet: whenver i want to be my boyfriend and i love him so much.~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Tweet: whengevin which is usually like it too much i told her everyone my boyfriend one of 
+
+Diversity: 1.2
+Generated Tweet: whenverse thinking ex thilf and treats no eprancilotr is my favaline boyfriend~~~~~~
+
+---------- Epoch: 74 ---------- 
+
+Loss on first batch after epoch 74: 0.810570240021
+
+----- Sentence seed: my ----- 
+
+Diversity: 0.2
+Generated Tweet: myour boyfriend is so fucking cute~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ i 
+
+Diversity: 0.5
+Generated Tweet: mye sister is sad away for my boyfriend they say "people i want to be with my boyf
+
+Diversity: 1.0
+Generated Tweet: my1 feed the times when i am in a hairplessing time when my boyfriend 3.~~ we are 
+
+Diversity: 1.2
+Generated Tweet: myorf :-)~~~~~~~~~~~~~~~~~~ one sorrybody sister thinks he be with you looking lik
+
+----- Sentence seed: his ----- 
+
+Diversity: 0.2
+Generated Tweet: his my boyfriend is so cute i love him~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ i lo
+
+Diversity: 0.5
+Generated Tweet: his my boyfriend is a female week and i don't want to be happy for a girl to pick u
+
+Diversity: 1.0
+Generated Tweet: his boyfriend but it says shopping keeps her expects~~~~~~~~~~~~ aw on the movie in
+
+Diversity: 1.2
+Generated Tweet: his little crul seat amy wanteri once her boyfriend talk about me up.a like y'all n
+
+----- Sentence seed: when ----- 
+
+Diversity: 0.2
+Generated Tweet: whenever my boyfriend is at the best boyfriend in the world~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 0.5
+Generated Tweet: whenever i can have the same time my boyfriend is as fuck because i have to go to th
+
+Diversity: 1.0
+Generated Tweet: whenver w wis it and i'll cry if my boyfriend's clear upa things like to~~~ i love m
+
+Diversity: 1.2
+Generated Tweet: when've cause bradelina is my boyfriend type~~~~~~~~~~~~~~~~~~~~~~~~~ ummaddo at wat
+
