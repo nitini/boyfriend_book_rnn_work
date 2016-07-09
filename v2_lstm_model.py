@@ -69,11 +69,11 @@ def vectorize_sequences(sequences, chars, char_indices):
     return sequence_vectors
     
 
-def get_chars(data):
+def get_chars(data, feat):
     text = ''
 
     for i in range(data.shape[0]):
-        text = text + ' ' + data.tweet.iloc[i]
+        text = text + ' ' + data[feat].iloc[i]
 
     chars = set(text)
 
@@ -251,7 +251,7 @@ def save_model_weights(model, model_name, in_gcp):
 #%%
 def main():
     
-    SEQ_LEN = 75
+    SEQ_LEN = 150
     BATCH_SIZE = 256
     LAYERS = 3
     LSTM_SIZE = 256
@@ -268,7 +268,7 @@ def main():
     if in_gcp == 1:
         text_data = pd.read_csv(fp.goog_file_path + 'old_tweet_data_weighted.csv')
        
-    chars, char_indices, indices_char = get_chars(text_data)
+    chars, char_indices, indices_char = get_chars(text_data, feat)
     
     NUM_SAMPLES = (text_data.shape[0]  / BATCH_SIZE) * BATCH_SIZE
     VOCAB_SIZE = len(chars)
