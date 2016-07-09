@@ -17,7 +17,22 @@ import json
 import pandas as pd
 import file_paths as fp
 import sys
+from keras.utils.data_utils import get_file
 
+def get_nietzsche_data():   
+    path = get_file('nietzsche.txt', 
+                    origin="https://s3.amazonaws.com/text-datasets/nietzsche.txt")
+    
+    text = open(path).read().lower().decode('ascii','ignore').encode('ascii','ignore')
+    
+    return text
+    
+def convert_text_to_data(text, seq_len):
+    num_seqs = len(text) / seq_len
+    text_data = pd.DataFrame(columns=['text'], index=range(num_seqs))
+    for i in range(num_seqs):
+        text_data.text.iloc[i] = text[i*seq_len:i*seq_len + seq_len]
+    return text_data
 
 def pad_sequences(data, feat, fixed_length):
     padded_tweets = data.apply(lambda x: x[feat] + str('~' * (fixed_length - len(x[feat])))
@@ -161,8 +176,8 @@ def sample_given_model(test_model,
         softmax = test_model.predict_on_batch(batch)[0].ravel()
         softmax = modify_prob_dist(softmax, temperature)
 
-        #sample = np.random.choice(range(len(char_indices)), p=softmax)
-        sample = np.argmax(np.random.multinomial(1,softmax,1))
+        sample = np.random.choice(range(len(char_indices)), p=softmax)
+        #sample = np.argmax(np.random.multinomial(1,softmax,1))
 
         sampled.append(sample)
     
@@ -236,32 +251,37 @@ def save_model_weights(model, model_name, in_gcp):
 #%%
 def main():
     
-    bf_tweets = pd.read_csv('./old_tweet_data/old_tweet_data_unweighted.csv')
+    SEQ_LEN = 75
+    BATCH_SIZE = 256
+    LAYERS = 3
+    LSTM_SIZE = 256
+    EPOCHS = 75
+    
+    #text_data = pd.read_csv('./old_tweet_data/old_tweet_data_unweighted.csv')
+    
+    text_data = convert_text_to_data(get_nietzsche_data(), SEQ_LEN)
+    
+    feat = 'text'
     
     in_gcp = int(sys.argv[1])
     
     if in_gcp == 1:
-        bf_tweets = pd.read_csv(fp.goog_file_path + 'old_tweet_data_weighted.csv')
+        text_data = pd.read_csv(fp.goog_file_path + 'old_tweet_data_weighted.csv')
        
-    chars, char_indices, indices_char = get_chars(bf_tweets)
+    chars, char_indices, indices_char = get_chars(text_data)
     
-    SEQ_LEN = 75
-    BATCH_SIZE = 256
+    NUM_SAMPLES = (text_data.shape[0]  / BATCH_SIZE) * BATCH_SIZE
     VOCAB_SIZE = len(chars)
-    LAYERS = 3
-    LSTM_SIZE = 256
-    NUM_SAMPLES = (bf_tweets.shape[0]  / BATCH_SIZE) * BATCH_SIZE
-    EPOCHS = 75
     
-    bf_tweets['tweet'] = pad_sequences(bf_tweets, 'tweet', SEQ_LEN)
-    bf_tweets['shifted_tweet'] = shift_sequences(bf_tweets, 'tweet', SEQ_LEN)
+    #text_data[feat] = pad_sequences(text_data, feat, SEQ_LEN)
+    text_data['shifted_text'] = shift_sequences(text_data, feat, SEQ_LEN)
 
-    bf_tweets = bf_tweets.iloc[0:NUM_SAMPLES].copy()
+    text_data = text_data.iloc[0:NUM_SAMPLES].copy()
     
-    X_seq_vectors = vectorize_sequences(bf_tweets['tweet'], 
+    X_seq_vectors = vectorize_sequences(text_data[feat], 
                                         chars, 
                                         char_indices)
-    y_seq_vectors = vectorize_sequences(bf_tweets['shifted_tweet'],
+    y_seq_vectors = vectorize_sequences(text_data['shifted_text'],
                                         chars,
                                         char_indices)
 
@@ -272,13 +292,13 @@ def main():
                                  LSTM_SIZE,
                                  LAYERS)
                                  
-    primer_texts = ['my',
-                    'his', 
-                    'when']
+    primer_texts = ['my ',
+                    'his ', 
+                    'when ']
     sample_length = 80
     diversities = [0.2, 0.5, 1.0, 1.2]
 
-    model_name = make_model_name('5')
+    model_name = make_model_name('6')
     output_file = open('./output_' + model_name + '.txt', 'wb')
     
     if in_gcp == 1:
