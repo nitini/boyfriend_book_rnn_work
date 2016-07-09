@@ -113,3 +113,15 @@ test_model = build_model(1,
 
 print(sample(test_model, weights_file, char_indices, indices_char))
 
+#%%
+        for i, (start, end) in enumerate(yield_batches(BATCH_SIZE, NUM_SAMPLES)):
+            batch_X = X_seq_vectors[start:end,:,:]
+            batch_y = y_seq_vectors[start:end,:,:]
+            loss = training_model.train_on_batch(batch_X, batch_y)
+            loss_values.append(loss)
+            if check_terminate_training_early(loss_values):
+                break
+            print("Batch " + str(i) + ' / ' + str(NUM_SAMPLES / BATCH_SIZE) + ' of Epoch ' + str(epoch))
+            sys.stdout.flush()
+            print('Loss on batch ' + str(i) + ':' + str(loss))
+            sys.stdout.flush()

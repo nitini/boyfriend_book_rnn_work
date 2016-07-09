@@ -246,6 +246,26 @@ def save_model_weights(model, model_name, in_gcp):
     model.save_weights(model_weights_file_name, overwrite=True)
 
     return model_weights_file_name
+    
+def check_terminate_training_early(loss_values):
+    return 0
+
+
+def train_batches(training_model, X, y, epoch, BATCH_SIZE, NUM_SAMPLES, loss_values):    
+    
+    for i, (start, end) in enumerate(yield_batches(BATCH_SIZE, NUM_SAMPLES)):
+        batch_X = X[start:end,:,:]
+        batch_y = y[start:end,:,:]
+        loss = training_model.train_on_batch(batch_X, batch_y)
+        loss_values.append(loss)
+        if check_terminate_training_early(loss_values) == 1:
+            return 1
+            
+        print("Batch " + str(i) + ' / ' + str(NUM_SAMPLES / BATCH_SIZE) + ' of Epoch ' + str(epoch))
+        sys.stdout.flush()
+        print('Loss on batch ' + str(i) + ':' + str(loss))
+        sys.stdout.flush()  
+    return 0
 
     
 #%%
@@ -328,20 +348,26 @@ def main():
     print("Number of batches per epoch: " + str(NUM_SAMPLES / BATCH_SIZE))
     sys.stdout.flush()
     
+    loss_values = []    
+    
     for epoch in range(EPOCHS):
         print("----- Epoch: " + str(epoch))
         sys.stdout.flush()
         print("---------- Epoch: " + str(epoch) + " ---------- ", file=output_file)
         
         print("", file=output_file)
-        for i, (start, end) in enumerate(yield_batches(BATCH_SIZE, NUM_SAMPLES)):
-            batch_X = X_seq_vectors[start:end,:,:]
-            batch_y = y_seq_vectors[start:end,:,:]
-            loss = training_model.train_on_batch(batch_X, batch_y)
-            print("Batch " + str(i) + ' / ' + str(NUM_SAMPLES / BATCH_SIZE) + ' of Epoch ' + str(epoch))
-            sys.stdout.flush()
-            print('Loss on batch ' + str(i) + ':' + str(loss))
-            sys.stdout.flush()
+        
+        terminate_flag = train_batches(training_model,
+                                       X_seq_vectors,
+                                       y_seq_vectors,
+                                       epoch,
+                                       BATCH_SIZE,
+                                       NUM_SAMPLES,
+                                       loss_values)
+        
+        if terminate_flag == 1:
+            print("Loss has seemed to asymptote, terminating program", file=output_file)
+            break
 
         first_batch_loss = training_model.test_on_batch(X_seq_vectors[0:BATCH_SIZE,:,:], y_seq_vectors[0:BATCH_SIZE,:,:])
         print("Loss on first batch after epoch " + str(epoch) + ": " + str(first_batch_loss), file=output_file)
@@ -367,7 +393,7 @@ def main():
                 sys.stdout.flush()
                 print("Diversity: " + str(diversity), file=output_file)
 
-                sampled_tweet = sample(test_model, 
+                sampled_text = sample(test_model, 
                                        model_weights_file_name, 
                                        char_indices,
                                        indices_char,
@@ -375,9 +401,9 @@ def main():
                                        sample_length, 
                                        primer)
 
-                print("Generated Tweet: " + sampled_tweet)
+                print("Generated Text: " + sampled_text)
                 sys.stdout.flush()
-                print("Generated Tweet: " + sampled_tweet, file=output_file)
+                print("Generated Text: " + sampled_text, file=output_file)
                 print("", file=output_file)
 
 if __name__ == '__main__':
