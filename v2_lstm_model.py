@@ -271,17 +271,17 @@ def train_batches(training_model, X, y, epoch, BATCH_SIZE, NUM_SAMPLES, loss_val
 #%%
 def main():
     
-    SEQ_LEN = 150
-    BATCH_SIZE = 256
+    SEQ_LEN = 70
+    BATCH_SIZE = 512
     LAYERS = 3
-    LSTM_SIZE = 256
-    EPOCHS = 75
+    LSTM_SIZE = 128
+    EPOCHS = 100
     
-    #text_data = pd.read_csv('./old_tweet_data/old_tweet_data_unweighted.csv')
+    text_data = pd.read_csv('./old_tweet_data/old_tweet_data_unweighted.csv')
     
-    text_data = convert_text_to_data(get_nietzsche_data(), SEQ_LEN)
+    #text_data = convert_text_to_data(get_nietzsche_data(), SEQ_LEN)
     
-    feat = 'text'
+    feat = 'tweet'
     
     in_gcp = int(sys.argv[1])
     
@@ -293,7 +293,7 @@ def main():
     NUM_SAMPLES = (text_data.shape[0]  / BATCH_SIZE) * BATCH_SIZE
     VOCAB_SIZE = len(chars)
     
-    #text_data[feat] = pad_sequences(text_data, feat, SEQ_LEN)
+    text_data[feat] = pad_sequences(text_data, feat, SEQ_LEN)
     text_data['shifted_text'] = shift_sequences(text_data, feat, SEQ_LEN)
 
     text_data = text_data.iloc[0:NUM_SAMPLES].copy()
@@ -301,6 +301,7 @@ def main():
     X_seq_vectors = vectorize_sequences(text_data[feat], 
                                         chars, 
                                         char_indices)
+
     y_seq_vectors = vectorize_sequences(text_data['shifted_text'],
                                         chars,
                                         char_indices)
@@ -313,12 +314,13 @@ def main():
                                  LAYERS)
                                  
     primer_texts = ['my ',
-                    'his ', 
-                    'when ']
+                    'i ', 
+                    'you ']
+
     sample_length = 80
     diversities = [0.2, 0.5, 1.0, 1.2]
 
-    model_name = make_model_name('6')
+    model_name = make_model_name('7')
     output_file = open('./output_' + model_name + '.txt', 'wb')
     
     if in_gcp == 1:

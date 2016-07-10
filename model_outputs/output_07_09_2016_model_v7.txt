@@ -1,0 +1,4775 @@
+
+---------- Training Info: ---------- 
+
+Number of examples: 13824
+Length of examples: 70
+Character set size: 67
+Batch size: 512
+Number of epochs: 100
+Number of batches per epoch: 27
+Generated sentence length: 80
+Sentence Seeds: ['my ', 'i ', 'you ']
+Diversities: [0.2, 0.5, 1.0, 1.2]
+
+---------- Any additional notes: ---------- 
+
+Unweighted Twitter data, semi-long sentence
+
+---------- All model information: ---------- 
+
+{
+  "class_name": "Sequential", 
+  "config": [
+    {
+      "class_name": "LSTM", 
+      "config": {
+        "U_regularizer": null, 
+        "W_regularizer": null, 
+        "activation": "tanh", 
+        "b_regularizer": null, 
+        "batch_input_shape": [
+          512, 
+          70, 
+          67
+        ], 
+        "consume_less": "cpu", 
+        "dropout_U": 0.0, 
+        "dropout_W": 0.0, 
+        "forget_bias_init": "one", 
+        "go_backwards": false, 
+        "init": "glorot_uniform", 
+        "inner_activation": "hard_sigmoid", 
+        "inner_init": "orthogonal", 
+        "input_dtype": "float32", 
+        "name": "lstm_1", 
+        "output_dim": 128, 
+        "return_sequences": true, 
+        "stateful": true, 
+        "trainable": true, 
+        "unroll": false
+      }
+    }, 
+    {
+      "class_name": "Dropout", 
+      "config": {
+        "name": "dropout_1", 
+        "p": 0.2, 
+        "trainable": true
+      }
+    }, 
+    {
+      "class_name": "LSTM", 
+      "config": {
+        "U_regularizer": null, 
+        "W_regularizer": null, 
+        "activation": "tanh", 
+        "b_regularizer": null, 
+        "batch_input_shape": [
+          512, 
+          70, 
+          128
+        ], 
+        "consume_less": "cpu", 
+        "dropout_U": 0.0, 
+        "dropout_W": 0.0, 
+        "forget_bias_init": "one", 
+        "go_backwards": false, 
+        "init": "glorot_uniform", 
+        "inner_activation": "hard_sigmoid", 
+        "inner_init": "orthogonal", 
+        "name": "lstm_2", 
+        "output_dim": 128, 
+        "return_sequences": true, 
+        "stateful": true, 
+        "trainable": true, 
+        "unroll": false
+      }
+    }, 
+    {
+      "class_name": "Dropout", 
+      "config": {
+        "name": "dropout_2", 
+        "p": 0.2, 
+        "trainable": true
+      }
+    }, 
+    {
+      "class_name": "LSTM", 
+      "config": {
+        "U_regularizer": null, 
+        "W_regularizer": null, 
+        "activation": "tanh", 
+        "b_regularizer": null, 
+        "batch_input_shape": [
+          512, 
+          70, 
+          128
+        ], 
+        "consume_less": "cpu", 
+        "dropout_U": 0.0, 
+        "dropout_W": 0.0, 
+        "forget_bias_init": "one", 
+        "go_backwards": false, 
+        "init": "glorot_uniform", 
+        "inner_activation": "hard_sigmoid", 
+        "inner_init": "orthogonal", 
+        "name": "lstm_3", 
+        "output_dim": 128, 
+        "return_sequences": true, 
+        "stateful": true, 
+        "trainable": true, 
+        "unroll": false
+      }
+    }, 
+    {
+      "class_name": "Dropout", 
+      "config": {
+        "name": "dropout_3", 
+        "p": 0.2, 
+        "trainable": true
+      }
+    }, 
+    {
+      "class_name": "TimeDistributed", 
+      "config": {
+        "layer": {
+          "class_name": "Dense", 
+          "config": {
+            "W_constraint": null, 
+            "W_regularizer": null, 
+            "activation": "linear", 
+            "activity_regularizer": null, 
+            "b_constraint": null, 
+            "b_regularizer": null, 
+            "bias": true, 
+            "init": "glorot_uniform", 
+            "input_dim": null, 
+            "name": "dense_1", 
+            "output_dim": 67, 
+            "trainable": true
+          }
+        }, 
+        "name": "timedistributed_1", 
+        "trainable": true
+      }
+    }, 
+    {
+      "class_name": "Activation", 
+      "config": {
+        "activation": "softmax", 
+        "name": "activation_1", 
+        "trainable": true
+      }
+    }
+  ], 
+  "keras_version": "1.0.4", 
+  "loss": "categorical_crossentropy", 
+  "optimizer": {
+    "epsilon": 1e-08, 
+    "lr": 0.0010000000474974513, 
+    "name": "RMSprop", 
+    "rho": 0.8999999761581421
+  }, 
+  "sample_weight_mode": null
+}
+
+---------- Epoch: 0 ---------- 
+
+Loss on first batch after epoch 0: 2.86081314087
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my  -ehga r  i r e   oe   o         ee e            e                         n    
+
+Diversity: 0.5
+Generated Text: my q2-i!0q~wtis iu  br nllryni m it i ni  aifi lyy  eei uy   n  eid al f is  e ie  
+
+Diversity: 1.0
+Generated Text: my de{|$9vxt.~bifqyay\innrifneda yaa i* ie  f~nb1ahd*feeadi  y rmfnmdieorote~teeoit
+
+Diversity: 1.2
+Generated Text: my *'&d.j6rv*"k o?e sebinmitkymoosrhancebnaorbyeism'dal omgeao  haddmo ioydci0bdnpf
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i z9qigsebynn e   e               i  e  e   e   e       ey i     e                
+
+Diversity: 0.5
+Generated Text: i ~j.y+@rndnm iitee   n   en t ne   ieiyye n    ho ot a   e l yh  r~ tie~ rei  a g
+
+Diversity: 1.0
+Generated Text: i 3-t(:k=8uktk u_swi sruni eieifceyo  ohge .doedrb di s  qodfetawmn[]mdkshtxabsls 
+
+Diversity: 1.2
+Generated Text: i 8r7:5_%n#8&n*\rwtneptrarnbeo nol + estu~hbffada$(d sgido lpaodfv_aennrambve$ea  
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you r2d?qr~c s o i    ee     ie          e       a      e                       e  e
+
+Diversity: 0.5
+Generated Text: you #6?^c?-~gc pp  gee eeoom~ebeoiabis yor~n  i tye e   esoi yen iait hri eii e n   
+
+Diversity: 1.0
+Generated Text: you l)h]szb7zmndpfkl yasltehai8b ymm~s enory ls~k  eehi)itmkaon 1loenra@ h reaos d~r
+
+Diversity: 1.2
+Generated Text: you %]%?8=xh~blfn1ibhug?nnk]i    msn ynyitfnndinueh,inem0n i~t ~sim'teph~vnbpehlkis~
+
+---------- Epoch: 1 ---------- 
+
+Loss on first batch after epoch 1: 2.7694208622
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my ni#r inf                                 o                 e   a       t        
+
+Diversity: 0.5
+Generated Text: my 9 fom'ira awtannl ee let  te~ ae   lhn   amoe yo  o eei em  md, fomihw yi ~~ ~~~
+
+Diversity: 1.0
+Generated Text: my cnbd9dwsmojr h o ~ t~n ae  w~gn1a vfn egek attsyjtweayocmkfhst   taadei mesu  ys
+
+Diversity: 1.2
+Generated Text: my  ulxsmn"$maaxb  ymi.&e& 9rem,t tbuaoia8al~ne~6i~ie ~ n~ilt  y'a/ione mtiar$-!hre
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i 0y?@2en      o                          o       e                               
+
+Diversity: 0.5
+Generated Text: i ~';8siwrotowan al ooase eo ye  t e   t eys s    i ets  wmeorea ~e  ~~ ~~~~~~~~~~
+
+Diversity: 1.0
+Generated Text: i (p\ fet4uku:irmn l   nh eewdedva0seowyw ts rahtyhoh~ne wenol lhs rnslriyyiew`y~w
+
+Diversity: 1.2
+Generated Text: i 5j#|o,k*c igvtsnfetcmorkitabe~k @eln sfrtgieent4ho (hpg, tgmhi innifanemlt  nt  
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you x.edt tf n n                                                                    
+
+Diversity: 0.5
+Generated Text: you b9ptxw duidfbdb  n b o  ah   rnesme      hdt m t  n be d eni    a hea yrd  teoi 
+
+Diversity: 1.0
+Generated Text: you !%!wj|hwxvldimdh ei ot'ki o mn fam  scnmotlyss~~t n~ c~o~~~td~ ~mwe'reb yeit fr 
+
+Diversity: 1.2
+Generated Text: you 1.s` pj"*ef  uo%euao aii6 tyjhry   bnuu9ia9  msr tsrwopp haumtso@rhsu l pzlq eyh
+
+---------- Epoch: 2 ---------- 
+
+Loss on first batch after epoch 2: 2.73102355003
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my y5finnn  ne   e        e                                                        
+
+Diversity: 0.5
+Generated Text: my ]xnltroeddektitl i fnn y h   e  r y  n ee     a   ~   y n  gie tfe  t o  n e  tn
+
+Diversity: 1.0
+Generated Text: my abvk`eeodnsb tetrt  d i!ro~wy~~k~9f~~n~~~w&~~o~~ ~syiearrefgap eeo i;irnath as  
+
+Diversity: 1.2
+Generated Text: my #eecdo%etdbcoia doyndrsetdf lmm' tfaocebnsag sdidr k ewuoenucn c^st.a tayliye ch
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i sxsfioiin        e e             i         e       e   o                        
+
+Diversity: 0.5
+Generated Text: i bnn&2 xd yao     is   t ienan ~  yf o i t nbet   tn  oeo o   e  i        ti ei  
+
+Diversity: 1.0
+Generated Text: i n+=5sq:mvgobchaakya y  ikne a/ sy;e s s rsyimdepmipgraw~dwt  cfyogefonao taarfib
+
+Diversity: 1.2
+Generated Text: i y5p$( /a~el%,imy nbn s msehyewix 0,v6 st'hvhmenb lwhyyuyefe'cni.alomaanrny iwct0
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you s ei t  in        i                            n                              e 
+
+Diversity: 0.5
+Generated Text: you ki7r  en sin im uie  o wsm oi e     neao     e  ntn tt r   s om   a   ae  kiei  
+
+Diversity: 1.0
+Generated Text: you rfblw5espnmh)t ra hhe tobdt  on n b  yneunn tgoaoh  bpldr  ui   d~axeocw  tnat  
+
+Diversity: 1.2
+Generated Text: you &zao=eo etipuygwie   hiyuuyaeoaeny  lnsra es e dc ,seku eatu n  yk i  ycgootr~ c
+
+---------- Epoch: 3 ---------- 
+
+Loss on first batch after epoch 3: 2.69276762009
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my bnsbinendd   e e     n  n  n     n    eie       een      nen   i    i nn     ne 
+
+Diversity: 0.5
+Generated Text: my t:b .snne  nd  e nhrnnne   hae ee tem   p ge id  n   nee d i enn   aainn a  ta  
+
+Diversity: 1.0
+Generated Text: my ffonorecsyfdnjymd id hatld  trryed  oabepo ia vwuy  ssfueeoo narset o wiwu' t or
+
+Diversity: 1.2
+Generated Text: my =h`[etwtmipnriiedmh@m.ten doeis  amp rpevmdyoh ryf{mrk dit ewit mihveineii'dhea 
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i gfttnfr ne      i n nn    n   ee  r e     e  n ni       e n   in       eind     
+
+Diversity: 0.5
+Generated Text: i guw?ehoi'rne dbmmwymreo nii o  r eeado  trte oeonlooo  dibe asend y  tbo lli n d
+
+Diversity: 1.0
+Generated Text: i 1d!."7b?^qjnrlpem nai ets ofist dcy eeied.wfa l~o8 o ; 'nmere~sdt ac/ mee nihri 
+
+Diversity: 1.2
+Generated Text: i {qm\u.vr:dzufrysbsdym fise tzeddnbo seayube -ewee dtnetau emuu cbecinnyw ) rraiv
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you iinnniii      non e   e       ne nn      i  n n      n      e  n     n   e   ne 
+
+Diversity: 0.5
+Generated Text: you obkfeiri  e toei diliiau u  k ieeni   eo  nn e  s    n yidmdn   enhnda o  miee  
+
+Diversity: 1.0
+Generated Text: you "z!efndgd au pfsw t ayt k  swowshitlhnaiino  fomroykirdot l;eecoies attishku aon
+
+Diversity: 1.2
+Generated Text: you 35fir5hteynbtemdpg dktiimkmsnnneifiyihroya ppn~nd'~ voseos ueiys n easnktobhait1
+
+---------- Epoch: 4 ---------- 
+
+Loss on first batch after epoch 4: 2.55045437813
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my ffifrenndd     fferend   o  ii e    ir e    oree   e    ein   e   e e  e   e   i
+
+Diversity: 0.5
+Generated Text: my u&idafnn em i een d e l eed a mo  eo e ' ue i  im  e i   oi n a   aa e   ir  iey
+
+Diversity: 1.0
+Generated Text: my ucyummgnoeks bysi r edldesflqmpide ~ ita eba wwshshasc rotisikdhctyaha cybhborwn
+
+Diversity: 1.2
+Generated Text: my z6vx(t%imttnoebtmamlwewi ekwtthmtam alype, rem  e'bagfpnt wiumyoaaknswtp  bflm: 
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i 2hoyeaitni    oieee   on  en     irie     oeee   oy  ni n  e     oee  i     ee  
+
+Diversity: 0.5
+Generated Text: i 7siekldhoosdonr snen e so   onndn   yose  ilte s  y bii ddd is   sn mh   sme e s
+
+Diversity: 1.0
+Generated Text: i ;7yuf2nmba)ae.d imsrseye  eoo bee' niwa ~e iset ys oy eindi swn b krtg efmk  y h
+
+Diversity: 1.2
+Generated Text: i :zeqtnhu,tgil teeyn,obo ' 'a  if dil id l ues yohto  :fm3ca. regne rs, bf  mc'dy
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you weobdnnn n    eein  t   eii   e   e ee   ao a    ee    ee    e   een  oi e    ei
+
+Diversity: 0.5
+Generated Text: you i  indi  n   iei  nt  e cre s ee  s tie    uee  so  n i e  oe i    soe ~d  oy by
+
+Diversity: 1.0
+Generated Text: you .dc}censageta 'ce clyrgh safwtiemilw t ro ni~i s   vxi eo m n  o6e eie~t~~~~~~~~
+
+Diversity: 1.2
+Generated Text: you  po!ueltoidpi 'u eesfsiede~nnl ryo oe nhnd twm'pyy tbcjnf~dn? d!bgs tioynmma  nb
+
+---------- Epoch: 5 ---------- 
+
+Loss on first batch after epoch 5: 2.48636579514
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my ffffirrnndd  o offfieen io ooo iie  oooie i ooe  oorre  oooaee oooo oree  oooer 
+
+Diversity: 0.5
+Generated Text: my =ciyrriennd iioone  aroie eu yo ffiieid sha aae ata  rf erte  rae se o ebiyiiee 
+
+Diversity: 1.0
+Generated Text: my !bionisne;haloesmtahti~n "boyo h rrfiiedula o!o aa ioygybysreeidmoeue cgv ouvlas
+
+Diversity: 1.2
+Generated Text: my tclksrmn eo  m fyefrsnvnsaski\ eoueswb iffuryh bofa de8. l   roiieferist wyyne t
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i yofnffriindd  ooorire e i oee  aofie  oooen  ooo ree  ooye e oo eee ao ooo et  o
+
+Diversity: 0.5
+Generated Text: i brryirrenidd yhyorreeen  hooietn soa rf ffienndm o fourie to lfytof m e e ne omn
+
+Diversity: 1.0
+Generated Text: i -` ]3otrntsha sne dm oorce nk elnwi bm.e fsybfffriennddsekd bsonbgitnn loovaetio
+
+Diversity: 1.2
+Generated Text: i ,on@ luin haaohtbeyrnegei e tforipna li~ew m arf resrns od:r'ias  wrwb yonotrhe 
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you ffffriennd  oyoorrreen oom e iie  oooffien  ooooe  ooorrne a  obofrreed ao  ooro
+
+Diversity: 0.5
+Generated Text: you i-fmiid   abyfiiinend u lioe  aee i f oo reen o m  oofrine im i aooo ofiee  td o
+
+Diversity: 1.0
+Generated Text: you naxesw in ihsiict arin wlctnemntoi oaape aahurm o fyfft initlul.d shhai,s ohme l
+
+Diversity: 1.2
+Generated Text: you  ;4bdepi'g puh btwie rob,fufsudafc'aead ob kybfuinps widhconi yrounegvph5 secrlt
+
+---------- Epoch: 6 ---------- 
+
+Loss on first batch after epoch 6: 2.39015746117
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my byfyriinnd  oo o iee  oo e ie  a e ae e  ie  i  oe  oe  he  oo  oe  ie  bo e t a
+
+Diversity: 0.5
+Generated Text: my fwfirenn~  oowei t a ee  e  for n n a te aa e e en aa n ie ie ln  ehe oa i  o mn
+
+Diversity: 1.0
+Generated Text: my 1ybrbrnfnn esnh nliir m hi lbcxsea oe bga.h s m fer gbt vtp'knr m hhm ths mrftt.
+
+Diversity: 1.2
+Generated Text: my hintnns2 resyhra dygkt'a~~~~~~~ ~c hlocaya mctp trwt l  hykerh ao fei oesdea oh 
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i nfoieend  oooien  ao as t e e a a a a  oe  oo e  oe  ooe e  oe  e e e  ae  oo  o
+
+Diversity: 0.5
+Generated Text: i v$ochrrnn  ao s me  oete ia m i iin es ae ain i s o s a ah  i  ien ta mte ms a l
+
+Diversity: 1.0
+Generated Text: i qk#h\.st  fyfgkeedtshgk hah tp sie ea hs ao ekl f~'2  hore  tmosrt ,ii e truamgs
+
+Diversity: 1.2
+Generated Text: i 1=;tm*i.in6gpnolinedih5dtug ysfosanndi,otiee~,~ftlnee meo  aikn nh y.a wsdas gmm
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you fffrrinnd  oo  iren  a  a ee te  o ee  oe  oee  ie  oe  e  oe  ae  m  ooe  o e  
+
+Diversity: 0.5
+Generated Text: you ermieders ny ferten e  oftl   one  oe e pat m e  odt  oe t ah  oeh e at lan  hn 
+
+Diversity: 1.0
+Generated Text: you ts wydeee~~~~~~~~~~~~~~~~~~n~k' hvk ~~~~~~~k~~~~~  n uin ydlddge m nach ar viked
+
+Diversity: 1.2
+Generated Text: you ibm5fnn giwkiht.au. yb&cyrbiee vicl:t~e~~~~~~~~~altahme yfmre.m yemofes l i cc;n
+
+---------- Epoch: 7 ---------- 
+
+Loss on first batch after epoch 7: 2.29972720146
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my ybfffriennd io oo oie toa me mo boyfriend io ae mo ao to m an mo mo oofreen io h
+
+Diversity: 0.5
+Generated Text: my offrrrinn ite th ml boyfrieed loh a hi wae la ms bbiyrrend io ao mwme boyoreee w
+
+Diversity: 1.0
+Generated Text: my offofeinnd he id,atcim ayienr buyyf oriiy aasy$on mc calme sthie mon fisdwtae ee
+
+Diversity: 1.2
+Generated Text: my [fiiridn obeyo fofyeinda huonsr he t o&yezlcieehosytnc ytleeph.jlfha ,edhinyys: 
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i affifienn ioo ooffieed oo ooree mo aoe boofreen io mo mo boyfieed io ao ao ho t 
+
+Diversity: 0.5
+Generated Text: i o'tfirin  iucs oay tfiene buy cofrrend boa sre mo ooy mre boyrfrien io ipas iaed
+
+Diversity: 1.0
+Generated Text: i sw;  bbeffiee  ab oyfieed ie s  yn o,y moeltm3e.~ to poiga lhoy ooioerrsmnssdltm
+
+Diversity: 1.2
+Generated Text: i 3inn3i puuofact bee co ar azh~n md~ mekn dorin giwdavryi oorre te aun zhabto~~un
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you uiyien aoyoyorireen io oer ao ao ay boyfriend io ao mo mo oofte i aa a oo m m a 
+
+Diversity: 0.5
+Generated Text: you nufoeen bioyoerreee ay yorffieed ik uy ho orfre  oosei aa io hyy ao rfrien is is
+
+Diversity: 1.0
+Generated Text: you (ckir.e. teollepyofsn isvlfpgat bwftetihhed oitroynd ran~ abtafsn ,u ek tit tu g
+
+Diversity: 1.2
+Generated Text: you cfyfbieen ofallgha thhyv ajblyeesg if'y ioyc hensta coy*iepeaamnd, d'eesyi'oriit
+
+---------- Epoch: 8 ---------- 
+
+Loss on first batch after epoch 8: 2.23835301399
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my ifffiied i soe ie mo mo toe m te m m m an to ae m a bou ia m a me to i a te me m
+
+Diversity: 0.5
+Generated Text: my kt friied stm mn ioe in los ie e ta to e a m bofoend io a a a ane te  ola a aa e
+
+Diversity: 1.0
+Generated Text: my xijo~d.~~~~~~~~~ saedi wve ih.? bhyv hsyww ai my ne balte ek. yflu mt yyutiap d'
+
+Diversity: 1.2
+Generated Text: my lhfkr~en?~~~~~~la~toaisei~~~~~ evwoswhn ue uangtg]d iv;dswmmn anrlasled onlthtta
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i sooffiend ii ts ae me boorren i a a m a ta te to m a to a a m ho a to to te m a 
+
+Diversity: 0.5
+Generated Text: i altoroe s ue hnts mre a a tot mel bsa me wo aes es boe ss mt m me oa a to  oi se
+
+Diversity: 1.0
+Generated Text: i ugwookin wocwwea htns se tgy,0 onl mhseg hor e hakd byas ayt bossfund bx iito rs
+
+Diversity: 1.2
+Generated Text: i -saon_tn~ )ee oe ie weemr o o"rlam ie wak b,oyi~~ mmri dtw nsa hmgl" mo aytd wte
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you ffffriend ii ta me m mn ta m a ae me wo a m a mo mo m m m a oo me a a ma m a me 
+
+Diversity: 0.5
+Generated Text: you tfrired dtye ti me boo is a a ae' i m a bu hhvkh he me m m pa whe te i tl ea a o
+
+Diversity: 1.0
+Generated Text: you tqah"et mpiam~ maeme ki rfshte hoeeg~~~~~~~~~~~~~~ livtl~e hhtm ag yoee ours unn
+
+Diversity: 1.2
+Generated Text: you ifweeod atslthatr lao ssg kg'h icat rkrccitmo onncrnc~ sgke cex faat mmlt oici k
+
+---------- Epoch: 9 ---------- 
+
+Loss on first batch after epoch 9: 2.17516231537
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my byyffriend is mi ta ae me in ti e ta to e en m m y boyrriend is m a ae mo ae a m
+
+Diversity: 0.5
+Generated Text: my iisef en to en lahh hsn  atet thcle m whet ta me ho he e t hek  a ta lh ta he m 
+
+Diversity: 1.0
+Generated Text: my leiksyw ootknhn.~~~~~~~~~~~~~~~~~~~~~~~~~~"~~~~'y~~~~~~~~~~~~~~~~s nwlanshwcln'i
+
+Diversity: 1.2
+Generated Text: my zyff~r:di pain ttag te mtopsrsos wsedt mcyooriweg?e .dmiss0nm toame legiknk tnt 
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i eiitd too a ae mo boyrriend is te m loe i te i me m a hoe t a m a to a a m a a a
+
+Diversity: 0.5
+Generated Text: i mmiefe te sya boh ie e the m mo b oo aen td s ed bhek ar hut he e wo he i bin wo
+
+Diversity: 1.0
+Generated Text: i onebetiatt tefynss els encsreus aidtt bsr ie ie inn syy wmn tsy 1ade lok gl&k mu
+
+Diversity: 1.2
+Generated Text: i 640rfhtga~d!~ ,onl?nkinrwahtpdnoo.e ra io-rfy son lc slael n bm ietpgods ma tots
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you ieit  hoo ie a lo me ti i te to m a an m te m a mo m a me hhe m t he a te m m m 
+
+Diversity: 0.5
+Generated Text: you ffreredd is ta aatne se ae man mo int ran borend iid as an io ae ta hhe ae angs 
+
+Diversity: 1.0
+Generated Text: you fttpi- huot o "yraadnne~~~~~~~~~~~~ on hre tunl aot  od lecs oocrw os me hay'e c
+
+Diversity: 1.2
+Generated Text: you ioshelas ailn a ccmi hg mo 2lnyvcogktnketd?~~~~~~~d,~~ a m( unuvtmv aenl mo thnt
+
+---------- Epoch: 10 ---------- 
+
+Loss on first batch after epoch 10: 2.04012203217
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my byyffieend is mo boyfriend is so boyfriend is to boyfriend is i a a mo boyfriend
+
+Diversity: 0.5
+Generated Text: my yyffiiend ii ta koe a to boyfriend is a mo boyfriend i wit i to bhyfriend is tr 
+
+Diversity: 1.0
+Generated Text: my etcoktr wee' gan tictcf winns gpssi~~ t us boy ilndd oen iyn 'u ad wuler what bu
+
+Diversity: 1.2
+Generated Text: my vyfriinn~~~~~~~~~~~~~~~~~~~~~y~~~ uv at atpf sf boyrraend al al estv eciis anog 
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i moyyfriinnd is a a a mo boyfriend is is in to boyfriend is mo boyfriend is is mo
+
+Diversity: 0.5
+Generated Text: i 0hoyfrreend i hio mo me boyfriend is arten lo gos an a me mo boyfriend is to a w
+
+Diversity: 1.0
+Generated Text: i opoyffiiedd ao li~~~~~_ ooe eo ja e inl he s ay bhyited.!~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: i p6teytwhar b yybiiend ave ivd besrste ios i?o la oesk aun o letw1 mo'steyd]sohui
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you yyyfriinnd is to to m boyfriend is in m boyfriend is mo boyfriend is mo boyfrien
+
+Diversity: 0.5
+Generated Text: you bifffriend is se i a mo boyfriend i titt he a bes boyrriend i a i bo friend hin 
+
+Diversity: 1.0
+Generated Text: you e;f iees tymr ainls is som wowtye my boyffren~.~~~~~~~~~~~~~~~~~~~~~ dbmy a syt 
+
+Diversity: 1.2
+Generated Text: you gmbm tr-teen me vhnr anos 3t hool morrn to oo rhw ue lenli f yeftrg 3 wisttna ty
+
+---------- Epoch: 11 ---------- 
+
+Loss on first batch after epoch 11: 2.01120233536
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my yyyfriend i so m at in to to es ho t an te to m boy binn is to te t an i a mo bo
+
+Diversity: 0.5
+Generated Text: my yyyfriend is tisd my mo boyfriend as te het an the i as sit ten ir int mo hhe bo
+
+Diversity: 1.0
+Generated Text: my yyyfiiend lalis s mn mawmosg in hele mr bof iend grko ing amt cot  and mi~~~~~~~
+
+Diversity: 1.2
+Generated Text: my yeyymrenls w aecchsrinn:?le~~~~~~~~~~~~~~~~ o"u tene whvknncyoand &ouk' foin woa
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i uhoat te a ae mo boyfriend is as an my boyfriend is tin to m o and i an m boy ie
+
+Diversity: 0.5
+Generated Text: i lvhyyr iind to an e a and bitt ine m te lhwend ind bo tylend ind m oo taat tane 
+
+Diversity: 1.0
+Generated Text: i aenatreedo dohawt lc ennld la elvk hind lhlhnt bce e gox lecg; w enpl.~~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: i dmahrbitte' istk bji~~ wis tftcn s wrg mnn vle ym bolfund urpn acy flmcyrya boy 
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you foyfreend is late in to my boyfriend is a tete to to e to m boy in to bo m ant a
+
+Diversity: 0.5
+Generated Text: you yooffriend is pirt oe me e wo my boyfriend is phes a my boyfriend is se mhe a mi
+
+Diversity: 1.0
+Generated Text: you ue6ti hins wamt irdliso mi modrhnne mo wiit bihh cenr fu.e/ ba phunt sy ioo'u yl
+
+Diversity: 1.2
+Generated Text: you yofayvrinn casl,ge  hhavipt k as gind mhmd w'tsjchnn ced gkev!g thi trybhckte i~
+
+---------- Epoch: 12 ---------- 
+
+Loss on first batch after epoch 12: 1.93068230152
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my yyyfriend is so and ind i and my boyfriend is mo boyfriend is hate a mo mo boyfr
+
+Diversity: 0.5
+Generated Text: my yyfyriend is tati lo m ee tere hor mhet bukk solent mo tomt mh citho tite so cha
+
+Diversity: 1.0
+Generated Text: my yuoxet muve fionn ind mat~~~~~~ ffdaedge givei ohce fhet borerbtaca tonkh bmyfii
+
+Diversity: 1.2
+Generated Text: my weoy furidn.~~~~a alreny fian'y cifpekd my bbuitidt mu~ tekhilsos'2se:p~ra'astyy
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i oooyfrieedd is io latt are my boyfriend is as tene to to my boyfriend is to tand
+
+Diversity: 0.5
+Generated Text: i btyyyfriend ise me boyfriend is hak is ind my foeld hete then hinl ant he acho t
+
+Diversity: 1.0
+Generated Text: i a~mclkoo- i ila grler and bho  hate su'lve sveke"ip ccane lamg rakdi'd boi condi
+
+Diversity: 1.2
+Generated Text: i jyioyfrriindhsiduge 1?~ty weatdt#d.sioge }npyyr waud finphtatl.,tno comlnicp i m
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you ioyyfrieend is ta te want my boyfriend is and mo boyfriend is is mo boyfriend is
+
+Diversity: 0.5
+Generated Text: you poyfrieend ism leak in to taat my boyfriend is lom as my boyfriend is is mo tett
+
+Diversity: 1.0
+Generated Text: you otbbto  amlthnin' ivtu hamh hondea mo wa itlny foann ye my boyfiend wants jictwd
+
+Diversity: 1.2
+Generated Text: you osusm .? pucvra:lo.~byyufne~~~~~~~~~~~~~~ yyrriend tem vonnlo .gdirt i. ay bhirk
+
+---------- Epoch: 13 ---------- 
+
+Loss on first batch after epoch 13: 1.86912548542
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my boyyfriend is to to my boyfriend is to to my boyfriend is is my boyfriend is my 
+
+Diversity: 0.5
+Generated Text: my byyyfiend in i hive hhe is lete so the me hhe tace so a geog have my boyfriend s
+
+Diversity: 1.0
+Generated Text: my noi dctaugt chaejea goke onzty mos (octar ouc wule me apf seee il, ipsy is wotm 
+
+Diversity: 1.2
+Generated Text: my ooyffriend isge tlost inddytn tis i pora;:t mingrad wste qitg la't jrt wentg jet
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i boyyfriend is ta and a hhe a as i when to when te the to a my boyfriend is to my
+
+Diversity: 0.5
+Generated Text: i iyei ke fee e phing my boyfriend is so my boyfriend is mo lhee mes ho se a to th
+
+Diversity: 1.0
+Generated Text: i heyixr buy mo evet koe o th;'w.~~~~~~~~~~~. hmy boyfriend is tatk datdsty hime's
+
+Diversity: 1.2
+Generated Text: i %amatracgsgwiegy turro sl eitg ce giuensamo me mhe do g1dy bols at; e. se1d uhes
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you aoyu  ooyfriend is my boyfriend is is to want my boyfriend is my boyfriend is my
+
+Diversity: 0.5
+Generated Text: you yyyyfriend is se the wit and wat and me tak' a a my so sei'k sand ind hat ens te
+
+Diversity: 1.0
+Generated Text: you oiitc beye  uinsett'vea'y bata se tlavk etc and a io sh in titse my khat aee ike
+
+Diversity: 1.2
+Generated Text: you nomyfiy b oyyrraend, in thinn dhanlbo gas. saed ig 2 i a phm idel!~~~~~ yelonlit
+
+---------- Epoch: 14 ---------- 
+
+Loss on first batch after epoch 14: 1.80280518532
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyyfriend is and i boyfriend is is my boyfriend is to my boyfriend is my boyfrie
+
+Diversity: 0.5
+Generated Text: my yyyyrieed se pute te fitt ind my boyfriend to as weet my boyfriend is boffriend 
+
+Diversity: 1.0
+Generated Text: my omyffiennd it iht my buy acy hiki lho'p gore. her lrewe st, my boyfriend wfnale 
+
+Diversity: 1.2
+Generated Text: my otyffieed laad dom mede yee shthrus e w.te~~~~~~~~ ~ ohor "y boyfriends.tteoe gi
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i tooyfrriend is my boyfriend is to boyfriend is my boyfriend is to mo boyfriend i
+
+Diversity: 0.5
+Generated Text: i yeyyyfrieed is so tint in i mo boyfriend is sere as boyfriend a mo fore my boyfr
+
+Diversity: 1.0
+Generated Text: i |rslebier bny( eat he hukis isnn hen tor threagg tix ta oy boffriend spive my wr
+
+Diversity: 1.2
+Generated Text: i =lcoloangte " toislim*~~~~~~~~~~~~~~~~~~~~~ gad bet ?my boffiendlaf molvie loupt
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you oyyffriend is and to my boyfriend is my boyfriend is is my boyfriend is do boyfr
+
+Diversity: 0.5
+Generated Text: you laott ao wiot boyfriend is doet my boyfriend and wite lore a boyfriend is sont a
+
+Diversity: 1.0
+Generated Text: you iitthoofue tafe mhenbheunt wist munlly sualo arhew yy bi tep potlay jeus it od m
+
+Diversity: 1.2
+Generated Text: you wailc int buct 1sthe sh?tding~riphre dowc'  pifunr.me the! i'nh1 dewuk is leivti
+
+---------- Epoch: 15 ---------- 
+
+Loss on first batch after epoch 15: 1.76274287701
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyyfriend is my boyfriend is my boyfriend is my boyfriend is to my boyfriend is 
+
+Diversity: 0.5
+Generated Text: my ooyfriend ho e ance my boyfriend is my boyfriend is i ala to want my boyfriend i
+
+Diversity: 1.0
+Generated Text: my yyyfrienn hu lhnr isr. anw yof a boyfriedd. youmr.~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: my aiy ,uka my aebinrhyre late steee ited.! shereat sarm siig ylale ha wivi noe~~~~
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i ayyyyfrieed is to my boyfriend is my boyfriend is to my boyfriend is my boyfrien
+
+Diversity: 0.5
+Generated Text: i liall ty se my boyfriend is to so boyfriend is sorer and a boyfriend is my boyfr
+
+Diversity: 1.0
+Generated Text: i sroyyfriend as las lake my becfuinn ip pinliy i es fere hinhd a boyyriend a bouf
+
+Diversity: 1.2
+Generated Text: i egbyyo'ir aans i uilp *o me.~ am dor fniruing a'he~~~~~'o jos maba yemob~~4terii
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you iyy boyfriend is to to my boyfriend is my boyfriend is his to boyfriend is my bo
+
+Diversity: 0.5
+Generated Text: you ion se at an hile is my boyfriend is so ta shite and the boyfriend is hat the go
+
+Diversity: 1.0
+Generated Text: you kyyoayy iccters agcuo!eele win o grit is my belt is wh in fheoon.~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: you yoyyfrienhd cn is andlt whunhit i li~~~~~~~~~~~~~~~~~~~~~~~0 nint yy bsyyriend .
+
+---------- Epoch: 16 ---------- 
+
+Loss on first batch after epoch 16: 1.72915780544
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyyfriend is to to my boyfriend is the my boyfriend is so my boyfriend is the th
+
+Diversity: 0.5
+Generated Text: my yyyfriend is so my boyfriend ins at a bet to the winl my boyfriend is o have go 
+
+Diversity: 1.0
+Generated Text: my myy boyfriend is jye'ls ollkeng my boyfriend he be dal'e loresend whe and sosc e
+
+Diversity: 1.2
+Generated Text: my fofir was an youbi fo a nna^ hit et hee)~~~~cy my begoyfi~nw &hithhs dikes to in
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i aant to i my boyfriend is my boyfriend is my boyfriend is my boyfriend is so my 
+
+Diversity: 0.5
+Generated Text: i inindt to be gat he het to so win to tad be rake my boyfriend is the my boyfrien
+
+Diversity: 1.0
+Generated Text: i m,nm  yenou"sis he muke ime my bcagtunks by fathrr ang a chepn to paop~~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: i abne'selyo.no sor ab(lk;c to tiver my feudt ms y bolcor. @&chxz.~~~~ rendind waw
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you iit ta le to he my boyfriend is to bet my boyfriend is when the to so my boyfrie
+
+Diversity: 0.5
+Generated Text: you doyy oof iend i in go to s at a boyfriend is le a no my boyfriend when to and he
+
+Diversity: 1.0
+Generated Text: you foyforeoy roy boyfriend is helh my boyi  ashe thelung aptaag lapl the stm tafk, 
+
+Diversity: 1.2
+Generated Text: you lyy  eeer 1 bit rle~~~ soveo se letemy andi if watl fect alk?sr i'll inw 3. esd 
+
+---------- Epoch: 17 ---------- 
+
+Loss on first batch after epoch 17: 1.67427480221
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyyfriend is my boyfriend is my boyfriend is to me the boyfriend is my boyfriend
+
+Diversity: 0.5
+Generated Text: my oyyfriend is so alt my boyfriend is wint the thant my boyfriend is in hike tant 
+
+Diversity: 1.0
+Generated Text: my oyofriend hast a the~~~~~~~~~~~~~~~~~ omf gund . b.is boyfrienl rigto'lens alp w
+
+Diversity: 1.2
+Generated Text: my oyyfriined. hist is whet~~~~~~~~~s utli.g.om wied my not'ell'ilang sto ceet hevi
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i oiyfrriend is my boyfriend is the boyfriend is so my boyfriend is so my boyfrien
+
+Diversity: 0.5
+Generated Text: i buiyt tant oe boyfriend is my boyfriend is so gamp gote i whane is want is the m
+
+Diversity: 1.0
+Generated Text: i njuike dyut honc. enwtalt s oundtesg tivan u jnent allonemy oer of ead..~~~~~~~~
+
+Diversity: 1.2
+Generated Text: i  bhreet ceoqe..diny.fuilg haye f:dlyinn telm/.! is "akebaf piwthe wall yeuty ish
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you iitt ao to and to my boyfriend is my boyfriend is so my boyfriend is my boyfrien
+
+Diversity: 0.5
+Generated Text: you iinlt aona wate my boyfriend is and and a boyfriend and i tat the po ale pomy bo
+
+Diversity: 1.0
+Generated Text: you noad anetptee your yoyfriend asateteing and eimfo(te he to he tove ato whenht po
+
+Diversity: 1.2
+Generated Text: you la ulryiey is m4ithy mocd/dafrbyugsw~~~~~~~~~~~~~ bbyyfriend'r is bwsayt apkeahe
+
+---------- Epoch: 18 ---------- 
+
+Loss on first batch after epoch 18: 1.63024425507
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyyfriend is to be like i want my boyfriend is to me is my boyfriend is the is m
+
+Diversity: 0.5
+Generated Text: my oyyfriend is so seat to gout my boyfriend is me my boyfriend and to boyfriend is
+
+Diversity: 1.0
+Generated Text: my bloyfriend ma me and so gentirl my ri~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ nwant wh
+
+Diversity: 1.2
+Generated Text: my "dyard tosss ult bmy maku geot thhi'w srwtp hise cikf my boyfriend i on0 lake i 
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i cooyfriend is the boyfriend is so me so my boyfriend is to like the the the boyf
+
+Diversity: 0.5
+Generated Text: i noey oo u yirt and in my boyfriend is my boyfriend is so he and a mo the my boyf
+
+Diversity: 1.0
+Generated Text: i bloyfrriend and sand sonnr aud to tepule is whis when i wow't inily lave i wont 
+
+Diversity: 1.2
+Generated Text: i iwstate haac theon . when'c nitkder it a lerer  arydor 6s soe't and  ougdy gwatt
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you ooyfrriend is my boyfriend is my boyfriend is my boyfriend is to my boyfriend is
+
+Diversity: 0.5
+Generated Text: you iym joyfriend is my boyfriend the boyfriend is my boyfriend is go le core the wh
+
+Diversity: 1.0
+Generated Text: you oryyo fome horls &afps he ban a~~~~~~~~~~ ot im so is byyriend nhing i wink my m
+
+Diversity: 1.2
+Generated Text: you alasdno yha?~~~~~~~~~~ woate u see'to my boofriend is k mot dfr everyyurn ther c
+
+---------- Epoch: 19 ---------- 
+
+Loss on first batch after epoch 19: 1.60421359539
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyyfriend is my boyfriend is so the boyfriend is to my boyfriend is my boyfriend
+
+Diversity: 0.5
+Generated Text: my leatt the like hive a boyfriend is my boyfriend is so chon i pate i love a boyfr
+
+Diversity: 1.0
+Generated Text: my oet an boyfriend gon, whet my boyfriend to mo~~~~~~~~~~~~~~~~~~~~~~ askery mo ga
+
+Diversity: 1.2
+Generated Text: my craeer tor bus likee mimeswhe lice oso asd hottit my annhhrter to hike thas and 
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i tooy  oyfriend is my boyfriend is the boyfriend is to my boyfriend is my boyfrie
+
+Diversity: 0.5
+Generated Text: i loyyfriend is the with a boyfriend is my boyfriend is my boyfriend is to shi har
+
+Diversity: 1.0
+Generated Text: i hjeith pesfing a wxend a~~~~~~~~~~~~~~~~~~~~ om cang my boyfriend hug my boyfrie
+
+Diversity: 1.2
+Generated Text: i iiwk uhs sy hers my boyfriend. veraat a whec fredozant hot ug ont waml this s" i
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you oyyfrieed is the boyfriend is my boyfriend is to my boyfriend is so my boyfriend
+
+Diversity: 0.5
+Generated Text: you ooyyfriend is to cate the boyfriend co sat when a dant my boyfriend is my boyfri
+
+Diversity: 1.0
+Generated Text: you oy royfriend ig gored kgare thy mom soune if swat tfos say whenk af is'r hand le
+
+Diversity: 1.2
+Generated Text: you loyt~ txe't,s yourbo to gid of fraysssypaing ive. dol mei?ls venctons be,g or wh
+
+---------- Epoch: 20 ---------- 
+
+Loss on first batch after epoch 20: 1.57925832272
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyyfriend is to so the boyfriend is my boyfriend is my boyfriend is my boyfriend
+
+Diversity: 0.5
+Generated Text: my oyyfrieed is to mning my boyfriend is just so my boyfriend is gore friend then'm
+
+Diversity: 1.0
+Generated Text: my oyyfriinnd biingaite by uba us a"rian dichis woy my boyfriend is meis" pochole a
+
+Diversity: 1.2
+Generated Text: my byyvriend to ut py and fing teurin to~~~~~~~~~~~~~~~~~~~~~~~~~~ yilles bo hmyaca
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i loyyfriend is to me to my boyfriend is so me is my boyfriend is so got my boyfri
+
+Diversity: 0.5
+Generated Text: i souanl i lowe to boyfriend is my boyfriend is me mering so mering his my boyfrie
+
+Diversity: 1.0
+Generated Text: i cfadatay undanly mex fiad thas here tarpad e'sboyfrieng to and i fuuclt noagad- 
+
+Diversity: 1.2
+Generated Text: i fvlrete yualf hathombsa aplnzen. neod my i ouce sasing a love gereoo seaey i var
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you oyyfriiend is my boyfriend is my boyfriend is so my boyfriend is to me is my boy
+
+Diversity: 0.5
+Generated Text: you boyyfriend is my boyfriend is so be to my boyfriend is my boyfriend is the wat a
+
+Diversity: 1.0
+Generated Text: you rsyoepddyun with fing me jeut buke 2velpey civeean to kove neil. i cand i reasin
+
+Diversity: 1.2
+Generated Text: you twiols quu ot if whan a bow gow ool to nolvabour, and wr e met &aejtsa. beodetio
+
+---------- Epoch: 21 ---------- 
+
+Loss on first batch after epoch 21: 1.55873835087
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyyfriend is so my boyfriend is my boyfriend is so my boyfriend is my boyfriend 
+
+Diversity: 0.5
+Generated Text: my oyyfriend is my boyfriend is my boyfriend is to me when to bes that i want a boy
+
+Diversity: 1.0
+Generated Text: my aint a hit be ju't haveg yame and i ovly wout " timh a soutirn betermy boyfriend
+
+Diversity: 1.2
+Generated Text: my iyt ackooade~~~~~~~~~~~ onmlnicg 'n tor ot whett enmy dom whe his is mtfsike abo
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i loyy my boyfriend is so me the my boyfriend is my boyfriend is to my boyfriend i
+
+Diversity: 0.5
+Generated Text: i boyyfriend and om than i want to my boyfriend is tall when my boyfriend is so ba
+
+Diversity: 1.0
+Generated Text: i incaot hoic tadly ued in hon,. my boyfriend in s you juster to lwat that is ny a
+
+Diversity: 1.2
+Generated Text: i ined dhe cansht noth whit worna afl &xpdm.0tat and i and the le'k nve ?bo aed my
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you ooyfrriend is the boyfriend is my boyfriend is the want my boyfriend is the so m
+
+Diversity: 0.5
+Generated Text: you eoy eo my boyfriend wor wath my boyfriend is the best my boyfriend is like tha l
+
+Diversity: 1.0
+Generated Text: you eoyncf ainne my boyfriend seat thol.~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ enty at 
+
+Diversity: 1.2
+Generated Text: you imve~~~~~~ wasts to wa hhap co care~~~~ yi lises my boyfriend is my gawty my boy
+
+---------- Epoch: 22 ---------- 
+
+Loss on first batch after epoch 22: 1.50955688953
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyyfriend is my boyfriend is to the so me boyfriend is so my boyfriend is my boy
+
+Diversity: 0.5
+Generated Text: my ooyfriend is so so so go to like my boyfriend is i that a boyfriend so disg my b
+
+Diversity: 1.0
+Generated Text: my ray tow my boyfriend is to stee/ but yfunn youfe ang to my boyfriend to tith to 
+
+Diversity: 1.2
+Generated Text: my oyeltpwill hne tikern,hamsser, my brofflik. g to reauting ho.'mthar a won'k doti
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i ooyffriend is my boyfriend is my boyfriend is the want my boyfriend is so my boy
+
+Diversity: 0.5
+Generated Text: i kuent to he a boyfriend to me is the do the with my boyfriend is my boyfriend is
+
+Diversity: 1.0
+Generated Text: i laatf bike this text bestel~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ythet to tat my 
+
+Diversity: 1.2
+Generated Text: i bdbuyam oet fornttict/y ig madeetat i whan thata yave tha ?, i hans.ch md limlay
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you iitt to my boyfriend is my boyfriend is my boyfriend is to me and to be and i wa
+
+Diversity: 0.5
+Generated Text: you soyyfriend is the wound his and to be the simes my boyfriend is shat hit to me s
+
+Diversity: 1.0
+Generated Text: you saoype e thit love boyfriend is me~~~~~~~~~~~~~~ yus you ta be my boyfriend to h
+
+Diversity: 1.2
+Generated Text: you yhyyorf depasds sorgamt,)nbet cco?terilwing worot'sny pioly andingilk gatker amy
+
+---------- Epoch: 23 ---------- 
+
+Loss on first batch after epoch 23: 1.48886096478
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyyfriend is so and my boyfriend is my boyfriend is to me is my boyfriend is the
+
+Diversity: 0.5
+Generated Text: my oyyfriend to me to be to he can to her boyfriend ound the canken i like a boyfri
+
+Diversity: 1.0
+Generated Text: my qolyay asme and only taring't yann me boyfrieng dyong fre theateat this is my bo
+
+Diversity: 1.2
+Generated Text: my ooy  oyffiend, i neet is gaveny to but +0 calect hiune to coup. hive litey nis b
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i loyyfriend is my boyfriend is my boyfriend is my boyfriend is the so me the be a
+
+Diversity: 0.5
+Generated Text: i say me fucke my boyfriend is to like when i look and my boyfriend puct to and to
+
+Diversity: 1.0
+Generated Text: i nmye to fniake br asked then talv of woot minge gever. be thf it don carcfudet t
+
+Diversity: 1.2
+Generated Text: i ooey mo odfeh ouly docamp ext so merrrltsipole thei gonlbe dco pully/aso npik a 
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you ooyfriend to me to so gore the boyfriend is the boyfriend is my boyfriend is the
+
+Diversity: 0.5
+Generated Text: you iact anle to he comerer boyfriend is she bust that my boyfriend is le so the but
+
+Diversity: 1.0
+Generated Text: you iytthy eactore peanht. sherbboyfriend boyfriind my srool .8 hat1~ yoully howirha
+
+Diversity: 1.2
+Generated Text: you elbook hamoo girn naopo: hvatvicl fan himmeraale wime caysouni_ls i nany her byy
+
+---------- Epoch: 24 ---------- 
+
+Loss on first batch after epoch 24: 1.4656547308
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyyfriend is the be the boyfriend is the so me i nand a boyfriend is my boyfrien
+
+Diversity: 0.5
+Generated Text: my ooyfriend is so for my boyfriend is my boyfriend is you have to me to me for boy
+
+Diversity: 1.0
+Generated Text: my ees picsed beake hete my boyfriend is but me boyfriend do &atp; blol sild to due
+
+Diversity: 1.2
+Generated Text: my a.n:~~~ yoyriend boyfriend. on fkeve po. rowayo she to sols epme ne ov ty bean s
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i into my boyfriend is my boyfriend is my boyfriend is my boyfriend is so me and m
+
+Diversity: 0.5
+Generated Text: i ghoy mome and to lave i just to my boyfriend is i want to be to seed my boyfrien
+
+Diversity: 1.0
+Generated Text: i meamal being is . ot wver my boyfriend hcf choinhi~~~ cas like ta to my so lrop 
+
+Diversity: 1.2
+Generated Text: i :iaks hew me:. wei hin crenaogit i chanlw it reers dem  like~~~~~~~~~~~~ esul my
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you ooyfriend is my boyfriend is my boyfriend is my boyfriend is so my boyfriend is 
+
+Diversity: 0.5
+Generated Text: you ooyfriend is so so ond when the ger and a like to he boyfriend is a boyfriend is
+
+Diversity: 1.0
+Generated Text: you aukss tha rom me if xou to mat be san e gaat to and so so coll thar you beor blo
+
+Diversity: 1.2
+Generated Text: you fyow ire jobn? tos tering wher der has sad, peiply an bir i abo sazyentaed  my b
+
+---------- Epoch: 25 ---------- 
+
+Loss on first batch after epoch 25: 1.44240248203
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyyfriend is so so me is for the boyfriend is so me is my boyfriend is so be and
+
+Diversity: 0.5
+Generated Text: my ooyfriend is the boyfriend is richers and with my boyfriend is not get sill and 
+
+Diversity: 1.0
+Generated Text: my tountiu neem a boyfriend to me have eichong and everytaokera firh w"y, beentt do
+
+Diversity: 1.2
+Generated Text: my hveshou my boyfriend is nottppowaniy and,~~~~~~~~~~~~~ hat it ti's love wtangat 
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i aland a boyfriend is the be and my boyfriend is so canter that i don't want to b
+
+Diversity: 0.5
+Generated Text: i laend to in my boyfriend is to about my boyfriend and to my boyfriend is the bec
+
+Diversity: 1.0
+Generated Text: i 'anliged tayfe agiro risst my boyfriend is spoving hacl fooloret whate pugcttiar
+
+Diversity: 1.2
+Generated Text: i pmuwhap amp1 sin~~~~~~~~~~~~~~~~ oe to phersbagk asmy boyfriend boyfriend"hiv o 
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you ooyfriend is my boyfriend is so me and to so my boyfriend is the best boyfriend 
+
+Diversity: 0.5
+Generated Text: you boyyfriend is nowhat ene to my boyfriend to my boyfriend is my boyfriend is and 
+
+Diversity: 1.0
+Generated Text: you  wboyfriend boyfriend doing so sulk. becar him justting, so becaupe wi hape so t
+
+Diversity: 1.2
+Generated Text: you /eos tafy him boyfriind is som.:i~~~~~~~~~~~   eirlesply attolh moke steisliel m
+
+---------- Epoch: 26 ---------- 
+
+Loss on first batch after epoch 26: 1.41977918148
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyyfriend is so so me he is my boyfriend is so so to so me and i want my boyfrie
+
+Diversity: 0.5
+Generated Text: my oyyfriend is my boyfriend is so i need to for so hame i want my boyfriend is so 
+
+Diversity: 1.0
+Generated Text: my ooyfriend this bouh is whot eve with me a wherls want to simpn tilk i's noth and
+
+Diversity: 1.2
+Generated Text: my oaially co dut the uscang. it my boyfriend is ut'vehh'c iss wae and md reamoe va
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i intha my boyfriend is to the best the boyfriend is my boyfriend is the boyfriend
+
+Diversity: 0.5
+Generated Text: i istan like a boyfriend is to all on my boyfriend is so so can a like to get my b
+
+Diversity: 1.0
+Generated Text: i ploy and goyfupe this dillls my gaasn pristy mame hat is shat why knome feare'w 
+
+Diversity: 1.2
+Generated Text: i loowh telky weelurned  oy s gi seaasa tore my hell fusoli sseingest going es my 
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you ooyfriend is my boyfriend is so me is my boyfriend is so me to me and i want to 
+
+Diversity: 0.5
+Generated Text: you int wint my boyfriend is my boyfriend is so hass of my boyfriend and to me to ke
+
+Diversity: 1.0
+Generated Text: you whyon hoop oboy a u duys. like somer your boyfriend askotooses me lek a teh. sil
+
+Diversity: 1.2
+Generated Text: you sow gnantve ollydex qoom, whe my bay lecker. he tuple uve wonld nimctey puvd,i h
+
+---------- Epoch: 27 ---------- 
+
+Loss on first batch after epoch 27: 1.40512835979
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyffriend is so me and i want my boyfriend is so the best the boyfriend is so go
+
+Diversity: 0.5
+Generated Text: my oyffriend is so seed a gon to deat a boyfriend is my boyfriend is so so pucking 
+
+Diversity: 1.0
+Generated Text: my hixd srerssa veed a oncally alloas like the cid sf my boyfriend~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: my yoofriend~~~~~~~~~~~~~ elay, lloi~~~~~~~~~~~~~~~ oyee my boyfriend gtol whot~~~~
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i boyyfriend is so have a boyfriend is my boyfriend is the best friend is the boyf
+
+Diversity: 0.5
+Generated Text: i ilatk my boyfriend is to the stop hake when my boyfriend is so to he love to see
+
+Diversity: 1.0
+Generated Text: i leave out i aloe is my boyfriend ica risked crent us  exter. weer ut me i 1xtool
+
+Diversity: 1.2
+Generated Text: i loike mu taeno hut broch e wave ow peoplakin'h leaw doks:~~~~~~~~~~~~~~~~~~~~~~~
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you ooyfriend is so me and i want to be to me and i want to so my boyfriend is so th
+
+Diversity: 0.5
+Generated Text: you ooyfriend i want to me hone i can't be like to my boyfriend is sute she best and
+
+Diversity: 1.0
+Generated Text: you uleky nake "morueg ang thin beatal and i can't det my boyfriend sonebull, i love
+
+Diversity: 1.2
+Generated Text: you ?ut mhame in t a gats my boyfriend one butaf!~~~~ yank me i want to buteav,  i o
+
+---------- Epoch: 28 ---------- 
+
+Loss on first batch after epoch 28: 1.38582837582
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyffriend is so be and a boyfriend is a boyfriend is so gon the boyfriend is so 
+
+Diversity: 0.5
+Generated Text: my oyyfriend is to best friends like whink a boyfriend is my boyfriend is to know t
+
+Diversity: 1.0
+Generated Text: my ooyfriend dognt whan tith my boyfriend"~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ and m
+
+Diversity: 1.2
+Generated Text: my oly with' foecil'n wann my boyfriend is out~~~~~~~~~~~~~~~~~~~~~~~~i dhate wat m
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i loyf my boyfriend is to be and i want to can i want to be to do to see my boyfri
+
+Diversity: 0.5
+Generated Text: i inet to my boyfriend is to get my boyfriend is the fucking my boyfriend is so me
+
+Diversity: 1.0
+Generated Text: i ot gant home to me soos!~~~~~~~~~~~~? tisis deapllel seat on my boyfriend" hake 
+
+Diversity: 1.2
+Generated Text: i jyu twave wo mes stappa si o duesn to s4mppant f"~~'lve sexpsrad andit er her bo
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you ooyfriend is so me is my boyfriend is so me i have a boyfriend is my boyfriend i
+
+Diversity: 0.5
+Generated Text: you eonnt tay want work boyfriend is my boyfriend and i want to me to be and don't t
+
+Diversity: 1.0
+Generated Text: you isto a grt afung be like so me don't can deapols just a boyfriend this havre on 
+
+Diversity: 1.2
+Generated Text: you boyfraend is cp mlaking friend, of op im? i'm zo thit putaomsio eill plints come
+
+---------- Epoch: 29 ---------- 
+
+Loss on first batch after epoch 29: 1.3715672493
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend is so me and i have to be to be to my boyfriend is my boyfriend is my b
+
+Diversity: 0.5
+Generated Text: my oyfriend is my boyfriend is the best to be my boyfriend is not my boyfriend is s
+
+Diversity: 1.0
+Generated Text: my noyfriend askeop wargs at tire to he me in aplodeh thi do koloontid &ump; i ship
+
+Diversity: 1.2
+Generated Text: my ibdoh' anleer buving, mizute~~~~~~ mrcise. my boyfriend in the going a ro hhat t
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i loy to be my boyfriend is so he want my boyfriend is my boyfriend so me i want m
+
+Diversity: 0.5
+Generated Text: i ivee my boyfriend to say if she donat he love he need to my boyfriend is a boyfr
+
+Diversity: 1.0
+Generated Text: i g my apfublione talk my boyfriend~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ and athite amoth
+
+Diversity: 1.2
+Generated Text: i cutby soung at ponpou my por thy thatssayf want a boffriend whow tollo gi thaten
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you ooyfriend is so the best and i want my boyfriend is so he so he want my boyfrien
+
+Diversity: 0.5
+Generated Text: you goyfriend putting me to like be his the be the want to my boyfriend to my boyfri
+
+Diversity: 1.0
+Generated Text: you eamting fuckem keolver like to hime a don:alkas my boyfriend my boyfriend is un 
+
+Diversity: 1.2
+Generated Text: you roy waycin love nisgpestly "t, hive id so to~~~~~~~~~~~~ ee o my boyfriend lneol
+
+---------- Epoch: 30 ---------- 
+
+Loss on first batch after epoch 30: 1.35650801659
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend is my boyfriend is my boyfriend is the best boyfriend to the boyfriend 
+
+Diversity: 0.5
+Generated Text: my oyfriend so sce i want my boyfriend is so a find that i don't want to be are tha
+
+Diversity: 1.0
+Generated Text: my _aty goce. is the fale is not purking than my boyfriend and hesser buttous sreap
+
+Diversity: 1.2
+Generated Text: my vinth 6 pien wonhan mime and t !nyunkhoy boyfriend you mare peirlut1/to and~~~~~
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i loyf my boyfriend to say i have a boyfriend is my boyfriend is so me i love my b
+
+Diversity: 0.5
+Generated Text: i loyf wat my boyfriend is so ca he dister but like he with my boyfriend is the po
+
+Diversity: 1.0
+Generated Text: i walith how! "hmonsy boyfriend seeins me i lus whife a seaisine to as much  ot i 
+
+Diversity: 1.2
+Generated Text: i loaks with my houenrasti wera for my good re tite so fameranly i boyfriend" eopa
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you ooyfriend is my boyfriend is so me i love my boyfriend is so my boyfriend is so 
+
+Diversity: 0.5
+Generated Text: you ooyfriend is a boyfriend to be to come of my boyfriend to be like every my boyfr
+
+Diversity: 1.0
+Generated Text: you want meo is bett. i das you can'ane ficuter scoress woully doli'm so a bamole my
+
+Diversity: 1.2
+Generated Text: you eust to be b afeer to me: time taok me my boyfriend toging to boyfriend. ho? iw'
+
+---------- Epoch: 31 ---------- 
+
+Loss on first batch after epoch 31: 1.33559548855
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend is to see my boyfriend is so me i want to be my boyfriend is so me the 
+
+Diversity: 0.5
+Generated Text: my oyfriend or got i want a boyfriend to be of my boyfriend is and he to see my boy
+
+Diversity: 1.0
+Generated Text: my oesther as, yearing at the my there rim time and the conle ( get my boyfriend is
+
+Diversity: 1.2
+Generated Text: my reakeds. for my boyfriend dons mymex need e i calf ypinswer reare&t palroun all 
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i ally be the best boyfriend is my boyfriend is so me and i want my boyfriend to b
+
+Diversity: 0.5
+Generated Text: i boyyfriend is the want to get a boyfriend boyfriend is gonna want my boyfriend i
+
+Diversity: 1.0
+Generated Text: i noyter so find a s7jeat like i have a boyfriend~~~~~~~~~~ ! dadat purpt hai stik
+
+Diversity: 1.2
+Generated Text: i geand do manaa psred~~~~~~~~ ewen li her outelt : ton thi fasciw - what he echin
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you ais to get my boyfriend is so have a boyfriend is my boyfriend is so cute the be
+
+Diversity: 0.5
+Generated Text: you boyfriend come the boyfriend is so all say he does have a boyfriend to be my boy
+
+Diversity: 1.0
+Generated Text: you lyan to my boyfriend to huve a the crreal i tadkoning to her boyfriend of me is 
+
+Diversity: 1.2
+Generated Text: you w/azy boyfriend is her gurt workstion onaa. m,.~~~~~~~~~~~~ im loiced.~~~~~~~~ y
+
+---------- Epoch: 32 ---------- 
+
+Loss on first batch after epoch 32: 1.32225298882
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend to see my boyfriend is my boyfriend is the boyfriend is the best friend
+
+Diversity: 0.5
+Generated Text: my oyfriend is my boyfriend ad a boyfriend and be and i want my boyfriend is my bes
+
+Diversity: 1.0
+Generated Text: my -oi it like to secauly with my boyfriend like the lamades."-yournand welk to be 
+
+Diversity: 1.2
+Generated Text: my oyfriend te and you just have  ugqtaysing ginr comeing 4 bott wayover~~~~~ to e 
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i loyf my boyfriend to have to be the boyfriend is so my boyfriend is so be to be 
+
+Diversity: 0.5
+Generated Text: i intally that i see my boyfriend to does love that i want to do to my boyfriend t
+
+Diversity: 1.0
+Generated Text: i leove my boyfriend to wext to feck in cummact rill on yealling he don't me, not~
+
+Diversity: 1.2
+Generated Text: i yust brus when to: wh denn il my boyfriend abser the co weernsed looktcshdeaafei
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you int to be my boyfriend to me and a boyfriend is so me in the best boyfriend is s
+
+Diversity: 0.5
+Generated Text: you boyfriend to get a cure so and i love the have to be a like my boyfriend to need
+
+Diversity: 1.0
+Generated Text: you oyfriend ship thinks~~~~~~~~~ want to be bidday a boyfriend the hongate ried to 
+
+Diversity: 1.2
+Generated Text: you beodtdoectthe's in my jold i want to pegaize!!&i do love to have cupn &amp; your
+
+---------- Epoch: 33 ---------- 
+
+Loss on first batch after epoch 33: 1.31176364422
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend is the best boyfriend is so much her boyfriend is the best friend and i
+
+Diversity: 0.5
+Generated Text: my oyfriend is a swill it a when i don't like to be off my boyfriend is in the best
+
+Diversity: 1.0
+Generated Text: my a boyfriend is my baal want a picpute boyfriend~~~~~~~~~~~~~ ist i me and and th
+
+Diversity: 1.2
+Generated Text: my agyorrist like b tome roved to my byat eats meanonnadgowid rrigh i fate my boyfr
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i loyf my boyfriend to be my boyfriend is so mach and i love him to talk to be my 
+
+Diversity: 0.5
+Generated Text: i tant to be the know to the only dinges to me and i'm so my boyfriend and he want
+
+Diversity: 1.0
+Generated Text: i touth me and gooun. and boyfriend~~~~~~~~~~~ renwer   abfudute conder it my boyf
+
+Diversity: 1.2
+Generated Text: i teant witc hupidn't want to futhing to my boyfriend, pecrlpoblects,~~~~~~~~~~~~~
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you ooyfriend is my boyfriend is so much i want to be my boyfriend is my boyfriend i
+
+Diversity: 0.5
+Generated Text: you any onad my boyfriend that my boyfriend is the best boyfriend and go and i don't
+
+Diversity: 1.0
+Generated Text: you aunt's like the boyfriend like to more ben i need like you really inned i have a
+
+Diversity: 1.2
+Generated Text: you e oam onick " youlr to kiskimi i need a boyfriend me that e blenk to pujkhimetwi
+
+---------- Epoch: 34 ---------- 
+
+Loss on first batch after epoch 34: 1.2976975441
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend to so my boyfriend is my boyfriend is so much me and i want to be my bo
+
+Diversity: 0.5
+Generated Text: my oyfriend is so have that i have to go my boyfriend is a best friends like the bo
+
+Diversity: 1.0
+Generated Text: my yust talk a boyfriend freally really seill to my tade i need to boyfriend, the b
+
+Diversity: 1.2
+Generated Text: my jubd~cf  in cutrine to kound 125 this sey you wan idke hithung my fulleng this &
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i loyf the best boyfriend is the best friend is so cute me and my boyfriend is so 
+
+Diversity: 0.5
+Generated Text: i ist and a sinter and the says my boyfriend is so gonna go time i like the feckin
+
+Diversity: 1.0
+Generated Text: i wanta gays hare so go exs loos not my boyfriend  obfding 2-k? i not to i want hi
+
+Diversity: 1.2
+Generated Text: i rchancaoko ups up hher slooks i hate with bighmares" he plaf ripk? wroted your p
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you outt my boyfriend is a boyfriend to the best friend is my boyfriend is the best 
+
+Diversity: 0.5
+Generated Text: you ist to be my boyfriend is the goant my boyfriend is a me i want to how " boyfrie
+
+Diversity: 1.0
+Generated Text: you whave been this im my boyfriend is note fuck on think when yi don't want up so b
+
+Diversity: 1.2
+Generated Text: you at leaodi ont friend i is tall my boyfriend on~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------- Epoch: 35 ---------- 
+
+Loss on first batch after epoch 35: 1.28833055496
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend to see my boyfriend is so got a boyfriend is my boyfriend is so cute me
+
+Diversity: 0.5
+Generated Text: my oyfriend to be to need to get to my boyfriend want to be like to me and my boyfr
+
+Diversity: 1.0
+Generated Text: my bayyfriend~~~~~~~~~~ and i need a boyfriend? when is, when my bestfriend like a 
+
+Diversity: 1.2
+Generated Text: my ooyfriend thi peasasing my pids and wh, my with bamed because yearouch aptinvera
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i loyf the boyfriend to be my boyfriend is so be him to me to be a boyfriend is so
+
+Diversity: 0.5
+Generated Text: i ooffriend to be me that is my boyfriend to be the stoll he gonna dod and his boy
+
+Diversity: 1.0
+Generated Text: i laska my s-hoald to she my boyfriend puron unding of i hake the fuct that a come
+
+Diversity: 1.2
+Generated Text: i hout me sin'll than i keet jutt anyore jea boyfriend any i like simene julby hlo
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you oyfriend to be my boyfriend is so much me and my boyfriend is so me to be my boy
+
+Diversity: 0.5
+Generated Text: you oit to he like to be my boyfriend and my not boyfriend when my dad that my boyfr
+
+Diversity: 1.0
+Generated Text: you done yabob oith calle come and i me: of my boyfriend is texting actue to it dist
+
+Diversity: 1.2
+Generated Text: you youhth's just want meen my boyfriend, like funging so exlepobgdi abou he slr cam
+
+---------- Epoch: 36 ---------- 
+
+Loss on first batch after epoch 36: 1.27889764309
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend to be my boyfriend is so he want to he want to the best friends i have 
+
+Diversity: 0.5
+Generated Text: my oyfriend to during and i want to me and a boyfriend here the only i hate the doy
+
+Diversity: 1.0
+Generated Text: my ister ti aloole on you altell me worcmy boyfriend to my boyfriend fucks the seop
+
+Diversity: 1.2
+Generated Text: my -umpie, gosex like septers nuggtt ghates pupple. who nby dods and cello peraount
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i loyf the best friend and i have to be the best boyfriend and i want to be my boy
+
+Diversity: 0.5
+Generated Text: i inet a boyfriend and find to pars that my boyfriend is the picking to peaping an
+
+Diversity: 1.0
+Generated Text: i eand my boyfriend~~~~~~~~~~~~~~~~~~~~ b he 3vanting me af for my boyfriend sawis
+
+Diversity: 1.2
+Generated Text: i bboyfriend themgetsying anu vire 9 jest't asleeps me doone'rly in precunaling mu
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you oyfriend to he want to be my boyfriend to me to me to be my boyfriend is my boyf
+
+Diversity: 0.5
+Generated Text: you aunt my boyfriend so i don't want to get me for my boyfriend to be this the cous
+
+Diversity: 1.0
+Generated Text: you lgey some" is donhay rind askeo he want i want my feel jogreanta?~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: you bloyfriend, if i bif br hight to girlciles a boyfriend.she's lecaoon is to kike 
+
+---------- Epoch: 37 ---------- 
+
+Loss on first batch after epoch 37: 1.26986789703
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend is so going to be my boyfriend is so me to be my boyfriend is so much t
+
+Diversity: 0.5
+Generated Text: my oyfriend is to be sto my boyfriend is called him to be the was to on my boyfrien
+
+Diversity: 1.0
+Generated Text: my royfriend to bout daying and the knews, what somapolona thow solrgied grocveated
+
+Diversity: 1.2
+Generated Text: my oyfriend is puchens to dengo exer~~~~~~~~~~~~~~~~~~~ lover siskers is ofk ab off
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i look the best boyfriend is so much and i want to be my boyfriend to be the say a
+
+Diversity: 0.5
+Generated Text: i tant to be my boyfriend want to a have to get and out to pars friend is it ask m
+
+Diversity: 1.0
+Generated Text: i kusk my boyfriend about himporios,"my boyfriend toll me? want to be with reot  a
+
+Diversity: 1.2
+Generated Text: i momy't trongsw nut aic tona knc~~~~~~~~~~~~~~~~~~~ outth up aty-you that stexd m
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you oyfriend is so much to me to be my boyfriend is my boyfriend is so me to be my b
+
+Diversity: 0.5
+Generated Text: you oyfriend is my boyfriend is so fucking to me and he's because he want to be i do
+
+Diversity: 1.0
+Generated Text: you boyyri dant his shears vire my fyad who not be pexsdy just her talk bitch now  i
+
+Diversity: 1.2
+Generated Text: you cout histo ume ro loopsrl in rnuckes  littor my boyfriend.~~~(lolverin while my 
+
+---------- Epoch: 38 ---------- 
+
+Loss on first batch after epoch 38: 1.25618636608
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend is so going to me i have a boyfriend is so much and i want my boyfriend
+
+Diversity: 0.5
+Generated Text: my oyfriend to talk to go a be can the best friend and i need a boyfriend of how ma
+
+Diversity: 1.0
+Generated Text: my boyyri bus your boyfriend is to you just alwonthere the plettive his friend and 
+
+Diversity: 1.2
+Generated Text: my oyfreend? likead/a couldid beaning oe him my a suriereh:?? just want me to gay d
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i noyfriend to be my boyfriend is so have a boyfriend when i have a boyfriend is m
+
+Diversity: 0.5
+Generated Text: i anywear boyfriend is the best pictured i have to have to be my boyfriend is here
+
+Diversity: 1.0
+Generated Text: i eatking or exporged homethid doesn't want a cous is my boyfriend theing to but h
+
+Diversity: 1.2
+Generated Text: i ythan i hav .s just gaveg to sel a c'ze i'm oneslies hfwirlwhen my sare ask slea
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you oyfriend is so be and i love the best boyfriend is so much a boyfriend is my boy
+
+Diversity: 0.5
+Generated Text: you oyfriend is so look and when my boyfriend he start that like the fuck and but i 
+
+Diversity: 1.0
+Generated Text: you moyfriend dear and rabur or my boyfriend is so grace i need a boee gobit that i'
+
+Diversity: 1.2
+Generated Text: you pust 1(withi dgan thy to mbe vroid. ug of whes your fuaroy girli not year limy b
+
+---------- Epoch: 39 ---------- 
+
+Loss on first batch after epoch 39: 1.25292432308
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend to see my boyfriend is so me to be my boyfriend is so gonna go to be my
+
+Diversity: 0.5
+Generated Text: my oyfriend is my boyfriend is so have a celling and i love him i love him to go a 
+
+Diversity: 1.0
+Generated Text: my oyfriend all i gove of my nexterla be ant they di ginr so munny to doc want my b
+
+Diversity: 1.2
+Generated Text: my aslioper tong quas i'm nnmy boyfriend to but aslabbrod a her boyfriend mauls 147
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i amy boyfriend to be a boyfriend is my boyfriend is so have a boyfriend is so so 
+
+Diversity: 0.5
+Generated Text: i want to be be expenting me is my boyfriend looks me to go to still me to be caul
+
+Diversity: 1.0
+Generated Text: i vanco been pler boyfriend me: slis medies if not i need to see a boyfriend. but"
+
+Diversity: 1.2
+Generated Text: i -llveazin just want a boyfriend, ast cheildant my ex &art~~~~~~~~~~~~~~~~~~~~~~ 
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you out to be my boyfriend is so much i want to be my boyfriend to see my boyfriend 
+
+Diversity: 0.5
+Generated Text: you oyfriend when i don't want to talk to be my boyfriend i have a boyfriend is my b
+
+Diversity: 1.0
+Generated Text: you girl fnourded it have my dor boyfriend is the best with me to get i me.~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: you that irin, teding my mom saying him do, i interlly hooky frim? i just so  ever i
+
+---------- Epoch: 40 ---------- 
+
+Loss on first batch after epoch 40: 1.2416741848
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend is a boyfriend is the best friend is so much a boyfriend is so much and
+
+Diversity: 0.5
+Generated Text: my oyfriend is so cute i want to have a boyfriend to be at the pick and i have to b
+
+Diversity: 1.0
+Generated Text: my boyfriend, i want that my byy shens and have a boyfriend shit is ot when your @d
+
+Diversity: 1.2
+Generated Text: my oyfriend to the sicjhoot of carion (brobhe's i'm 2 hoby fired my boyfriend. arda
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i like to be my boyfriend is so much and i want to be my boyfriend is my boyfriend
+
+Diversity: 0.5
+Generated Text: i my boyfriend to see me to ever me and he want to get to be my boyfriend and some
+
+Diversity: 1.0
+Generated Text: i longe ararted for freeys boyfriend3~~~~~~~~~~~~~~~ chiekh my boyfriend espefs to
+
+Diversity: 1.2
+Generated Text: i call dead thoughif i hate the fninna comemosty arhatns svongto time i golgo perf
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you out him to be my boyfriend is my boyfriend is so gonna be my boyfriend is so muc
+
+Diversity: 0.5
+Generated Text: you for my boyfriend is my boyfriend and i want to get on my boyfriend that the best
+
+Diversity: 1.0
+Generated Text: you look tooo~~~~~~~~~~~ eall it my boyfriend lovhi'm not my days sirf the slirding 
+
+Diversity: 1.2
+Generated Text: you pudbin bo nugers  abrotuls to my boyfriend./3hes omha kingst/havoul like you is 
+
+---------- Epoch: 41 ---------- 
+
+Loss on first batch after epoch 41: 1.23729610443
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend is so going to be a boyfriend is the best friend is so much and i want 
+
+Diversity: 0.5
+Generated Text: my aom boyfriend is all a boyfriend like i have to be this is the best boyfriend is
+
+Diversity: 1.0
+Generated Text: my oyfriend bewanking everydugh minst daying to lo u scirlfriend nouged how her boy
+
+Diversity: 1.2
+Generated Text: my oyfrienda mtec. friends to rerat but har ask my comurd?? mars and they boyfriend
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i look the boyfriend to get a boyfriend is my boyfriend is so much and i want my b
+
+Diversity: 0.5
+Generated Text: i like to the do to see my boyfriend is like the so suck a best grand see me best 
+
+Diversity: 1.0
+Generated Text: i lget my boyfriend at assexting this is like gay. just like me'n my boyfriend.~~~
+
+Diversity: 1.2
+Generated Text: i myoure iss woust uny~~~~~~~~~~~~ aln gehit spmy sin for my boyfriend. xex~ su is
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you out the boyfriend to be my boyfriend is a boyfriend is the best friend to me to 
+
+Diversity: 0.5
+Generated Text: you oyfriend to so freet is my boyfriend to be and my boyfriend is a boyfriend want 
+
+Diversity: 1.0
+Generated Text: you abmy boyfrie not with my friend and gisl all have to me whencaute bus ito my boy
+
+Diversity: 1.2
+Generated Text: you out. my boyfriend ti need to go goar on me fine al rasunving foo mefel llly yhut
+
+---------- Epoch: 42 ---------- 
+
+Loss on first batch after epoch 42: 1.22489500046
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend is so going to have a boyfriend is so much and i want to be my boyfrien
+
+Diversity: 0.5
+Generated Text: my oyfriend the sering on the days that i have a boyfriend is so want a boyfriend s
+
+Diversity: 1.0
+Generated Text: my oyfriend and with the kind what my boyfriend so than his beanthe say and'y purin
+
+Diversity: 1.2
+Generated Text: my want to doar wolk 60~~ slowed beorsini dhag pistuce boyfriend to try now "longou
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i look and i want to be my boyfriend is so much and i have a boyfriend is the best
+
+Diversity: 0.5
+Generated Text: i look in the best boyfriend is so extically be a gay to see me to sleep me of my 
+
+Diversity: 1.0
+Generated Text: i undoro about my boyfriend~~~~~~~~~~~~~~~~~~~~~~~ i have a babiboy's best friend 
+
+Diversity: 1.2
+Generated Text: i tay clamini. sometiming me birthday my boyfriend just crilly 3 gas mins wso huts
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you oyfriend to be my boyfriend is so happy to call me to be my boyfriend is so goin
+
+Diversity: 0.5
+Generated Text: you is a boyfriend and have when my boyfriend is so much we because in the best frie
+
+Diversity: 1.0
+Generated Text: you conexingy chribpey pp shoused my boyfriend call menid. hew then picwert in the n
+
+Diversity: 1.2
+Generated Text: you was my friends is is makning..~~~~~~~ nuse to'm bm the girli go for i love me su
+
+---------- Epoch: 43 ---------- 
+
+Loss on first batch after epoch 43: 1.22184574604
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend to be my boyfriend is so much and i want to be my boyfriend to see my b
+
+Diversity: 0.5
+Generated Text: my oyfriend to stell me for my boyfriend and he person as in the such to get me to 
+
+Diversity: 1.0
+Generated Text: my boyfriend in the had ofe fimin the orletui want a boyfriend and i've next the tu
+
+Diversity: 1.2
+Generated Text: my  boyfriend befofi hate me: beendatitginh imy boyfriend talkand nochle my boyfrie
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i like to be my boyfriend to be the best friend is so much and i love him to see m
+
+Diversity: 0.5
+Generated Text: i tant being to steat how my boyfriend is so much is my basy boyfriend is so goll 
+
+Diversity: 1.0
+Generated Text: i llove me domn us hoce well literwing you the finne talfing all my boyfriend toli
+
+Diversity: 1.2
+Generated Text: i bady like personi dont days i'm wis when my gay. you di want my boyfriend to me 
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you oyfriend to be my boyfriend is so cute to be the best friend is so much to me to
+
+Diversity: 0.5
+Generated Text: you oyfriend to take him a mas and i love him to prance of him kind and the best hav
+
+Diversity: 1.0
+Generated Text: you alive aswice ond me him don a boyfriend. to pretting apsandra~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: you of*cause onne want to have a boyfriend on homelith, it is wever o'll lazib it's 
+
+---------- Epoch: 44 ---------- 
+
+Loss on first batch after epoch 44: 1.21516442299
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend is so can he is so much i want to be my boyfriend to see my boyfriend a
+
+Diversity: 0.5
+Generated Text: my oyfriend not a mom is gonna get my boyfriend when he want to get to me to my boy
+
+Diversity: 1.0
+Generated Text: my &imp; seed he seid then ithes gas to take to unding truth my grankulest feelot  
+
+Diversity: 1.2
+Generated Text: my yeistlear ghtefne thatmy filst mom, yuld g not my lard~~~~~~~~~~~~~~~~~~~~ your 
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i like to be my boyfriend to have to be my boyfriend is the best boyfriend to have
+
+Diversity: 0.5
+Generated Text: i want to be my boyfriend to see my boyfriend is my boyfriend to come i love him t
+
+Diversity: 1.0
+Generated Text: i ab out mad hes bneck, sometfu sha' kelp be and is they already dum  one my boyfr
+
+Diversity: 1.2
+Generated Text: i wannenneondy belove sfinding my boyfriend gay, nobogs clizingt.~~~~~~~~~~~~~ a y
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you oyfriend to take me and i want to be my boyfriend to be my boyfriend to be my bo
+
+Diversity: 0.5
+Generated Text: you oyfriend to talk to here and my boyfriend to need a boyfriend to be the pictures
+
+Diversity: 1.0
+Generated Text: you fo my boyfriend i lulls getting you've only pnacluatios and my boyfriend to all 
+
+Diversity: 1.2
+Generated Text: you fottwis like no boyfriend like "bubl time i hute''h t i meen my mude putslakion 
+
+---------- Epoch: 45 ---------- 
+
+Loss on first batch after epoch 45: 1.20641458035
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend is so he can the same i have a boyfriend and i want my boyfriend to be 
+
+Diversity: 0.5
+Generated Text: my oyfriend to go so to be the boyfriend i like him i don't want to be up for my bo
+
+Diversity: 1.0
+Generated Text: my oyfr hom swe gonna so in your boyfriend is wahch i get that, he drinks we is a b
+
+Diversity: 1.2
+Generated Text: my ^lovips i wanno froms my boyfriend~~~~~~~~~~~~~~~~~~~~~~~~~ y nich does you~~~~~
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i like to be my boyfriend is the best friend is the best friend is my boyfriend is
+
+Diversity: 0.5
+Generated Text: i out a boyfriend and he can't watch to me to my boyfriend looks to my boyfriend i
+
+Diversity: 1.0
+Generated Text: i con, and he's goina be then my boyfriend. i'm pleased~~~~~~~~~~~~~~~~~~~ friends
+
+Diversity: 1.2
+Generated Text: i loike my boyfriend. thall girl to home he's such,~ my buther and wish crest then
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you oyfriend to be my boyfriend the best friends and i don't want my boyfriend to be
+
+Diversity: 0.5
+Generated Text: you and big a boyfriend is my boyfriend would and my best friend i just want to see 
+
+Diversity: 1.0
+Generated Text: you llead annoya be my brother just someone  yo all i was god a mosts always and nev
+
+Diversity: 1.2
+Generated Text: you doy just early &amp; nexmole to be years with jas.my boyfriend ?~~~~~~~~~~~~~~~~
+
+---------- Epoch: 46 ---------- 
+
+Loss on first batch after epoch 46: 1.20064806938
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend is so going to be the best friend is like the coust is the best boyfrie
+
+Diversity: 0.5
+Generated Text: my oyfriend is so her boyfriend is so cute i can't like to she my boyfriend is not 
+
+Diversity: 1.0
+Generated Text: my im seckrivibied my boyfriend is you like~~~~~~~~~~~~~~~~~~~~~~~~ i just waut wit
+
+Diversity: 1.2
+Generated Text: my h:'' liles m reviry acd my naxt boyfriend is svo a daydabing her friends boyfrie
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i and my boyfriend is so cute the best friend is my boyfriend is so much i love hi
+
+Diversity: 0.5
+Generated Text: i look like my boyfriend is so have a boyfriend is my boyfriend is so cute he's th
+
+Diversity: 1.0
+Generated Text: i my boyfriend be all you want for my boyfriend about me have that girls and ita k
+
+Diversity: 1.2
+Generated Text: i lanym~ook &amy~~~~~~~,. 2'is it's sut like they!none gets  my mom is the -evel p
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you out my boyfriend is so much when i have a boyfriend is so have a boyfriend is so
+
+Diversity: 0.5
+Generated Text: you a sut of they love my boyfriend is the best friend to have to be when i have a b
+
+Diversity: 1.0
+Generated Text: you py litter's decires the boyfriend to "in like ths is faid sbowe need like why ca
+
+Diversity: 1.2
+Generated Text: you :y becuotely .~~~~~~~~~ atch bite's and ask an family somedaying #! you love all
+
+---------- Epoch: 47 ---------- 
+
+Loss on first batch after epoch 47: 1.19393897057
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend is so much and i have a boyfriend to me to see me to see me to me to be
+
+Diversity: 0.5
+Generated Text: my oyfriend is not and he's a purpers and i need to go out to d my boyfriend and ev
+
+Diversity: 1.0
+Generated Text: my boyfriend drkamy talk to happing with my frkend" and he erent~~~ really keep hav
+
+Diversity: 1.2
+Generated Text: my lebyou tlike my boyfriend :)~~~~~~~~~~~~~~~~~~~ alpto hid boyfriend racs eriab!y
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i and my boyfriend is so cute and i want to be the best boyfriend is so going to b
+
+Diversity: 0.5
+Generated Text: i and how stay a boyfriend is the best because i hate when my boyfriend is a boyfr
+
+Diversity: 1.0
+Generated Text: i cunker for atyyore nights ever to yeally me sasing my boyfriend dat's his sister
+
+Diversity: 1.2
+Generated Text: i nive is my datting boyfriend~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ would home bitch
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you and my boyfriend is so much and i want to see my boyfriend to be my boyfriend is
+
+Diversity: 0.5
+Generated Text: you ooffriend to be i can to a boyfriend like at out with my boyfriend is so cute hi
+
+Diversity: 1.0
+Generated Text: you ny out when disive watch my boyfriend?~~~~~~~~~~~~~~~~~~~~~ elouttly s good that
+
+Diversity: 1.2
+Generated Text: you like madnyctsing your boyfriend see you: i can dads~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------- Epoch: 48 ---------- 
+
+Loss on first batch after epoch 48: 1.18737256527
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend is so guys and i want my boyfriend to be my boyfriend is so going to se
+
+Diversity: 0.5
+Generated Text: my oyfriend is the best friend with my boyfriend is have the fast the back and i li
+
+Diversity: 1.0
+Generated Text: my oyfriend sees asking i want to postan so i'm fuck and and my boyfriend's ot abou
+
+Diversity: 1.2
+Generated Text: my ieka as intry us liky i be joking 4"th ring paselt us to my parrothth/sj butneve
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i and my boyfriend is so gonna see me i love him to be my boyfriend is the best fr
+
+Diversity: 0.5
+Generated Text: i foot to the best friends boyfriend is the conlest i love him~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Text: i fucking to like a postie how of my nwed is my boyfriend is bela. it's just just 
+
+Diversity: 1.2
+Generated Text: i uwh hirud an at my boyfriend. underthis. like my boyfriend is 've not -pmeriousl
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you out the best friend is my boyfriend is so cute and i want to be my boyfriend is 
+
+Diversity: 0.5
+Generated Text: you and so much with my boyfriend is but the says for my boyfriend is gonna feel lik
+
+Diversity: 1.0
+Generated Text: you dading of " 7rmeally kuving of~~ like that my boyfriend and i winhe having food 
+
+Diversity: 1.2
+Generated Text: you ;agtavery  toisso trupo talknol my girls not all i'll ted a bqoodydyam is cofker
+
+---------- Epoch: 49 ---------- 
+
+Loss on first batch after epoch 49: 1.18361568451
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend is so cute and i want to be the with my boyfriend that i want to be the
+
+Diversity: 0.5
+Generated Text: my oyfriend is when i want to sleep me to do take me i don't like a boyfriend on of
+
+Diversity: 1.0
+Generated Text: my on atare better is on my boyfriend in this is why like keaping thened someone ge
+
+Diversity: 1.2
+Generated Text: my eo hinsage act prlabingi need is to how a nodhs to om houcand song baby~ do sbot
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i talk to my boyfriend to see me and i want to be the best boyfriend to be a boyfr
+
+Diversity: 0.5
+Generated Text: i mo boyfriend and i have to feel my boyfriend so i feel like me off have a boyfri
+
+Diversity: 1.0
+Generated Text: i dad you doesn't have o my boyfriend and only gotting just os for  acking !) i li
+
+Diversity: 1.2
+Generated Text: i besurt~~ haddrnas like~~~~~~~~ like scaitiges undert fect thing my bu all paridi
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you out to see my boyfriend to me and he want to be the best friend and my boyfriend
+
+Diversity: 0.5
+Generated Text: you out when my boyfriend stop my read and i for my boyfriend and i don't know my bo
+
+Diversity: 1.0
+Generated Text: you and t be where you don't but that to stawtond my boyfriend~~~~~~~ like my boyfri
+
+Diversity: 1.2
+Generated Text: you afthop ateo *polowed arloswer,dy" his lgially telling my boyfriend~ onk think it
+
+---------- Epoch: 50 ---------- 
+
+Loss on first batch after epoch 50: 1.17982649803
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend is so going to me and i want my boyfriend to be the best friend is a bo
+
+Diversity: 0.5
+Generated Text: my oyfriend is the most fucking and my boyfriend is my boyfriend is so call he want
+
+Diversity: 1.0
+Generated Text: my aeainds are that raad boyfriend &amp; i see my boyfriend is cult a nice agtuol n
+
+Diversity: 1.2
+Generated Text: my pogtholit ugh sth to 2800027 boyfriend!?~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ lecki
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i like the boyfriend is so going to have a boyfriend when i have a boyfriend is th
+
+Diversity: 0.5
+Generated Text: i and be my boyfriend is a boyfriend that like he wants to want my boyfriend to go
+
+Diversity: 1.0
+Generated Text: i oust out my boyfriend todeating like 0 doesn't you to  all isn't have a, my boyf
+
+Diversity: 1.2
+Generated Text: i swautting fatevaop " 7o neisess she's so has~~~~~ my boyfriend niget a poant. ru
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you out my boyfriend is so happy my boyfriend is so cute i have a boyfriend is the b
+
+Diversity: 0.5
+Generated Text: you out a boyfriend is and i can't fact not for my boyfriend is for my boyfriend is 
+
+Diversity: 1.0
+Generated Text: you like wtill my speasis would love why i stop for my boyfriend. and i want my boyf
+
+Diversity: 1.2
+Generated Text: you fich as take me is my boothien bighalry how my tud and i've say doon "lwimen the
+
+---------- Epoch: 51 ---------- 
+
+Loss on first batch after epoch 51: 1.17298054695
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend is a boyfriend and i want to be the best boyfriend is so cute i have a 
+
+Diversity: 0.5
+Generated Text: my oyfriend is the best because i can't like to take me on my boyfriend and i hate 
+
+Diversity: 1.0
+Generated Text: my asliak when like a dayaboyfriend is callsdang like how to cry and my boyfriend~~
+
+Diversity: 1.2
+Generated Text: my sublmlab boyfriend~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ asking t2 tchat, tulking tri
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i like to be my boyfriend to be my boyfriend is so much i want to be the fact the 
+
+Diversity: 0.5
+Generated Text: i is my boyfriend what i want to see my boyfriend and i a good on my boyfriend is 
+
+Diversity: 1.0
+Generated Text: i ithana with him to right to this sorry &amp; his~~~~~~~~~~~~~~ my boyfriend, now
+
+Diversity: 1.2
+Generated Text: i .ill your boyfriend will be my awse shites danses ko , it's bigst good.?~~~~~~~~
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you and my boyfriend is so going to be my boyfriend is the best boyfriend is so much
+
+Diversity: 0.5
+Generated Text: you oof has to see a boyfriend so me to be to me to have to be finding to do prooll 
+
+Diversity: 1.0
+Generated Text: you -your boyfriend don't like to be my boyfriend. i time like that.~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: you to doy sadionsssill bays. sometwit that eaclme seeically trying to be boyfriend,
+
+---------- Epoch: 52 ---------- 
+
+Loss on first batch after epoch 52: 1.16856956482
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend is so going to get a boyfriend is the best friend is the best friend is
+
+Diversity: 0.5
+Generated Text: my oyfriend is one is so handsome to a best friend and he wants to see my boyfriend
+
+Diversity: 1.0
+Generated Text: my oyfriend is this mal when immmy boyfriend need sopoting me hat a miss ghays sinc
+
+Diversity: 1.2
+Generated Text: my oyfriend and his grisun i'm, hangselt that i lice low staudg has lize4 "evanthis
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i like to be the boyfriend is the best boyfriend is so like that i love my boyfrie
+
+Diversity: 0.5
+Generated Text: i love when my boyfriend is so mace i want my boyfriend to be my boyfriend but i c
+
+Diversity: 1.0
+Generated Text: i like how kreces he shool how why is my boyfriend pr/uz~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: i want im so fantbrings?~~~~~~~~~~~~~~~~ about live my boyfriend~~~~~~~~~~~~~~~~~~
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you out the best friends and my boyfriend is so cute i want my boyfriend to be my bo
+
+Diversity: 0.5
+Generated Text: you to dick be and my boyfriend is hangs to this i love him i love him ball my boyfr
+
+Diversity: 1.0
+Generated Text: you ros fat this~~~~ want a boyfriend. i'm cold of her in the girlfriend and that is
+
+Diversity: 1.2
+Generated Text: you  whan my cowiniat ti is my drink ! or welr npefeolver toll me &amp; pupporer b!a
+
+---------- Epoch: 53 ---------- 
+
+Loss on first batch after epoch 53: 1.16462182999
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend is the best boyfriend is so have a boyfriend is so much and i need to b
+
+Diversity: 0.5
+Generated Text: my oyfriend is the song and i have to be my boyfriend like he said i have a boyfrie
+
+Diversity: 1.0
+Generated Text: my xtitking boyfriend is one loakes i want his best fiadt my sofriends ask god ball
+
+Diversity: 1.2
+Generated Text: my oyfriend  was weeld be  istamy deaudei nake i his morth up.~~~~~ or like actuol 
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i is my boyfriend to be the best boyfriend is so much i want my boyfriend to be th
+
+Diversity: 0.5
+Generated Text: i is love a boyfriend who that you don't want my boyfriend to told me a boyfriend 
+
+Diversity: 1.0
+Generated Text: i tasking when my boyfriend is so gonna swith i love making to get meare- when i g
+
+Diversity: 1.2
+Generated Text: i and the lol i swant 6 you just want m. houh say just want my boyfriend annuter l
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you out to see my boyfriend is so fucking because i need to be the best friend is my
+
+Diversity: 0.5
+Generated Text: you boyfriend is going to be a con or the gay i got a boyfriend is the weeking home 
+
+Diversity: 1.0
+Generated Text: you irougay nabke,, chly neveres more out? for my boyfriend is at cite my haaring fo
+
+Diversity: 1.2
+Generated Text: you woulddad w'nt i just have been to ovay , feel th upent he and gong a, fer boyfri
+
+---------- Epoch: 54 ---------- 
+
+Loss on first batch after epoch 54: 1.15944099426
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend is so happy my boyfriend is so cute i have a boyfriend and i want my bo
+
+Diversity: 0.5
+Generated Text: my hoyfriend is my boyfriend that is the tristed to be and my boyfriend is so care 
+
+Diversity: 1.0
+Generated Text: my ailbs my boyfriend got when of'ving when i want my boyfriend to have a buen my f
+
+Diversity: 1.2
+Generated Text: my b life oftifomil in vica radat toou uyhs (urnorates bvake a mon 'out a boyfriend
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i like to be my boyfriend to be my boyfriend to me and i want to be my boyfriend t
+
+Diversity: 0.5
+Generated Text: i like the fuck of my boyfriend is my boyfriend so i hate me and i want my boyfrie
+
+Diversity: 1.0
+Generated Text: i like my boyfriend and i get a boyfriend really dafinel at tamp ov up butting me.
+
+Diversity: 1.2
+Generated Text: i is or i see she is so br for my mom juking :i~~ that is soncy oll from men9fil w
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you out the boyfriend is a boyfriend to have a boyfriend is so happy to me to see my
+
+Diversity: 0.5
+Generated Text: you and his favor as so sleeps and be a day this is my boyfriend but i just want to 
+
+Diversity: 1.0
+Generated Text: you s when i. the oi just wanna . " ani want a boyfriend with mechlecely the storbin
+
+Diversity: 1.2
+Generated Text: you uinder my boyfriend, ressiall!~~~~~ ovs i to fimiluse babyfriend~~~~~~~~~~~~~~~~
+
+---------- Epoch: 55 ---------- 
+
+Loss on first batch after epoch 55: 1.15600514412
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend is so going to be my boyfriend is the best because i have a boyfriend a
+
+Diversity: 0.5
+Generated Text: my oyfriend is so suck a with his boyfriend and how me and one when i want a boyfri
+
+Diversity: 1.0
+Generated Text: my oyfriend asked my jurt. my boyfriend a me: my baby father's boyfriend strooks to
+
+Diversity: 1.2
+Generated Text: my oyfriend is ndvely without my. srike of but me~~~~~~~~~~~~~~~~~~~~~~~~~ dudg"gop
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i and my boyfriend is a boyfriend is a boyfriend to be my boyfriend is so cute the
+
+Diversity: 0.5
+Generated Text: i and my boyfriend he loves me to need to have to be my boyfriend so he have a boy
+
+Diversity: 1.0
+Generated Text: i eand grink for him to my boyfriend where voc une me back  that trying to think o
+
+Diversity: 1.2
+Generated Text: i and a new ro color his boyfriind, girlfriend's panca ara gm~~~~~~~~~~~~~~~~~~~~~
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you and my boyfriend is so have a boyfriend who is my boyfriend is the best friends 
+
+Diversity: 0.5
+Generated Text: you to my boyfriend that my boyfriend is so god his friends may and i need a boyfrie
+
+Diversity: 1.0
+Generated Text: you not longe!~~~~~~~~~~ cause i told me in the going peapthis he want~~~~~~ i ment 
+
+Diversity: 1.2
+Generated Text: you for wec rutiif i ?o okcelled my boyfriend"i geat off own to me boyfriend to tkly
+
+---------- Epoch: 56 ---------- 
+
+Loss on first batch after epoch 56: 1.15189409256
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend is so cute i want my boyfriend to be my boyfriend is so friends and i w
+
+Diversity: 0.5
+Generated Text: my oyfriend is out of she say me the house i don't want my boyfriend to have a boyf
+
+Diversity: 1.0
+Generated Text: my like   ull fuck fate~~~~~~~~~~~~~~~~~~~~~~~~ or thanks all like like . he is my 
+
+Diversity: 1.2
+Generated Text: my ponnadnce lichsiaos woung aqout bein xi'm love you weeking to be my ohlays com d
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i is the boyfriend to see my boyfriend is a boyfriend and i don't want to be the s
+
+Diversity: 0.5
+Generated Text: i hund a boyfriend and he wanted to come to have a boyfriend and he is the  and my
+
+Diversity: 1.0
+Generated Text: i hor never your boyfriend about in he loves me work and w my boyfriend is sreilki
+
+Diversity: 1.2
+Generated Text: i oveno idk ait's 10d homagrtagis trasly  chongles trymuticass is gars whilo to my
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you and my boyfriend is so cute and i have a boyfriend is so the best boyfriend is s
+
+Diversity: 0.5
+Generated Text: you out the with my boyfriend is the best want to see my boyfriend to treats him so 
+
+Diversity: 1.0
+Generated Text: you cimarrow, my boyfriend is gonna talking to ti just just want to be 2 i gobaser, 
+
+Diversity: 1.2
+Generated Text: you & a with, i'mmsfees like i'm rouddything an trncaverta brothour~~~~~~~~~~~~~~~~~
+
+---------- Epoch: 57 ---------- 
+
+Loss on first batch after epoch 57: 1.14933550358
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend is so cute and he is a best friend and i have a boyfriend and i don't w
+
+Diversity: 0.5
+Generated Text: my oyfriend is so much and i see my boyfriend.~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Text: my ha back &amp; ate her singrstup that my boyfriend cames and me ingolgo to drom h
+
+Diversity: 1.2
+Generated Text: my boyfriend is my said or preting family is so dm bif~~~~~~~~ my boyfriend" lo ant
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i and my boyfriend to be my boyfriend i want to be a boyfriend to be my boyfriend 
+
+Diversity: 0.5
+Generated Text: i leart my boyfriend to love of me and i love when my boyfriend is so have to be h
+
+Diversity: 1.0
+Generated Text: i eattooo bo just one a fied- the bes id i cant cam to be live niggass girlfriends
+
+Diversity: 1.2
+Generated Text: i teiths get and  ain't god you ths exard amnxone 2 was lefent clo~~~~~~~~~~~~~~~~
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you out to get a boyfriend to see me to see my boyfriend is so have a boyfriend like
+
+Diversity: 0.5
+Generated Text: you ack come that i can the only boyfriend and i want my boyfriend to be a girlfrien
+
+Diversity: 1.0
+Generated Text: you weich up  in my pisiteuson is my boyfriend lots him telling me whituce, he patty
+
+Diversity: 1.2
+Generated Text: you i need joon "to this shop" now all cansssllive this is my boyfriend girl if in ~
+
+---------- Epoch: 58 ---------- 
+
+Loss on first batch after epoch 58: 1.14454853535
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend is so good and i want my boyfriend to be a boyfriend to the best best b
+
+Diversity: 0.5
+Generated Text: my family told me to be my boyfriend like to be my boyfriend and i told me i don't 
+
+Diversity: 1.0
+Generated Text: my  oyfriend like-.~~~~~~~~~~~~~~~~~~~~~~~~~~~~ i want a boyfriend to need to scyyf
+
+Diversity: 1.2
+Generated Text: my aic wihg only putesoucelic, we doos in't seriou text trding to the bmy one  ate 
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i is love my boyfriend to be my boyfriend but i want to be my boyfriend i want my 
+
+Diversity: 0.5
+Generated Text: i is the best boyfriend and i love him and i'm story and my boyfriend is like he l
+
+Diversity: 1.0
+Generated Text: i  yoy boyfriend that then the remest thingring i have datestly thow .~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: i eare of' camrecning ater plovinited me.~~~~ jult tro put alowelh a romipupid , c
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you on the best boyfriend is so cute i have a boyfriend to be my boyfriend and i wan
+
+Diversity: 0.5
+Generated Text: you and i don't have a boyfriend so hard that "my boyfriend is so i don't want to be
+
+Diversity: 1.0
+Generated Text: you girl and she has annoy with my boyfriend like when  but me ask you not hate your
+
+Diversity: 1.2
+Generated Text: you firubit~~~~~~~~~ by a have visting muting orriatirn. fhofs like umnab,~~~~~~ tru
+
+---------- Epoch: 59 ---------- 
+
+Loss on first batch after epoch 59: 1.14009726048
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend is so cute i want my boyfriend to be my boyfriend is so cute i want to 
+
+Diversity: 0.5
+Generated Text: my oyfriend is the watch he is not a boyfriend honestly my boyfriend wears like a p
+
+Diversity: 1.0
+Generated Text: my oyfriend can reallm i  asked me i'm know to think you  use with now~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: my uilw annudossblets with bugy, rotc? short he's secerfup~~~~~~~~~ you with my boy
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i is my boyfriend to be a boyfriend is the best boyfriend is so much and i want to
+
+Diversity: 0.5
+Generated Text: i and i need a boyfriend to be on the best boyfriend or here was it my boyfriend i
+
+Diversity: 1.0
+Generated Text: i have a boyfriend~~~~~~ mens tomach she speed~~ and i was my boyfriend just becau
+
+Diversity: 1.2
+Generated Text: i apnay and alqnatering ffo in cour friend ,simeone my boyfri how 22ti.~~~~~~~~~~~
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you offriend is my boyfriend is so much and i have a boyfriend is so have a boyfrien
+
+Diversity: 0.5
+Generated Text: you and that me to be when my boyfriend is a getting is on her boyfriend like the be
+
+Diversity: 1.0
+Generated Text: you bschapplove my boyfriend is hot my wholin anyout because i (ant how with this a 
+
+Diversity: 1.2
+Generated Text: you ked~~~~~~~~~ hate the sister, paren. i want my boyfriend wutgiec remind or !!~~~
+
+---------- Epoch: 60 ---------- 
+
+Loss on first batch after epoch 60: 1.13831233978
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend is so cute and i want to be my boyfriend to get a boyfriend is a boyfri
+
+Diversity: 0.5
+Generated Text: my oyfriend is the best with my boyfriend, for my best friend is going to call me i
+
+Diversity: 1.0
+Generated Text: my oyfriend is joj and makeal that and i sreally wauting a baby b folk joff then i'
+
+Diversity: 1.2
+Generated Text: my ead buith whin her timess you my boyfriend becahe though, 3206 i'm talk able unt
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i and the best friends to be my boyfriend and i'm so going to be my boyfriend to b
+
+Diversity: 0.5
+Generated Text: i and gonna call my boyfriend and i'm so still think i have a boyfriend the cutest
+
+Diversity: 1.0
+Generated Text: i andever can is my foght because i wanna be my boyfriend nposes boue to me upset 
+
+Diversity: 1.2
+Generated Text: i ithen'! taking him ar sitnohthis yous patlate to i've under my dele 6 dad i then
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you and my boyfriend is the best friends the best because i have a boyfriend and i l
+
+Diversity: 0.5
+Generated Text: you out the best friend to have a boyfriend i want my boyfriend to see my boyfriend 
+
+Diversity: 1.0
+Generated Text: you peom to was mining me to me: sweet a suin is gawe when your boyfriend's swart is
+
+Diversity: 1.2
+Generated Text: you out do'on waut maficsfuged "om he's chowced to take tnos ug highitued my hgof po
+
+---------- Epoch: 61 ---------- 
+
+Loss on first batch after epoch 61: 1.13215577602
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend is so going to see my boyfriend is so fucking because i have a boyfrien
+
+Diversity: 0.5
+Generated Text: my boyfriend is the best best friend and and a post but he most with my boyfriend w
+
+Diversity: 1.0
+Generated Text: my oyfriend is "to need it something alto someone baby " has makess afker you and t
+
+Diversity: 1.2
+Generated Text: my my ducs. shery i will chis my mos los in the boyfriend ugh! he's last ip losing 
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i out that my boyfriend is so cute i want to be my boyfriend to me and i want to b
+
+Diversity: 0.5
+Generated Text: i chong out to my boyfriend is a boyfriend so cute that i want to be the pleane we
+
+Diversity: 1.0
+Generated Text: i like lol my boyfriend is going to care 3 on making back and away when ma is real
+
+Diversity: 1.2
+Generated Text: i have to pun~~~~ really people igol live 19 it's hme nol be b~ckedjalb and hamso 
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you and the she want to be my boyfriend is my boyfriend is the best best friend is t
+
+Diversity: 0.5
+Generated Text: you is the best friend is so my boyfriend is going to be my boyfriend is so much he 
+
+Diversity: 1.0
+Generated Text: you om~~~~~~~~~ ups i need to see my boyfriend and that i need a b honerbole ?~~~~ h
+
+Diversity: 1.2
+Generated Text: you pagses to be my boyfriend-grickdy don to litturs behin!~~~~~~~~~~~ it'1 never go
+
+---------- Epoch: 62 ---------- 
+
+Loss on first batch after epoch 62: 1.12984728813
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend is the best friends and i don't want my boyfriend to be my boyfriend is
+
+Diversity: 0.5
+Generated Text: my oyfriend is going to be him so much that i don't want to be with my boyfriend an
+
+Diversity: 1.0
+Generated Text: my offriend work like anothing must~~~~~~~~~~ would go and and  ai'm friend. likes 
+
+Diversity: 1.2
+Generated Text: my boyfriend and wouke :~~~~~~~~~~~~~~~~~~~~~~~ and bada serry and spend with orly 
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i and my boyfriend is so cute i want my boyfriend to be my boyfriend is so happy i
+
+Diversity: 0.5
+Generated Text: i go to me to be my boyfriend is the best like a day and can the world fucking hap
+
+Diversity: 1.0
+Generated Text: i take calle my feel sisted want a boyfriend and you take for why is accone is goo
+
+Diversity: 1.2
+Generated Text: i _like oknyhand"~~~~~~~ my boyfriend is prowa. in truppy :.~~~~~~~~~~~~~~~~~~~~~~
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you off the best boyfriend is my boyfriend is so happy to me to see my boyfriend lik
+
+Diversity: 0.5
+Generated Text: you all the girls think i like that while the supposed to my boyfriend is a good so 
+
+Diversity: 1.0
+Generated Text: you is up &amp; the best boyfriend and he lut me know this alone need to move. like 
+
+Diversity: 1.2
+Generated Text: you but when to be seriathe snext but saie boyfriend? i don't~~~~~~~~~~~~~~~~~~~~~~ 
+
+---------- Epoch: 63 ---------- 
+
+Loss on first batch after epoch 63: 1.12816751003
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend is so cute the best friends and i want to stop my boyfriend to be my bo
+
+Diversity: 0.5
+Generated Text: my oyfriend is a cousin is a was so in all my boyfriend is the secing to like my bo
+
+Diversity: 1.0
+Generated Text: my oyfriend doesn't got our r kussion. my comicorn. i really don't be  boyfriend.~~
+
+Diversity: 1.2
+Generated Text: my oyfriend is pre is onmy caofor way so much isn't weeks aves good to be my boyfri
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i love him to be my boyfriend and i don't want my boyfriend to be my boyfriend is 
+
+Diversity: 0.5
+Generated Text: i ithe early like a boyfriend looks like that i have a shit my boyfriend is a boyf
+
+Diversity: 1.0
+Generated Text: i hive with my boyfriend. your came  one and why  at convanilike because you don't
+
+Diversity: 1.2
+Generated Text: i ?hx peosles sulmy boyfriend is becahan jongcon y loving up "birs, doot a cute sa
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you offriend and i want to be my boyfriend to be my boyfriend to take me to get a bo
+
+Diversity: 0.5
+Generated Text: you use to have a boyfriend i want my boyfriend to see me for me to like you is the 
+
+Diversity: 1.0
+Generated Text: you out to-icall ean goeng, my they~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ever find m
+
+Diversity: 1.2
+Generated Text: you gog't for my lole trefus a mother is my boyfriend. i'm just kissing how girlfr a
+
+---------- Epoch: 64 ---------- 
+
+Loss on first batch after epoch 64: 1.12490105629
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend is so cute i want to be my boyfriend is a boyfriend that i want to be t
+
+Diversity: 0.5
+Generated Text: my fod now boyfriend is so fucking and i really need to be with my boyfriend is the
+
+Diversity: 1.0
+Generated Text: my : per boyfriend. my mame is girl talking to perfect a while hut heart and my bes
+
+Diversity: 1.2
+Generated Text: my &mmnbalve''s look oc "my boyfriend and palaneamy lrsla. up work~~~ alhaa not_ he
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i and the boyfriend is so happy to me to be my boyfriend is so cute i want to be m
+
+Diversity: 0.5
+Generated Text: i like they was a boyfriend for my boyfriend is so pretty now he is cousin is the 
+
+Diversity: 1.0
+Generated Text: i or with ju my boyfriend who  compalry mekzih,.'0 looking to an theov me never bl
+
+Diversity: 1.2
+Generated Text: i likemy mom is so mc~~~~~~~~~~~~~ one ont she won today's  alwont teen byorshir t
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you is my boyfriend when i want to see my boyfriend and i don't want my boyfriend to
+
+Diversity: 0.5
+Generated Text: you and he is so when i can do is gonna have a boyfriend to be the best boyfriend is
+
+Diversity: 1.0
+Generated Text: you ubpsobed "is everything the libless kers my boyfriend is suphank gonnen't want t
+
+Diversity: 1.2
+Generated Text: you rannov/boci, ur converson, my prothe hrlap~ just fatiat~~~~~odaylolly just datin
+
+---------- Epoch: 65 ---------- 
+
+Loss on first batch after epoch 65: 1.12251007557
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend is so much and i want to be my boyfriend to get me to start to me to my
+
+Diversity: 0.5
+Generated Text: my oyfriend is such a feel like my and i just want to have a sister she say i get a
+
+Diversity: 1.0
+Generated Text: my boyfriend is cutes at a idat 4~~~~~~~~~~~~~~~~~~~~~~~~~'to m my boyfriend doc' w
+
+Diversity: 1.2
+Generated Text: my oif ass br .~~~~~ you trongt'lh knce he can't inster.~~~~~~~~~~~ my friend to am
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i and my boyfriend is so grandma want to get me to see my boyfriend is so cute and
+
+Diversity: 0.5
+Generated Text: i and be this is my boyfriend i want to get a boyfriend to say  i have a boyfriend
+
+Diversity: 1.0
+Generated Text: i godes way annaybet i don't need to be on the protoute this is fun it still need 
+
+Diversity: 1.2
+Generated Text: i ure she's moviechat smile eimm i in his sitting thonerrtand obless honestly to p
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you on his boyfriend is so good and i want to be my boyfriend and i want to be my bo
+
+Diversity: 0.5
+Generated Text: you boyfriend is such a girlfriend and i don't want my boyfriend to see my boyfriend
+
+Diversity: 1.0
+Generated Text: you is vataaaving never "takes so had a boyfriend. i hoe basbboy'no fanewat farta ha
+
+Diversity: 1.2
+Generated Text: you will miss my brotherk. out on broth 4 grand,! "what everyasled with coush i'm no
+
+---------- Epoch: 66 ---------- 
+
+Loss on first batch after epoch 66: 1.11936926842
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend is so cute and i don't want my boyfriend to be my boyfriend that i love
+
+Diversity: 0.5
+Generated Text: my oyfriend is all my boyfriend is the right now on he's so cute that i have a boyf
+
+Diversity: 1.0
+Generated Text: my oyfriend is because i do act of mice and in litersally jutt need my boyfriend bu
+
+Diversity: 1.2
+Generated Text: my d life in omy stumf talking this knowhen i his bein jomy svery don't want my boy
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i is my boyfriend but i want to be my boyfriend when i don't have a boyfriend and 
+
+Diversity: 0.5
+Generated Text: i want my boyfriend to come to me and i told my boyfriend is the best pictures of 
+
+Diversity: 1.0
+Generated Text: i have to breakune my boyfriend spincunives girl, i want to be to my scho lo and m
+
+Diversity: 1.2
+Generated Text: i wima. id mike my grman all yig thi want my boyfriend's much.~~~~~  who dopmes. "
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you and my boyfriend is so cute i want to be the best boyfriend is a boyfriend and i
+
+Diversity: 0.5
+Generated Text: you out him look like this getting my boyfriend is so fucking soup and i don't like 
+
+Diversity: 1.0
+Generated Text: you talk be call in tell part for my life~~~~~~~~~ it when my boyfriend is to see my
+
+Diversity: 1.2
+Generated Text: you rono wofk &amp7 i tomorrowsly like that be on love and my boyfriend.~~~~~~~~~~~~
+
+---------- Epoch: 67 ---------- 
+
+Loss on first batch after epoch 67: 1.11397373676
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend is so cute i want to see my boyfriend is so cute i want to be my boyfri
+
+Diversity: 0.5
+Generated Text: my ex boyfriend is the best times i can't like to find a boyfriend and this is he w
+
+Diversity: 1.0
+Generated Text: my earomsnime is called him you stapcresting people sweat i don't cant my boyfriend
+
+Diversity: 1.2
+Generated Text: my in darisurious), till i seting tilled like frop my gay go of the7 hate her~" u x
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i is my boyfriend to say the only can the only thing i love him so much and i want
+
+Diversity: 0.5
+Generated Text: i used to be her boyfriend like i love him so much is my best friend. where is my 
+
+Diversity: 1.0
+Generated Text: i need a boyfriend starting for me working up to have to almusible b hate ass my b
+
+Diversity: 1.2
+Generated Text: i offeic talking "yi feel likissoen: hove bull me my boyfriend is bitch throull i 
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you and the sister is my boyfriend is the best best friend is so cute the best boyfr
+
+Diversity: 0.5
+Generated Text: you and my boyfriend is so like i can go to get my boyfriend is the best thing i can
+
+Diversity: 1.0
+Generated Text: you rered. of my 14 with caro that i got me is switter are to my nice really want a 
+
+Diversity: 1.2
+Generated Text: you frcand so gright don't have to lo:k my boyfriend's nick lu;t cream of in lovely 
+
+---------- Epoch: 68 ---------- 
+
+Loss on first batch after epoch 68: 1.11225807667
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend is so good to the best be the best boyfriend is so cute when i love him
+
+Diversity: 0.5
+Generated Text: my boyfriend is the his mad i don't want my boyfriend to be be the boyfriend is wor
+
+Diversity: 1.0
+Generated Text: my owl baich now my boyfriend is the bother welrs i don't see to go he all it is re
+
+Diversity: 1.2
+Generated Text: my 1my acar dean younger i an't the ettergageoh both me, bn kroy~~~~~~~~~~~~~~~~~~~
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i and my boyfriend is the conthes things i don't want my boyfriend to be my boyfri
+
+Diversity: 0.5
+Generated Text: i feel like i have a boyfriend and he still want to see my sweet on my boyfriend i
+
+Diversity: 1.0
+Generated Text: i ym boyfriend  offok with~~~~~~~~~~~~~~~~~~~~~~~~~~ boyfrie duck of marranp  bigg
+
+Diversity: 1.2
+Generated Text: i think dris? my boyfriend keeps really great i'm not bly my gripkyacrowch out off
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you and my boyfriend is so such a boyfriend and i can't be my boyfriend and i want t
+
+Diversity: 0.5
+Generated Text: you out of my boyfriend is the cutest like is a feel friends this is a pretty so muc
+
+Diversity: 1.0
+Generated Text: you jester feet to do is pays why -to have a pitter they like when i its. everyned s
+
+Diversity: 1.2
+Generated Text: you my mom. is. i'm butch jrcherpa funs. my best friend's girlfriend:~~~~~~~~ i' ake
+
+---------- Epoch: 69 ---------- 
+
+Loss on first batch after epoch 69: 1.1098741293
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend is so cute and my boyfriend is so cute i want to be my boyfriend to be 
+
+Diversity: 0.5
+Generated Text: my oyfriend is the best since me and the best because i think i get a boyfriend is 
+
+Diversity: 1.0
+Generated Text: my fo found . tone go i got a boyfriend long with his boyfriend, doesn't askad a co
+
+Diversity: 1.2
+Generated Text: my boyfriend shwalk not that i love your grunnimy boyfriend live him kloms and yest
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i ithe was my boyfriend to be my boyfriend and i swear my boyfriend is so happy to
+
+Diversity: 0.5
+Generated Text: i love my boyfriend is my family thinks i want to be my boyfriend to be my boyfrie
+
+Diversity: 1.0
+Generated Text: i ure was can to be for me ro who is something like best cousin to prott me are my
+
+Diversity: 1.2
+Generated Text: i nealisea tongyan: and i want to olgibe ha boyfriend just be like tthe firgardnam
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you and my boyfriend is a best friend is so cute that i want a boyfriend to be with 
+
+Diversity: 0.5
+Generated Text: you and all a lot at my boyfriend is always just something who doesn't have a boyfri
+
+Diversity: 1.0
+Generated Text: you in the will heart~~~~~~~~~~~~~~~~~~~~~~~~~~~ ad so good." my boyfriend is pleasi
+
+Diversity: 1.2
+Generated Text: you in tavet home!!?!?!!!! old 25/2x1yet my boyfriend is the dost that him". it~~~~~
+
+---------- Epoch: 70 ---------- 
+
+Loss on first batch after epoch 70: 1.10761523247
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend is so cute i see my boyfriend is so gonna be the best boyfriend is so c
+
+Diversity: 0.5
+Generated Text: my oyfriend is a best friend is not going to tell me her boyfriend at me to this is
+
+Diversity: 1.0
+Generated Text: my otg is out of where my boyfriend don't love her sometimes you need a boyfriend s
+
+Diversity: 1.2
+Generated Text: my oarderkun's treats just only pimis of my boyfriend only fri know it wrent like t
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i is my boyfriend to be a best friend and i have a boyfriend is the best best frie
+
+Diversity: 0.5
+Generated Text: i asked to come to my boyfriend i want a boyfriend to for me and the best boyfrien
+
+Diversity: 1.0
+Generated Text: i seeally my boyfriend gives my boyfriend for 20 not uperently tin goun because i 
+
+Diversity: 1.2
+Generated Text: i over the gaid to pun cl "i need a boyfriend sib "in  mau house i need to be too 
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you is the best boyfriend and i have a boyfriend and i want to be my boyfriend to ta
+
+Diversity: 0.5
+Generated Text: you in the world and be in love with my boyfriend who was a boyfriend is a puter of 
+
+Diversity: 1.0
+Generated Text: you in a girl and post a day nog was the fist but a she's to det on my lookss know o
+
+Diversity: 1.2
+Generated Text: you from we just was, posted to she's lasings to dect the begoing my work and so all
+
+---------- Epoch: 71 ---------- 
+
+Loss on first batch after epoch 71: 1.10415422916
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend is so happy to me i want to be my boyfriend to be the best boyfriend is
+
+Diversity: 0.5
+Generated Text: my oyfriend is so cute and i love him to be the best friends &amp; i love him a goo
+
+Diversity: 1.0
+Generated Text: my /sworls listen to be saif if i have, my boyfriend pritest will every from stills
+
+Diversity: 1.2
+Generated Text: my ounins &amp; the caire for the  and i am andssplcame old body every new my phoni
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i and the fact that my boyfriend is so fucking best friend is so cute and i need a
+
+Diversity: 0.5
+Generated Text: i ust a boyfriend to be my first for me in the most and a boyfriend i need to be a
+
+Diversity: 1.0
+Generated Text: i like she trugh sof my boyfriend is poiccanla bitch i have a boyfriend is go at f
+
+Diversity: 1.2
+Generated Text: i so newhy don take coubsa purpied~~~~~~~~~~~~~~~~~~~~~~~ :/~~~~~~~~~~~~~~ my boyf
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you and my boyfriend is so going to get on my boyfriend is so cute i want to be my b
+
+Diversity: 0.5
+Generated Text: you and my boyfriend is so gone because i am a seriously my boyfriend is the sleepin
+
+Diversity: 1.0
+Generated Text: you uger and for the modri love my boyfriend i for me yo liked ballak 15 my boyfrien
+
+Diversity: 1.2
+Generated Text: you iluways "/my gona breed buiucto mr beding no enbey. i had a not boyfriend"*whenf
+
+---------- Epoch: 72 ---------- 
+
+Loss on first batch after epoch 72: 1.10328328609
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend is going to have a boyfriend is going to be my boyfriend and i want to 
+
+Diversity: 0.5
+Generated Text: my oyfriend just a be all i love him a pretty and i can't even be the best boyfrien
+
+Diversity: 1.0
+Generated Text: my talk and he is sleep like theyour grist of madsome. franda he looked to the boyf
+
+Diversity: 1.2
+Generated Text: my firs is my boyfriend outs me bob pay i like waking for when my boyfriend asked a
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i and my boyfriend is so cute i want my boyfriend to be my boyfriend and i want to
+
+Diversity: 0.5
+Generated Text: i like my boyfriend to have someone~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Text: i loot then he do idk how shit my boyfriend is going to see you're it know do u'd 
+
+Diversity: 1.2
+Generated Text: i ask me but hahahahaha "yeah to make someone literally to thto cheating girl quer
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you and my boyfriend is so much i want my boyfriend to be my boyfriend is so cute th
+
+Diversity: 0.5
+Generated Text: you on face  of my boyfriend see me and the only house "the only person i love you t
+
+Diversity: 1.0
+Generated Text: you person i have bnach hih bsactuve in everything whe loves not love when i see my 
+
+Diversity: 1.2
+Generated Text: you :o' my boyfriend to give like are of very with my sommy boyfriend is hegren i mi
+
+---------- Epoch: 73 ---------- 
+
+Loss on first batch after epoch 73: 1.10353124142
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend is so fucking best friend and he loves me to see my boyfriend and i lov
+
+Diversity: 0.5
+Generated Text: my oyfriend is gunning at me and he wants to see my boyfriend to call me i have a b
+
+Diversity: 1.0
+Generated Text: my oot mema? why is the cant her boyfriend that is alanoones to tupting i don't wan
+
+Diversity: 1.2
+Generated Text: my ushet's first treetever~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ i didnet l . vinit
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i and my boyfriend is so cute i love him to be my boyfriend and i don't want my bo
+
+Diversity: 0.5
+Generated Text: i off someone that i want my boyfriend to be my best friend i need to be my boyfri
+
+Diversity: 1.0
+Generated Text: i am a boyfriend that is 50~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ hrough thing its day by 
+
+Diversity: 1.2
+Generated Text: i con't love a mansuc?t my boyfriend~~~~~~~~~~~~~~~~~~~~~~~~~ hav not boy sick day
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you on the boyfriend is so cute my boyfriend is so good to have a boyfriend to take 
+
+Diversity: 0.5
+Generated Text: you have texting a boyfriend so much with my boyfriend is a so i can have a boyfrien
+
+Diversity: 1.0
+Generated Text: you complstes up star ever been then all becausemy boyfriend's boyfriend is tce in a
+
+Diversity: 1.2
+Generated Text: you defiously my "inn doning want to hate too mat to like so i got the feol jelalasl
+
+---------- Epoch: 74 ---------- 
+
+Loss on first batch after epoch 74: 1.0987303257
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend is so cute i want to be a boyfriend and i have a boyfriend to be my boy
+
+Diversity: 0.5
+Generated Text: my boyfriend is so such a boyfriend who want to be the best friend and i love him w
+
+Diversity: 1.0
+Generated Text: my oars,lowes i get my boyfriend, i'm in there frestin (just like trying to text my
+
+Diversity: 1.2
+Generated Text: my obsce wo: th thil! taken i love my fiveh citk like likerpsnm~~~~~~~~~~~~~~~~~~~~
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i and my boyfriend is a girlfriend i love him to see my boyfriend is the best best
+
+Diversity: 0.5
+Generated Text: i i need to see my boyfriend. all a boyfriend or a girl (i want my boyfriend to se
+
+Diversity: 1.0
+Generated Text: i acrusled to my boyfriend so much me: i don't have a my boyfriend, in my houte? h
+
+Diversity: 1.2
+Generated Text: i ul buy yfueass your boyfriend~~~~~~~~~~~~~~~~~~~~~ hatetextwhat what my boyfrien
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you of my boyfriend is the best boyfriend is a boyfriend and i want to be my boyfrie
+
+Diversity: 0.5
+Generated Text: you and his friends is my boyfriend is my boyfriend is my boyfriend and i'm so becau
+
+Diversity: 1.0
+Generated Text: you @out boyfriend and was like i can't step with there me on~~~~~~~~~ nothing and m
+
+Diversity: 1.2
+Generated Text: you dlarking tover celen"this is twatten to one  niggaspo he doesn't ceal me,sot? mi
+
+---------- Epoch: 75 ---------- 
+
+Loss on first batch after epoch 75: 1.09660589695
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend is so going to get a boyfriend to be my boyfriend is so good and i don'
+
+Diversity: 0.5
+Generated Text: my ex boyfriend is here working and should the scould be my boyfriend is the girl i
+
+Diversity: 1.0
+Generated Text: my boyfriend is over at me., i love him~~~~~~~~~~ can't want to call th his sigue w
+
+Diversity: 1.2
+Generated Text: my oyfriend is such a god  and like when my boyfriend is i'm without me with still 
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i and my boyfriend is so happy to me to get a boyfriend to be my boyfriend is so h
+
+Diversity: 0.5
+Generated Text: i and my boyfriend is literally a family when i see my boyfriend is so good and i 
+
+Diversity: 1.0
+Generated Text: i bitched word to start thinks i get sid looki like to want emming my mom &amp; my
+
+Diversity: 1.2
+Generated Text: i do havrincest. dumby'all i need a boyfriend. so much the work shown me/-wto clat
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you and my boyfriend is so cute the best boyfriend is so good to me and i want to se
+
+Diversity: 0.5
+Generated Text: you all i have a boyfriend when i don't like that come  out my boyfriend is my famil
+
+Diversity: 1.0
+Generated Text: you bs with me an i just want my boyfriend to resplier i just don't~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: you breal for my late, brotive.~~~~~~~~ i have tome" in brebitbud n resoed now t of 
+
+---------- Epoch: 76 ---------- 
+
+Loss on first batch after epoch 76: 1.09404325485
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend is so cute i want to be a boyfriend to be my boyfriend is so happy my b
+
+Diversity: 0.5
+Generated Text: my oyfriend is always and come a bad boyfriend but i don't want to say i want to be
+
+Diversity: 1.0
+Generated Text: my offriend getts joz fell like he that is when you got a boyfriend, and so besness
+
+Diversity: 1.2
+Generated Text: my the m flincein, don cool "a-thaga's so'aifne  boyfriend cause i'm always take am
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i and my boyfriend is so cute i have a boyfriend to me to have a boyfriend is the 
+
+Diversity: 0.5
+Generated Text: i is my boyfriend bc it need a boyfriend i like the best boyfriend is am the train
+
+Diversity: 1.0
+Generated Text: i it be the? even ringlit with my boyfriend. gone bean hchwatn't come obeanion fro
+
+Diversity: 1.2
+Generated Text: i ill at me my boyfriend when i see my best~~~~~~~~~~~~~~~~~ if we mave me whet wh
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you off the best boyfriend is so cute i want to get me to get my boyfriend to do so 
+
+Diversity: 0.5
+Generated Text: you and my boyfriend is so happy me but i love the best i can't like my boyfriend is
+
+Diversity: 1.0
+Generated Text: you ud my boyfriend to see: my sister is really getting me like hi: more~~ i don't w
+
+Diversity: 1.2
+Generated Text: you like chilsion'll actually skii nend to have a boyfriend through my fature, like 
+
+---------- Epoch: 77 ---------- 
+
+Loss on first batch after epoch 77: 1.08998906612
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend is so fucking best friend and i don't want to see my boyfriend to say t
+
+Diversity: 0.5
+Generated Text: my ain and my boyfriend girls play pucking me to be a girlfriend i just want to sta
+
+Diversity: 1.0
+Generated Text: my upser way mefican aalso i need to peated to be it's citching back and out my aho
+
+Diversity: 1.2
+Generated Text: my yeap, from themband my flietes winda n juguch~~~~~~ calls 5 poo and. somethat's 
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i and my boyfriend is so beautiful me and i want to be my boyfriend i want to be m
+
+Diversity: 0.5
+Generated Text: i and my boyfriend is a perfect for me like i can't tell me when i can want to sho
+
+Diversity: 1.0
+Generated Text: i is my boyfriend lol like every hugdieant a gharry friend my boyfriend is this we
+
+Diversity: 1.2
+Generated Text: i goboofding mares a  folcom and get 2ve right a dre't slance coudint takes il wai
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you and he was going to be my boyfriend and i want to be my boyfriend and i don't wa
+
+Diversity: 0.5
+Generated Text: you because i talk to my boyfriend like he is the new boyfriend to be a concert for 
+
+Diversity: 1.0
+Generated Text: you voon booy is hoary*my boyfriend is when i'm pricemant liking alone of me~~~~~~~~
+
+Diversity: 1.2
+Generated Text: you do . yed.hes. co'll my dafy-hey snoppingibout this birth than me cjone case my p
+
+---------- Epoch: 78 ---------- 
+
+Loss on first batch after epoch 78: 1.09067463875
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend is the best friends to the best friends like i love him to be my boyfri
+
+Diversity: 0.5
+Generated Text: my oyfriend is so fucking best friend to me to be the best boyfriend is the best i 
+
+Diversity: 1.0
+Generated Text: my boyfriend is says how but when he acims like singer when he dous boffriend up bu
+
+Diversity: 1.2
+Generated Text: my boyfriend dhanks another! i've just make dmai can't get bhick~~~~ stop this stil
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i and my boyfriend is so good to me and i want to be my boyfriend and i love him t
+
+Diversity: 0.5
+Generated Text: i and that i take my boyfriend and i got a boyfriend to get to be for like him and
+
+Diversity: 1.0
+Generated Text: i and your boyfriend. i love my boyfriend sripsing ped to find a laid like that i 
+
+Diversity: 1.2
+Generated Text: i euck yellt. every dock tleargk to the lovely " but yoaladan to yells me and my g
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you and i want to be my boyfriend i want to be my boyfriend to be my boyfriend i wan
+
+Diversity: 0.5
+Generated Text: you but my girlfriend is an at i just want my boyfriend to have a boyfriend to have 
+
+Diversity: 1.0
+Generated Text: you earry~~~~~~~~~ earsnight my boyfriend is cacking at the most gettimings for a cl
+
+Diversity: 1.2
+Generated Text: you guys could on my condary. bringdy is., thought feel everything gride and going t
+
+---------- Epoch: 79 ---------- 
+
+Loss on first batch after epoch 79: 1.08676981926
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend is so cute and i love him to see my boyfriend is so cute i want to be a
+
+Diversity: 0.5
+Generated Text: my or an is the fact in the fucking boyfriend is too attwhy is my boyfriend is so t
+
+Diversity: 1.0
+Generated Text: my oyfriend is so funnise~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ amn save~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: my ro joaro today you can get seraading on happatil newhon is  armisum~~~~~~~~ off 
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i is my boyfriend and i want to be a boyfriend and i don't want my boyfriend to be
+
+Diversity: 0.5
+Generated Text: i in love when my boyfriend is always the fuck i have a boyfriend is like that i c
+
+Diversity: 1.0
+Generated Text: i latarsing there you have the., my boyfriend is just stering igne~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: i eanst!? , is just think oth juut better~~~~ need to be three to me wolk dai want
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you and my boyfriend is so fucking a hour boyfriend and i love him to have a boyfrie
+
+Diversity: 0.5
+Generated Text: you and my boyfriend is so best friend and i think i want my boyfriend to say the mo
+
+Diversity: 1.0
+Generated Text: you like taking up boyfriend" but my best friend is whenever i need a boyfriend anyt
+
+Diversity: 1.2
+Generated Text: you amazin buin gun ramaking roiny who and uharucan off hate when mi'hk  over then c
+
+---------- Epoch: 80 ---------- 
+
+Loss on first batch after epoch 80: 1.08399116993
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend is the best boyfriend is the best boyfriend and i can't be a boyfriend 
+
+Diversity: 0.5
+Generated Text: my on talked to my boyfriend is a getting because he wants to get me in the best pl
+
+Diversity: 1.0
+Generated Text: my life is an eater- i'm so bashell then y lerani know womy boyfriend. :0~~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: my atrears. i feel like ; he was si'll home 26 benu night alf alef off wond my boyf
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i is my boyfriend in the best with me and i have a boyfriend is my boyfriend is a 
+
+Diversity: 0.5
+Generated Text: i and my boyfriend wants to be a be on and really love him for me i want to see my
+
+Diversity: 1.0
+Generated Text: i but of feen "work around works everytime i wanna do you just belleding me to wan
+
+Diversity: 1.2
+Generated Text: i into all the spanys to lefol my damy boyfrie day is literally~~~~~~~ it at's sap
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you and my boyfriend is so cute i want to be my boyfriend to take me to see my boyfr
+
+Diversity: 0.5
+Generated Text: you on the boyfriend is so guys the cutest i love the best boyfriend is so much at m
+
+Diversity: 1.0
+Generated Text: you don't need a boyfriend.. lose i have ang more me he love a girl~~~~~~~~~~ or bes
+
+Diversity: 1.2
+Generated Text: you suud.~ what's therout that's obshicaties af gradube saying' harther &amp; staryi
+
+---------- Epoch: 81 ---------- 
+
+Loss on first batch after epoch 81: 1.08261227608
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend is so happy but i want to be the best boyfriend and i want to be to be 
+
+Diversity: 0.5
+Generated Text: my od is the senting my boyfriend and he is my bestfriend~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Text: my boyfriend is conce call the best friends, he cause i'm loiniking and shit on i j
+
+Diversity: 1.2
+Generated Text: my /to do is longe was shower to, "just.~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ he'
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i and my boyfriend is so cute i want to be my boyfriend to be my boyfriend so much
+
+Diversity: 0.5
+Generated Text: i and my boyfriend is my bestfriend and he loves me and i start my boyfriend that 
+
+Diversity: 1.0
+Generated Text: i could ukers a hrial with coms dalisuct abyut but i'm twinting my boyfriend is gr
+
+Diversity: 1.2
+Generated Text: i wilk twa ki~4 f i love him~~~~~~~~~~ actually be i love how how my boyfriend doe
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you and my boyfriend is a girlfriend and i want to be my boyfriend to be my boyfrien
+
+Diversity: 0.5
+Generated Text: you night now no when i got a boyfriend i'm so fucking happy but my boyfriend is lik
+
+Diversity: 1.0
+Generated Text: you ?? and my g my boyfriend is thonestly hust like but, what it thinks the luma~~~~
+
+Diversity: 1.2
+Generated Text: you wa'creting my boyfriend non food, boooout so much~~~~~~~~~ wackes that someshed 
+
+---------- Epoch: 82 ---------- 
+
+Loss on first batch after epoch 82: 1.08025598526
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend is so cute i want to be my boyfriend and i don't want my boyfriend to b
+
+Diversity: 0.5
+Generated Text: my on honestly need to be my boyfriend so i just want to get to go to talk to my bo
+
+Diversity: 1.0
+Generated Text: my pehtntrmi want him a bi mat and just talk about spoil i do is show~~~ . i love h
+
+Diversity: 1.2
+Generated Text: my off indant one @ evok from my boyfriend talks~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ i
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i and my boyfriend is so but i want to see my boyfriend and i want to be the best 
+
+Diversity: 0.5
+Generated Text: i and my boyfriend is so cute he don't have a boyfriend so much to me on my boyfri
+
+Diversity: 1.0
+Generated Text: i like buiting calls my boyfriend pcausion, i love i can tark his enduge of tolgay
+
+Diversity: 1.2
+Generated Text: i moves thar shirt of that get the drefy.~~~~~~~~~~ doss of kicking. surpo~!! like
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you and my boyfriend is so cute i don't want to be the best boyfriend is so cute i w
+
+Diversity: 0.5
+Generated Text: you and the pay of my boyfriend is coming to get a boyfriend to be with my boyfriend
+
+Diversity: 1.0
+Generated Text: you i know when you're have to be for my boyfriend~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: you splopplate, ?fi be a lot me,rit??~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ exoulg when y
+
+---------- Epoch: 83 ---------- 
+
+Loss on first batch after epoch 83: 1.08123219013
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend is so good and i want to be my boyfriend to be a boyfriend i want to be
+
+Diversity: 0.5
+Generated Text: my oyfriend is so fucking bestfriend and the fact the saye because i want a boyfrie
+
+Diversity: 1.0
+Generated Text: my offriend is the down  she has absome workoh~~~~~~~~~ in a from anything wouldn't
+
+Diversity: 1.2
+Generated Text: my man appeg asd laci ai w i'm sendng today with my and a portibe in my life of the
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i and my boyfriend is a boyfriend to be my boyfriend is so good to me and i want t
+
+Diversity: 0.5
+Generated Text: i just want my boyfriend to see my boyfriend is going to sleep with me so much is 
+
+Diversity: 1.0
+Generated Text: i is like marregi my boyfriend is bomy ex  exity when my next boyfriend isn't here
+
+Diversity: 1.2
+Generated Text: i my boyfriend ini doven my disule is taking on my boyfriend.~~~~~~~~~~~ hate em -
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you and my boyfriend is so but i love him so much and i want to be my boyfriend to b
+
+Diversity: 0.5
+Generated Text: you when my boyfriend is so fucking asking how much and i have so cute when i am a g
+
+Diversity: 1.0
+Generated Text: you always tell my boyfriend when you need to feel like amazing summer my cousin is 
+
+Diversity: 1.2
+Generated Text: you ny hintry-a how not all her boyfriend when you hate he gratc it times in caking 
+
+---------- Epoch: 84 ---------- 
+
+Loss on first batch after epoch 84: 1.07786822319
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my or said i need to be my boyfriend to be my boyfriend i want to be my boyfriend t
+
+Diversity: 0.5
+Generated Text: my out to see my boyfriend is the best friends is a boyfriend and i would like my b
+
+Diversity: 1.0
+Generated Text: my boyfriend is so cute i get a truck" i'm like "date: this longer with my boyfrien
+
+Diversity: 1.2
+Generated Text: my yat its seriously just need~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ i swear right now 
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i and my boyfriend is the best boyfriend is so cute i have a boyfriend i want my b
+
+Diversity: 0.5
+Generated Text: i is my boyfriend i got a boyfriend &amp; and he wants to blows me to start and i'
+
+Diversity: 1.0
+Generated Text: i /8 jkloves for how i guys my boyfriend hate bat when i want to looks at himy fav
+
+Diversity: 1.2
+Generated Text: i love os a taet- i: girli not you for loven, :05 :, b cass "myone  told my artnas
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you and i want my boyfriend to see me and he is the best friend is so cute i can see
+
+Diversity: 0.5
+Generated Text: you is the new best friend is starting to find a girlfriend &amp; my boyfriend is so
+
+Diversity: 1.0
+Generated Text: you uck in love to my con ffordere of okay like the 1nyce.  ray is what's f a bacy c
+
+Diversity: 1.2
+Generated Text: you ext sire. werk up" drible of 18 and connogly disns game ginnlra fro wy sayone i 
+
+---------- Epoch: 85 ---------- 
+
+Loss on first batch after epoch 85: 1.0786870718
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend is so beautiful to me to get a boyfriend like he doesn't like my boyfri
+
+Diversity: 0.5
+Generated Text: my offriend is my boyfriend and i'm so beautiful to try and he is the best boyfrien
+
+Diversity: 1.0
+Generated Text: my xassiol my boyfriend is wolk everything and trying to go i just want my first bo
+
+Diversity: 1.2
+Generated Text: my he doesn't curple around to go to onur beagmanyo  .he doesn't want a boyfriend's
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i and my boyfriend is so cute i want to be my boyfriend to be a best friend and he
+
+Diversity: 0.5
+Generated Text: i it my boyfriend to come off to me on the cutest boyfriend so great and he is so 
+
+Diversity: 1.0
+Generated Text: i und the want to come home is the w/ phot nice want to be sexious her next in les
+
+Diversity: 1.2
+Generated Text: i at evely. ever mec! with my boyfriend what his not 5lnee~~~~~~~~~~~~~~~~~~~~ hat
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you and i want to get a boyfriend to see my boyfriend is so cute that i want to be m
+
+Diversity: 0.5
+Generated Text: you need to be the party boyfriend because he is not a lot proneling of my boyfriend
+
+Diversity: 1.0
+Generated Text: you by blought his brother telling my boyfriend in makes :!~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: you your parents~~~~~~~~~~~~~ sto &amp; my family thruts my boyfriend is, i'm nendve
+
+---------- Epoch: 86 ---------- 
+
+Loss on first batch after epoch 86: 1.07513272762
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my on the boyfriend is a best friend and i can't be so much i want to see my boyfri
+
+Diversity: 0.5
+Generated Text: my im and my boyfriend was like the only since my boyfriend is face to see me and i
+
+Diversity: 1.0
+Generated Text: my oy'rre:s a next and be my boyfriend on rleating me and sucher and he is the girl
+
+Diversity: 1.2
+Generated Text: my hudberesy always like it's notwhy is my boyfriend.~~~~~~~~~~~~~~~~~~~~~~~~ my bo
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i is my boyfriend to be a girlfriend and i want to be the best boyfriend and i don
+
+Diversity: 0.5
+Generated Text: i think my boyfriend is so funny and i have to be home like you want to be probabl
+
+Diversity: 1.0
+Generated Text: i eallf how my boyfriend got him to be waaking up sleeps~~~~~~~~~~~~ not taxt with
+
+Diversity: 1.2
+Generated Text: i off~~~~~~~~~ "kees to allly think, right so kassacu you witjlar ablu kexon wondi
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you and my boyfriend is so cute i can't be the best boyfriend is so good to me to be
+
+Diversity: 0.5
+Generated Text: you and my boyfriend is home if i want to be the best favorite that my boyfriend is 
+
+Diversity: 1.0
+Generated Text: you happy and assfole  your boyfriend asss to have fuck me at yeat riatte bd the cou
+
+Diversity: 1.2
+Generated Text: you than i'm not excited tto be suor mae- w  - drang on my ur only things  your boyf
+
+---------- Epoch: 87 ---------- 
+
+Loss on first batch after epoch 87: 1.07155525684
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my or boyfriend is so cute i have a boyfriend to be my boyfriend is so cute i don't
+
+Diversity: 0.5
+Generated Text: my oitsear boyfriend is so cute when i'm not a concert for the best of my boyfriend
+
+Diversity: 1.0
+Generated Text: my boyfriend when i miss my boyfriend .~~~~~~~~~~~~~~~~~~~~~~~~~~ awhage my boyfrie
+
+Diversity: 1.2
+Generated Text: my fh~~~~~~~~ give my boyfriend that i'm spend.  all like  youx hoping watching thi
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i and my boyfriend is the best best friend and i don't like the best boyfriend to 
+
+Diversity: 0.5
+Generated Text: i in the house boyfriend compliment me and i have to be the new family like "my bo
+
+Diversity: 1.0
+Generated Text: i looky'll the fuck of me talking to be with my boyfriend. i walk rum day what to 
+
+Diversity: 1.2
+Generated Text: i saviedfs. askad" talk. is my friend boyfriend who i just want a tepping paminros
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you and my boyfriend is so cute i want to be my boyfriend to be my boyfriend that i 
+
+Diversity: 0.5
+Generated Text: you out that i want my boyfriend to be the best friends and he said i can't can get 
+
+Diversity: 1.0
+Generated Text: you galut a being or weveryday  her boyfriends doved home !( for person yeah what yo
+
+Diversity: 1.2
+Generated Text: you othe go don't tould me , my would have out willi want my boyfriend to get my hou
+
+---------- Epoch: 88 ---------- 
+
+Loss on first batch after epoch 88: 1.07114613056
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my or always like that my boyfriend is so cute i want to be my boyfriend to be my b
+
+Diversity: 0.5
+Generated Text: my on this is my boyfriend so cute when i want my boyfriend to go to have a boyfrie
+
+Diversity: 1.0
+Generated Text: my id my boyfriend? do &amp; he even pain tracking o you left me the relationship i
+
+Diversity: 1.2
+Generated Text: my us in hoda was i hate being boyfriend like in here why will luntt me tucke? what
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i and my boyfriend is so fucking best friend is the best best friend is the best b
+
+Diversity: 0.5
+Generated Text: i want my boyfriend to be my boyfriend but i need a boyfriend for me at the best b
+
+Diversity: 1.0
+Generated Text: i like you want my boyfriend to get pay my cohkosemy boyfriend for stops more . i 
+
+Diversity: 1.2
+Generated Text: i can oot time next my boyfriend not  eat work , razy i'm just holmy boyfriend bea
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you and my boyfriend is so cute he is so cute i want to be the best boyfriend is so 
+
+Diversity: 0.5
+Generated Text: you on the reason i want to get a boyfriend couldn't want to be my boyfriend post of
+
+Diversity: 1.0
+Generated Text: you be i love you not lot my boyfriend? i'vesle ttle mindo. too ceriluge i'm greatan
+
+Diversity: 1.2
+Generated Text: you in rakeling wif i haven't pto like a thing my boyfriend doesn't want to have a l
+
+---------- Epoch: 89 ---------- 
+
+Loss on first batch after epoch 89: 1.06765425205
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my on the best boyfriend is so cute i want to see my boyfriend is so cute i want to
+
+Diversity: 0.5
+Generated Text: my on a boyfriend doesn't like the world to me and i want to be my boyfriend and he
+
+Diversity: 1.0
+Generated Text: my our friend everything and i have a girlfriend with my boyfriend~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: my uuther? becau leaven cut'my camae i got a boyfriend were 172 her if yo boyfriend
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i and my boyfriend is so cute i want to start with my boyfriend and i need to get 
+
+Diversity: 0.5
+Generated Text: i and my boyfriend is a boyfriend is the best best friend and he is going to be th
+
+Diversity: 1.0
+Generated Text: i to  crying wwhen i want to be right now that my boyfriend wants to be a b you're
+
+Diversity: 1.2
+Generated Text: i hugi hate my boyfriend, girl and not~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ he is
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you and my boyfriend is so beautiful i don't want my boyfriend to be my boyfriend is
+
+Diversity: 0.5
+Generated Text: you thinks i want my boyfriend to be like he says i need a boyfriend but i have a bo
+
+Diversity: 1.0
+Generated Text: you and cute my boyfriend has a perfek of work, stull brohe my &amp;ever when i get 
+
+Diversity: 1.2
+Generated Text: you assse like everyone the ruthers my boyfriend. that's cr ass, he just used to fro
+
+---------- Epoch: 90 ---------- 
+
+Loss on first batch after epoch 90: 1.06585001945
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend is so cute i want to be my boyfriend and i want to be my boyfriend and 
+
+Diversity: 0.5
+Generated Text: my friends boyfriend is a problem but i don't need to be the best boyfriend and i c
+
+Diversity: 1.0
+Generated Text: my boyfriend is always some morning tf he's with her guys is the best of work.~~~~~
+
+Diversity: 1.2
+Generated Text: my smy boyfriend is wearing on my birthda ql doy if b) is my boyfriend??????? cafus
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i and my boyfriend is so beautiful be and i want to be my boyfriend i want to be m
+
+Diversity: 0.5
+Generated Text: i it is my boyfriend tells me when i want a boyfriend to have a boyfriend to say t
+
+Diversity: 1.0
+Generated Text: i you be him "your boyfriend he's the best boyfriend datcandy birthday, i fughll's
+
+Diversity: 1.2
+Generated Text: i hall my mom's nepled ex is funsianaf,~~~~~~~ knew where it's evory like who is m
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you and my boyfriend is so cute i want to be the best boyfriend because i want to be
+
+Diversity: 0.5
+Generated Text: you have the best boyfriend and my boyfriend is so watch to dad i want to get a boyf
+
+Diversity: 1.0
+Generated Text: you ask him to havela i don't wanna honestly not amazing boyfriend~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: you into like me. it's here to see my boyfriend is the best~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------- Epoch: 91 ---------- 
+
+Loss on first batch after epoch 91: 1.06369864941
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my or so i want to be a boyfriend i want to be my boyfriend to be my boyfriend is s
+
+Diversity: 0.5
+Generated Text: my boyfriend is so heart talking to me with family is so cute i love him so much an
+
+Diversity: 1.0
+Generated Text: my one of  and my family lol~ke. if he's 12 (in my boyfriend~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: my imreitn'd calls more perfect~~~~~~~~ looks like"unti had the pant &amp; my boyfr
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i and my boyfriend is a boyfriend so much and i can't be the best boyfriend is a l
+
+Diversity: 0.5
+Generated Text: i and my boyfriend is so cute this is my princes that i have to call me so much an
+
+Diversity: 1.0
+Generated Text: i her boyf i can't get a least for purry so pazi would love you for that boyfriend
+
+Diversity: 1.2
+Generated Text: i two met up teking me baby love teds.~~ nle wagat but its not a boyfriend that i 
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you and he says i want to be my boyfriend to see me and i want my boyfriend to be a 
+
+Diversity: 0.5
+Generated Text: you all i want to be my boyfriend so much and he is so fucking bestfriend and i am s
+
+Diversity: 1.0
+Generated Text: you and t ant thet's so gai told him i get my a and bafody to the baby: i want my bo
+
+Diversity: 1.2
+Generated Text: you porny (play,  all hay i want to that it's a boatking mars 'om relationship alway
+
+---------- Epoch: 92 ---------- 
+
+Loss on first batch after epoch 92: 1.06170535088
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my or boyfriend is so cute i want to be my boyfriend to be my boyfriend and i want 
+
+Diversity: 0.5
+Generated Text: my on a gay and my boyfriend is so puter and i got a boyfriend is so account and i 
+
+Diversity: 1.0
+Generated Text: my friend and my boyfriend is gonna attroubs me bend like theyerq~~~~~~~~~~~ his si
+
+Diversity: 1.2
+Generated Text: my on a pyo me ' pidcont &emp; if my dadens lake im tiching your boyfriend so. -fro
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i and my boyfriend is a boyfriend to be the best boyfriend and i want to see my bo
+
+Diversity: 0.5
+Generated Text: i are great in my boyfriend and he doesn't like my family is my boyfriend if i can
+
+Diversity: 1.0
+Generated Text: i at my friends of choying wsure my single wished my boyfriend that called him my 
+
+Diversity: 1.2
+Generated Text: i younger concute for my trying to sing off one night could two~'m b cuse how year
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you and i just want my boyfriend to be the best boyfriend and i have a boyfriend i n
+
+Diversity: 0.5
+Generated Text: you and he's boyfriend who wants to be a boyfriend but that is such a little shit to
+
+Diversity: 1.0
+Generated Text: you of a in telling and i haven't get a bopbs of this way is going to be my boyfrien
+
+Diversity: 1.2
+Generated Text: you and my sister lovely birthday. will. woking i'm eaturing with her boyfriend for 
+
+---------- Epoch: 93 ---------- 
+
+Loss on first batch after epoch 93: 1.06200194359
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my on the boyfriend is a best friend is the since i want to be my boyfriend to see 
+
+Diversity: 0.5
+Generated Text: my ex boyfriend is going to be my boyfriend i want to be on the something. i have a
+
+Diversity: 1.0
+Generated Text: my i haven't tell me me 'd any one telling me my boyfriend so you want to look at t
+
+Diversity: 1.2
+Generated Text: my :b day us y loving roll "cooded~ i need no more oldour!?? "could paftin of debt 
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i is my boyfriend to be my boyfriend and i don't want my boyfriend to be my boyfri
+
+Diversity: 0.5
+Generated Text: i at my boyfriend like when i got a boyfriend so much and i want to come to my boy
+
+Diversity: 1.0
+Generated Text: i and my boyfriend is so good and  i achean says okay, up af  think, what i gat fu
+
+Diversity: 1.2
+Generated Text: i 2din'll dous just like  my why dad is have hap 7gen dreags~~~~~~~~ cabut as that
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you and i want to be my boyfriend to be a boyfriend i don't want my boyfriend to be 
+
+Diversity: 0.5
+Generated Text: you really love my boyfriend who wants to come to me on because i miss my boyfriend 
+
+Diversity: 1.0
+Generated Text: you looks at me elf firing stillydearying her boyfriend is lo looking with me a plor
+
+Diversity: 1.2
+Generated Text: you ly and themyone tho is 247 any antmacare hang~~~ every for my boyfriend.~~~~~~~~
+
+---------- Epoch: 94 ---------- 
+
+Loss on first batch after epoch 94: 1.05995357037
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my or boyfriend is so good to me and i want to be my boyfriend to be the best boyfr
+
+Diversity: 0.5
+Generated Text: my ex boyfriend is a b my boyfriend that like a girl doesn't like it when my boyfri
+
+Diversity: 1.0
+Generated Text: my of voodmating and he acting my boyfriend because i want you so much for the tore
+
+Diversity: 1.2
+Generated Text: my if you like that the some through this.??wa hutes-pie too movs i need up a boyfr
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i and my boyfriend is so great and i want to be my boyfriend to have a boyfriend i
+
+Diversity: 0.5
+Generated Text: i in the boyfriend on the only right now and i don't want my boyfriend to get me h
+
+Diversity: 1.0
+Generated Text: i try my boyfriend wasn't a woll. i really di want out up not in tweech.well play 
+
+Diversity: 1.2
+Generated Text: i ask me ging withwuddoy him my boyfriend que something something gatihing er wher
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you and my boyfriend is a boyfriend but i don't want my boyfriend to be the best boy
+
+Diversity: 0.5
+Generated Text: you my boyfriend is so he loves me and i don't want a boyfriend to deal me to have a
+
+Diversity: 1.0
+Generated Text: you in a kights now "my towkruver. that comes to now out and my boyfriend is dolakin
+
+Diversity: 1.2
+Generated Text: you question you done cheacs , the phone would just go to me&as it's my boyfriend. h
+
+---------- Epoch: 95 ---------- 
+
+Loss on first batch after epoch 95: 1.05793046951
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my or so i want my boyfriend to be the most because i want to be my boyfriend and i
+
+Diversity: 0.5
+Generated Text: my boyfriend is the best being a real couple &amp; i have the most bestfriend is so
+
+Diversity: 1.0
+Generated Text: my life is really just like 4 and my boyfriend. s appreciation is now me: i would l
+
+Diversity: 1.2
+Generated Text: my hourco is hates people my family~~~~~~~~~~~~~~~~~~~~~~~ upis thing and she want 
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i and my boyfriend is a girlfriend and i want to be my boyfriend to have a boyfrie
+
+Diversity: 0.5
+Generated Text: i come to my boyfriend to sleep this is my boyfriend and the new boyfriend is so c
+
+Diversity: 1.0
+Generated Text: i who got the et of trying for a boyfriend.~~~~~~~~~~~~~~~~~~ would said, i want i
+
+Diversity: 1.2
+Generated Text: i have play my boyfriend is~~~~~~~~~~~~~~~~~ boyfriend-lilsinj n girl talk to him 
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you and i want to be my boyfriend and i love him so much~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 0.5
+Generated Text: you up in the same fuck my boyfriend is so cute i can't want to be like "my boyfrien
+
+Diversity: 1.0
+Generated Text: you cry in the wothed was talking to him or bad his boyfriend~~~~~~~ looks my boyfri
+
+Diversity: 1.2
+Generated Text: you really realolshould i wouldn't even geallystand and i spepthome &amp; nica to sa
+
+---------- Epoch: 96 ---------- 
+
+Loss on first batch after epoch 96: 1.0563325882
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my off and i want to be my boyfriend to be a boyfriend i love him so much i want to
+
+Diversity: 0.5
+Generated Text: my boyfriend is so imaging and my boyfriend is the best fucking cute than i love hi
+
+Diversity: 1.0
+Generated Text: my boyfriend whoke  but my boyfriend is on when i'll pay. i hate my boyfriend for h
+
+Diversity: 1.2
+Generated Text: my lotte weaking so percoway is my boyfriend~~~~~~~~~~~~~~~~~~~~~~~ my boyfriend pe
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i and my boyfriend is so cute i want to be the best boyfriend is a problem to the 
+
+Diversity: 0.5
+Generated Text: i and when a boyfriend and he forget a boyfriend but i love him to be one of some 
+
+Diversity: 1.0
+Generated Text: i ases @ home is doing playe ri..~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ got a b
+
+Diversity: 1.2
+Generated Text: i about her shi jon eai think ur boyfriend.the sex bread  i'm shoutd, fathard sa i
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you and my boyfriend is the best boyfriend is so cute i love him so much i want to s
+
+Diversity: 0.5
+Generated Text: you and go be on the fact and my boyfriend is going to be the best boyfriend is so h
+
+Diversity: 1.0
+Generated Text: you or a girl talk to not invite to say he is his boyfriend in aw wear atay.~~~~~~~~
+
+Diversity: 1.2
+Generated Text: you is for my boyfriend fell anything~~~~~~~~~~~~~~~~~~~~~~~~~~ look~~~~~~~~~~~ he s
+
+---------- Epoch: 97 ---------- 
+
+Loss on first batch after epoch 97: 1.05570745468
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my or and i want my boyfriend to be my boyfriend and i want to be my boyfriend to s
+
+Diversity: 0.5
+Generated Text: my or bestfriend is my boyfriend i don't want my boyfriend to be the best boyfriend
+
+Diversity: 1.0
+Generated Text: my hald sooo has's. he doesn't stop get a nigga talk to a kissing my boyf too sain 
+
+Diversity: 1.2
+Generated Text: my ugu"'s boyfriend" is do so much hak like chappes moving~~~~~~~~~~ yu don't wanna
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i and my boyfriend is so beautiful and i want to be my boyfriend and i want to be 
+
+Diversity: 0.5
+Generated Text: i and my boyfriend is so much and i love him but i have a boyfriend and my boyfrie
+
+Diversity: 1.0
+Generated Text: i idk but was not neeving about me my boyfriend like damn~~ i go to tugh. i'm thin
+
+Diversity: 1.2
+Generated Text: i :y fread for the apposs for.~~~~~~~~~~~~~~ " if y out made me my naile! my birth
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you and my boyfriend is so lucky to come to my boyfriend is so cute i want to see my
+
+Diversity: 0.5
+Generated Text: you and he was came and my boyfriend is a mexican since was i don't like my boyfrien
+
+Diversity: 1.0
+Generated Text: you and i always adding  like a out the only friend and nover. my boyfriend is at hr
+
+Diversity: 1.2
+Generated Text: you on omflamate liovs~~~~~~~~~~~~~~~~~, 3~~~~~ awn my room friendb my fucking boyfr
+
+---------- Epoch: 98 ---------- 
+
+Loss on first batch after epoch 98: 1.0578867197
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my or sister is my boyfriend is the best friend and i want to get a boyfriend to ta
+
+Diversity: 0.5
+Generated Text: my on a boyfriend is the best boyfriend and i love him to be my boyfriend is a so i
+
+Diversity: 1.0
+Generated Text: my ads on a tlos, my boyfriend is the best night.~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: my fi we fu cas when tell my jod is talking to him to beoute forgettthplard. pictur
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i and my boyfriend is so good and i want my boyfriend to be my boyfriend and i don
+
+Diversity: 0.5
+Generated Text: i bitch is my boyfriend and i don't want my boyfriend to be looking him to get my 
+
+Diversity: 1.0
+Generated Text: i leavenonot~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ a "got a worst!? it is not my bo
+
+Diversity: 1.2
+Generated Text: i funnyn he not all if by i don't known why i actually was going toos tryowing at 
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you and my boyfriend is so cute my boyfriend is so cute i love him so much i love hi
+
+Diversity: 0.5
+Generated Text: you my boyfriend is my boyfriend is my best friend is a past of my boyfriend to be l
+
+Diversity: 1.0
+Generated Text: you bad like lol is my boyfriend.~~~~~~~~~~~~~~~~~~~ i'm surerate me after tell you 
+
+Diversity: 1.2
+Generated Text: you acts talk ytore "y"~ like to have a boyfri love when my boyfriend is sour such a
+
+---------- Epoch: 99 ---------- 
+
+Loss on first batch after epoch 99: 1.0519567728
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my or and i want to be my boyfriend and i want to be my boyfriend and i want to see
+
+Diversity: 0.5
+Generated Text: my boyfriend is the goes to find me of his only person i want to be the best boyfri
+
+Diversity: 1.0
+Generated Text: my boyfriend doesn't like the cheatest~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ than 10000
+
+Diversity: 1.2
+Generated Text: my sonomeri just beckumy mom sap2 is ab no doing.~~~~~~~~~~~~~~~~~~~~~ likely boyfr
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i and my boyfriend is so cute i want to see my boyfriend to be my boyfriend and i 
+
+Diversity: 0.5
+Generated Text: i understand i have a boyfriend he's so cute he got me like a boyfriend so much i 
+
+Diversity: 1.0
+Generated Text: i a sead earliemy boyfriend foodago i can be with my hair for the best for my boyf
+
+Diversity: 1.2
+Generated Text: i back big thry?" | your name~~~~~~~ seet days let a | man. , his smull god my mot
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you and my boyfriend is the best best friend is the best boyfriend is the best best 
+
+Diversity: 0.5
+Generated Text: you that i don't want my boyfriend to be like a princess for me to be a with the tim
+
+Diversity: 1.0
+Generated Text: you on cold singlt when he said "my boyfriend. it's starting at my 21 prople text."~
+
+Diversity: 1.2
+Generated Text: you eathie don't need a boyfriend back, u fell me snoweg*h he whight drunk she can d
+
