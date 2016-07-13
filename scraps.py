@@ -125,3 +125,22 @@ print(sample(test_model, weights_file, char_indices, indices_char))
             sys.stdout.flush()
             print('Loss on batch ' + str(i) + ':' + str(loss))
             sys.stdout.flush()
+
+'need boyfriend my',
+'want boyfriend my',
+'like boyfriend my',
+'hate boyfriend my',
+'boyfriend like to',
+'My bf is so',
+'I want my bf',
+'like him when he boyfriend my',
+'my boyfriend is',
+'please my boyfriend I',
+'refuse my boyfriend I',
+'dislike boyfriend',
+'boyfriend loves',
+'boyfriend needs to',
+'boyfriend cannot',
+'love boyfriend him',
+'My boyfriend needs ',
+'My boyfriend is',

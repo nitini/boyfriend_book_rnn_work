@@ -78,6 +78,7 @@ def create_twitter_api(credentials_file_name):
         api = tp.API(auth)
         return api
 
+
 def print_tweet(raw_tweet, clean_tweet, tweet_count):
     """
     Prints raw and clean tweet when running script for visual inspectiion
@@ -94,6 +95,7 @@ def print_tweet(raw_tweet, clean_tweet, tweet_count):
     print "Raw form: " + raw_tweet
     print "Clean form: " + clean_tweet
     print ""
+
 
 def clean_and_format_tweet(raw_tweet):
     """
@@ -147,48 +149,36 @@ def harvest_tweets(num_tweets, filters, tweet_file_name, api, in_gcp):
                                    in_gcp= in_gcp)
     tp_stream = tp.Stream(auth = api.auth, listener = tp_listener)
     tp_stream.filter(track=[','.join(filters)])
-    
+
+
 def main():
     
     api = create_twitter_api('./twitter_api_credentials.json')
 
     filters = [
-               'need boyfriend my', 
-               'want boyfriend my',
-               'like boyfriend my',
-               'hate boyfriend my',
-               'boyfriend like to',
-               'love boyfriend him',
                'I want my boyfriend to',
                'I like it when he',
+               'I like when he',
                'I need him to be',
-               'boyfriend loves',
-               'boyfriend needs to',
-               'boyfriend cannot',
                'I love when he',
                'I hate when he',
-               'My boyfriend is',
-               'Love when my boyfriend',
-               'Its cute when my boyfriend',
+               'I think my boyfriend',
                'I like when my bf',
                'I like when my boyfriend',
+               'I love when my boyfriend',
+               'I love when my bf',
                'I need my man to be',
-               'My boyfriend needs ',
-               'please my boyfriend I',
-               'refuse my boyfriend I',
-               'dislike boyfriend',
-               'like him when he boyfriend my',
-               'my boyfriend is',
                'I like when my boyfriend',
-               'I need boyfriend to',
-               'I love boyfriend when',
+               'I need my boyfriend to',
+               'I love my boyfriend when',
                'I must have my boyfriend',
-               'My bf is so',
-               'I want my bf',
                'I like when my bf',
                'I want my bf to',
                'I need my bf to',
                'I need my bf',
+               'I force my bf',
+               'I force my boyfriend',
+               'I ask my boyfriend'
                ]
 
     current_date = time.strftime('%Y_%m_%d_%I_%M_%S')

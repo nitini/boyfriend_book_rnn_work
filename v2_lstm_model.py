@@ -5,6 +5,7 @@ Created on Wed Jun 29 23:04:37 2016
 @author: nitini
 """
 #%%
+
 from __future__ import print_function
 import numpy as np
 import random
@@ -19,14 +20,21 @@ import file_paths as fp
 import sys
 from keras.utils.data_utils import get_file
 
-def get_nietzsche_data():   
+def clear():
+    print("\n"*600)
+
+#%%
+
+
+def get_nietzsche_data():
     path = get_file('nietzsche.txt', 
                     origin="https://s3.amazonaws.com/text-datasets/nietzsche.txt")
     
     text = open(path).read().lower().decode('ascii','ignore').encode('ascii','ignore')
     
     return text
-    
+
+
 def convert_text_to_data(text, seq_len):
     num_seqs = len(text) / seq_len
     text_data = pd.DataFrame(columns=['text'], index=range(num_seqs))
@@ -34,17 +42,19 @@ def convert_text_to_data(text, seq_len):
         text_data.text.iloc[i] = text[i*seq_len:i*seq_len + seq_len]
     return text_data
 
+
 def pad_sequences(data, feat, fixed_length):
     padded_tweets = data.apply(lambda x: x[feat] + str('~' * (fixed_length - len(x[feat])))
                                if len(x[feat]) < fixed_length else x[feat][0:fixed_length],
                                axis=1)
     return padded_tweets
-    
+
+
 def shift_sequences(data, feat, seq_len):
     shifted_tweets = data[feat].apply(lambda x: str(x + ' ')[1:seq_len + 1])
     return shifted_tweets
 
- 
+
 def vectorize_sequences(sequences, chars, char_indices):
     """
     
@@ -85,7 +95,6 @@ def get_chars(data, feat):
 def yield_batches(batch_size, num_samples):
     for i in range(0,num_samples, batch_size):
         yield i, i + batch_size
-    
 
 
 def build_model(infer, batch_size, seq_len, vocab_size, lstm_size, num_layers):
@@ -107,6 +116,7 @@ def build_model(infer, batch_size, seq_len, vocab_size, lstm_size, num_layers):
     model.compile(loss='categorical_crossentropy', optimizer='rmsprop')
     return model
 
+
 def modify_prob_dist(a, temperature=1.0):
     """
     Samples an index from a given probability distribution,
@@ -126,14 +136,14 @@ def modify_prob_dist(a, temperature=1.0):
     return a
 
 
-def sample(test_model, 
-           weights_file, 
+def sample(test_model,
+           weights_file,
            char_indices,
            indices_char,
            temperature=1.0,
            sample_chars=40,
            primer_text='i want'):
-    
+
     test_model.reset_states()
     test_model.load_weights(weights_file)
     sampled = [char_indices[c] for c in primer_text]
@@ -153,7 +163,7 @@ def sample(test_model,
         #sample = np.argmax(np.random.multinomial(1,softmax,1))
 
         sampled.append(sample)
-    
+
     return ''.join([indices_char[c] for c in sampled])
     
 
@@ -220,7 +230,7 @@ def save_model_info(model, notes, output_file):
     print('', file=output_file)
     print(notes, file=output_file)
     print('', file=output_file)
-    print('---------- All model information: ---------- ', file = output_file)
+    print('---------- All model information: ---------- ', file=output_file)
     print('', file=output_file)
     print(json.dumps(json.loads(model.to_json()), indent=2, sort_keys=True), file = output_file)
 
@@ -246,7 +256,8 @@ def save_model_weights(model, model_name, in_gcp):
     model.save_weights(model_weights_file_name, overwrite=True)
 
     return model_weights_file_name
-    
+
+
 def check_terminate_training_early(loss_values):
     return 0
 
@@ -267,7 +278,6 @@ def train_batches(training_model, X, y, epoch, BATCH_SIZE, NUM_SAMPLES, loss_val
         sys.stdout.flush()  
     return 0
 
-    
 #%%
 def main():
     
@@ -410,5 +420,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-    
-    
