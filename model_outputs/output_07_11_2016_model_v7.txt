@@ -1,0 +1,4775 @@
+
+---------- Training Info: ---------- 
+
+Number of examples: 768
+Length of examples: 80
+Character set size: 90
+Batch size: 32
+Number of epochs: 100
+Number of batches per epoch: 24
+Generated sentence length: 80
+Sentence Seeds: ['my ', 'i ', 'you ']
+Diversities: [0.2, 0.5, 1.0, 1.2]
+
+---------- Any additional notes: ---------- 
+
+Unweighted Twitter data, semi-long sentence
+
+---------- All model information: ---------- 
+
+{
+  "class_name": "Sequential", 
+  "config": [
+    {
+      "class_name": "LSTM", 
+      "config": {
+        "U_regularizer": null, 
+        "W_regularizer": null, 
+        "activation": "tanh", 
+        "b_regularizer": null, 
+        "batch_input_shape": [
+          32, 
+          80, 
+          90
+        ], 
+        "consume_less": "cpu", 
+        "dropout_U": 0.0, 
+        "dropout_W": 0.0, 
+        "forget_bias_init": "one", 
+        "go_backwards": false, 
+        "init": "glorot_uniform", 
+        "inner_activation": "hard_sigmoid", 
+        "inner_init": "orthogonal", 
+        "input_dtype": "float32", 
+        "name": "lstm_1", 
+        "output_dim": 128, 
+        "return_sequences": true, 
+        "stateful": true, 
+        "trainable": true, 
+        "unroll": false
+      }
+    }, 
+    {
+      "class_name": "Dropout", 
+      "config": {
+        "name": "dropout_1", 
+        "p": 0.2, 
+        "trainable": true
+      }
+    }, 
+    {
+      "class_name": "LSTM", 
+      "config": {
+        "U_regularizer": null, 
+        "W_regularizer": null, 
+        "activation": "tanh", 
+        "b_regularizer": null, 
+        "batch_input_shape": [
+          32, 
+          80, 
+          128
+        ], 
+        "consume_less": "cpu", 
+        "dropout_U": 0.0, 
+        "dropout_W": 0.0, 
+        "forget_bias_init": "one", 
+        "go_backwards": false, 
+        "init": "glorot_uniform", 
+        "inner_activation": "hard_sigmoid", 
+        "inner_init": "orthogonal", 
+        "name": "lstm_2", 
+        "output_dim": 128, 
+        "return_sequences": true, 
+        "stateful": true, 
+        "trainable": true, 
+        "unroll": false
+      }
+    }, 
+    {
+      "class_name": "Dropout", 
+      "config": {
+        "name": "dropout_2", 
+        "p": 0.2, 
+        "trainable": true
+      }
+    }, 
+    {
+      "class_name": "LSTM", 
+      "config": {
+        "U_regularizer": null, 
+        "W_regularizer": null, 
+        "activation": "tanh", 
+        "b_regularizer": null, 
+        "batch_input_shape": [
+          32, 
+          80, 
+          128
+        ], 
+        "consume_less": "cpu", 
+        "dropout_U": 0.0, 
+        "dropout_W": 0.0, 
+        "forget_bias_init": "one", 
+        "go_backwards": false, 
+        "init": "glorot_uniform", 
+        "inner_activation": "hard_sigmoid", 
+        "inner_init": "orthogonal", 
+        "name": "lstm_3", 
+        "output_dim": 128, 
+        "return_sequences": true, 
+        "stateful": true, 
+        "trainable": true, 
+        "unroll": false
+      }
+    }, 
+    {
+      "class_name": "Dropout", 
+      "config": {
+        "name": "dropout_3", 
+        "p": 0.2, 
+        "trainable": true
+      }
+    }, 
+    {
+      "class_name": "TimeDistributed", 
+      "config": {
+        "layer": {
+          "class_name": "Dense", 
+          "config": {
+            "W_constraint": null, 
+            "W_regularizer": null, 
+            "activation": "linear", 
+            "activity_regularizer": null, 
+            "b_constraint": null, 
+            "b_regularizer": null, 
+            "bias": true, 
+            "init": "glorot_uniform", 
+            "input_dim": null, 
+            "name": "dense_1", 
+            "output_dim": 90, 
+            "trainable": true
+          }
+        }, 
+        "name": "timedistributed_1", 
+        "trainable": true
+      }
+    }, 
+    {
+      "class_name": "Activation", 
+      "config": {
+        "activation": "softmax", 
+        "name": "activation_1", 
+        "trainable": true
+      }
+    }
+  ], 
+  "keras_version": "1.0.4", 
+  "loss": "categorical_crossentropy", 
+  "optimizer": {
+    "epsilon": 1e-08, 
+    "lr": 0.0010000000474974513, 
+    "name": "RMSprop", 
+    "rho": 0.8999999761581421
+  }, 
+  "sample_weight_mode": null
+}
+
+---------- Epoch: 0 ---------- 
+
+Loss on first batch after epoch 0: 2.88717746735
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my baanbr hoer e ee  e           e          n     e                          n     
+
+Diversity: 0.5
+Generated Text: my Hn6;y fi?6g a  s  h e  d   i ~e  e   egat e dyo   p h ee  t  i  e   eeewo er    
+
+Diversity: 1.0
+Generated Text: my ~:mô?mpxt~Olt aty  ri o im koanboneoofvyin @d  teyioworm eg h o ew/m y ch. ast o
+
+Diversity: 1.2
+Generated Text: my îY08FDK'mkb fdsîwo blshah  ninire h o1n.Getiaaúgehenhrn hhtr vùh!ah.wm leo' 4aee
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i J vAe;Äen w                           n         e     e                         
+
+Diversity: 0.5
+Generated Text: i fdtwVlccbaac t t e e eii on n  enl h ta~it    eet  f  eeo   n e    or ew   eo   
+
+Diversity: 1.0
+Generated Text: i DgOdx(PamayNhK"km~DpT'? ri~mhlchr cm iaaed set0f l~5areohy c imt-eF1ef;e Fnhs~hi
+
+Diversity: 1.2
+Generated Text: i g0ùL2gyE1@ he †*k †MUes emrlCnp getfyFta'a rtpyet  rhteQ~ùnun u roket 1tywuhttiu
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you nuOo a  ee e  e             ee           e                                      
+
+Diversity: 0.5
+Generated Text: you 6úmVù i  ende ei on enes   n  tr   b  eynelole h     e  et  i      rn   neoe   ~
+
+Diversity: 1.0
+Generated Text: you oUù@Te)-bdbfdhsnsiekls~d ethOetten hikkeia hneb"e~ n mt o ezt~i  k o nba inm no~
+
+Diversity: 1.2
+Generated Text: you ¶ú^vQM.OEz.4dtreknoor1't  'mgf~ foceinnidhJ,d‚moby yanwtflo  bMi~Et)~i/ tòwUkcob
+
+---------- Epoch: 1 ---------- 
+
+Loss on first batch after epoch 1: 2.53210473061
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my hhil'w o o  oe  r      e                                    e                   
+
+Diversity: 0.5
+Generated Text: my @*8mfgioehsi ee t ed n neeef    iie  e eie dooeef  e  o y  o u   te h y dln    l
+
+Diversity: 1.0
+Generated Text: my IyHqWTua1(hhyttbrhsnm g  oei~  e  fwfd i  esaoheh ews~tooftooiehw   ~noù .miis l
+
+Diversity: 1.2
+Generated Text: my -h6^k.2aj neÄhIe nwN yere e ?;kfuspiefAubnfo~w~eesfyOanllnpspshred e Iouftnkboi 
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i ocidi eoh   y                      t  e           e      e e                 o  
+
+Diversity: 0.5
+Generated Text: i òôx%fffviewi i dmees nc o   ndstu i oe te  eo  i io eim    oae i ee ~  io f e ei
+
+Diversity: 1.0
+Generated Text: i ¶PrI†Hyig4 3C! arriida ot  eidi ehknÄad ~e~~o  ri  e t‚or  .rerw sh.bnen m  eges
+
+Diversity: 1.2
+Generated Text: i j?05ChQ†dSoîlph Iramgfimhae~lWm  oenN eeomwde asde  hf m v gtoenb‚mn.dm p~ oll  
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you bph. e  e  e e  e   e                e     e                                    
+
+Diversity: 0.5
+Generated Text: you upd^miV;cfhfyn e  o  nl      io  rlee bt  t em ee eelemmifnote oeo e    tot i   
+
+Diversity: 1.0
+Generated Text: you 1A-t"eowo1ywwinl lT  egiheon kpb rhro fim i m  y Gk h~'ewuse  f e m  oyiinywabil
+
+Diversity: 1.2
+Generated Text: you /Asn1PBdf"pg!eyHbynh tnttye "r mabitm,fwau o fn1% jasdmty st u ey (mmt %aeekmtfo
+
+---------- Epoch: 2 ---------- 
+
+Loss on first batch after epoch 2: 2.4239346981
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my ormar n  e                             e                                        
+
+Diversity: 0.5
+Generated Text: my òwY*y  hhc) e       f   ras eeser n     e a     yo   bo   enb ems    enemv  s n 
+
+Diversity: 1.0
+Generated Text: my eehvbnjf5t‚eoaHhnpeeyyyuo‚ude l tsu  tt h  fngsprhhh emltohehyobrgnsteiboeojd tk
+
+Diversity: 1.2
+Generated Text: my wksG¬rr'ja QngtecÄerds euum  den e.be  tmno Fh ewvtbhw erp aiCInk oyeotmegpma ol
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i 6lakmtrs r  r                               n                                   
+
+Diversity: 0.5
+Generated Text: i hpôf‚nv3ger hee  ehih ~  y  h         wf  netn             e  ea  i l d e      i
+
+Diversity: 1.0
+Generated Text: i  !Gg.k.^uD usymbeoyi   ns vnh b eaei*t e i~n nblfnhl i Äohr uae De,   ~hgoh   ri
+
+Diversity: 1.2
+Generated Text: i ';Djfôdvmi frwmn&hmohiwas.fndnwkwl ndtn  Ä rlsfrey hhtdh ~hi a mt s i ymlgrnwIwg
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you avi%dm   h                           i                                          
+
+Diversity: 0.5
+Generated Text: you y~d~  'esh neothb   nle  n l t   air         m  oo   ai  r    m    n    ht e   y
+
+Diversity: 1.0
+Generated Text: you 8B)Nh5d/ geE kywymelhd ~eown    gfpr  s  yoisids  n ‚dedkmuns  tphmy ad  .th doî
+
+Diversity: 1.2
+Generated Text: you †iLJo3h~Y#ezr  ~f gnwnlneecnprhtmsfmngnÄ'pew  rdnumy !g'i~f ydso~k~htu ~ah~~deit
+
+---------- Epoch: 3 ---------- 
+
+Loss on first batch after epoch 3: 2.41751527786
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my qfin nn e     e   e  e e  e      oe e n     e     e   e oe  e   e e             
+
+Diversity: 0.5
+Generated Text: my 6'ypoo'ee  oeple rt   dn   meerfy re h   ehnteroel s e n   y e r    e a tii    e
+
+Diversity: 1.0
+Generated Text: my cJlee.uv fdi. inbylf?yieud  resfiygkr khofytetaaosibmgsu oekb.wyrfkosoumtnnerres
+
+Diversity: 1.2
+Generated Text: my Mùútdaaaiy kertoia iimn'~e~d nIlh et ¬co~n .m io orktd nvh"yrnmc f dobe fhetalm~
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i kbnyogeor  ee e  eee     e en   ee     e   e   e   ee        d e   e  e eee     
+
+Diversity: 0.5
+Generated Text: i #^dFîevnrgtey comd isrsoodieern t en e oo ei  eie  sbt bewioo   lris uue fhwe  i
+
+Diversity: 1.0
+Generated Text: i x8atuA=5 cct efeao e  fydefseoVin e r ryapo@d'pb et uhde'ifnbbeb exriwdyrenyfo) 
+
+Diversity: 1.2
+Generated Text: i oyw2b gc'v'g fnc.ols,nhrnnnsIfylfkYkuetud eeawd eoeyri ttmlunrnb? xrtyBtm gndri 
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you oIb   o ooee o  e  e   e es          e  r   ne      e   e e        ee n    e   e
+
+Diversity: 0.5
+Generated Text: you focfoeùe hoe    h n  y   t omnodhn s e'eeerohoysye   oyen eysnet nnnamb efrpr  n
+
+Diversity: 1.0
+Generated Text: you NÄWaWe0mpK go  ceun ereahn lbvtnoegg etf kdf  fae nle eelmeai gaeoeuldnd i kysh 
+
+Diversity: 1.2
+Generated Text: you e:4HM3x5nmdtTe2 d~fvoo i frdelsbde'home eaineoldm4ueAd;oerh"ay sehlny mo u  ohnr
+
+---------- Epoch: 4 ---------- 
+
+Loss on first batch after epoch 4: 2.30609917641
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my   fkr er   n  ee  e     e          e o    e e           n         e             
+
+Diversity: 0.5
+Generated Text: my mkiL.îiyee    l e dai e   s n yn en     eeeee     i  eyhe et   s m  enr   e  in 
+
+Diversity: 1.0
+Generated Text: my vB8&J"husrtoc~~ o~hs aeil h"bbbetieop rse  t elalnd il  ùv  w'hn IbohP inh s,y  
+
+Diversity: 1.2
+Generated Text: my qNb&imdf&nkRIh~heeaheaccaarbnara wf  i eMtoIobwnom eeea  d xf nfnnd ni s~ly uwd 
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i M io sneee       n    n  ne    e       oi        e    e         e n            n
+
+Diversity: 0.5
+Generated Text: i Olrib rooteod     n smd o    nm  ndt  g nid n ln nnt   e hi ~ i  e    hotee dt e
+
+Diversity: 1.0
+Generated Text: i W=NhpY&plrFoo ae eTeetIDo  e   alds nts nm n a w ? hmItd i eyurm  f th bmotedou 
+
+Diversity: 1.2
+Generated Text: i ‚.xwAmir Ä ntkf-g  p fúangwy nfrhme lokhúy i~ca~~~h~~~Hwae mh ivebudmiid  miwy m
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you ycifeos  e n   e     e e           e   e   e          e        n d      e       
+
+Diversity: 0.5
+Generated Text: you SugnMot  n  oendo eer  o   be   m nir nole   btep ~n~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Text: you Od@h.ùÄúc rao ebeaibind0uh n y  ni ww shkiseigsI hsdeihhttphromwsIt olykut ^isw 
+
+Diversity: 1.2
+Generated Text: you 'DFrt hm‚.niaighn bkfe vs genk hntyesLae  ~nob tth u ow.emtnont  k  yeotnn~ a~ùh
+
+---------- Epoch: 5 ---------- 
+
+Loss on first batch after epoch 5: 2.24801230431
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my enrredf          e e e         e     t e       e e      e        e              
+
+Diversity: 0.5
+Generated Text: my   o eym i afe  el a ua o m o e f em   eoe  tts  oye oie     omt  el e   e y  ee 
+
+Diversity: 1.0
+Generated Text: my cgpfIl if ,r ~a no eihtkohdom  e  kfc i b  lol    ed mih Veysefnxn yfbfkos ox'F~
+
+Diversity: 1.2
+Generated Text: my bA†yxtdf  csb3pls nae ttfhett    rritip~ho kasy-nyyena'tiumThalhIm hvoe.bnIsi1m 
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i o .kf  e     on  e          ee              e           e       e   e      e   e
+
+Diversity: 0.5
+Generated Text: i qamEk   reeoe   ee y   ifet  d  sie l     en  tkh    o ea   e sni t  no eeo     
+
+Diversity: 1.0
+Generated Text: i H&y* pyom  t  bmmiedrn ohndl hwnslkn wmtcbveocantihe  iuiwi ol  f e ô ! ~ld~hon 
+
+Diversity: 1.2
+Generated Text: i PWljk"Tbbiúnn.'?~wmmeprmeo oi o ya.mmhde ~nm tkoMyshsitkos,owtwpi ktahwlki" bnco
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you brfre r          ee          e                e                              e  
+
+Diversity: 0.5
+Generated Text: you yrbefeo an e   ee erisi            t    tm e t  tst   i  oeo    o     hd bide   
+
+Diversity: 1.0
+Generated Text: you ncp rDiikxawt 'amt ym tifee tqeyn lsm rrh t mk iaH~~~~~~~~ ~~~~~~~~ a~isl e ythe
+
+Diversity: 1.2
+Generated Text: you B/Kytkwnu haspisdgipovfa.keottchdhwhey nieb yoa ef paf l fbtfofns eh ireosystye,
+
+---------- Epoch: 6 ---------- 
+
+Loss on first batch after epoch 6: 2.15758180618
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my brnrriinedd       ee      eee      orien      ffein      e e    e e n    e ee   
+
+Diversity: 0.5
+Generated Text: my axifrfrnidneees  eoeu m  to s oyi nnens ie  m rbe t   um es i m   oelde  an  et 
+
+Diversity: 1.0
+Generated Text: my mlwsenrfrhn lhnseeyniei snrm m reie mwceat o yt onera tds mett rnc eoot tttedeno
+
+Diversity: 1.2
+Generated Text: my îR8ifke hreondîrlw  hihnms t.sts lCao& nhi   byirpn'~ .edw~b~~~nit~A enety nnmfy
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i nyruirre ned    ee e       ein     oeo e    o   i en     oire     e     er nn   
+
+Diversity: 0.5
+Generated Text: i bIwv&feeeeon   eothol ei ede   teeh w  h  rr rf  e   t  i  nfhe   noie  te   s n
+
+Diversity: 1.0
+Generated Text: i ?l;tMefya'uennht ohn tonpacystboeevt  aiop d e  p‚ i byiyofiledl~ncAatniet'  eo 
+
+Diversity: 1.2
+Generated Text: i (G&b &(rIe  asolctntsItrh e!rn Rtih~ rhit¬wiehii~ .~whwe mio  fgoofednoaow e h -
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you yyrrfeee s  e e  e     oei       oee    e   e i     ofeee    o  f een       iiee
+
+Diversity: 0.5
+Generated Text: you jeerr necd nusdmsth ie  nhe  sa  l k e ywe t  otrrnen   isfnwe   r o rete  e  ne
+
+Diversity: 1.0
+Generated Text: you mi0ooeocf.d ssnee  rInoib oi hnn koe( asiota Womy  frmoi nddle gh emDg t olnweh~
+
+Diversity: 1.2
+Generated Text: you EhkyrfiÄjt uiontcljDd e stongste Nae ú~eysniecipcasihi vt7hnemat hf ennieayeey-t
+
+---------- Epoch: 7 ---------- 
+
+Loss on first batch after epoch 7: 2.13399910927
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my forereedd     se       ei     o               e          e      e   e e    e    
+
+Diversity: 0.5
+Generated Text: my hkerren k  d ae s one     l e e n ee es   e e  n  eo    s pe ed   i o beo    oo 
+
+Diversity: 1.0
+Generated Text: my &t texnd aolok s,f~i#~e  beerf ms.Imtlirk'pflgkt ta l nrs  mo ynbbveee  ohu c el
+
+Diversity: 1.2
+Generated Text: my *profye~t t~"pa~me'lE hfrhen pwercmomenSesÄnBg;'te dt I8 neea¶aa  hslag ada~cs i
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i nnfrieee     e   ee        oe           e     i          ee         e     e    a
+
+Diversity: 0.5
+Generated Text: i N0yio n ee n  oa     osyis   u  e eo     e   ede d  e aa n  ee    n  to  en  e m
+
+Diversity: 1.0
+Generated Text: i Og‚ 'g8fo ie otmh mhrupiaetsgene~~~ ~1 nwketamr o e  ryrpd ioegs  haad&~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: i V4"hFx*Dis a htbylYtena~~d~~~~~~~~~~~~~~~~~.~~~~~~~~~~~~~ ~u~~wn thek h o yt bef
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you frrri e          oee     t    o              e     o  e     e     i         e   
+
+Diversity: 0.5
+Generated Text: you ôrdnree  t t   eic   ee  ~   e tmeh  oetnnc l etm  ip iaa e oe  ft    ei ine s a
+
+Diversity: 1.0
+Generated Text: you q.uksoetOipC~a w m osuibvn  sleid mpen  lbhWethoyc n f y     f hyl hdel ot~~~~ ~
+
+Diversity: 1.2
+Generated Text: you tek peoneehceaymhyaooD sel ‚hg i.msa wtyhtgp tclennthdkweshh ere/d~s il  umnmas 
+
+---------- Epoch: 8 ---------- 
+
+Loss on first batch after epoch 8: 2.06699061394
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my ffrrreend      ooe e       oee    i   e ee   ooy yern   o      ee     boofie   o
+
+Diversity: 0.5
+Generated Text: my rr&need d  tet  ott   o e  ks nh  oao   sr    hu e leh n   utfbeye scools sh le 
+
+Diversity: 1.0
+Generated Text: my !irnaieF d tky o ftte    hrgy u aye  yehcfhIne her weyIuh efyltao~ dti~me~ ~m ar
+
+Diversity: 1.2
+Generated Text: my !ewyBoa aultaans  ajeasK sct tnIekiDg~e~~~~~~~~~~~~~~~~~~~i~~~~~~ ~~ d h kwneenl
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i efioreee     o oiie       o o ie    e    a e    oo e   ee   ooyo ee    oo   ee  
+
+Diversity: 0.5
+Generated Text: i t0o'hiefr   oeoa   oet e  oe h  heoe p e y ryyree       nee  me t  ofyee  oet a 
+
+Diversity: 1.0
+Generated Text: i F¶s:o.srgveooedet rtoierua h hot ndhdb  tp ee dya hh ers~ kIsb yner bhree~~~~~~~
+
+Diversity: 1.2
+Generated Text: i Iouô rehndrk't Hrnt~vn  kIms uh,  ‚bad hae nmphi wsposeennahr kimi Iosyb mhe rn 
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you rrfreee    oo   ie n     ooi e        eee       yrreen     o oee    e     ooei  
+
+Diversity: 0.5
+Generated Text: you afrueend ss l   om  enr    ese  h eee~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Text: you r vrwed d ~it~wlIwhbnejoyoni eo giiwtst n o oyo bfesed ijwtv  pmea irlho tIso tn
+
+Diversity: 1.2
+Generated Text: you kf%teahd act iwol t tem ofteatin hdamar Sosùw emwIir irgl ttNohtgfp mfpbons s sh
+
+---------- Epoch: 9 ---------- 
+
+Loss on first batch after epoch 9: 2.00270295143
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my orrreend  te  e  e e     oee   ae   oo    ae   ooe  e   t  ee  y oyeed  oe   e  
+
+Diversity: 0.5
+Generated Text: my kofrreed   oae  ls n  ede  ooi  yohe   hae  hbe  yaue  eow h ie  om o   bifnd  s
+
+Diversity: 1.0
+Generated Text: my eoyerendv t sfseis ah nú hhvsncolyun  vottmd ogane hs m boo,edrd lu e ic pea daa
+
+Diversity: 1.2
+Generated Text: my arfhee~w~ sotepe yttyfeen ms oefoktnddIMtn ohsor.Y hh kvxInnemtiue h tn  trgke  
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i waifeeee    oo ie   oe   o   e   o a   e   o e   a    ooe   e   o e   e e   a   
+
+Diversity: 0.5
+Generated Text: i Fr iine enwd  mco ele  t d   ti   m   fy ien~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Text: i ?#p‚xio¬ w nbbrounn  oc  vstshsrs ael~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  ieswwt uo a
+
+Diversity: 1.2
+Generated Text: i .sq?ts.a m lbahtv .~  slak nlee netvof ybfyyienn."~~~~~~~~~~rô~d  'aamtwmvu oôee
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you frieend    oe e   o e   he   oo e   oi    o    e   oe   ae   o  e   oe   a   t  
+
+Diversity: 0.5
+Generated Text: you ‚firned ssee  owy an e oi et tms  no  rot e  a m  lm h   ut ta   bhre n  s  o se
+
+Diversity: 1.0
+Generated Text: you behie'ndrhbtkon. huee n ypyere   a,s,tn  byeukk~w~l r   bybnfidt otpmd'bgf he   
+
+Diversity: 1.2
+Generated Text: you wrnadn ttdwoshe wsh's Inale yyoyafee'ddIi~s !anDwawmlhôyathtô tizip tl'  atrc?  
+
+---------- Epoch: 10 ---------- 
+
+Loss on first batch after epoch 10: 1.95408499241
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my yffrriendd  oe e  ooe  he  m  o ooae   e  oo t  e     oree  oo  ee  oos   o  oee
+
+Diversity: 0.5
+Generated Text: my offiiiee    oe e s aa t   i oy eeen  oun  oet t  r tuet pto  oboo rein  ie n e a
+
+Diversity: 1.0
+Generated Text: my sVffeeennd iee tywohedry grlined.~~~0~~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ~ 
+
+Diversity: 1.2
+Generated Text: my bFdrrern  I bcmse ses' ihaoedotoet &kc;el fhtuupimehektmy' yÄaei  tseho1t gahb a
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i ofifrreen  aae  e a  ooree  a   ooy oeen  oe   ooe   oe   o  oo ee  ha  h  e  ee
+
+Diversity: 0.5
+Generated Text: i @kbuyrreeeds oboe tht y e obue  oa  el ose Ioa e te i  ytmoat  a  t oae st see  
+
+Diversity: 1.0
+Generated Text: i *Y3ôbHnui n   yooliidg  lon ilrn abp Dotf‚ ia 'dc ApB vhie s io ôutll e"'~~~~~ ~
+
+Diversity: 1.2
+Generated Text: i -Äifuoonte‚rpuwsmaitbhme oae  cooo1U~~~~ ~~~~n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you rriinen  he  o ao  o ee  t  o yoyiien  ooe  oo  e  ee  ae  ot   ooe  h e  o e  o
+
+Diversity: 0.5
+Generated Text: you friinned  e hklte eet   ofyffiennt ss seee mse l a  tee~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Text: you ynykeeendears ioveaep  tfayoco cm iesiree~~~ ~~~~~~  we ~  ahney mbbohfienid at 
+
+Diversity: 1.2
+Generated Text: you rrkrefd atkl skykiuÄIh ftwa mhwueyse chy Iki‚n tcmeAnnnhmtia'w. gwabMi tmtdsaeyn
+
+---------- Epoch: 11 ---------- 
+
+Loss on first batch after epoch 11: 1.9152739048
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my fffrieend  oo o e  ee   o o en  m  oooe  ae  o  o e e  o oee  he  me  oo   oee  
+
+Diversity: 0.5
+Generated Text: my afrriied  tee  be nf  th e   o uad te  een mo o ohied~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Text: my *bfiyine~  so  wcrd h u m d yofr5ie~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ whni  w
+
+Diversity: 1.2
+Generated Text: my r?rsiinlthise iis thSinhomga h  eek rmttache  eet yoyakbcoosd   oe  mfn sa fo-ry
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i jfiriee  h e  oyooree  to  oo  oo  ee  h e  o   o  oe  oe  oe  m  oo  oie  oe  m
+
+Diversity: 0.5
+Generated Text: i ôofaenee  riee  hke  hyota e ym aboiee   o bobmtel  i se tte t e n  o bofiae  i 
+
+Diversity: 1.0
+Generated Text: i yibfeirids  u iialtmkhtppho krtsn yclwmnk bjyyhf leedd omt ygsescyhgdde Tes l‚ge
+
+Diversity: 1.2
+Generated Text: i .fPFwe4enoahnrg hl ia oaed ywe pb oeiennswm ttbaaobgybet bng yIise biink sb ytm 
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you rrrreed  oee  ae  m  oyoffiend  oo ee  ot  o e  ooe  ee  ae  a  a  oa  h  o yoof
+
+Diversity: 0.5
+Generated Text: you rrceennd tilcst  ee  heel we   hyoyoyyriied  e es ee  es bboofeen  we rie ia lte
+
+Diversity: 1.0
+Generated Text: you fvrerednel  .~n~~~~~~~~~~~~~~~~~  i et t lmnet bbbyyyreied~ddo ka hep oe Irfuota
+
+Diversity: 1.2
+Generated Text: you fo!ffeu  nb yrv ooe s teka eance(edl b   noie a.d~~~~~~~~~~  watFnw~knhwh ewy'o'
+
+---------- Epoch: 12 ---------- 
+
+Loss on first batch after epoch 12: 1.89868068695
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my rfriiend  oe  oe  he  h  a  oe  yo ae  h  oe  he  he  h e  oe  o e  o e  oe  he 
+
+Diversity: 0.5
+Generated Text: my oyrriend ts e e mae se mt a  borae~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Text: my eyiriee~  l vneen bt  aen ght ro oosshhi~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: my  Teirtndttwoytnt  oohla  yd apynp hokn~~~~~~~~l~~~~~~~~~~~~~  o en ktt nySmnw'nw
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i rrireen  oo t e  he  yoy oyien  ae  oe  ae  he  he  oe  oe  oe  oe  he  he  oe  
+
+Diversity: 0.5
+Generated Text: i eIfiiee  hhet   yyyyfiien  oss ee e  ae  byai  hye an e  gee m  la  oee  ha  se 
+
+Diversity: 1.0
+Generated Text: i yvroiiendcmt atmt ua ey  yryenrd. ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: i 'iwcrn rtmsôlnIg oatdtyha mmy  oorfiex wljn~  Sth bohn a8n cmtid  fskolmd. wstÄt
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you rriien  aa  e  oy ofien  ooe  oe  he  oi  oe  ae  oo  o e  oe  oe  oe  he  me  o
+
+Diversity: 0.5
+Generated Text: you frrinnd  eee he  ht er  boo ie~  eit oo tt e e mle aee ele ia  mg  yyyfreend  he
+
+Diversity: 1.0
+Generated Text: you †srwas  tae tmm~ htrnybpyoyrrend wk~~k~ l ekensm amnItdl gIchaa~~~~~~~~~~~~~~~  
+
+Diversity: 1.2
+Generated Text: you .3rvrdln,n! y yhw oie wnzeg hnn oah wb itedeMhh hg~dd UkeeTalsi,' a wnh.n Oy mo 
+
+---------- Epoch: 13 ---------- 
+
+Loss on first batch after epoch 13: 1.78036606312
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my ffrriend  oa e ee hae  ooe  oen hoe mo oo a ae  ooe ai  oe  oae  oo ta  oe  oee 
+
+Diversity: 0.5
+Generated Text: my frfrieed  iie aee tie toe mie toy ah see iie wh ne mh ho toe ksi so chest oet ha
+
+Diversity: 1.0
+Generated Text: my ieNne~  aaangt nwyt ooffreee  asptkndh liu hvn wfbi.nd~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: my ôhieeen wat "v tfaem kIcame~~~~~~~~~~~~~~~~ ioeltat' omotyouen'n  1onyÄlees rLla
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i riiiee  aee mh  ooyriend h e oe  hee  ooe  oe  he  o  oo ee e e  oae  oa  oae  o
+
+Diversity: 0.5
+Generated Text: i tbfrfiendd ose ee hhe  ohe hen mmn ios roe  ais ohn  oot h i e ec iee io i apg o
+
+Diversity: 1.0
+Generated Text: i fkfseeeni  bbpffried thlaermep aeettga..~~~~~~~~~~~~~~~~~~~~  aiethwmm m yoyfiie
+
+Diversity: 1.2
+Generated Text: i y‚hszceandpdcieeltwbwaw umeo byfybiesdt~ IsemhsI thd goeiH~~~~~~~~n .!~~~~~~~~~~
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you rrieen  oae  he  hoe  ooe  hoe mh to  ooe  ae  ae  oo ho  oe  ooe whe  o t oo ta
+
+Diversity: 0.5
+Generated Text: you firiind oi dete he m oboofeend~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Text: you Orityen hou gont hhc elnen ei beitnaavdru npe. sDe anvAÄ~~~~~~~~~~~~~~   ikt  i 
+
+Diversity: 1.2
+Generated Text: you rriiek plsdpveknawn hye tfyfkieg a.tgs~ hmnmksmajdee!omeun yucmotme mlmetshs inh
+
+---------- Epoch: 14 ---------- 
+
+Loss on first batch after epoch 14: 1.7853076458
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my ffrriend toe eee me ooe iie  ooe iee ooe  ooee hie hoe ho oae hae mo oooe rhee o
+
+Diversity: 0.5
+Generated Text: my byfriiend taid mi  oo iree heed ooceet o aa een ooee aiyttoe mie woet hdte whnr 
+
+Diversity: 1.0
+Generated Text: my fffrieedd 'atstcca ahmsn sja gtsesi.n  ohe ip uoaboshs hn!d a auctelIewktm ew bo
+
+Diversity: 1.2
+Generated Text: my ôantieeddwne edc yhwrfenrdgaecairYsaierFmrhp1ttteti-a tto oavego aeklwhe af suI!
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i fofrriend hoee me mo oofriend ooee oo ae ee hee ooe aoe woe mee hoe ooe hae hae 
+
+Diversity: 0.5
+Generated Text: i m'fieee  homne ao aye ooooen hrte el oe hwee booyrreen iie hooe olae ei soes wha
+
+Diversity: 1.0
+Generated Text: i MmdIwn ore nnoie motbyfyfrinnt aeenoo"smsnvIpusogessale lnsiolnnls aioee tIawe n
+
+Diversity: 1.2
+Generated Text: i thbeeiensmIwueenmbee ywienn lifmkngtae srmis.  iee wmntR hs lhn pfbylhetalr.e  h
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you fiiiend haee men mo oofriend ooes hoe ee ee aoe hae hhe  ooa ee hee woe hoe hee 
+
+Diversity: 0.5
+Generated Text: you  siieen toie mne oyoyffriend e oses mae eo ea mo ihnes hooe hae wae hh e booffii
+
+Diversity: 1.0
+Generated Text: you baiiien thysoeue oolt avMmnmfoet gaaer aoniedcb. iTdmia soarsee~~  nohesnpohnd o
+
+Diversity: 1.2
+Generated Text: you y rfiinndcaus tb"e~ shae sns uaht oboclk‚e IHpka aait;res m hyoi ik,eTtweudnmnut
+
+---------- Epoch: 15 ---------- 
+
+Loss on first batch after epoch 15: 1.80464315414
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my ffrriend tie  he  he  hen whe  he  he  oe  hen whe me my boyfiend  oo ae  he  he
+
+Diversity: 0.5
+Generated Text: my ffrriend as e' wee bhon  bele win I ae wie he' met ies wan e  me Iits fe  ha  wa
+
+Diversity: 1.0
+Generated Text: my eayien  heJ ienn ir ga e pa fth tot oyns bok wpi  i uctl an ms lw in a me lyItoh
+
+Diversity: 1.2
+Generated Text: my fifiee  ‚hfkne hi  bikel mgÄge  oecghvats matw rfylntekgpwx~n~~~~~~~~~~~~~v~~~~~
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i bffrriend ti  hee whe me me boyee  hon we he  me mo a  ae  he  he th he  hen wa 
+
+Diversity: 0.5
+Generated Text: i ufhnee  hhne  aet mt boy fiend t tee Ih me ma ho he de  he~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Text: i .L  ta lclu kmyhwo  ofe  &l dee ounn wmetslo halEsf ias he ue od  sdn wyien Ee b
+
+Diversity: 1.2
+Generated Text: i %ÄWYked& a yne go mten IyfcoiN  Yin hi, hbmerrhlltIats gts whi ght saE Ien r ote
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you iiien  hhen my boyfrendd ti e  he  he  oe wie  he  ht  oe  he  he  he  he  he  h
+
+Diversity: 0.5
+Generated Text: you aiiee  wsee  hbnoen m e loe te  at   y oys ii  hhtt he  o et ho  m ae toe hhe lh
+
+Diversity: 1.0
+Generated Text: you ufryiedesime~~~~~~~~~~~,~~~~~~~~~~~~~~~~~~~~~~~.~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+
+Diversity: 1.2
+Generated Text: you hhKieed hhtk 'e e ne hiesmtheswhnt t l sn mi at hi Il,5d wntsbboy fhiind ius art
+
+---------- Epoch: 16 ---------- 
+
+Loss on first batch after epoch 16: 1.64810824394
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my fyfrieend ta se m oo oorrie  ae hi  os me oo ho en a a e ee me mo boyfriend toe 
+
+Diversity: 0.5
+Generated Text: my yyrrriend itt lee mut o oor faee loo ltirte hns boet lae hon m to lh e oom boer 
+
+Diversity: 1.0
+Generated Text: my jyrrirnnd oitocPtttncisd hhi lue bcyereks ornyhcmven iutssws mm tbyprreend iossn
+
+Diversity: 1.2
+Generated Text: my S raiedddl apn' mmthnt molryelrrshns‚tt yclunchskdd ied ikesKgfIrmgpnrs'g. a. dw
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i eyeiee  hoee my boyfriend to aes ho me ao ho roe  aae hen a oo oo ee oen ie m an
+
+Diversity: 0.5
+Generated Text: i Kmffieen ho eete mee mo boyfriend msls ee oes han he pie te boet ia o w hae mm b
+
+Diversity: 1.0
+Generated Text: i inffiee e oye boyfrree  ie bhuki.t mi titt href mts bpauekad' peklhl onn.~~~~~~~
+
+Diversity: 1.2
+Generated Text: i xCriioe wsesh mi booyfreenH ow m vhlblae'tnm io bodieefwyetiy nog~e ftbm in a gu
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you iiiee  hoee my boyfriend to oe me mo ooeri ie ha oe me ho ae me booyrien sa ie m
+
+Diversity: 0.5
+Generated Text: you offriendd oe oo me me mo boyrreedd oo he uo wien ms boyfriend  ooee le ecte he b
+
+Diversity: 1.0
+Generated Text: you ffiieed sno ehktn oeent htso tyu1~ at mor hfert'  eglx herK birknt wbaol ce  frb
+
+Diversity: 1.2
+Generated Text: you ôhrtfes tiiemdwa hae oe Iiltm my oo rrindnslrm wtaaIfbovr cnm  bo fffien cotae l
+
+---------- Epoch: 17 ---------- 
+
+Loss on first batch after epoch 17: 1.62735629082
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my offriend to eee me mo boyfriend ho ee me ae hoe me mo boyfriend tie me me boorri
+
+Diversity: 0.5
+Generated Text: my fyfrriend waes wan m booyriend toices hoe mi ie moe ho toe m hhelu ae me heyedor
+
+Diversity: 1.0
+Generated Text: my Pfyfiieng havgm' moei 1me weu ihs se'tee Iie‚e ioeym hss lhrerowthwn hy b yffien
+
+Diversity: 1.2
+Generated Text: my Äerihnethtnernie mnvffstpúcarhe vh an h wuwn mF boofriend a teecrr ltee wta t ha
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i ihoiee  haee my boyfriend to ee me mo boyfriend toe te me toe hoe me ion ie me m
+
+Diversity: 0.5
+Generated Text: i jhroien  oant hy boyfriend iossssel ie me hont ce et mo uae me Iytoen an ho boy 
+
+Diversity: 1.0
+Generated Text: i :Ba'net mcpInndnts  oyytooee dolnoetIe aee ao hit joe iretsendse fae crfk rye sy
+
+Diversity: 1.2
+Generated Text: i k.m,~n  ircwiylovm~ gnin h3p eeaen" seim mda erncli no se moes bo~m ty boerrandI
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you rfiiend toee me boofriend ao hhee wae me boyffiend woee ai me mo boofriend to ha
+
+Diversity: 0.5
+Generated Text: you iieend hte mm boyffiend to  hekt hin e aenn a tee hi an met oo hhut wende  aen h
+
+Diversity: 1.0
+Generated Text: you riviend hhke mhd yotoil irse man booffriend aevni me wnsan us wm e loelid eruRs 
+
+Diversity: 1.2
+Generated Text: you ,lineil htklanTmm mooboyy eind~~ kynsat' rnt it md bosgka.~~~xaIeutjhhesuhe wiot
+
+---------- Epoch: 18 ---------- 
+
+Loss on first batch after epoch 18: 1.62453055382
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my offriend to ee wen my boyfriend to le te m m boyfriend a te me m boy hiend ta me
+
+Diversity: 0.5
+Generated Text: my yofrrenn tn an ay boyfriend te woe s ba teg t e w hkg m  oy woe  ha e e menh r h
+
+Diversity: 1.0
+Generated Text: my syaiiend~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ~~~~  ahk wme my boyfriend nedsg ars ee
+
+Diversity: 1.2
+Generated Text: my iy1iesd cwhem me bpyfrindd re vat whd wm g oigtvedtaRe!¶~~~~~~~N~~~~~ ~~~~~~~~~~
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i lhieen whee my boyfriend to te m  a te m ho te i  he te m wo  oy boyriend to te 
+
+Diversity: 0.5
+Generated Text: i Dlheen woe mm boyfriend to ae ay won mt boytir i tn m boo i il .  ee woed hi  ie
+
+Diversity: 1.0
+Generated Text: i Tbbrriee  uak h sn In Inta hme mta boayt ny wi e  r opckgl id~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: i Paotsatsyists honryy hor lo dogg gt fso bty lhot itslkot ichlh e ng an  un ht bo
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you rrieen  hen my boyfriend to m m boyrried s ie  he  a a  he  an te hen m boy frie
+
+Diversity: 0.5
+Generated Text: you riiied whee m  ooye oo ae te mn boy ofrindd iss pe tr me~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Text: you ameie s tae hmn  oyoticle m   yyyrieed wte m~~~~~~~~~~  intt my bhyrrinddc'ors i
+
+Diversity: 1.2
+Generated Text: you Urienn bnbdzenge wis me ou ppiwt lm bd war; ù'ns gae wfts m lrT to wont~~~~~~~~~
+
+---------- Epoch: 19 ---------- 
+
+Loss on first batch after epoch 19: 1.53626060486
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my offriend te ae he me boyrriend to mo a ai ha me wot ho to a ae to ae a a a e boy
+
+Diversity: 0.5
+Generated Text: my fyfriend to ta mrs attt me mo oocrfiinne a a oo ss iae r oet a o hog ci hetn wak
+
+Diversity: 1.0
+Generated Text: my wffrlien  aogiu‚ oe hise wae whe op  o Yereenp i es'rus bmuksa hik m toeo ess1y 
+
+Diversity: 1.2
+Generated Text: my byyrriendd amlos'ys bao.s  tos inplroo on eux seadrwo toripg! htvgt eas~.~~~ lok
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i heien hhen my boyfriend to so oe he me a a a or ie ie ie ae ho to ae woe mo boyf
+
+Diversity: 0.5
+Generated Text: i eeekee wesn my boyfriend tod ee un t a mve borrfiend bote ies au lhge boen e e e
+
+Diversity: 1.0
+Generated Text: i yevhil en bmog boffrend sio wyieegy ovau  uoqe incWfheer idtstis eoa~~~~~~~~~~~ 
+
+Diversity: 1.2
+Generated Text: i 'sFi‚d iinpxu. wW%tnt bbrffriendc. waws 5yesg oeeEloeEÄvdsfwtoe roe phma mnunl I
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you fiieen to me boyfriend to ae te he m oo toe ii he me woe te ho e ae a ae le to t
+
+Diversity: 0.5
+Generated Text: you irienn hhae my boyrriend sorbhe s boe ir se whed I ahce mr aenty mo boyfriend we
+
+Diversity: 1.0
+Generated Text: you eWrien dfuttnn n  ient Tl Ine mn bbofrrenn s wham h o milliy e ray selli'.~~~~~~
+
+Diversity: 1.2
+Generated Text: you tnmhfe cwtso Ie ien Iaet my bdyfriend ba le~: so e s' mrhon gl ortme~~~~~~~~~~~~
+
+---------- Epoch: 20 ---------- 
+
+Loss on first batch after epoch 20: 1.55878221989
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my offriend toes me mo boofriend aoss aete tae wien whhen ho aete woen my boyfriend
+
+Diversity: 0.5
+Generated Text: my affieend moe ee ma lastpho u a encat foe wit aa Islgen when my boyfriend ta seg 
+
+Diversity: 1.0
+Generated Text: my iofiiend eontbm einpnvi meesee.~~~~~~~~~~~~~~~~~~~~~~~~  ilen hhen titysdweennkg
+
+Diversity: 1.2
+Generated Text: my Dffreindpcooa lundsi¶me'!pOa.I~~~~~ sakeitt hmm mytboyrriendrforDv  oecfhe xo,ll
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i hiieen when my boyfriend toee aes te le ae wien my boyfriend toee me woet ie hae
+
+Diversity: 0.5
+Generated Text: i wiehen me boyyriiend ahes hos'ss ooe aoee want my boyfriend toae Iset hree hhen 
+
+Diversity: 1.0
+Generated Text: i Nartete nhiey buyfoirnd thapneroisesineus whhtt aep. thatsshhin lhats no u arkdn
+
+Diversity: 1.2
+Generated Text: i ooPriene , synnolek mhy bbyfrien otxlnsiagcmss wtloa pikinRkcbikG tphok sostta .
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you riieen waen my boyfriend to ee ae woet hae toe hie toe ae ae when my boyfriend t
+
+Diversity: 0.5
+Generated Text: you ekiene thae the toe mo boyfriend coes ae ween m ootrhiin wohte mhboe lue  iektie
+
+Diversity: 1.0
+Generated Text: you raeieh mafe miy byffriend I jalk hicevwweutsIlmneppcinwegoot~ ionnee mscoereuepg
+
+Diversity: 1.2
+Generated Text: you tareee nmelt,gfo uupsf,smcgly ,reea Jeewyhega 0clrte bnlvmsssIi@nh beilylrne use
+
+---------- Epoch: 21 ---------- 
+
+Loss on first batch after epoch 21: 1.51076984406
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my offriend tost hoe tie me me boyfriend toe tete hen he ma ae tae when my boyfrien
+
+Diversity: 0.5
+Generated Text: my bfyriend aos me tot hen he my hon carm mt sne se tiat hanh m boafeend heke fien 
+
+Diversity: 1.0
+Generated Text: my jofriensd atsemos onds.~~~~~~~~~~~~~~~~ wahe  a k aen Ie wene when arslarr o a's
+
+Diversity: 1.2
+Generated Text: my imyt ietk womn my joofree,owhete. goe cir~.~~~~~~~~~~  hant hhte willskwied mnnc
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i hiiee  hien my boyfriend tate me boorriend woen ho me te ae te me hhen me wont h
+
+Diversity: 0.5
+Generated Text: i iyinle then mf boyfriend borse ans hee Indee when my boyfriend when my boyfriend
+
+Diversity: 1.0
+Generated Text: i caeat wa etmycmp aate leen wan my boyfrienn pisees pfrak.~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: i baio2nl my eysomelhaes afae# sracnbscKstaruuas wane whun cu phobIio cln" tho mir
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you iieee when my boyfriend to aes to hen woen we e ho te han ho e ae an wen my boyf
+
+Diversity: 0.5
+Generated Text: you riiee bhoee whee mo boyfriend me ae wie ti wens mp boy fiend ian m me mek one io
+
+Diversity: 1.0
+Generated Text: you aidee wienthye aoom oat't hanl tlim hhenlghmod fhf uan wia wate' Brocwon tlksged
+
+Diversity: 1.2
+Generated Text: you wzeenv ofvbarorte'~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ latvee hhan my boyfriend.ndshuu
+
+---------- Epoch: 22 ---------- 
+
+Loss on first batch after epoch 22: 1.47432756424
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my offriend ta es me hen he me boyfriend wate my boyfriend is at he te an m boyfrie
+
+Diversity: 0.5
+Generated Text: my oyfriend wae ta tise han m boyfriend la tun mo borfrend inse fees I gate wend mn
+
+Diversity: 1.0
+Generated Text: my rrrrien o'ne? ml nurp.sn ho hukag tii aoin1 me wut ! totgelhn ye bauek fovd I ia
+
+Diversity: 1.2
+Generated Text: my ifteen enildcsereyT aae ta.~~~~~~~~~~~~~~~~~~~~~ ewzet t' ea ige ohitT mubmy boy
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i hheen mh ee e mo boyfriend ta wat my boyfriend to ae to ane wene to he e me wene
+
+Diversity: 0.5
+Generated Text: i enhee mhe fanee as when my boyfriend m agt woee hats me bont wienn hos a at atse
+
+Diversity: 1.0
+Generated Text: i ddaine me winee myyboyfriend etas soto eemdMa qotlsaerl2e mhnmsaiueu to aro Soec
+
+Diversity: 1.2
+Generated Text: i Iy'fetos te uenpu ette dauu hisosoaan lens er weedi mhsng h oxs hanll  os ivarru
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you iieen when my boyfriend to e e ane te an my boyfriend to ate he an mo boyfriend 
+
+Diversity: 0.5
+Generated Text: you ciieen hhen my boyfriend wosn woe a ete res lad arsste ce me hos whek m dotre wo
+
+Diversity: 1.0
+Generated Text: you baiiene deees winn my boyfriend dancg ~ mine~ , wins won ii igrto‚ henps wertids
+
+Diversity: 1.2
+Generated Text: you iipise aalwheslnhorobIaeya dh reni' hagelhntf fn ro phsfsrrieghnme ngxi umm iuku
+
+---------- Epoch: 23 ---------- 
+
+Loss on first batch after epoch 23: 1.42959821224
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend to se my boyfriend wane my boyfriend a at hen a an me hhe to hete wane 
+
+Diversity: 0.5
+Generated Text: my yofriend inh s my boyfriend tuste te atdlle fe gid wane mo int ardpa liet wani m
+
+Diversity: 1.0
+Generated Text: my ryrfiend  ho ceye darlat bosr hnth hen anci griiin annsssaÄ, to itM fmytout hen 
+
+Diversity: 1.2
+Generated Text: my "wyrienpd,s ilt a‚e.f~~~~~~/ haen my boyfriend loarcfeeel beka&s'h ayabokeôPd wa
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i heene my boyfriend to e se an o me he e en a he te me wen he me an a to a e to e
+
+Diversity: 0.5
+Generated Text: i aine lien when my boyfriend to hales hhe te as o oo or oe ti lhen wect e hen I h
+
+Diversity: 1.0
+Generated Text: i ‚Genra aiik~~~~~~~~~~~~~~~~~~~~~~~  oje'p wake Iy oy f een whan~ wee oy art e co
+
+Diversity: 1.2
+Generated Text: i (iuieA, eNncac Iclaee m I boaekd on Inweelee we e he sueto goy -oil wonv boy wo 
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you iiien hhen my boyfriend to bate te me se hi e ie de at ho to an ho me an an hin 
+
+Diversity: 0.5
+Generated Text: you rieeen waet my boyfriend wa e wo a era un ie iyrsite go bo ant hat wes whet ho m
+
+Diversity: 1.0
+Generated Text: you ewiee  ht aygce senevpaa ptols coo suegeegolm Insy boyfriend Phlon te gusvdrs ma
+
+Diversity: 1.2
+Generated Text: you qIekarhws myy oofriend ,y pous see. iptiie ha ibchut i ge IntdhheÄ 3ighs ma wotn
+
+---------- Epoch: 24 ---------- 
+
+Loss on first batch after epoch 24: 1.39623951912
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend to me to ans mo boy riend wate my boyfriend as me lis me cor are an he 
+
+Diversity: 0.5
+Generated Text: my yyffienn~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  tatt at my boyfriend 
+
+Diversity: 1.0
+Generated Text: my gffiiend golis hnussbhustdot enou ir he chhop sis ie ghat agdasdtan svboggdam si
+
+Diversity: 1.2
+Generated Text: my Inrrkekdgy yy byrhiids aa su coo armftiige weog, .sd lint oict hocwoz 1l memkrut
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i hoeen hhen my boyfriend to be me se hit hen to mo be an hin has mo be ce an e in
+
+Diversity: 0.5
+Generated Text: i aheen my boyfriend to do ine to mo wans me de se made me a wepta yi oe I atk hhe
+
+Diversity: 1.0
+Generated Text: i Rih ealeu hhe mhe siopo innos whon mI toyrsna~ I~.~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: i lepoehe't.z~~~~~~~~~~~~~~~~~~~~~~ ~ hhle wten hyuuo stwpoe . at winp'pl hatnhy b
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you iiee  hhen my boyfriend ies te se me boy riend wane to me an be he a hat an a me
+
+Diversity: 0.5
+Generated Text: you gieee ao ehen my boyfriend to lis me hre di me ine sater an wot me me ine mo ne 
+
+Diversity: 1.0
+Generated Text: you Ckien whee worn peol aye Indte hive wind w-rmr yyftane.~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: you frmeri ‚edogeleluem mboo~~~~~ ltkit m yoy rriendrnisnpmchiurs higoy ci'ko mo's a
+
+---------- Epoch: 25 ---------- 
+
+Loss on first batch after epoch 25: 1.38833701611
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my yyfriend wane my boyfriend ta te an he in a an hit wine I want my boyfriend to a
+
+Diversity: 0.5
+Generated Text: my ofrriend i mo wane when my boyfriend wiek he me als lame hhes hhe hi n to to so 
+
+Diversity: 1.0
+Generated Text: my esares itI toat emttn boyfriend har litoc. htwien hy oo'd~~~~~~~~~~~~~~~~~~~~  l
+
+Diversity: 1.2
+Generated Text: my ayiine thhun tu lire with I then wag ae bakrineg.~~~~~~~~~~~~~~~~~~~~~~~~~~~ Bhl
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i shoen  hete when my boyfriend to et he se an my boyfriend to te he ar an a an hi
+
+Diversity: 0.5
+Generated Text: i Ihihet when my boyfriend bo buns fo a fete e jone ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Text: i tIhhann my boyfriend i as bimcte-Cmgron tpada atgo shhi.~~~  oite tu hoc caa ktm
+
+Diversity: 1.2
+Generated Text: i /oenre e'emla wens my boffiend ivks go eos lor jeml hisde hmy oe gete like‚wHer 
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you iien hhen my boyfriend te me to he e so e me wine hhe to me to bo friend wan my 
+
+Diversity: 0.5
+Generated Text: you fieend mo tote ta ee my boyfriend as to me wine I Irwane when my boyfriend wine 
+
+Diversity: 1.0
+Generated Text: you 2eeftdhe  aomt a tedn hessee s hi ten†gd tiy totqmuyve.~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: you bceined lite ta w-en I oos we twecb=nbayscmy bopfriendis smar.~~ leth jmn lru t 
+
+---------- Epoch: 26 ---------- 
+
+Loss on first batch after epoch 26: 1.34936881065
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend to to to he e wate my boyfriend wane to me boyfriend and when my boyfri
+
+Diversity: 0.5
+Generated Text: my eyfriend pote so wet my boyfriend ta to pe an se thin.~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Text: my fyfriend tine~~~~~~~~~~~ we~t cocn teg hhg my boyfriend I hin  ho hinn hlektngu 
+
+Diversity: 1.2
+Generated Text: my ofyiierd Didis alletgobpiasd fhes oa 1ok‚me thmnr. drow hgt hu i ms recrsacht le
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i mae ehe hhen my boyfriend to te an to te like the hhe to me late wen my boyfrien
+
+Diversity: 0.5
+Generated Text: i oeein when my boyfriend pase me ou  a tor and to ind wine mu tite hi e when me b
+
+Diversity: 1.0
+Generated Text: i wwaen my' oevhro vhhes hhas tele ous hevee ta lole~~ dane hivent oo doks he khle
+
+Diversity: 1.2
+Generated Text: i  òoe shcele agme m Icmoovohts Iuh hi a htncir thadlhe tytfhend anle soe'dfsvvesr
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you ieen hhen my boyfriend to te to me le he a an bo to an wane me to he do an my bo
+
+Diversity: 0.5
+Generated Text: you ueie wien hhee my boyfriend soe wuet me doe sir sa levs ho lane he en hat ho hot
+
+Diversity: 1.0
+Generated Text: you Rreeis hatt hhnns su hena ould oe spebwate welwet hhk ble-lo ‚fdzetsnme boy  ere
+
+Diversity: 1.2
+Generated Text: you boiini  mhenMm eo hae t uu et het lve.n~~~~~~~~~~~~~~~~~~~~~~~~ 'ike wati my joo
+
+---------- Epoch: 27 ---------- 
+
+Loss on first batch after epoch 27: 1.31429684162
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend to at me like when my boyfriend ta e to hit hin hat hit me and me wint 
+
+Diversity: 0.5
+Generated Text: my oyfriend cale me want my boyfriend de at on he dana my boyfriend cate me wate hi
+
+Diversity: 1.0
+Generated Text: my ofriindd I gine woen my boyfriend saos me tiy~ I'as wat my my boyfriend waneu at
+
+Diversity: 1.2
+Generated Text: my fariend~~~~~~~~n ien whe ipav oh~~~~ Iewten my mofbuyen~~~~~~~~~~~~~~~~ wane boy
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i ahee  hhen my boyfriend is to hin me hit when my boyfriend to te an my boyfriend
+
+Diversity: 0.5
+Generated Text: i eaelh ae hhet my boyfriend is guke I doke when my boyfriend as le me wite hhe I 
+
+Diversity: 1.0
+Generated Text: i  boyfriend an!' 't my boyffiend case mo bopryrrinnn~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: i isar hhpithce wien he' ang'lhrpetgihte oqtlen he oen I~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you hien hhe hhe hhe my boyfriend to et a to he hin a an an he an to me an my boyfri
+
+Diversity: 0.5
+Generated Text: you aiee hhe hm we wen my boyfriend to at e me et to me winn my boyfriend do mo hot 
+
+Diversity: 1.0
+Generated Text: you rfaend was ti wa gn bho bie ¬~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: you ¬inn's ah'n my boyfriend A‚hsf, D Ma'~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ klkit mh 0
+
+---------- Epoch: 28 ---------- 
+
+Loss on first batch after epoch 28: 1.28961372375
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend hate when my boyfriend cos me hat me and an me me hit me and an me like
+
+Diversity: 0.5
+Generated Text: my yyyfriend at ir hes an ba an to hin a lele when I hat when my boyfriend got when
+
+Diversity: 1.0
+Generated Text: my oorriend juvt my yetesmg cunbtut colvrisir weven hh the hup oo , atd Che er Net~
+
+Diversity: 1.2
+Generated Text: my 7îôte pee mm boyfriend ge at turslot when fe fu iÄôl~~~~~~~~~~~~~~~~ ~~:~~~~~~ h
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i ihee hhe hhe  he late when my boyfriend want my boyfriend to an me to an me do a
+
+Diversity: 0.5
+Generated Text: i iaen mhe boofriend alo at me fime in me I hite when my boyfriend soss he tath an
+
+Diversity: 1.0
+Generated Text: i teetie hthen chenle jes fnmin o orrwee a hike I~ ~~ hate whan ey boyfrieed noy s
+
+Diversity: 1.2
+Generated Text: i leukt iE , whnu gy boyfriend dossbap avyehe fikine, axfeô cctenm, myus , †'nle w
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you iien when my boyfriend to so at an me cite to hit hhe hin me and and me like whe
+
+Diversity: 0.5
+Generated Text: you eatie I hoet my boyfriend as to his an an m e so the  hit has hit me whet I hate
+
+Diversity: 1.0
+Generated Text: you yereek am my boyfriend tocdleo tetes ue hupti coty haat ta oprs him hut~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: you &she hijI" I 3s me colpgteor and idvNt I phe  co ons ito goRuh oo cieiy hherBhoc
+
+---------- Epoch: 29 ---------- 
+
+Loss on first batch after epoch 29: 1.26349782944
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend want my boyfriend to s o or in me and I like when my boyfriend so me wi
+
+Diversity: 0.5
+Generated Text: my oyfriend lase we hh bo when I hite when my boyfriend es se fians wenh ho sees th
+
+Diversity: 1.0
+Generated Text: my lyyyriend~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ I llke when my byyfriend cask me and I to
+
+Diversity: 1.2
+Generated Text: my pyiridds d1 at' ti shtamgylof bar m hh'h somt, nt‚ ther gils . dlip'sn'e at rat 
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i aien hhen my boyfriend to e to to me and an he s ous he hit hit hhe I late when 
+
+Diversity: 0.5
+Generated Text: i rhait  hate when my boyfriend to soe an me so tit me ind a hat my boyfriend to s
+
+Diversity: 1.0
+Generated Text: i riot ep ale winn my boyfriend qorss ne~  hate go wr eft de o aflit when ye hoa5 
+
+Diversity: 1.2
+Generated Text: i zrowhikt asggs sites it ithg I hilh io when my boyfriend res korfnsmy md chevs l
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you iien when my boyfriend to to to hat me to he hit hhe me and to me lite when my b
+
+Diversity: 0.5
+Generated Text: you rheen my boyfriend te er. ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  oytthe the 
+
+Diversity: 1.0
+Generated Text: you jbautk Lhen my boyfriend.~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  ire wahn 
+
+Diversity: 1.2
+Generated Text: you iiFnd hiol whhnt oy macfly fetlhm ceoto hen he itu I oe tavh hhh my boyfriend Ha
+
+---------- Epoch: 30 ---------- 
+
+Loss on first batch after epoch 30: 1.23106729984
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyyfriend is me and me and the me and me hit me and me like so an he me be o or 
+
+Diversity: 0.5
+Generated Text: my bpyyriind sorss the when he liils mo  in an to ce er I dokr ti and be and ant hh
+
+Diversity: 1.0
+Generated Text: my gofriend wist my boyfriend dans me weuls toicl I~~~~~~~~ hane fole grlli me  esl
+
+Diversity: 1.2
+Generated Text: my Oyforiend ied fdyennnter'p te oeÄôts unty gietrhunt peisleg urunresphfnaI~~~~~~~
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i aee hhe hhe when my boyfriend to be to me he and an me to he hat and me me he he
+
+Diversity: 0.5
+Generated Text: i heen my boyfriend tass te pecets me wenh me an fot when I hot the the ho me I oi
+
+Diversity: 1.0
+Generated Text: i rooert htot I leYe when my boyfriend boeei soru.s~~~~~~~~~~~~~~~ late then sulus
+
+Diversity: 1.2
+Generated Text: i Ohohy podooÄsotenh eo winh ms 8ekl arel mecmall, he~~ wonati'ii!†~ bon boy ho r‚
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you ieen hhen my boyfriend is to me and te and me and an me and me and to ant te and
+
+Diversity: 0.5
+Generated Text: you aane when my boyfriend i doet the betas me to me ant bo I like when my boyfriend
+
+Diversity: 1.0
+Generated Text: you ¬hyae le anlhphnt to  atregor toyo y boyfriend.~y~~~~~~~~~~~~~~~~~~~~~~  ine whe
+
+Diversity: 1.2
+Generated Text: you omaot iykeiapLE wenna ererln'e' l ite I ~~~~~~~~~~~~~~~~~~~~~~~~~~  ine when my 
+
+---------- Epoch: 31 ---------- 
+
+Loss on first batch after epoch 31: 1.22037672997
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend want my boyfriend to be so and then I like when my boyfriend wint my bo
+
+Diversity: 0.5
+Generated Text: my ooyriend soes he me and then me hin and srenlt in me cors when I salk te when my
+
+Diversity: 1.0
+Generated Text: my bayrient want my buyfriend te phe a crozle case s~~ heke hhe I~~~~~~~~~~ ie~~~~~
+
+Diversity: 1.2
+Generated Text: my poyffiend  leelHy mo gixn i Jan me benng fes whe I~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i hhee  ho hat hit hite when my boyfriend to so the to the hat hit hit me he hat h
+
+Diversity: 0.5
+Generated Text: i ase mhe ham fot my boyfriend wates ant my bey riend when my boyfriend gass en an
+
+Diversity: 1.0
+Generated Text: i Krisal.  taOl whin s orsreramt me byofriend an~w~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: i i eimes lati it pilo u. I lete & mo bhyyxrcidunn at cor r ho I I ¶sanetiegsneew 
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you ieee when my boyfriend to to to me to and hite when my boyfriend is the to be to
+
+Diversity: 0.5
+Generated Text: you mien mo boyfriend is woet me te and him at hime fot and me tate me and sot lise 
+
+Diversity: 1.0
+Generated Text: you reemehpe an sm beyyrieso watelhe am Indane then I if e then my boyfriend whnn wo
+
+Diversity: 1.2
+Generated Text: you 0iawe wh bhe meceald surlnis lreuki.ú/gns wo biDt muslna s.'~~~~~~ pake he gixh 
+
+---------- Epoch: 32 ---------- 
+
+Loss on first batch after epoch 32: 1.20285594463
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend wate my boyfriend is to me me and when me be to hike when my boyfriend 
+
+Diversity: 0.5
+Generated Text: my oyfriend siks soes me phe I like when my boyfriend soes me cimele Won me le aade
+
+Diversity: 1.0
+Generated Text: my oyfriend harky.S' aôg ciyits pavhuyyfmen setky I~~~~~~~~~~~~~~~~~~~~~~~  ine he 
+
+Diversity: 1.2
+Generated Text: my wsrlikr . wo'at the gomn buant my boyfriend tistes & yotrvired' mhefgoy oufs sor
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i haen my boyfriend to me to hit and me and the like when my boyfriend as me te me
+
+Diversity: 0.5
+Generated Text: i thhen my boyfriend poots therenn so me cit me ger te wint I went my boyfriend go
+
+Diversity: 1.0
+Generated Text: i 'iox ito late wae ha lipa me comh in my boyfriends aots pask hiw aste ligy as wh
+
+Diversity: 1.2
+Generated Text: i eamnianmy oy blfiend wabkpho'f limes.;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  atkugg my 
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you iien when my boyfriend to lake me and I want my boyfriend is me and me soe the a
+
+Diversity: 0.5
+Generated Text: you friinn I lake when my boyfriend ta as me cor soe I cate when my boyfriend as and
+
+Diversity: 1.0
+Generated Text: you úhian roalt mu ked me hisir I me enmenas ane meoge hoojfi'd ins me anisregpogs t
+
+Diversity: 1.2
+Generated Text: you jHaref deird jivlckigiys nwet I hide ôat my boyfriend manv at apo, my hum lire a
+
+---------- Epoch: 33 ---------- 
+
+Loss on first batch after epoch 33: 1.20427823067
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend is when my boyfriend wate me and me like that my boyfriend to late the 
+
+Diversity: 0.5
+Generated Text: my oyyrriend dote then my boyfriend cos the when I lake thet my boyfriend wate me a
+
+Diversity: 1.0
+Generated Text: my oafe diane tanl h he lweve my~~~~~~~~~~~~~~~~~~~~~~ lhite Itwhen I iike when my 
+
+Diversity: 1.2
+Generated Text: my ~Ep weenthmy boyfriend co"s hhm witrrop,bbeverynof trriagds ‚b'erlee joof Jeacis
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i haet my boyfriend soes me sore me and me to borfiend and the to and to sore to m
+
+Diversity: 0.5
+Generated Text: i fooat hate my boyfriend siess me sos me cnete gont in thige to cake waat on ar h
+
+Diversity: 1.0
+Generated Text: i caame when mrunes he tet when I mall coceteee dhy (av s cow anafy .~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: i nate lweel ween my boyfriendlnt ave in at‚pmrangt eurgo.~ heos Mo andib'logtg o 
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you hhien when my boyfriend is when I like when my boyfriend to me to hite when my b
+
+Diversity: 0.5
+Generated Text: you &roike when my boyfriend kikes when my boyfriend to sot ant at me the tane hat a
+
+Diversity: 1.0
+Generated Text: you gaweny mo boyfriend sdhadns.~~~~~~~~~~~~~~~~~~~~~~~  oate when wasnyy usll elfeu
+
+Diversity: 1.2
+Generated Text: you 1ipteu tms ci aplhee. Watg tg thahkwsethmtng'vhy meclekkfigitdhe wwanm my boyfri
+
+---------- Epoch: 34 ---------- 
+
+Loss on first batch after epoch 34: 1.16421914101
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my boyfriend go so me so the me dore the sore me and me and the soot me fore so me 
+
+Diversity: 0.5
+Generated Text: my ooyrriend sailg him has to nle fut and when I like when my boyfriend wate I hate
+
+Diversity: 1.0
+Generated Text: my hyyfriend lmags s. ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ hare otthire let re witis the 
+
+Diversity: 1.2
+Generated Text: my oofiikes~~~~~~~~~~~~~~~~~~~~~~~  ant itkmrnills I ane ol ge co.m.~~~s like when 
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i haen me me boyfriend to be to and me and when me to be me and me hit hat me when
+
+Diversity: 0.5
+Generated Text: i eilk hate when my boyfriend lises his to at in soe the s and to be ant and to on
+
+Diversity: 1.0
+Generated Text: i aleke iringy when I moel wete‚g weele m wem I to towelhd thet my boyfriend ieg. 
+
+Diversity: 1.2
+Generated Text: i Wainh toap. iinctoil  oy woalgs oe my boyfriend csy'ue0 dethe to do tokerosg tor
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you iien when my boyfriend soes the me and me hit me the to to to me hit hike when m
+
+Diversity: 0.5
+Generated Text: you haen hhe ta e out he me dort his sarer when I want my boyfriend soess me and he 
+
+Diversity: 1.0
+Generated Text: you uilwe so il shlme hit my boyfriind do bannt hiis~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: you wtlelky broinr~~~~~~~ wi~tlthe when my boyfriend cal quoglys kakiucy,ily I bifiv
+
+---------- Epoch: 35 ---------- 
+
+Loss on first batch after epoch 35: 1.15239489079
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyyrriend so so me and me hit his him the so to hat and me fore the when I want 
+
+Diversity: 0.5
+Generated Text: my oyyrriend soes his fen in to and and mor an the when I want my boyfriend to loke
+
+Diversity: 1.0
+Generated Text: my oyfrrendd new. ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ hore whth 
+
+Diversity: 1.2
+Generated Text: my ofyrhkend,d~~~~~~~~~~~~~~~ lyaen my be¬f pims ge en  lofpde withra‚ cedaooy?ôe B
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i hhee  he hat hit my boyfriend to be to me to for so me and me and me and the so 
+
+Diversity: 0.5
+Generated Text: i wheen my boyfriend hass the suce when I hike when my boyfriend like the me anc p
+
+Diversity: 1.0
+Generated Text: i ciite ho eilo mos aachereil orurig, gette YninelcleÄt. hrawin.n Äwe anes weat wh
+
+Diversity: 1.2
+Generated Text: i "sialkee khan wyoMup ton'ss~~~~~~~~~~~~~~~~~~~~~~~~ hik molweha. I Banlhe eus dy
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you reien his when my boyfriend to be the like when my boyfriend to sot me and the h
+
+Diversity: 0.5
+Generated Text: you hhien is soo't when my boyfriend to set an lhe s on to me be sule me the late li
+
+Diversity: 1.0
+Generated Text: you 'Panl meinlg hflaens onute I~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: you Eite ghee  ooll avtk my boyfriend livet av I hat woy , mhy. ~~~~~~~~~~~~~~~~~~~~
+
+---------- Epoch: 36 ---------- 
+
+Loss on first batch after epoch 36: 1.14403903484
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyyfriend when I wate my boyfriend soes the son me and the be and and the he and
+
+Diversity: 0.5
+Generated Text: my oyyfriend paves the pores and and ato hit hat me he so an he hule hat he dot pis
+
+Diversity: 1.0
+Generated Text: my oIyhilg mo ipher th gete it get gams hruinn my boyfrien  ligken me~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: my Ifbmailhg on my mone to me~ fals in te komt my oer oqiiegdrgma~~ ~~~~~~~~~ ltet 
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i aite when my boyfriend to be to me and when I hate when my boyfriend is when I w
+
+Diversity: 0.5
+Generated Text: i iell thet my boyfriend go su in be and that when me boyfriend hiss he te gore of
+
+Diversity: 1.0
+Generated Text: i hrel bolm hit mo huti phe snot toe't woths my boyfriend widins wwem moy moe ofwa
+
+Diversity: 1.2
+Generated Text: i Whhaen htay afd wuth me. ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ llakevwen I tang pboo
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you iike when my boyfriend like when my boyfriend is me and and me and and the to be
+
+Diversity: 0.5
+Generated Text: you bhien mas ant my boyfriend to te wath I take the go bo bat hat at when my boyfri
+
+Diversity: 1.0
+Generated Text: you ae%ta A poallsangd pite coyly lite when my boyfriend bucs on tirisng my fute gac
+
+Diversity: 1.2
+Generated Text: you tmohlnms ate afvinn I louke dhke ,fags to ged meret abiut my bcofriend sows me. 
+
+---------- Epoch: 37 ---------- 
+
+Loss on first batch after epoch 37: 1.13255429268
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend has be and the so me for the and and me and the bore me for the so me a
+
+Diversity: 0.5
+Generated Text: my oofriend when my boyfriend when I hate the when my boyfriend when I my boyfriend
+
+Diversity: 1.0
+Generated Text: my oofriend a sopurertings tomar ir goof no farin. ~~~~~~~~~~~~~~~~~~~~~~~~ wanl my
+
+Diversity: 1.2
+Generated Text: my r&frierNo heci kuegivebaf.~~~~~~~~~~~ tike the mos  oyerwiins rind funals izhss,
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i hhaen my boyfriend wath me fore when I like the my boyfriend as to me and I like
+
+Diversity: 0.5
+Generated Text: i haant my boyfriend soe to the at me me she when I want me ang at oin to sare and
+
+Diversity: 1.0
+Generated Text: i eaavhangy with my boyfriend he bupla. dhat cortepee,t hevess hisrys titars id ho
+
+Diversity: 1.2
+Generated Text: i joyrivelwloi thene'x my boyfriend os boraung MhekÄk5 skEgukithetshe oroitg myaed
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you hien my boyfriend wath me so and me and me fore when I lake when my boyfriend is
+
+Diversity: 0.5
+Generated Text: you 1hat him when my boyfriend wate I wint I want my boyfriend soos me to bare co me
+
+Diversity: 1.0
+Generated Text: you &hatmthimh oott oy 'e anlathics when hye!y watk wick lite watusI nhen my boyfrre
+
+Diversity: 1.2
+Generated Text: you TlLal‚ ‚Äùy% aloh meeeqheut I sozf dhwachy fomy slav and. hate when ho sboindd m
+
+---------- Epoch: 38 ---------- 
+
+Loss on first batch after epoch 38: 1.11013090611
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend and to me lo me and my boyfriend as and me to his his for me sore the s
+
+Diversity: 0.5
+Generated Text: my oyfriend is the  e oro it of me sores his me and the I lake when my boyfriend to
+
+Diversity: 1.0
+Generated Text: my moraidd fa'csicg sate late Bafaring hhh my ofde tere deule hhe sone sor I lake b
+
+Diversity: 1.2
+Generated Text: my poyyrrieddS womeI~~~~~~~~~~~~~~~~~~~~~~n hon'Äth and my lo boyfriend i7 whaeh in
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i haet hat hat when my boyfriend wath me to me and me and when I like when my boyf
+
+Diversity: 0.5
+Generated Text: i aian whan he gere when my boyfriend s ant me fon coot the ind my bet a do coad a
+
+Diversity: 1.0
+Generated Text: i Jaonkre ween my boyfriend be urasy cut mele zat a, when I rant terend of Inwind 
+
+Diversity: 1.2
+Generated Text: i oho  ox, lip i lukk tlhm weth amlg whak my boyfriend mile. ~~~~~~~~~~~~~~~~~~~~~
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you iite when my boyfriend to be to me like when I want my boyfriend to be and and w
+
+Diversity: 0.5
+Generated Text: you iike when my boyfriend to be tills of my hat I like when my boyfriend is the son
+
+Diversity: 1.0
+Generated Text: you xakk my boyfriend go'k he doe? ateu- hops cemory fuplye that~~ Hate phuls he hin
+
+Diversity: 1.2
+Generated Text: you Uyosrbime.~~~~~~~~~~~~~ hoke when my boyfriend is, s: tay ou lou't me beoz ryjca
+
+---------- Epoch: 39 ---------- 
+
+Loss on first batch after epoch 39: 1.10408008099
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend soe so me and me and the be and and me his the the so me when I hate wh
+
+Diversity: 0.5
+Generated Text: my byyfriend is ne so me friend when I and in when my boyfriend is when I wate when
+
+Diversity: 1.0
+Generated Text: my opfiends wimuso s me liednther der'd me clike me to belns~~~~~~~~~~~~~~~~~~ hite
+
+Diversity: 1.2
+Generated Text: my of‚cte ume simxf me Ensaty aune do boush we mh-y, oubw when my mot his smorshy n
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i haen my boyfriend is and when I want my boyfriend is the so me and the to be and
+
+Diversity: 0.5
+Generated Text: i oorti aing when my boyfriend watt it the goul when he and like the when I like w
+
+Diversity: 1.0
+Generated Text: i wheat me p oallecgakgerg my boyfriend, I mok the sear pirres le beo Yu'n, .~~ I 
+
+Diversity: 1.2
+Generated Text: i maas voaec on when I Hamd and mo boyfriend'cS-ian I leke  hew athm a be ofkiwis 
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you hien his so me hite when my boyfriend is when I want my boyfriend when I me be t
+
+Diversity: 0.5
+Generated Text: you fbuilke hite when I want my boyfriend to te serirn me fut when I mete pome he to
+
+Diversity: 1.0
+Generated Text: you eitrlhit when mixg ato the's him it gook oebsoo I'wine my boyfriend ass's soigg 
+
+Diversity: 1.2
+Generated Text: you innlay fovenli-s.~~~~~~~~~~~~~~~~~ hate gethep apmite fobhe ip arontiny~ ~ wend 
+
+---------- Epoch: 40 ---------- 
+
+Loss on first batch after epoch 40: 1.09267652035
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend has the me his and when I want my boyfriend to be to me and the so me l
+
+Diversity: 0.5
+Generated Text: my ooyfriend Mo me when I want he boy friend and the be and I an when my boyfriend 
+
+Diversity: 1.0
+Generated Text: my lookks when my boyfriend is ut sneiln to te blmy ‚pH'ilf wimhin Mo aln hibicn, w
+
+Diversity: 1.2
+Generated Text: my eaclsopes siitn~Ä~~~~~~ whit my boyfriend & doess tha ppuism W..  Aoer!~~~~~~~~~
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i aate hien to me lite when my boyfriend when I wate me for me ~~~~~~~~~~~~~~~~~~~
+
+Diversity: 0.5
+Generated Text: i ahat hhen withhe it my boyfriend hat hit bo this like and to be tare with me Je 
+
+Diversity: 1.0
+Generated Text: i haate heapdinlles iseiz if, nant fike wor seote witnhe sole susket. I want my bo
+
+Diversity: 1.2
+Generated Text: i ohchmvenmy arteort, lo nha le when id my boyf iend ~'~~~~~~~~~~~~~~~~~~~~~~~~  o
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you friinnd and when I me soot and my boyfriend when I wate me for I want my boyfrie
+
+Diversity: 0.5
+Generated Text: you fmeink. ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  lake when my boyfriend is
+
+Diversity: 1.0
+Generated Text: you 22uNôu. dchand oy boyfriend nos he le sens me, and I lake yound assros. to sorei
+
+Diversity: 1.2
+Generated Text: you owoale~eS my boyfriend ip' whenset swaote Hin~L~~~~~~~~~~  a'p gecluve on thangy
+
+---------- Epoch: 41 ---------- 
+
+Loss on first batch after epoch 41: 1.07956552505
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend in and the sos me fat and like when I me so the be out be and when I wa
+
+Diversity: 0.5
+Generated Text: my oofriend ons boy fuen in sure when I'm than and me toe hat me me and but a want 
+
+Diversity: 1.0
+Generated Text: my oyfriend s irky my boof,d ~~~~~~~~~~~~~~~~~~~ watg my bboyfriend sncoss ~.~~~~~~
+
+Diversity: 1.2
+Generated Text: my utrlcwate. "e ruy "voninl thet my boyfriendgsasils Nakes cox)op‚~/~~~~~~~~~~~~~~
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i haet hat hit when my boyfriend wath my boyfriend and to me and me and me and the
+
+Diversity: 0.5
+Generated Text: i hain  oo po the me ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  ate when my boyfriend wa
+
+Diversity: 1.0
+Generated Text: i hheak heos gpaot the hey goobe sosanig libe.~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: i Taster aHn yot mo rotmy aud saciss it my o,. fT. Ymudf s/aUúI cos‚~~~~~~~~~~~~ w
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you riike when my boyfriend to be to like the when I like when my boyfriend is sore 
+
+Diversity: 0.5
+Generated Text: you freeedd that my boyfriend is be a so the eÄnd I like when my boyfriend soes the 
+
+Diversity: 1.0
+Generated Text: you uYjKeue- I don't when my boyfriend is fudper couine batfilg.m ank hrol me tott m
+
+Diversity: 1.2
+Generated Text: you b3siancea‚lgo fighingme.  atot etourd lovhy my boyfrienda. ~~~ o'k ton'n gligast
+
+---------- Epoch: 42 ---------- 
+
+Loss on first batch after epoch 42: 1.0641272068
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend and the be and and when I want my boyfriend is and me and the be and an
+
+Diversity: 0.5
+Generated Text: my oofriend I want my boyfriend he be fee thing fee in sas and me and me no gell al
+
+Diversity: 1.0
+Generated Text: my ohyraevn mund e aver. ~ Lteet my boyfriend axd soet me lite the amd apb at he ci
+
+Diversity: 1.2
+Generated Text: my yonfriend witht me bime ard.  ucmet thunizt jet hash I lecmugins i0 apys boyff m
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i hoee hate when my boyfriend to so the be and the so his and the so me and the me
+
+Diversity: 0.5
+Generated Text: i aonk when my boyfriend is me and athor so fute his an me to thang ard eut the bo
+
+Diversity: 1.0
+Generated Text: i gkite Ifwhame my boyfriend a be alla ho cick our I like that my boyfriend thing 
+
+Diversity: 1.2
+Generated Text: i "fcinlo s. ~~~~~~~~~~~~~~ I hate when my baff he hairho be lellong /ray my boyfr
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you khien I want my boyfriend to be the sore the be and and me and me and the so whe
+
+Diversity: 0.5
+Generated Text: you Mhant he llake me got my boyfriend sarp reenfing in the like but he wate he liee
+
+Diversity: 1.0
+Generated Text: you dCoaK: his saoung my boyfriend abthe me achare ablate Jurint when I a kiver fuw 
+
+Diversity: 1.2
+Generated Text: you 5wIlhee~  do teg dyin fots @s mule. ‚~~~~~ hate when M'g.~~~~~~~~~~~~~~~~~~~~~~ 
+
+---------- Epoch: 43 ---------- 
+
+Loss on first batch after epoch 43: 1.04702341557
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend and to like when I me so me and when I me to me and my boyfriend and ha
+
+Diversity: 0.5
+Generated Text: my oyfriend hame and my bes are sond, wath me and me out him but and that he soles 
+
+Diversity: 1.0
+Generated Text: my otahven i clioge touc the bethass of purthy & dernany boor daklise juptlas.s I'l
+
+Diversity: 1.2
+Generated Text: my hoyfriend sof or.;do.~~~~~~~~~~~~~~~  lake when my boyfriend takd o epo%vie ~~~~
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i ahee hien when my boyfriend is to me for his has in the so me and the to so me a
+
+Diversity: 0.5
+Generated Text: i iake when my boyfriend wate fo the meas the in he on at poots me cat with me son
+
+Diversity: 1.0
+Generated Text: i tiile moangi.n me comenss ge oruft prande abat the bolfe a senog sonplinte my bo
+
+Diversity: 1.2
+Generated Text: i cFeawy aIw hnat my boyfriend clopy ho., at my boyfriend wave me't. Bet-ith fpivi
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you friinnd and my boyfriend to be the so the so the to like when I mo so me and the
+
+Diversity: 0.5
+Generated Text: you rreeeks has when my boyfriend takes me fare that I hate when my boyfriend ciss h
+
+Diversity: 1.0
+Generated Text: you c#oJ!nn' o met hes in' of hat raplles Ththe wnmy ubpriing a abas oy betfreregs m
+
+Diversity: 1.2
+Generated Text: you G"uo8 Tape ny boyfriend.~~~~~ ~~~~~~~ hale don't want  eve woop‚ùp sowwmauw ofnf
+
+---------- Epoch: 44 ---------- 
+
+Loss on first batch after epoch 44: 1.03756725788
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend and so me and and to sate and me and I like when my boyfriend likes me 
+
+Diversity: 0.5
+Generated Text: my ooffriend and fot the be ause so in this gor when I want my boyfriend to snor me
+
+Diversity: 1.0
+Generated Text: my ooyfreend s amend. ~~~~~~~~~~~~~~ i hate when my boyfriend tikk at ar aigeulo ou
+
+Diversity: 1.2
+Generated Text: my @utnssnenit thareu roxphig thax beld kikl, but zuthy, than .~~~~~~~~~~~~~~~~~~~~
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i aate hite when my boyfriend wate me and and my boyfriend and me and me and that 
+
+Diversity: 0.5
+Generated Text: i moy boyfriend as a lotet the dorent when I me some when I want the spoo me in hi
+
+Diversity: 1.0
+Generated Text: i Iweatl mo loos neag ibout IDmeke bamelins whem my boyfriend' sartmy in pisl co u
+
+Diversity: 1.2
+Generated Text: i -W ueds!us wmentY gat liy smettebf awherit ccoulay mo,~~~~~~~~~~~~~~~~~~~~ lite 
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you chaet hat my boyfriend to be to me and my beat and my boyfriend and my boyfriend
+
+Diversity: 0.5
+Generated Text: you Aucele ate woy boyfriend to be me and and sopfer and the be as hreen for when of
+
+Diversity: 1.0
+Generated Text: you lsite to when my boyfriend bu. ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: you M8l~~~! wnen cool heik mreheces benurbis newdi my bhofere re thor~~~~~~~~~~~~~~~
+
+---------- Epoch: 45 ---------- 
+
+Loss on first batch after epoch 45: 1.02831614017
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend hat the so the so the so the to so me and my boyfriend and my bect he a
+
+Diversity: 0.5
+Generated Text: my oyyfriend is my futt and sox me ele him and I want my boyfriend is me to be wath
+
+Diversity: 1.0
+Generated Text: my yoyrriend Supent op.~~~~~~~~~~~~~~~~~~~~~~~~~~~ hatetthet fritly my oofrfiend no
+
+Diversity: 1.2
+Generated Text: my oyfriend patacnrict ofuridm. ~~~~~~~~~~~~~~~~~~~~ I ho ewefbirnice mess i oo the
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i haet he ant my boyfriend to be to so the sore me and he sore the be and my boyfr
+
+Diversity: 0.5
+Generated Text: i aate hite when my boyfriend like he sant my boyfriend an to bout when I hate whe
+
+Diversity: 1.0
+Generated Text: i hatle waml my soo hice ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ o†~~~~~~~~~~~~~~~~~~  
+
+Diversity: 1.2
+Generated Text: i ieonS when ty panlselr ge fikt  at ant witl sikwe Sothant gobduthepg wilcfatt mi
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you riike when my boyfriend to be to like and to so the to like the so in me sot me 
+
+Diversity: 0.5
+Generated Text: you ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ hate when my boyfriend te salp out me and me of the
+
+Diversity: 1.0
+Generated Text: you Ijtame soapnare or hhe when I like aboot my boyfriend sielsjats sound sortsicmof
+
+Diversity: 1.2
+Generated Text: you pA4Aeq~~~~~ wint my boyfriend gy be piteachobato!~~) wint at me ubaut he isop pa
+
+---------- Epoch: 46 ---------- 
+
+Loss on first batch after epoch 46: 1.03002679348
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend and my boyfriend is and me and to be to like the me and my boyfriend an
+
+Diversity: 0.5
+Generated Text: my oyfriend is sace jut and gant to soo lots him jut his when my boyfriend to be th
+
+Diversity: 1.0
+Generated Text: my boyfriend Hely to alrl met dore hathe when 'p'lls souply hiptis hivensetiin sNou
+
+Diversity: 1.2
+Generated Text: my oofriend‚csttat 6't coing crold me~~~~~~~~~~~~~~~~~~~ wrets me, le hit casepchis
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i aote hite when my boyfriend get and me and to be and to be so to like when I me 
+
+Diversity: 0.5
+Generated Text: i haek seewing to silke with my boyfriend fasd so poot me and to be co saole to bo
+
+Diversity: 1.0
+Generated Text: i toohl oy sreacd mossf, to Me and the elrertank sooute an jout ricavet hien stay 
+
+Diversity: 1.2
+Generated Text: i Velokd hio at tayt piins puuns wiis bulke op  oaing,. ibunt himess~~~ hend hit t
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you raite hite when my boyfriend sals me to soot when I want my boyfriend to be to s
+
+Diversity: 0.5
+Generated Text: you /hilk when my boyfriend soos the shore wond me a~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Text: you kbeihk treeos thate heod nob it ar'n fol I hone bhat wim hud andot and my boyfri
+
+Diversity: 1.2
+Generated Text: you pEqa¬pes oum my boyfriend tones hat I Uane awengedtetsund av ares I wate my boyf
+
+---------- Epoch: 47 ---------- 
+
+Loss on first batch after epoch 47: 1.00848650932
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend and and me and the so me and to me and the so the sore and me and becau
+
+Diversity: 0.5
+Generated Text: my oyfriend sas at when I hat nom in has he gome to sut the  he cores him ta he san
+
+Diversity: 1.0
+Generated Text: my olheindeA~~~~~~~~~~~~~~~~~~ hate when my boyfriend te4ke jerernment to I don'y w
+
+Diversity: 1.2
+Generated Text: my l†fNla:s~~~~~~s walt beoty abrasgs.~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ hate it
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i aate when my boyfriend to be to his friend and the so me and the so me and to be
+
+Diversity: 0.5
+Generated Text: i oreels hit hing my boyfriend so to wand the spees the me and do he tank and Me t
+
+Diversity: 1.0
+Generated Text: i aomty boyfriend fusthi as ancinche mutges me eule me fugt be (oy.~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: i meeseraFang whun.,~~~~ hate when my boyfriend hee lids' athte¬ ~~~~~~~~~~~~~~~~~
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you brriend a mo be and and to so me and me and his friend the be ause I like when m
+
+Diversity: 0.5
+Generated Text: you RI llake when my boyfriend gon the sun me and when I want to be te and ende me a
+
+Diversity: 1.0
+Generated Text: you morree!s~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ "liken hel bets in 5Ä~Ä~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: you cohSrede & @fi!‚T~~~~~~~~~~~~~~~~~~~~~~ oikewwhen my boyfriend medpes  oprquodth
+
+---------- Epoch: 48 ---------- 
+
+Loss on first batch after epoch 48: 0.999169707298
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend and to me and his fure the be aute I like when my boyfriend gass me and
+
+Diversity: 0.5
+Generated Text: my oofriend pis me and when I hate when I'm boyfriend asd to me and and my bent he 
+
+Diversity: 1.0
+Generated Text: my oryfriend "top't a anx his fant oney, kite the teatind cortent'bpocheaty pat my 
+
+Diversity: 1.2
+Generated Text: my oyrPiend~~~~~~~~~~~~~~~~~~ I late hike when my boyfriend is sheagry ofs, ouÄm t 
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i aotk he call me and my boyfriend to be to me and his hat the so the has so me an
+
+Diversity: 0.5
+Generated Text: i haat he to se my boyfriend he soup so my boyfriend it his fuling a soot a wath m
+
+Diversity: 1.0
+Generated Text: i Ihaks noato meed when my boyfriend wanturss any soen fulle sord feting coodd and
+
+Diversity: 1.2
+Generated Text: i riint outentsom my boyfriend dy j aacô.  ooc hititodl is ttet all  ust to syume 
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you breinks my boyfriend and the so me and the son me and the be and me and because 
+
+Diversity: 0.5
+Generated Text: you boyfriend that me. ~~~~~~~~~~~~~~~~~~~~ want my boyfriend to be to cood me and t
+
+Diversity: 1.0
+Generated Text: you 7ruya he loves ITm utive feithiss. So evoale willanggs my solfere I cutte werdy 
+
+Diversity: 1.2
+Generated Text: you htoocliss when my boyfriend trl& ve for wlo yyptithdaud~~~~~~~~~~  ant hat to la
+
+---------- Epoch: 49 ---------- 
+
+Loss on first batch after epoch 49: 0.985653340816
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend and to me and the be so me and and he saver me and and when I want my b
+
+Diversity: 0.5
+Generated Text: my aotkees my boyfriend and nus unt some. ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ hate w
+
+Diversity: 1.0
+Generated Text: my oyyfriend wirton't on t a eup lok bhe cex. I jelliag & scaxhes. ~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: my Ieplike my boyfriend and reay uptiveh I like bofe'n.~~~~ het I'a hoad at hat fos
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i hoet hate when my boyfriend is and to me and me and soment and me and the be and
+
+Diversity: 0.5
+Generated Text: i haek is when I me with my boyfriend is me when I wate the face me and so me hat 
+
+Diversity: 1.0
+Generated Text: i Ionwant toall mist of He asd with me my boyfriend in when cow so ond when me aÄd
+
+Diversity: 1.2
+Generated Text: i I waithe thees of heoreily moug en my boyfriend, 'n I too thin It anis thet~~~~~
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you frriend and the so me and and his fume to be and and the soor me and be and and 
+
+Diversity: 0.5
+Generated Text: you moeek hore when I bat and amtent of my boyfriend when I sare the me so I like th
+
+Diversity: 1.0
+Generated Text: you hEhe prupkinpsiy then my boyfriend whens't ,ve sowening when I watt my he kloib 
+
+Diversity: 1.2
+Generated Text: you brate,s~ . hate Som doe~~~~~~~~~~~~~~~~~~~~ ~~~ hile when my rontor athtt yy roy
+
+---------- Epoch: 50 ---------- 
+
+Loss on first batch after epoch 50: 0.978656709194
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oofrreend a doet to so the has ham and to so me and the so so me and when I like
+
+Diversity: 0.5
+Generated Text: my oyfriend wath to be that because I like when my boyfriend doesn't have pare me a
+
+Diversity: 1.0
+Generated Text: my oyfriend!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  anlit when my boyfriend gard my fnay
+
+Diversity: 1.2
+Generated Text: my ailt-uu" want my boyfriend like sheut leund ceblug eúsunts and, fats. ~~~~~~~~~~
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i hhee hate when my boyfriend is and the so me freend and me and when I want to he
+
+Diversity: 0.5
+Generated Text: i moy boyfriend is the the so when he sole me to seet him and he mose to doy to li
+
+Diversity: 1.0
+Generated Text: i uchaak my boyfriend  as upk me and thent, in ther me jean the me~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: i hhame wimesin and go to she hate what un cecum awtemn'm chcomn pout ens my nat h
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you broyfriend that me and the so so me in the be and to hat to hate hat he so he an
+
+Diversity: 0.5
+Generated Text: you forreind so chirl me no dont he lols when I cat and hate hate to be be auke out 
+
+Diversity: 1.0
+Generated Text: you bc=#lhien jecutioci)na hemgangsaminourly ~s haves he il I it whan pocef cy pall 
+
+Diversity: 1.2
+Generated Text: you Qquhhewer mexg hit whea he doen't lite arn a~ kake leelly dou~Ä‚ÄÄmthitk  uduun.
+
+---------- Epoch: 51 ---------- 
+
+Loss on first batch after epoch 51: 0.972994565964
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend and to so the cand me and to me and the so me and to so the sand me and
+
+Diversity: 0.5
+Generated Text: my oofriend to slore me and sood when I want to so me and my boyfriend to se when H
+
+Diversity: 1.0
+Generated Text: my yQfyiend salkeus ank borfenn ove lore so uo qhham cengret iing with i nu& ourfe 
+
+Diversity: 1.2
+Generated Text: my eqryraet ever myac1se when Ii.~†~~~~~~~~~~~~~~~~~~~~~~~~~ hate when my boyfriend
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i haet hhe sall me so my boyfriend and to so me and me and when I want to sate to 
+
+Diversity: 0.5
+Generated Text: i aatk hite hate him cous me cout his and it my boyfriend and at me the seed me an
+
+Diversity: 1.0
+Generated Text: i mihky mo inls. ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ wite I lake when my boyfriend dees
+
+Diversity: 1.2
+Generated Text: i aocdtey came reepiges mike when ww e has‚ ~~~~~~~~~~~~~~~~~~~~~~~ I~~~~~~~~~~ wh
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you frriends and me and me and to so the sore me and the cand to me and because the 
+
+Diversity: 0.5
+Generated Text: you 0Dwaet my boyfriend to sates with me tho me hake his cise then I like when he po
+
+Diversity: 1.0
+Generated Text: you EumI Kint to dpeels tem ravd.~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+
+Diversity: 1.2
+Generated Text: you (tpahlet thaat I'm'g bhirg I actoe"s is my utkcang do comekenf. ~~~~~~~~~~~~~~~~
+
+---------- Epoch: 52 ---------- 
+
+Loss on first batch after epoch 52: 0.964599311352
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend and atout me and the be ause and his fure the be ause I like when my bo
+
+Diversity: 0.5
+Generated Text: my oyfriend has and my boyfriend is when i love the son on etere fow me on so gat m
+
+Diversity: 1.0
+Generated Text: my ooyfriend it wisth me~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ i watt my boyfriend to gey t
+
+Diversity: 1.2
+Generated Text: my oryfriend uve in.o~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ want my boyfriend to preli
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i aike when my boyfriend is and the so the conderes the sand and me and he sale me
+
+Diversity: 0.5
+Generated Text: i aite when my boyfriend to to to con e all he cale of the back me for condering b
+
+Diversity: 1.0
+Generated Text: i  Wehes i eimicg of siged to'r and me soy~~~~~~~~~~~ wwen my boyfriend to be yeic
+
+Diversity: 1.2
+Generated Text: i caeverltmens. ~~~~~~~~~~~~~~~~~~~~  Alke khut noos nemed wiak sates sta~ ~~~~~ l
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you frriends and my boyfriend is and and me and to be so me and his fure me and I li
+
+Diversity: 0.5
+Generated Text: you ¶oVrekes when I am catle my boyfriend and to lel that and the be sues and cemes 
+
+Diversity: 1.0
+Generated Text: you HeaElvelusides what peVllos beelume sos boykreind keatns and of lite his to cexi
+
+Diversity: 1.2
+Generated Text: you .5'F I I‚sSlike at ipuphe me, not boyfriend seelm fpak w- eves @nmitholg, hibat.
+
+---------- Epoch: 53 ---------- 
+
+Loss on first batch after epoch 53: 0.955682635307
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend and the so me and when I hate when my boyfriend soos me and me and beca
+
+Diversity: 0.5
+Generated Text: my oyyrriend me and sotate and me and to sore and the lo she and my boyfriend and b
+
+Diversity: 1.0
+Generated Text: my royfhiend apanky klowe dhig bul she pandual I live him foot sve bis hoo . Slacce
+
+Diversity: 1.2
+Generated Text: my bSyyrrien; fV acbe I mate jer vames un, seoors isedibferinf, duudgibim a oo afpi
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i haet he sall my boyfriend and the so me and when I wate to his the and and to be
+
+Diversity: 0.5
+Generated Text: i waen my boyfriend to net when I'm the sont him fure on the cand and to snat in m
+
+Diversity: 1.0
+Generated Text: i solak my. ~~~ want my boyfriend to bover puthing.. ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: i Qeat thtin withs i anlmy when I'ms ory with himsasi. !ncatpinthx looks shary. ~ 
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you rraikes me for me and and he some the me and to me and to so my boyfriend and to
+
+Diversity: 0.5
+Generated Text: you ;*Ao~~~~~~~~~~~~~ want my boyfriend to be antering of me ~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Text: you QYeIs, wall meek my boyfriend !x hhes oud ang  eleven ip at se ap we hasbye with
+
+Diversity: 1.2
+Generated Text: you sj?elk ut my boyfriend's "opet eve weorgfurys~~~~~~~~~~ don't wart My boyfriend 
+
+---------- Epoch: 54 ---------- 
+
+Loss on first batch after epoch 54: 0.955330550671
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend and to so the like I like when my boyfriend to be to be and and the so 
+
+Diversity: 0.5
+Generated Text: my oyfriend when I'm svating de so the sante to so a of reing his fuct on I like to
+
+Diversity: 1.0
+Generated Text: my oyfriend noe's when I atd time and the bastent for my somgry nagg, I fon my boyf
+
+Diversity: 1.2
+Generated Text: my uuss. ~~~~~~~~~~~~~~~~~~~ llike when my boyfriend is coen. ~~~~~~~~~~~~~~~~~~~~~
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i aike when my boyfriend is at me and and the so so me and because me and his fure
+
+Diversity: 0.5
+Generated Text: i hate when I mave a does the text my boyfriend when I wate to do my boyfriend on 
+
+Diversity: 1.0
+Generated Text: i foyrakl‚%Lhat as ceewse I like it when my boyfriend boy oe Wrings ofter. ~~~~~~~
+
+Diversity: 1.2
+Generated Text: i hiite hate when I'e late Smor. wwen my boyfriend moech. To whene (emethes ofs lu
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you friend and to s on me and and I like when my boyfriend calks me and because I li
+
+Diversity: 0.5
+Generated Text: you VeIxl a ate when my boyfriend sales me and his fating and his be sreet in me. ~~
+
+Diversity: 1.0
+Generated Text: you &? Rswoywhet got pigt has my boyfriend pors hot Wecher poftike and leep when I w
+
+Diversity: 1.2
+Generated Text: you &foQtlHem when he stor  ract a ho eclocihs ut. ~~~~~ I hate when Ty Tilk likes "
+
+---------- Epoch: 55 ---------- 
+
+Loss on first batch after epoch 55: 0.946131527424
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend and to me and because I like when my boyfriend calls me and the be ause
+
+Diversity: 0.5
+Generated Text: my oyfriend is when I wath a te cung and my boyfriend~~~~~~~~~~~~~~~~~~~~~~~~~~ ~~~
+
+Diversity: 1.0
+Generated Text: my fgyyaren, do Nites I for, tuse 3 tarly and Dvoing. cNvenhe bus.~~~~~~~~ when my 
+
+Diversity: 1.2
+Generated Text: my bwyfhien" ip brinye an  limpe, De'ran workouus  eimipe .  xu tyuumjfsr wiinNs wh
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i hate when my boyfriend is and and and me and some of my boyfriend when I wate to
+
+Diversity: 0.5
+Generated Text: i hat hhe eully the to me and my boyfriend when my boyfriend wath my freind and I 
+
+Diversity: 1.0
+Generated Text: i waTnatuy my boyfriend, so his do/fthf. ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ hatt my boyf
+
+Diversity: 1.2
+Generated Text: i (I waer ehappus hics jetthef.~~ I like when my boyfriend ext & hasef/ingr.s~~~~~
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you bryyfriend and the pout of me and and his friends to me and be ause the because 
+
+Diversity: 0.5
+Generated Text: you fhhat I want my boyfriend to when I wate to gret of with me like the I'm not whe
+
+Diversity: 1.0
+Generated Text: you ¶inke me get as hit with he poottints fe when I'm noloy dhattWares my bbyyfriend
+
+Diversity: 1.2
+Generated Text: you 3ozJoomE kiyNqHoung ,f my fletel I hace promtknyirishepcip I do my bryfreend.~~~
+
+---------- Epoch: 56 ---------- 
+
+Loss on first batch after epoch 56: 0.943200826645
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend as a leap the me and when I'm when I want my boyfriend to be he love me
+
+Diversity: 0.5
+Generated Text: my oyfriend of cham oute of me about he and and to me to walk and fuls take a like 
+
+Diversity: 1.0
+Generated Text: my ooyfriend and my boyfriend frinnd laks mo a ofutide futhig!~~ I like when my boy
+
+Diversity: 1.2
+Generated Text: my joyfriend like fe.n QY to guur bsanliegs~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ hoee wh
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i aate when my boyfriend when I'm me and because I like when my boyfriend is me an
+
+Diversity: 0.5
+Generated Text: i hate when my boyfriend has at me and has he loves me when I want to way the same
+
+Diversity: 1.0
+Generated Text: i ihek ceooserem ie breit I want my boyfriend co look'l iln hme, I wint my herures
+
+Diversity: 1.2
+Generated Text: i Oancoupist poubisicmedteos un.0~~~~~~~~~~~~~~~~~~~  antivering the betofrurtsbie
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you brriink a call me and my boyfriend when my boyfriend is and to so me and when I 
+
+Diversity: 0.5
+Generated Text: you ‚OVú3A0GCSDHEE HI~~~~~~~~~~~~~~~~~~~~~~~~~~~ hite when my boyfriend calls simes 
+
+Diversity: 1.0
+Generated Text: you 52AD'TO when my mofnit mf i fum bs 5vind. ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: you 6IxcVees~~~ ale when I was upPotts when percC'm me un wey bud. ~~~~~~~~~~~~~~~~~
+
+---------- Epoch: 57 ---------- 
+
+Loss on first batch after epoch 57: 0.930036127567
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oofriend when I'm and to be to me and and the sare to me and the so me and when 
+
+Diversity: 0.5
+Generated Text: my oofriend do me and got me out me don't sate do to me fare in to me and but he to
+
+Diversity: 1.0
+Generated Text: my oofriend to doall ainhs heptune. ~~~~~~~~~~~~~~~~~~~~~~~~~~~ hate when my boyfri
+
+Diversity: 1.2
+Generated Text: my oorriendugs om houw. ~~~~~~~~~~~~~~~~ I~~~~ I~TM ut thate ma we camilim Sectriyg
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i haat when my boyfriend to be to so he like I make him to he sall me and to be an
+
+Diversity: 0.5
+Generated Text: i hhehe has when he sees a cate my boyfriend when I waves me out the fand put if m
+
+Diversity: 1.0
+Generated Text: i oon't whan it nat im to my boyfriend up the leershen becau itover off we fur on.
+
+Diversity: 1.2
+Generated Text: i I hall heol wenteegs my boyfriend~~ ass ubdchas. Hike ‚Ä'‚~~~~~~~~~~~~~~~ elele 
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you frriend and him to me and when I want to hat to my boyfriend and he say me and b
+
+Diversity: 0.5
+Generated Text: you boyfriend as to me and bedang and and the when I have to me and to go when I can
+
+Diversity: 1.0
+Generated Text: you "8guube post hig friends. Ton'gs srele ad etumulI like to hivt my heg ichage. I 
+
+Diversity: 1.2
+Generated Text: you vwerot"vy ut dow't mes ip my boyfriend is the qsicnte and yo book fray oir ht ha
+
+---------- Epoch: 58 ---------- 
+
+Loss on first batch after epoch 58: 0.923580944538
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend and his for me and betare and the so me and the be ause the because I l
+
+Diversity: 0.5
+Generated Text: my yoyrriend I don't want my boyfriend to be to rirke be and my boyfriend is the ha
+
+Diversity: 1.0
+Generated Text: my uy be loy bast by friend.~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ I like wh
+
+Diversity: 1.2
+Generated Text: my oIfrlike I Tame my boyfriend"koss I meep'r that wwhe my onoit spabsrici us le pa
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i hate when my boyfriend is and he say of me and he and to me the be ause I like w
+
+Diversity: 0.5
+Generated Text: i aike when my boyfriend has to me the con to to real and when I to sa ~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Text: i umal dor'aty erewary. ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ~ hete when my boyfr
+
+Diversity: 1.2
+Generated Text: i afos watt iing fucthithing apoute op Iay Coqpeeling ghe sS site I want my boyfri
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you brriind and my boyfriend and the be ause the because the be ause the sare and hi
+
+Diversity: 0.5
+Generated Text: you ¶Hbryyriend a cat betale and hood when I'm mon about my boyfriend and when I lak
+
+Diversity: 1.0
+Generated Text: you PRgOKRmeng my boyfriend~~~~~~~~~~~~~~~~~~~~~~~~~ I hate iw when piog is ghoowes 
+
+Diversity: 1.2
+Generated Text: you o=aÄQôDS, wtee L"'ko af mor becguse acuuv m apf I hate wack on ha talk svut o uy
+
+---------- Epoch: 59 ---------- 
+
+Loss on first batch after epoch 59: 0.92075407505
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend when I'm me the be and and so me and because when I'm be ause when I wa
+
+Diversity: 0.5
+Generated Text: my oyfriend is but for me I don't want my boyfriend to be to so me and my boyfriend
+
+Diversity: 1.0
+Generated Text: my oyfriend is furiond :~ ~~~~~~~~~~~~~~~~~~~~~~~~~ a~~~ hate when my boyfriend hac
+
+Diversity: 1.2
+Generated Text: my Ihcime nes waed ouplirsyy I jo clkank thang't my boyfriend boofkeÄD1ôt up me gec
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i haet when my boyfriend is the so me and when I want to hat out the so so my boyf
+
+Diversity: 0.5
+Generated Text: i halt aike when my boyfriend got to pleas in to say and and and his to me and whe
+
+Diversity: 1.0
+Generated Text: i nmewas on the avre ad my boyfriend~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  wan
+
+Diversity: 1.2
+Generated Text: i Lanven s"ee &~~~~. I kake fhiem!t Like fhig up to um‚Älof with I blmy boyfriend 
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you BIhhate when my boyfriend to be to me and and my boyfriend and the so me and and
+
+Diversity: 0.5
+Generated Text: you ifI hate when my boyfriend s ente in me for and she sing the because of me and w
+
+Diversity: 1.0
+Generated Text: you 5GaFE)DTAudS when My boyfriend staves timetemins we sopwergiang, be soucli ad do
+
+Diversity: 1.2
+Generated Text: you jO#e'Ft 'b Yom I doE'~~~~~~~~~~~~~~~~~~~~~~  hate when my boyfriend rekes coul o
+
+---------- Epoch: 60 ---------- 
+
+Loss on first batch after epoch 60: 0.914967179298
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend and to say the be ause I like when my boyfriend is at and to me a to be
+
+Diversity: 0.5
+Generated Text: my oyfriend so be about me becare that I mon~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ I
+
+Diversity: 1.0
+Generated Text: my anssyent to gore by Teptio~~~~~ Jad hen pess on my boyfriend himesfely withh ich
+
+Diversity: 1.2
+Generated Text: my oyrriend I like batt craduns so rutly men if my boyfriend‚~~~~~~~~~~ ~~~~~~~~~~~
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i haet when my boyfriend is so me and when I want to hat him to hat he so the so m
+
+Diversity: 0.5
+Generated Text: i sames when my boyfriend is and to net reas of me and hom and to me a wat he so l
+
+Diversity: 1.0
+Generated Text: i jaikke loo sore takh, wors hoo futt him s hows wt my boyfriend to pnet feet. ~~~
+
+Diversity: 1.2
+Generated Text: i rrilkonsy my boyfriend's.t so nomd wirhhwhes I olt'm sI like when my doyfriend c
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you frriends hat I hate when my boyfriend says me to be for me when I'm me the can t
+
+Diversity: 0.5
+Generated Text: you %ubaute hate dhings to be my boyfriend and he calls outen to me the hame and he 
+
+Diversity: 1.0
+Generated Text: you l6z%t hen Yow to te peep shids when My boyfriend as aubore to meckeing leal doo~
+
+Diversity: 1.2
+Generated Text: you GF;a&~~~~~~  ant heswdont and his jangult te be axt boyfriend‚Äôs. ~~~~~~~~~~~~~
+
+---------- Epoch: 61 ---------- 
+
+Loss on first batch after epoch 61: 0.931732058525
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend so me and when I like me and because I like to say my boyfriend when I'
+
+Diversity: 0.5
+Generated Text: my oyfriend I don't want my boyfriend goed to seep in my becares I mend to be tall 
+
+Diversity: 1.0
+Generated Text: my oyyfriend walks abeut ub's too welking me in a uprode poreng my boyfriend's whin
+
+Diversity: 1.2
+Generated Text: my Boyfriend‚~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Wike ut that becatliyguzts he apfe
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i hate when my boyfriend is the because I like when my boyfriend says me and to so
+
+Diversity: 0.5
+Generated Text: i hime it my boyfriend but he say when I have the buck out furs to hin a liss me f
+
+Diversity: 1.0
+Generated Text: i ahike hot's up of my boyfriend ~~~~~~~~~~~~~~~~~~~~~~ I don't want my boyfriend 
+
+Diversity: 1.2
+Generated Text: i ToTks,) hame hisn'tedtsans bhtyuxuus wosd put'l jet sosA.~~~~~~~~~~~~ when hacew
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you 3OI like when my boyfriend says to me and when I want to hat and to not and he s
+
+Diversity: 0.5
+Generated Text: you Bor^hhhes ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ when my boyfriend go thes me a
+
+Diversity: 1.0
+Generated Text: you ~?)~~~~~~~  to slakl ut whend we foes salpy oy bayf fasn or to wate ? armeanfasl
+
+Diversity: 1.2
+Generated Text: you VWoKR0CLSTCE.~~~~~~~~~~~~~~~~~~ nete when my boyyriend when jeds my "o Hus.~~~~~
+
+---------- Epoch: 62 ---------- 
+
+Loss on first batch after epoch 62: 0.900800228119
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend and his for me and his friends and to be to me and him to me and the be
+
+Diversity: 0.5
+Generated Text: my oyfriend when I'm like ig me do the clome of my best I like my boyfriend because
+
+Diversity: 1.0
+Generated Text: my oyfriend bot wathiinllristhing I dicn sully. ~~ wond to kaps jord.~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: my e iake mays rike of oy &n‚Äôp8vere nedspvall tume'b me he to my boyfriend soobwi
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i hate when my boyfriend to be the like I like when my boyfriend so to me and his 
+
+Diversity: 0.5
+Generated Text: i hiel hate when my boyfriend like the aro the hon to me and got to me on my boyfr
+
+Diversity: 1.0
+Generated Text: i thhe tle hove me f at I slame to be atk my boyfriend'm gtet and call at s rexone
+
+Diversity: 1.2
+Generated Text: i orf‚lkate it'y lroug Nuru/s oving this fateot wmy, boyfriend‚Äs I like my botfre
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you OI like when my boyfriend is and his friends when I'm be aut and and his friends
+
+Diversity: 0.5
+Generated Text: you 6rhhe his furion like the cobout the the to be the ind my boyfriend when my boyf
+
+Diversity: 1.0
+Generated Text: you 6IHhlee when my boyfriend mose well he to lise ze dake~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: you dj-mm;p him saceuply ed nesely noterys. ~~~~~~~~~~~~~. hate to s hete when my bo
+
+---------- Epoch: 63 ---------- 
+
+Loss on first batch after epoch 63: 0.891070306301
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend and to so me and the sang the some and because to my boyfriend hat he s
+
+Diversity: 0.5
+Generated Text: my oyfriend scaped of me she ind she for me so he to has to him and that me all the
+
+Diversity: 1.0
+Generated Text: my ooffriend~~~~~~~~~~~~ be ~~~~~~ hate my boyfriend motes the thhe ut so ne‚Äôt li
+
+Diversity: 1.2
+Generated Text: my oyfDiind brithss~~~~h e relc aodeyhy i‚Äôaps whtbhe sales over loci., R0‚ÄT' ~~~
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i wheen my boyfriend is the because I like when my boyfriend says me and because I
+
+Diversity: 0.5
+Generated Text: i me sally me and my boyfriend so he like the so to got to me to go he the kon whe
+
+Diversity: 1.0
+Generated Text: i hiint hhin celm peaply I kate it when my boyfriend is about to be soudilg sot ou
+
+Diversity: 1.2
+Generated Text: i hoakk I waar my boyfriend to think croFite alkee ‚Äî jore1Äù ~t~~~~~~~ like Soup
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you @hhen I hate when my boyfriend got the because he and and when I want to have to
+
+Diversity: 0.5
+Generated Text: you 6rhieks someting I want my boyfriend to have to me. ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Text: you uiAjFhit when'is I like iis when my boyfriend ciys that.~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: you zdohTves regar furtall don't. Ora jufshve.~~~~~~~~~~~~~~  hith share. , netheulo
+
+---------- Epoch: 64 ---------- 
+
+Loss on first batch after epoch 64: 0.894600570202
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend when I'm mo to his for me and his fame to me and when I hate when my bo
+
+Diversity: 0.5
+Generated Text: my oyfriend as I want to have to nat to do sno when I like when my boyfriend say at
+
+Diversity: 1.0
+Generated Text: my oyfriend. ~~~~~~~~~~~~~~~~~~~~~~~ will bith what ceoplip to fuinhs he'dhis bam m
+
+Diversity: 1.2
+Generated Text: my oryfiend ‚41ÄK‚Äúmhis, NaA, ut  aqdo it and frlscarass be doe nat, &n ho emedlna
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i aike when my boyfriend is at and and his friends and I like when my boyfriend wa
+
+Diversity: 0.5
+Generated Text: i hite when my boyfriend doesn't tole me out the fof me and buy wath a paming the 
+
+Diversity: 1.0
+Generated Text: i wheew heo leople Too I mee the mish om futtong woy mend a lop-we ing cindouins a
+
+Diversity: 1.2
+Generated Text: i oent hat liake or teseng ant my boyfriend~~~~~~~~~~~~~~~~~~~~~~ hite when my sli
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you friind and at and to so me and him to me and him for me and for me and because t
+
+Diversity: 0.5
+Generated Text: you Mbyyfriend bast and when I wate he pay hos hat on my boyfriend with me when I ma
+
+Diversity: 1.0
+Generated Text: you †s'TRNBnotoung my boyfriend's 'f to me ut ctosx beat for the white to hrowe of s
+
+Diversity: 1.2
+Generated Text: you Ohhno'sn't wanot pimtel sifhangy.~~~~~~~~~~~~~~~ I like , upbeussunt my boyfrien
+
+---------- Epoch: 65 ---------- 
+
+Loss on first batch after epoch 65: 0.889572739601
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend and the some of me and because I like to pot the be and and to s and an
+
+Diversity: 0.5
+Generated Text: my oofriend when I'm me so boudd I hate when my boyfriend walks me and with me for 
+
+Diversity: 1.0
+Generated Text: my oofriend at I tpllim my boyfriend ur that ud opferstand ~ÄS I sot-oug My, boyfri
+
+Diversity: 1.2
+Generated Text: my oyfrlendd.~~~~~~~~~~~~~~~~~~~~~~~~~~~  ox't hate. Wemeroite,s my boyfriend calw 
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i hate when my boyfriend is for me and I like when my boyfriend says I like when I
+
+Diversity: 0.5
+Generated Text: i I haek to be co freally bether my boyfriend and my boyfriend when I'm me for ou 
+
+Diversity: 1.0
+Generated Text: i hittels oot, my not bay boyfriend pats whene't because me that me. ~~ want my bo
+
+Diversity: 1.2
+Generated Text: i lEekkeer my boyfriend hat thy xcap~~~~~~~~~~ I ate when My boyfriend is ateng It
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you frriends and I like to say my boyfriend when I have a be and and and because I l
+
+Diversity: 0.5
+Generated Text: you ùA80DNDD MI BOEREEN ODE I I I~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ I like when my boyf
+
+Diversity: 1.0
+Generated Text: you z6rRoiDnL ,naÄkale goor bi more~~~~~~ soke when's angey I want my boyfriend to b
+
+Diversity: 1.2
+Generated Text: you mHòAsLinss  Ixmang Ithite fotesas doen‚Äôre itei1ôs nome wicf he goos. gute absy
+
+---------- Epoch: 66 ---------- 
+
+Loss on first batch after epoch 66: 0.875066161156
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend when I'm me and because I like to say of my boyfriend and my boyfriend 
+
+Diversity: 0.5
+Generated Text: my oyfriend I hate when my boyfriend say to my back and he say to me~~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Text: my oofriend up hoabe alk foud. HeT's whed I'mssd shimrust he a thell me I don't wan
+
+Diversity: 1.2
+Generated Text: my boyfriend ored Val‚Ä:~~~~~~~~~~~~  heve when ceom my boyfriend, when eous Toto! 
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i aike when my boyfriend got to so me and his furing and his friends out me and he
+
+Diversity: 0.5
+Generated Text: i hathe when my boyfriend because me fur out I hate when my boyfriend deens to me 
+
+Diversity: 1.0
+Generated Text: i nheepsre of a he hawe he siekt. I'm weer Iven boind sut beotens me peilly beccar
+
+Diversity: 1.2
+Generated Text: i shrealn does'nt me im my MaMeisutwinfsmpertU fYig.. Ym I kibare hic secole fol m
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you OOO@6DE I want my boyfriend to be the like I hate when my boyfriend gets me and 
+
+Diversity: 0.5
+Generated Text: you 0hhee hore to sreep my boyfriend beakes the il the clooge when I'm mutt with me 
+
+Diversity: 1.0
+Generated Text: you O2:OGOÄSNith my boyfriend I wark Bothe ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ I like w
+
+Diversity: 1.2
+Generated Text: you djaùn3T.  Beipkoss huparly.~ I wonn nirn to focd mose! ~~~~~~~~~~~d i'd I cat to
+
+---------- Epoch: 67 ---------- 
+
+Loss on first batch after epoch 67: 0.861796677113
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend so be ause I like when my boyfriend says me and his for me and he say m
+
+Diversity: 0.5
+Generated Text: my oyfriend and he like me like I like that my boyfriend calls me in the showing of
+
+Diversity: 1.0
+Generated Text: my pwrutk when my boyfriend is and nobiun. ~~~~~~~~~~~~~~~~~~~~~~~~~  enwhen my boy
+
+Diversity: 1.2
+Generated Text: my ooprriend~~~~~~~~~~~~~~~~~~~~~~~~~ want my boyfriend in;Is a craaan sitbid you~~
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i hat he pall my boyfriend when I'm friends and his for me and his friends and to 
+
+Diversity: 0.5
+Generated Text: i whath my boyfriend like my forilg when I'm stee him for no intthat when I can ta
+
+Diversity: 1.0
+Generated Text: i Lhelkken when my boyfriend ge ssen on the becluse dhep  ass buikl s wreak ci'l m
+
+Diversity: 1.2
+Generated Text: i helkele ie ere CodS fyad so be then torecireg my dry 11leas ufviry whind him in 
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you O(ORREDDSD WI I want my boyfriend to be to have him friends and he sees me and h
+
+Diversity: 0.5
+Generated Text: you B0EURTDEA I I want my boyfriend to be to gest and don't then him for me I hate w
+
+Diversity: 1.0
+Generated Text: you !GQMOx"Jaat. Trurtielz when my boyfriend the buspias in pulf. ~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: you EQA5ONLE'Y My BUYYEECEEI", WTeT MY OOEEFEE FqTFAIE& D!~  OITAo ADEI ANE AON MI~ 
+
+---------- Epoch: 68 ---------- 
+
+Loss on first batch after epoch 68: 0.872209608555
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend and to me a be auke I like to seep my boyfriend when I'm me and the be 
+
+Diversity: 0.5
+Generated Text: my oyfriend be tall to me I like when my boyfriend walks I to really never mone the
+
+Diversity: 1.0
+Generated Text: my oyfriend just for whenI it when my boyfriend to chors me for senpriing stunt oum
+
+Diversity: 1.2
+Generated Text: my xoffreend is dhat TuJhi) like for cloo a then the 1lites and when Imvare basloun
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i hat he sall my boyfriend and my boyfriend when I'm friends and his for me and hi
+
+Diversity: 0.5
+Generated Text: i I hate when my boyfriend to net a beurd at me and the some in my be friends for 
+
+Diversity: 1.0
+Generated Text: i lolks meeT semerlbans my boyfriend! "lovet cang of to wite I want fore to tagh h
+
+Diversity: 1.2
+Generated Text: i lhlta kat when my boyfriend is jedg tlalio sgore a look Molay c ehaor !~~ I want
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you =I hate when my boyfriend to be to his friends and his friends and my boyfriend 
+
+Diversity: 0.5
+Generated Text: you 7Yh8 Hake over me and his furs to my boyfriend and he seep the me. ~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Text: you ú†TENSYONSES! nHewe e'ver my boyfriend works  ofar undona atlom when my ons to l
+
+Diversity: 1.2
+Generated Text: you H?78EI hont that pitheus to my boyfriend leay tempf! ~~~~~~~~~~~~~~~ hate when m
+
+---------- Epoch: 69 ---------- 
+
+Loss on first batch after epoch 69: 0.855105400085
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend and to so the cand and to have a calle and and to say to me and be ause
+
+Diversity: 0.5
+Generated Text: my oyfriend to net and the ponporite of me a wather gome to be an onte to sing with
+
+Diversity: 1.0
+Generated Text: my woyfriend his rot~~~~~~~~~~~~~~~~~~~~~~~~~~~~ hat it when my boyfriend when I'm 
+
+Diversity: 1.2
+Generated Text: my byyufneed i am  ouf.. /hge'r Migfuk it bret rex.~~ I hoae when my boyfriend sals
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i hate when my boyfriend is and he say me and to say the beare to have he can to h
+
+Diversity: 0.5
+Generated Text: i halk keep my boyfriend and he say me and I not to my boyfriend foes and my boyfr
+
+Diversity: 1.0
+Generated Text: i ,o bat friends but like friend, ne‚Äô akven ' capret. ~~~~~~~~~~~~~~  ovle dre '
+
+Diversity: 1.2
+Generated Text: i ,no doken to my goon he alvays i prouYys han? that ponore utt a put~~!~ hate whe
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you 7OARNLNDDD I I want my boyfriend to be too hat him for and his for me and he say
+
+Diversity: 0.5
+Generated Text: you ùBH77?~~~~~~~~~~~~~~ hate when my boyfriend culls me in I want to have a doet li
+
+Diversity: 1.0
+Generated Text: you &,;K'.~~~~~~ hete when my boyfriend doesn't then I'mn‚Äôt mee manot,, chat ut an
+
+Diversity: 1.2
+Generated Text: you ¶MyBMpxfeeanY Ware~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ wlite of it wenupem hoims the 
+
+---------- Epoch: 70 ---------- 
+
+Loss on first batch after epoch 70: 0.856776535511
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend but and I like when my boyfriend is and he say the sher for me in the t
+
+Diversity: 0.5
+Generated Text: my oyfriend on my boyfriend is he juyt when I want to ham a to him for be and pant 
+
+Diversity: 1.0
+Generated Text: my erxupes is I comure. ~~~~~~~~~~~~~~ hate when My boyfriend tuksn me ~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: my roomrend'î gterrs ofelqreatlbme; and Tipend stank abeI like when Mamoy. Fapkea w
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i hat he sall my boyfriend when I'm me to me~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 0.5
+Generated Text: i heate hate hate when my boyfriend is because I cous the be and and to see a to t
+
+Diversity: 1.0
+Generated Text: i heatky is up when my boyfriend hols when I'm clibe, I'm a weirs. Bout for the sh
+
+Diversity: 1.2
+Generated Text: i dom, touH atplives yyuun. ~~~ I hate when my boyfriend gets harpy outes~~~~~~~~~
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you ¶hhen he say me~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 0.5
+Generated Text: you ¶Mo bAyfriend, I hate when my boyfriend is are for me~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Text: you pôiôd's noed gry pillis~~~~~~~~~~~~~~ hate when my boyfriend dant moneon me goin
+
+Diversity: 1.2
+Generated Text: you ùhsant.  insu. hmy boyfriend, needsrichas cretisides F)Ä'st 3 sutari-. ~~~~~~~~~
+
+---------- Epoch: 71 ---------- 
+
+Loss on first batch after epoch 71: 0.848635852337
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend to seep the me and some his friends and his to sleep me and the can to 
+
+Diversity: 0.5
+Generated Text: my oyfriend but on my because I want to peat and to do smet my boyfriend and well a
+
+Diversity: 1.0
+Generated Text: my Dhciinse what my boyfriend j abkust me utse whike my cun aba fore and ge soonuti
+
+Diversity: 1.2
+Generated Text: my xyffiend is the''w his  ong wreling wat oir fankao . HA AD2L"e~~~~~~~~~~~~~~~ I 
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i hate hee in to say the to see the to so the talk and his to se the can to my boy
+
+Diversity: 0.5
+Generated Text: i oonf't wate him to be and at and im when I have uppere with my boyfriend is leap
+
+Diversity: 1.0
+Generated Text: i iake that my boyfriend‚Äôt be horsenatiy port my best the't. hate to so hrowe wh
+
+Diversity: 1.2
+Generated Text: i  heams. ~ "hat to no ora.b; trele me whilihg riveing my boyfriend I like when my
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you frriends as I like when my boyfriend is and and my boyfriend to seep the me and 
+
+Diversity: 0.5
+Generated Text: you ¶heel wears at him to be the can to with him furing so my boyfriend his friends 
+
+Diversity: 1.0
+Generated Text: you c'u A:~~ ~~~~ oy't when my boyfriend wass'c'p ming muoge I nave he mestto watt h
+
+Diversity: 1.2
+Generated Text: you 5TV?2k Bedukpe~~~~~~~~~~~~~~~~~~~  ite when my boyfriend buting me bum.g~~~~~~~~
+
+---------- Epoch: 72 ---------- 
+
+Loss on first batch after epoch 72: 0.845707774162
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend and my boyfriend and the some the cond to have a be ause I like when my
+
+Diversity: 0.5
+Generated Text: my boyfriend wather the for me.~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Text: my aeckapes my boyfriend about his. ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ I want my boy
+
+Diversity: 1.2
+Generated Text: my oyfriend fafing fromongayhe~~~~~~~~~~~~~ hate when my boyfriend Pises'm eindhore
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i hate when my boyfriend is and his friends and his for out his friends and his ha
+
+Diversity: 0.5
+Generated Text: i aate when my boyfriend bust me and the be as and and and texs of my bust but be 
+
+Diversity: 1.0
+Generated Text: i drillages siilly the't my boyfriend got when I'm seen peole some when I wute his
+
+Diversity: 1.2
+Generated Text: i I‚I waet My nite his a pellion ibnbive mo~~~~~~~~~~~ hice when my boyfriend is o
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you †úOITAÄN MY BOYYEEE WOIE WIT MORI MORE MORR! MOYR! I I I wann my boyfriend to be
+
+Diversity: 0.5
+Generated Text: you VNAÄKAE'D when my boyfriend is the chouse I like when my boyfriend walks to mo i
+
+Diversity: 1.0
+Generated Text: you RqO=e)Elll so sYoblo hut~~~~~~~~~~~~~~ out my boyfriend to so so me back and il 
+
+Diversity: 1.2
+Generated Text: you U%; o rUnjlie ytall ny to  ook when he kass novenable To I don't ne't pdors mest
+
+---------- Epoch: 73 ---------- 
+
+Loss on first batch after epoch 73: 0.841241061687
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend hate when my boyfriend is and his friends and he seep me and his friend
+
+Diversity: 0.5
+Generated Text: my oyfriend and then he seep to me~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  ha
+
+Diversity: 1.0
+Generated Text: my offrreed Lromes!~~~~~~~~~~~~~~~~~~ I dut wate snewing ant the ko pome my boyfrie
+
+Diversity: 1.2
+Generated Text: my oyfriend go vesnos goodfind he w e tuds about suve secPEiung about Fuîe~~~ hate 
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i hat he kat him to be the con the can to my boyfriend and he call me so me~~~~~~~
+
+Diversity: 0.5
+Generated Text: i hathe when my boyfriend to snow and cins when I make me and got his for and to s
+
+Diversity: 1.0
+Generated Text: i holhe kartang dou " have his to my boyfriend, when my boyfriend text the siing a
+
+Diversity: 1.2
+Generated Text: i radlose soy &~~~~~~~~~~~~~~~~~~~~~~~~ hate mon, gpetmogh time in, sfeetings.~~~~
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you Bbyyfriend so my boyfriend when I'm mon out me in the some his and his for and h
+
+Diversity: 0.5
+Generated Text: you JYAA%D NEE I I want my boyfriend to be too him and his friends with my because I
+
+Diversity: 1.0
+Generated Text: you C5U8YP! SLIAT TIYSMM~~~~~~~~~~~~~~ like het my boyfriend doesn't cravlre me ad w
+
+Diversity: 1.2
+Generated Text: you v3ss me and to my beyfriendo sheupe me and sottiruge ponfe ibay ever it mo nets;
+
+---------- Epoch: 74 ---------- 
+
+Loss on first batch after epoch 74: 0.826748847961
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend and the so me and the showe hith when I want to have a be about the bec
+
+Diversity: 0.5
+Generated Text: my oyfriend hates when I geed friend about my being that and he sones all the cand 
+
+Diversity: 1.0
+Generated Text: my oyfriend the Plo:ky SoDD‚Äù.. Le‚Äd my boyfriend~~. hate when he as o my boyfrie
+
+Diversity: 1.2
+Generated Text: my otfikends hurpeb8 Dodgel~~~~~~~~~~~~~~~~~~~  lekk Wrrea~~~~~~~~~~~~~~~~~~~~~~~~~
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i hathe when my boyfriend is the some in my boyfriend and I like to me and the som
+
+Diversity: 0.5
+Generated Text: i amod be alle me and I want to have to my boyfriend when I'm steet of me and buss
+
+Diversity: 1.0
+Generated Text: i hat, want my boyfriend to be the hited of me pbocoy orfhing for and jseg im paec
+
+Diversity: 1.2
+Generated Text: i tam. Fole ate "rotY eI need to mektis ye "ox leake?† ~~~ Wectm Nm sr!e gaqRI liv
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you #ITTTET MOY BOYYREEEE EEE WUIE WIT WOTT My BOY†††~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 0.5
+Generated Text: you nQe keppally net his to my boyfriend when I say I'm not of my boyf ried ‚Äúreads
+
+Diversity: 1.0
+Generated Text: you 8îEhaTe heg athen say frrtmanly.~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  in to rell
+
+Diversity: 1.2
+Generated Text: you ;NAùE~~~~~~~ I hate whentmy noo itwher ut in the moby foisang "re:~Kilad ralxich
+
+---------- Epoch: 75 ---------- 
+
+Loss on first batch after epoch 75: 0.830014228821
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend when I'm me and and to she to hat to have he ing to hat to say the can 
+
+Diversity: 0.5
+Generated Text: my oyfriend have a love and doesn't tale the read about the becluse I hate when my 
+
+Diversity: 1.0
+Generated Text: my ctUhien ow the rraes on to his astent on my Nouad like i when my boyfriend gisse
+
+Diversity: 1.2
+Generated Text: my oyfriend a~~~~~~~~~~~~~~~~~~i pull then My boyfriend (peisl'n heircwhule~~~~~~~~
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i hath my boyfriend to seep it me and with me a out the be and to have to he seep 
+
+Diversity: 0.5
+Generated Text: i hheak he is the his for my boyfriend hate when I'm and and to say and because th
+
+Diversity: 1.0
+Generated Text: i qaosnt with my boyfriend so sith,. Betnerthingsti hate hame I jest even when he 
+
+Diversity: 1.2
+Generated Text: i mb /DcLkake pbort. ~~~~~~~ doe't want my bayfreend to e~ #leyed lake to wand a~Ä
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you Brriskes his has and I like that my boyfriend walks a calle and when I want to h
+
+Diversity: 0.5
+Generated Text: you %Qhen he sals that my boyfriend and to go to sat me in my boyfriend and cutes hi
+
+Diversity: 1.0
+Generated Text: you q7r†a.~~~~~~~~~~~ want my boyfriend to sall me when I'm funt talk inmy phaing wh
+
+Diversity: 1.2
+Generated Text: you U&AOGARDESS MUTI waen my boyfriend to beme hastries to with me. ~~~~~~~~~~~~~~~~
+
+---------- Epoch: 76 ---------- 
+
+Loss on first batch after epoch 76: 0.815689206123
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend and his friends and his for me and be and the some the so the beally li
+
+Diversity: 0.5
+Generated Text: my oyfriend friend fuch me when I make a mot him the rollill get the to he kand on 
+
+Diversity: 1.0
+Generated Text: my oyfriend busthan~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ whan my boyrriend to call me t
+
+Diversity: 1.2
+Generated Text: my 5APLYke.!~~~~~~~~~~ I want my boyfriend~s ‚tporvinh. ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i hate when my boyfriend to snow the because I like when my boyfriend is the good 
+
+Diversity: 0.5
+Generated Text: i hant he kind my boyfriend clopes me and my becaike to me~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Text: i monkete popercthe my boyfriend locs me knawinh~~~~~~~~~~~~~~~ ~~ hate it when my
+
+Diversity: 1.2
+Generated Text: i whinh my boyfriend andet I in like to call him and celetary pocwi go my bitth at
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you ÄITTT MO MY Boyfriend & Be to hime of my boyfriend and he so me and his friends 
+
+Diversity: 0.5
+Generated Text: you 7¶hlay he all a 1peeÄnt to pick that me on he like I want my boyfriend to pot me
+
+Diversity: 1.0
+Generated Text: you Mmyffeend.! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ hate how boy iik claseg.~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: you ^5clkAp'%e ~~~~~~~~~~~~~~~  over my nop‚tacg colususe, pe Yhn inverlestiong list
+
+---------- Epoch: 77 ---------- 
+
+Loss on first batch after epoch 77: 0.813451051712
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend and to me a but and have him to have hor so I hate when my boyfriend ca
+
+Diversity: 0.5
+Generated Text: my oofriend that I don't like to pley me someting my boyfriend to say bester me. ~~
+
+Diversity: 1.0
+Generated Text: my oyfriend and spupfels sake~~~~~~~~~~~~~~~ want my boyfriend to sacfons me say so
+
+Diversity: 1.2
+Generated Text: my moyfriend to hat Exhapem stecicer/gpy bohn ermid and too howks him buncos. BIsle
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i hate when my boyfriend is the cand and I hate when my boyfriend is to have a pou
+
+Diversity: 0.5
+Generated Text: i aike when my boyfriend ploys me because I'm and out und a work and to hive and t
+
+Diversity: 1.0
+Generated Text: i wheet he as to duy wath my boyfriend I witt the share on ond atpeing whan I‚Äôm 
+
+Diversity: 1.2
+Generated Text: i hholss welk me asly bury, seppeenÄghris no conpurume.~~~~~~~~~ hate when my boyf
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you 7hhen I want my boyfriend to be to hing and his for and the same of my bory frie
+
+Diversity: 0.5
+Generated Text: you ByB¶¶^hinns I like when my boyfriend says me and when I'm mandperpont shot me. ~
+
+Diversity: 1.0
+Generated Text: you 7ohkk "8A%ASH?!~~~~~~~  hate hake heighes staek when my boyfriend to be ficlore 
+
+Diversity: 1.2
+Generated Text: you bz"îIS llV Yi0k r /oúle~~~~~~~~~ o che pull tlo mfneate~~~~~~~~~~~~ I tant when 
+
+---------- Epoch: 78 ---------- 
+
+Loss on first batch after epoch 78: 0.814334154129
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend to so the know the can the can out and some the to have a say to he lik
+
+Diversity: 0.5
+Generated Text: my oyfriend faring and get his friends with my but friend when I want to have a be 
+
+Diversity: 1.0
+Generated Text: my oyfriend when I gexp to have in ~~~~~~~~~~~~~~~~~~~~ hate the fsakling my boyfri
+
+Diversity: 1.2
+Generated Text: my bwamt a meply the pole out my boyfriend is it get so emunilacly,~~~~~~~~~~~~~~~~
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i hat to sall my boyfriend and his for me and hat have a say to him for out him fo
+
+Diversity: 0.5
+Generated Text: i mo hat look about my boyfriend and wath me and to but and and to have a pontor. 
+
+Diversity: 1.0
+Generated Text: i Fobfreand mo.~~~~~~~~~~~~~~~~~~~~~ will cakpep a hith with wlet a apout the be t
+
+Diversity: 1.2
+Generated Text: i whhlllet Welly I hane heveieng nred oboo eitt'l cab my boyfriend i goeet net awl
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you bryfriend and he sees to me and when I want to have a be and and sote to have a 
+
+Diversity: 0.5
+Generated Text: you vathe him to be him howes. ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Text: you c†:rbletA hica loo ut I chat my boyfriend to be murecino~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: you QY nxtallig that he aaswer tcouves my aclike Wichhausg he im nove nume. ~~~~ hit
+
+---------- Epoch: 79 ---------- 
+
+Loss on first batch after epoch 79: 0.801721870899
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend hate when my boyfriend is and and I have to have his friends and to see
+
+Diversity: 0.5
+Generated Text: my oyfriend have he seep of sexe of me and sexpet of me at the sand his have to got
+
+Diversity: 1.0
+Generated Text: my oyfriend sley on stoning of up the monky bork friend that wI a like to sill my b
+
+Diversity: 1.2
+Generated Text: my hry "onkhe ‚Äúwarther to kuughalim sfove mond neve s anoumigigo tht it endts whe
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i hate when my boyfriend calls me friends and his fare and his friends and his fri
+
+Diversity: 0.5
+Generated Text: i lookke then my boyfriend piss me to have he cants at hit a lote when I'm me to b
+
+Diversity: 1.0
+Generated Text: i hive role on that I got to make svertneris to my boyfriend hame co more and able
+
+Diversity: 1.2
+Generated Text: i  FAvlliky hef'snd live I ‚xome comellare. .~~~~~~~~~~~~~~~~~~~~~~~~~~~ I like wi
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you BB%y%%nn I hate when my boyfriend is and the sand on my because I like when my b
+
+Diversity: 0.5
+Generated Text: you ~~~~~~~~~~~~~~~  hate when my boyfriend wakes a pay I want to sake my boyfriend 
+
+Diversity: 1.0
+Generated Text: you UHPKETSNS N-CDYA! S WTON~~~~~~~~~~~~~~~~~~~~~~~~~ when my boyfriend wroks a beca
+
+Diversity: 1.2
+Generated Text: you I~~~~~~~~ ~~~~~~~~~~ ile when my boyfriend satts snofingimibep mugid.~~~~~~~~~~~
+
+---------- Epoch: 80 ---------- 
+
+Loss on first batch after epoch 80: 0.799331367016
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend have he seep of his friends and his friends and I like when my boyfrien
+
+Diversity: 0.5
+Generated Text: my oyfriend and doenn't seppore me I don't want my boyfriend to have a doed‚Äôt pon
+
+Diversity: 1.0
+Generated Text: my oyfriend and my boyfriend with to ded me. ~~~~~~~~~~~~~~~~~~~~~~~ I hate when my
+
+Diversity: 1.2
+Generated Text: my Awî x îqreildy Ts) G0Cdleet ti; for uvy in my boyfriend, ur the findsoriog lize 
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i hookk ant my boyfriend and he seep of me and got to have a somet and the be ause
+
+Diversity: 0.5
+Generated Text: i hit hon's hat clomes my boyfriend and people like me for a love for me anl a a b
+
+Diversity: 1.0
+Generated Text: i natt heak him to be shoutekns with refout wo cod't't need begaipe bore~~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: i keccures hutpis wetasn, my boyfriend hates. ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ I don
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you (ITTTE MOYE BOYYEEE! WOEE MORPINET HUCEE MORRHSE WUIR~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 0.5
+Generated Text: you (EWASSE! HETE MORRHEE HMCRRRRRIE ATSS WOEE MO~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Text: you A5FNANG''!! Mons to be deale a metiine. ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: you Qf5OAE?~~~~~~~~~~~~~~~ hate when my boyfriend ismarilby~ ~~~~~~~~~~~~~~~~~~~~~~~
+
+---------- Epoch: 81 ---------- 
+
+Loss on first batch after epoch 81: 0.78703057766
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend like I'm friends and I like when my boyfriend says me and wand to say I
+
+Diversity: 0.5
+Generated Text: my oyfriend or the the time of his friends when he's rinder to me ~~~~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Text: my offriend onpereap? Hontats me atly bot hom.~~~~~~~~~~~~~~~~~ what hat inktare it
+
+Diversity: 1.2
+Generated Text: my offriend a cound abresly dhits! I'm sxeilly. bteal he posk you ethen the. Shate 
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i hat he sall my boyfriend and his friends and he sees of me and because I like to
+
+Diversity: 0.5
+Generated Text: i oonk't when my boyfriend is a atterts when I don't make me about when he doess t
+
+Diversity: 1.0
+Generated Text: i lwoet  ezille h o SN..~~~~~~~~~~~~~~~~~~~~~~~~~~ hleE when my boyfriend is bette
+
+Diversity: 1.2
+Generated Text: i Wikhh my boyfriend orunnt ham bo thever atsy , ourying cefiilly buciu"s. Lou I w
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you BB%ùhhke I'm me a boyfriend to be the for me and when I want to have a be about 
+
+Diversity: 0.5
+Generated Text: you Bo¶%%hnd I'm money to go him when I want to hate up and go to cale the mose to m
+
+Diversity: 1.0
+Generated Text: you Phike heal he Avays on to my boyfriend friends satelciots. whurhI don't neel sxe
+
+Diversity: 1.2
+Generated Text: you #TGPjJoYReH!~~ hI I hale thy boyfriend jelat get sheiddeccaor ~Ä what he beharer
+
+---------- Epoch: 82 ---------- 
+
+Loss on first batch after epoch 82: 0.793174684048
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend and his to have a can and and to say the ponder and he see that I like 
+
+Diversity: 0.5
+Generated Text: my oyfriend when I am for me.~~~~~~~~~~~~~~~~~~~~~~~~~~~~ hate when my boyfriend go
+
+Diversity: 1.0
+Generated Text: my oyfriend sheows sozes it. ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ I want my boyfriend 
+
+Diversity: 1.2
+Generated Text: my oofrsind 'g to doy to ny Ttodanore cann mex to got i  humked~~~~~~~~~~ I sove hi
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i hat he kind to seep my boyfriend and his friends and his have a tore of him frie
+
+Diversity: 0.5
+Generated Text: i hate when he says my boyfriend when I'm from and can our I hate when my boyfrien
+
+Diversity: 1.0
+Generated Text: i befack hit doing clifk I like my boyfriend; poot theuthon't like he's if crent c
+
+Diversity: 1.2
+Generated Text: i weell me stuciyitameltibhinshasteltid to and as in't takh ute reFas I want my bo
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you 0hhee when I'm mant the because and he sees my boyfriend so the chomes of me and
+
+Diversity: 0.5
+Generated Text: you 0?D'SS when my boyfriend is look freak me in the when I want to have his to say 
+
+Diversity: 1.0
+Generated Text: you Om&Y~~~~~~~~~~~~~~~~ hate when my boyfriend lakes to me if when I'm atcaregang t
+
+Diversity: 1.2
+Generated Text: you fJ;5a%d Ma†~HI want my boyfriend to word Kouke~~~~~~~~~~~~~~~~~~~~~ hle hhin whe
+
+---------- Epoch: 83 ---------- 
+
+Loss on first batch after epoch 83: 0.777017831802
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend and he say the because I like to be the fond the kind of my boyfriend a
+
+Diversity: 0.5
+Generated Text: my oyfriend so my boyfriend when he's hat to me~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ I wan
+
+Diversity: 1.0
+Generated Text: my boyfriend prays fine faring. ~~~~~~~~~~~~~~~~~~~~~~~ bate when my boyfriend dees
+
+Diversity: 1.2
+Generated Text: my ooff~End sboy edxes~~~~~~~~~~~~~~~ will kee my boyfriend (peppne when it cell "f
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i hate when my boyfriend is my bect friend and people wath me and be to his friend
+
+Diversity: 0.5
+Generated Text: i houke when my boyfriend is you ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Text: i beiang as my boyfriend have when he phars f on he otrer when I cee the beclake t
+
+Diversity: 1.2
+Generated Text: i crreakle sxomto1d si~b~~~~~~~~~~~~~~~~~~~~~~ I like to be Dome. nees atchechedse
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you B%¶hind I hate when my boyfriend got to seep on me and when I want to have a poo
+
+Diversity: 0.5
+Generated Text: you ROôFRD4DI Wite hate when my boyfriend is he a reed of my bocf for abdoy and get 
+
+Diversity: 1.0
+Generated Text: you 4hrealle mensarions thras he puase my boyfriend hus foe asver me a outhengly fre
+
+Diversity: 1.2
+Generated Text: you RDPLAKNSE JTCA NBYNE On IS BI ERTETTBS AF?~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ want 
+
+---------- Epoch: 84 ---------- 
+
+Loss on first batch after epoch 84: 0.770052015781
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend and to seep when I'm and and I hate when my boyfriend is and he as a be
+
+Diversity: 0.5
+Generated Text: my oyfriend I hate when my boyfriend is for my noter that I like when my boyfriend 
+
+Diversity: 1.0
+Generated Text: my oyfriend and bookdd‚ÄÄôt with him fure love ing to get the to plong me inle when
+
+Diversity: 1.2
+Generated Text: my afeeorrn Ftayy eatt when I'm sef my boyfriend u when he I whon 't ite when iminù
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i hate when my boyfriend is at me and and I like when my boyfriend siss me and he 
+
+Diversity: 0.5
+Generated Text: i heell eave my boyfriend the sleep on the med if I like when my boyfriend gooss s
+
+Diversity: 1.0
+Generated Text: i halk my boyfriend and hip s werizg tha hood ant ~~~~~~~~~~~~~~~  hat he when my 
+
+Diversity: 1.2
+Generated Text: i :leT no oy picker at bictel like if I emteniing and jigns it, put'l~~~~~~~ I lik
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you thhe has a payting to siy and my boyfriend is at me and when I'm to him for on m
+
+Diversity: 0.5
+Generated Text: you ROQKIEDNS When my boyfriend is curpling me and sexped the because I like when my
+
+Diversity: 1.0
+Generated Text: you ò!TEA?O Moe't becautee when I‚ÄÄôm plapse ufdahts sigeteivesil. My boyfriend jua
+
+Diversity: 1.2
+Generated Text: you 3"O4HKeU'/ hate itetWhen Iomome from his lize yof boy! 'f's epor joffur streel h
+
+---------- Epoch: 85 ---------- 
+
+Loss on first batch after epoch 85: 0.768232584
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend have he seep of me and and to so me and sexpe so good I hate when my bo
+
+Diversity: 0.5
+Generated Text: my oyfriend to me a parpeed just me so how ind and when he's hat A I don't want my 
+
+Diversity: 1.0
+Generated Text: my oyfriend. ~~~~~~~~~~~~~~~~~~~~ jens teir my boyfriend me that behing to me~~~~~~
+
+Diversity: 1.2
+Generated Text: my ofyfriend has's stcirts iadte shiddi so a he trest trpoca-in in With I gate ins 
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i hate when my boyfriend is and have for me and because I like to be too hore his 
+
+Diversity: 0.5
+Generated Text: i halk asp about my boyfriend on he ase a claek betare him but and I like to say a
+
+Diversity: 1.0
+Generated Text: i TAu0Y Bugoo I hate when my boyfriend playss~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: i huttre. ~~~~~~~~~~~~~~~~~~~~~~~~~~~~ I lote to snow how Sake in the jack when I'
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you 7O:@~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 0.5
+Generated Text: you b%ith he avere my boyfriend with my becire I hate when my boyfriend is when I li
+
+Diversity: 1.0
+Generated Text: you ùLYLEG;SDNHA SWEMN MyMR.K PIA ACAH BIC WIEnH MIY HIPENSA WAEN TOY~~~~~~~~~ I won
+
+Diversity: 1.2
+Generated Text: you †(FNFBINDNT Mh A"YM&~~~~~~~~~~~~~~~~~ not'D~~~~~~~~~~ hate when my boyfriend wak
+
+---------- Epoch: 86 ---------- 
+
+Loss on first batch after epoch 86: 0.759576261044
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend the because I hate when I'm my boyfriend and he seep me and the know th
+
+Diversity: 0.5
+Generated Text: my oyfriend his friends read for me~~~~~~~~~~~~~~~~~~~~ I want my boyfriend to take
+
+Diversity: 1.0
+Generated Text: my boyfriend a anosy pitso me, but mesisn't~~~ hate thing so ou~~~~~~~~~~~~~ a when
+
+Diversity: 1.2
+Generated Text: my oyfriend, to then he stolcw hitethius~~~~~~~~~ o like when my boyfriend doesn't 
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i hathe when my boyfriend wathen me and to con the like me and he seep the some th
+
+Diversity: 0.5
+Generated Text: i aill be then and my boyfriend and hess has money I like it when I want to have a
+
+Diversity: 1.0
+Generated Text: i avite I hate when my boyfriend reads up; at becane even hore firly and tooll lav
+
+Diversity: 1.2
+Generated Text: i ahis  owbirk ccalle~~~~~~~~~~~~~~~~~~~~~~~ hate when my boyfriend wadthen to hiy
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you B@¶hinke me friends and his friends and his have a say to me~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 0.5
+Generated Text: you BBB?¬¬!!~~~~~~~~~~~~~~~~~~~ I want my boyfriend to call me and I like is when my
+
+Diversity: 1.0
+Generated Text: you &O0'ET! I'Etwhen my boyfriend waster me to with me~ Dove friends atter when I'm 
+
+Diversity: 1.2
+Generated Text: you FBk=A;KN! !D'ôfs watk sroo out my, boyfriend and poodle nusk  up I hate whan he 
+
+---------- Epoch: 87 ---------- 
+
+Loss on first batch after epoch 87: 0.764540553093
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend and he gees to me and when I want to be to him and he can the say on my
+
+Diversity: 0.5
+Generated Text: my oyfriend a chert and to be too when I hate when my boyfriend goes to sleep on me
+
+Diversity: 1.0
+Generated Text: my o%friend~~~~~~~~~~~~~~~~~~~~~ don't make my boyfriend to send to my is my bist i
+
+Diversity: 1.2
+Generated Text: my oyfriend don't comd me is my dom fnied morve the pheary often, when my boyfriend
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i hate when my boyfriend is because I like to me a boyfriend so he can to he kand 
+
+Diversity: 0.5
+Generated Text: i hat to have anderpare and I hate when my boyfriend to snow that I like to be to 
+
+Diversity: 1.0
+Generated Text: i qreigk. ~~~~~~~~~~~~~~~~~~~~~~ I want my boyfriend to get to me and spevering a 
+
+Diversity: 1.2
+Generated Text: i 3tantay yast mex he kole Tan'y but  oQ2 I den't wnyt ourund freasg to uble when 
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you @hhen I hate when my boyfriend is the someting me and when I have a pore the whe
+
+Diversity: 0.5
+Generated Text: you 0hhen he say goet and a fom to be friends for my boyfriend on my friends as him 
+
+Diversity: 1.0
+Generated Text: you Q2a:~~~~~~~~~~~~~~~ ~~~~~  on't not my boyfriend wo be owher trying abpation & I
+
+Diversity: 1.2
+Generated Text: you Uô0C:E sAep do‚Äô?~~~~~~~thate when my boyfriend says~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------- Epoch: 88 ---------- 
+
+Loss on first batch after epoch 88: 0.752455472946
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend and he seep me and the snow of me a to show of his friends when I want 
+
+Diversity: 0.5
+Generated Text: my oyfriend when I'm mad and plote on time with me~~~~~~~~~~~~~~~~~~~~~~~~~~~~ I ha
+
+Diversity: 1.0
+Generated Text: my oyfriend hates that tex of tum. ~~~~~~~~~~~~~~~~~~~ like when besthes agles thhe
+
+Diversity: 1.2
+Generated Text: my oyfriend ir svinict. I Sex thm kad I am adfed wats haw pay'e s at, hote oo verep
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i hat he know of his friends and his friends to sthen he say to me~~~~~~~~~~~~~~~~
+
+Diversity: 0.5
+Generated Text: i oodk's when my boyfriend is feel like if when he's snowion scaping , and to me~~
+
+Diversity: 1.0
+Generated Text: i qoe stapke Io geed frored of his his suyble brits ~~~~~~~~~~~~~ I like when my b
+
+Diversity: 1.2
+Generated Text: i Oakkanihgtperdfing,. He'p my boyfriend puptors when ticus out, dhan‚~~~~~~~~~~~~
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you @hhee hate wath my boyfriend to be too his friends and his friends on he kiss me
+
+Diversity: 0.5
+Generated Text: you 3: want my boyfriend to be too but with me as cut he knowing the because he say 
+
+Diversity: 1.0
+Generated Text: you BrcA1ùG!! 't I hate when my boyfriend is sires kike I want atang to be up him. ~
+
+Diversity: 1.2
+Generated Text: you zRETOUEEEHSHDTY UMYRHT SÄCFUECgAYY E2OS dOIAn~~~ I ont hy bot~ when I mast to sv
+
+---------- Epoch: 89 ---------- 
+
+Loss on first batch after epoch 89: 0.750435292721
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend and he calls me and soteng of me and because I like when my boyfriend s
+
+Diversity: 0.5
+Generated Text: my oyfriend is chare on than I don't want my boyfriend to be comferton when he daes
+
+Diversity: 1.0
+Generated Text: my oyfriend if goet hetes than.~~~~~~~~~~~~~  wann my boyfriend to asperponpyenorge
+
+Diversity: 1.2
+Generated Text: my oyfriend sray i'n's shisonds. Lois then I pom borf a tre chopdinaghed call to do
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i hath my boyfriend and he say me and when he sees of me~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 0.5
+Generated Text: i ant talk a boyfriend to say on the kind of me~~~~~~~~~~~~~~~~~~~~~~ I hate when 
+
+Diversity: 1.0
+Generated Text: i about. ~~~~~~~~~~~~~~~~~~~~ hen my pact italy about my boyfriend~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: i moEde~~~~~~~ I don't want my boyfriend to net and take lake my to g o tex ne‚Äd 
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you OIKATE ATE MOR MYYBBORRRRendd MY BOITTAN I HAT MO~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 0.5
+Generated Text: you 1IFI want my boyfriend to sall me shets couse in my beand~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Text: you B;¶¬KEM4 on'd when reppsming thy say~~~~~~~~~ hate hate when my boyfriend asling
+
+Diversity: 1.2
+Generated Text: you ÄmM?C/jhes hwere it like the mowen my boyfriend~~~~~~~~~~~~~~~~~~~~~~t hate when
+
+---------- Epoch: 90 ---------- 
+
+Loss on first batch after epoch 90: 0.7377166152
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend have to get and and I like when my boyfriend is at and and I like when 
+
+Diversity: 0.5
+Generated Text: my offriend when I wake a he talk me and bett when I do out I hate when my boyfrien
+
+Diversity: 1.0
+Generated Text: my oyfriend oo worr a1úMe to gres friends if I like conwale his pupye conleog betad
+
+Diversity: 1.2
+Generated Text: my hoyyrriend when I need a pompy to muth in in exbet when I sime him~~~~~ ast hime
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i hath my boyfriend and his friends and his fuce of my brighd and I like to sleep 
+
+Diversity: 0.5
+Generated Text: i hant my boyfriend to say I don't want my boyfriend to be too and have the some b
+
+Diversity: 1.0
+Generated Text: i 2hatk my boyfriend, hatents because I like a~~~~~~~~~~~~~~~~~~~~~~~ I don't it m
+
+Diversity: 1.2
+Generated Text: i l bolckt athing o a kexpece becaase his jrofe~~~~~~~~~~~~~~~~ hate when my boyfr
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you B¶¶¶hires me faring and I like when my boyfriend want I have a pore of the be to
+
+Diversity: 0.5
+Generated Text: you ùeIxS want my boyfriend to look at me and the sing of me when I want to have a m
+
+Diversity: 1.0
+Generated Text: you 1P&ÄfF‚Ä@M Htoswiing my boyfriend ~~~~~~~~~~~~~~~~~~~~~~~~~~~ I hate when hin sp
+
+Diversity: 1.2
+Generated Text: you ¶JBb6idR,!H¬ù~~~~~~~~~~~~~~~~~ I like when my boyfriend be leys lile I can po To
+
+---------- Epoch: 91 ---------- 
+
+Loss on first batch after epoch 91: 0.737515568733
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend have a camed when I want to have a peeple and so my boyfriend is friend
+
+Diversity: 0.5
+Generated Text: my oyfriend just to real my couse in steet his friends and steet I like when my boy
+
+Diversity: 1.0
+Generated Text: my oyfriend # wware to sphop on Tiffon'y & Borithing; ~~~~~~~~~~~~~~~~~~~~~~ w negt
+
+Diversity: 1.2
+Generated Text: my hoyfriend that's justing of him 50~~~~~~~~~~~~~~~~~~~~~ I want my boyfriend to t
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i hate when my boyfriend calls me friends I like when my boyfriend is not and I li
+
+Diversity: 0.5
+Generated Text: i hat heek him for in and his saee it me all a look at with my boyfriend to be at 
+
+Diversity: 1.0
+Generated Text: i oonfok~~~~~~~~~~~ Hhee my boyfriend leaves "ouve~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: i meccaun lo set kork~~~~~~~~~~~~~~~~~~~~~~~~~ be ip kore my boyfriend when I'm te
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you @hhen I hate when my boyfriend is because I like to be and to seep me in my boyf
+
+Diversity: 0.5
+Generated Text: you 0LFENFIDSD HU EESH HIE PUFRRREE WOYR~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Text: you D5;KE,~~~~~~~~~~~~~  leAt be Enare Ewhane o't with my boyfriend so movet when I 
+
+Diversity: 1.2
+Generated Text: you 3jeomm ~~~~~~~~~~~~~~~~~~~~~~~~~ hate when peolin a spat sfyuply eat, his my boy
+
+---------- Epoch: 92 ---------- 
+
+Loss on first batch after epoch 92: 0.730710268021
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend is the cand and I like when my boyfriend is at and then and the can to 
+
+Diversity: 0.5
+Generated Text: my oyfriend and his hape that I don't want my boyfriend to tell me the say friends 
+
+Diversity: 1.0
+Generated Text: my oyfriend Tires. I want my boyfriend to be goo hald pemnen.. I when I to goy beha
+
+Diversity: 1.2
+Generated Text: my oyfriend‚Äôs caire muactwile theu os the isty he feel it k ow'nt my boyfriend to
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i hate when my boyfriend is and when I want to have a pay of the be to my boyfrien
+
+Diversity: 0.5
+Generated Text: i oonk‚Äôt watt my boyfriend to play on me him how on he seed in the be ause when 
+
+Diversity: 1.0
+Generated Text: i halt to be thariend s enpililly friends alls ceging to my boyfriend when he's fp
+
+Diversity: 1.2
+Generated Text: i &hn't wates my boyfriend to ime with (Snig¬"~~~s ale svhere with hepent and onto
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you MBBb†yf†!!~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 0.5
+Generated Text: you my boyfriend pleys Tn my boyfriend when he pless because he as headly take me a 
+
+Diversity: 1.0
+Generated Text: you **?L4f at my boyfriend to his enterroully look~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ I d
+
+Diversity: 1.2
+Generated Text: you W%-anYo I like I want my boyfriend to negt thingegea on the pomly cicl cI kite t
+
+---------- Epoch: 93 ---------- 
+
+Loss on first batch after epoch 93: 0.721989393234
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend and I like when my boyfriend is and to me and to seep of me and when I 
+
+Diversity: 0.5
+Generated Text: my oyfriend the sroped~~~~~~~~~~~~~~~~~~~~~~~~~~ I like my boyfriend when I do kint
+
+Diversity: 1.0
+Generated Text: my foyfriend aver cling so cucjuse in. ~~~~~~~~~ I hate it when my boyfriend looks 
+
+Diversity: 1.2
+Generated Text: my ofrriend singiry pAtsenT jut a ous ore qoeahe on, whe. ~~~~~~~~~~~~~~~~~~ hen my
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i hate when my boyfriend is and his friends on my boyfriend and he pless me and hi
+
+Diversity: 0.5
+Generated Text: i hate hate hate when my boyfriend be rees i then and he's have a gear and ont he 
+
+Diversity: 1.0
+Generated Text: i goyf love his him just~~~~~~~~ want him go to lisper thut me boyfriends ad siy. 
+
+Diversity: 1.2
+Generated Text: i me‚~~~~~~ hate when my boyfriend is naers to male about ano he wivh e freeed so 
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you ùOKIESS HONE MY BOYRRREEE COIR HITH ATE MORR~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 0.5
+Generated Text: you 7PPA'Ä:!~~~~~~~~~~ I like to sead my boyfriend when I'm for and ~~~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Text: you ¶%hen I'm when my boyfriend is need if plave aplet-his when se so I do not like 
+
+Diversity: 1.2
+Generated Text: you o:6(6@(";OòLE^òò¶^WFôôô^3~~k~~/ hate when my boyfriend look godd gate~~~~~~~~~~~
+
+---------- Epoch: 94 ---------- 
+
+Loss on first batch after epoch 94: 0.725338459015
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend hase he say to me~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 0.5
+Generated Text: my ackise me about my boyfriend just and doesn't say to me~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Text: my oyfriend his friends jecause he cole freek what I don't want my boyfriend to iag
+
+Diversity: 1.2
+Generated Text: my oyfriend faecd~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ~~~~~~~~~ hat hees wall anpther 
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i hate when my boyfriend is and his friends and his have a be about to have a beta
+
+Diversity: 0.5
+Generated Text: i hathe when my boyfriend calls me friends but I hate when my boyfriend goes to sl
+
+Diversity: 1.0
+Generated Text: i anvers a dontte thing our he is't when my boyfriend waves got doesn't over anote
+
+Diversity: 1.2
+Generated Text: i I lhale mlkssgocs my boyfriend pund so to saanoo" not is yo hip he wrehhe I like
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you b%y¶%% he's when I want to hat a be about to be the kind of my boyfriend and he'
+
+Diversity: 0.5
+Generated Text: you M= not to be friend and his for and get in the cand to be about things so him ha
+
+Diversity: 1.0
+Generated Text: you lwhen it'm anto I like ween im loose like musing bucd to knowisn his hoow atn my
+
+Diversity: 1.2
+Generated Text: you Lw5fhRe uptbegiunMs with I like to mike ciok his youra¬ù~~~~~~~~~~~~~~~~~~~~~~~~
+
+---------- Epoch: 95 ---------- 
+
+Loss on first batch after epoch 95: 0.708156406879
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend and then I like when my boyfriend calls me friends and I like to be too
+
+Diversity: 0.5
+Generated Text: my oyfriend when I'm atreep my bore for his friends and I like when my boyfriend sa
+
+Diversity: 1.0
+Generated Text: my offriend st om heulrime~~~~~~~~~~~~~~~~~~ .~~~~~~~~~~ hate when my boyfriend is 
+
+Diversity: 1.2
+Generated Text: my oyyfriend‚Äôd stalns bizheuy. I have lon‚.~~~~~~~~~ hate when I eno to piing up 
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i hate when my boyfriend is so the kind of my friends and his friends and I like w
+
+Diversity: 0.5
+Generated Text: i ithen when I'm pay from my boyfriend and I like when my boyfriend is something a
+
+Diversity: 1.0
+Generated Text: i the yo kill ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ yon't won my boyfriend to
+
+Diversity: 1.2
+Generated Text: i wreny at ever a woy 4nou~v) dutst jefiide had my boyfriend~~~~~~~~~~~~~~~~~~~~  
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you †ôTN'''t want my boyfriend to be too withouthing over the can out of the call a 
+
+Diversity: 0.5
+Generated Text: you KB%†hn I want my boyfriend to like me and deeclestevity couse then he doesn't ta
+
+Diversity: 1.0
+Generated Text: you ?PÄRFRRDFKNYBDww OYCH OTR BCCFCWRHDCEC! HDFO TAYE; BOAONNT%! KOO?y OÄôE Where it
+
+Diversity: 1.2
+Generated Text: you 30)T0~!e hate Merlited then òups I have my boyfriend, to kits nics in cenam tilk
+
+---------- Epoch: 96 ---------- 
+
+Loss on first batch after epoch 96: 0.708346009254
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend and he seep me and because I want to have a port to me and goot to say 
+
+Diversity: 0.5
+Generated Text: my oyfriend say I hate when I'm not over thing I hate when my boyfriend be abte the
+
+Diversity: 1.0
+Generated Text: my oyfriend~~~~~~~~~~~~~~~~~~~~  onnte crneting itc getings.~~~~~~~~~~~~~~~~  enht 
+
+Diversity: 1.2
+Generated Text: my oofriend anchry bent, 1ffirn‚Äî so when whe epeess up he ubcot on but on ov.  ho
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i hate hate hate when my boyfriend when he seep of me and I like when my boyfriend
+
+Diversity: 0.5
+Generated Text: i ant to want my boyfriend to have a tell his and cend the same on my fare and I l
+
+Diversity: 1.0
+Generated Text: i houks hom afd thead my to frat my cicl ike when it'm up up for  eeltmy, not shit
+
+Diversity: 1.2
+Generated Text: i asldoes why dole'nt stark~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ I want my boyfriend to i
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you @hhen I want my boyfriend to be too his him from because I hate when my boyfrien
+
+Diversity: 0.5
+Generated Text: you ;OKD:1ND want my boyfriend to be at like me a don't like him to have friends jec
+
+Diversity: 1.0
+Generated Text: you 0IÄTm at eFúiter my boyfriend~~~~~~~~~~~~~~~~~~~~~~~~ oy out to like at him fobf
+
+Diversity: 1.2
+Generated Text: you a%UR@?VS"-MutdyD foe Ak my boyfriend when I'm nb?ir frledes's~~~~~~~~~~~~~~~ hot
+
+---------- Epoch: 97 ---------- 
+
+Loss on first batch after epoch 97: 0.703204631805
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend and I like to show off the be to my boyfriend and I like when my boyfri
+
+Diversity: 0.5
+Generated Text: my oyfriend when he's all wike I want to co mo hat and and teke the beoure I like I
+
+Diversity: 1.0
+Generated Text: my oyfriend  uLpens cehile and on "Äging, mened afd  us ~~~ Bate I don't like feel 
+
+Diversity: 1.2
+Generated Text: my oyfriend. I~~~~~~~~~~~~~~~~~~~~~~~~ yonntell my boyfriend~~~~~~~~~~~~~~~~~~~~~~~
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i hate hate hate hate when my boyfriend is so the beally and I like to be the ind 
+
+Diversity: 0.5
+Generated Text: i hate hate want my boyfriend to svery mese like I'm and about it me~~~~~~~~~~~~~~
+
+Diversity: 1.0
+Generated Text: i qeoicfe ol, have Hecaoret cackionssung so his hates'os~~~~~~ I don't watt my boy
+
+Diversity: 1.2
+Generated Text: i helgs 4 me uy teke with my boyfriend ~~~~~~~~~~~~~~ don‚Äôt vale he sees is duan
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you B%¶¶hed I want my boyfriend to be a belause with me~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 0.5
+Generated Text: you KBUùithg I Him wall o then I am boyfreed to sints to shep fores of me a love for
+
+Diversity: 1.0
+Generated Text: you 07F%iqVuyqbe,ned-i‚ùF lu,it, I'm forolill ~~~~~~~~~~~~~~~~~~~~~ I note the inte 
+
+Diversity: 1.2
+Generated Text: you ?¶4úHOúfher!Sd need sichun. I saxpey cuplt my boyfriend & I kate~~~~~~~~~~~~~ ha
+
+---------- Epoch: 98 ---------- 
+
+Loss on first batch after epoch 98: 0.69367146492
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend bust be ause when I want to have a pood have and I like when my boyfrie
+
+Diversity: 0.5
+Generated Text: my oyfriend when I'm monoy ~~~~~~~~~~~~~~~~~~~~~~~~~~~ I hate when my boyfriend pea
+
+Diversity: 1.0
+Generated Text: my oyfriend when be I pmoke I'm hat he and cottlesting cil ny pumtorn.~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: my hoffreed weecds and watiy me ovry andoNS his fuss like so with a wast, no onn py
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i hate hate hate when my boyfriend is and when I want to have to have a people and
+
+Diversity: 0.5
+Generated Text: i that to have a candore out my boyfriend but I like when my boyfriend gets me and
+
+Diversity: 1.0
+Generated Text: i if keel facl My boyfriend but I son with my boyfriend just store ing thare femin
+
+Diversity: 1.2
+Generated Text: i lhole vatith ol‚Äwwenh ho hass cuttare of his nowe hacktto have so sesecf a kesp
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you B@¶¶hakes me on the beat and I like when my boyfriend says me and to see me and 
+
+Diversity: 0.5
+Generated Text: you B%Ähy's hat I like when my boyfriend calls me youn I hate when my boyfriend does
+
+Diversity: 1.0
+Generated Text: you 6B¶Q0k kied. I dom't want my boyfriend in I have bedifer attertieng  in to hear 
+
+Diversity: 1.2
+Generated Text: you 3S8KenIwlote the toling hit hat aparn, I want my boyfrienddhone tume inos back ,
+
+---------- Epoch: 99 ---------- 
+
+Loss on first batch after epoch 99: 0.693082809448
+
+----- Sentence seed: my  ----- 
+
+Diversity: 0.2
+Generated Text: my oyfriend when I want to have him to have a call a love to my boyfriend and he sa
+
+Diversity: 0.5
+Generated Text: my oyfriend and then he a stoted I like when my boyfriend is shepy hisse like my fr
+
+Diversity: 1.0
+Generated Text: my aykike in get me rade all like how goed when I 'm tay offee ~~~~~~~~~~~~~~~~~~~~
+
+Diversity: 1.2
+Generated Text: my îcboyfree dKhehls's NrV I hile doet tlest reowentty ith mokat~~~~~~~~~~~~~~~~~~~
+
+----- Sentence seed: i  ----- 
+
+Diversity: 0.2
+Generated Text: i hate when my boyfriend is and when I go to me and be and then and the pay on me,
+
+Diversity: 0.5
+Generated Text: i houke hat my boyfriend is neter don't be and wanto the hando at like to me a out
+
+Diversity: 1.0
+Generated Text: i I'm not regrys but woy ooktimt stintce lok for he kinds to then I as caticn with
+
+Diversity: 1.2
+Generated Text: i Inl like nekly pace wolchore whte his how afvey like my pexplesends some when my
+
+----- Sentence seed: you  ----- 
+
+Diversity: 0.2
+Generated Text: you 7O@F0NNM My BOyfriend "cam I hate when my boyfriend is and when I want to have a
+
+Diversity: 0.5
+Generated Text: you 7OòAADE TI HaME My Boyfriend To Be My I like when my boyfriend is but with me an
+
+Diversity: 1.0
+Generated Text: you 2"FFBUOIVESH OLE kI alN E at~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ hit my boyfriend 
+
+Diversity: 1.2
+Generated Text: you #PE5M2~U hhe polesngctatls fry oo ding me~~~~~~~~~~~~~~~~~~~ I hate when Snotel 
+
