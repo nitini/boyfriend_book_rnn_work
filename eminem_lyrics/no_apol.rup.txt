@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+        <meta http-equiv="charset" content="ISO-8859-1" />
+        <meta http-equiv="content-language" content="English" />
+        <meta http-equiv="vw96.object type" content="Document" />
+        <meta name="resource-type" content="document" />
+        <meta name="distribution" content="Global" />
+        <meta name="rating" content="General" />
+        <meta name="robots" content="all" />
+        <meta name="revist-after" content="2 days" />
+        <link rel="shortcut icon" href="http://www.ohhla.com/favicon.ico" />
+        <title>The Original Hip-Hop (Rap) Lyrics Archive</title>
+
+        <!-- link rel="stylesheet" type="text/css" href="http://ohhla.com/files/main.css" / -->
+	        <!-- BEGIN SITE ANALYTICS //-->
+        <script type="text/javascript">
+        if (typeof siteanalytics == 'undefined') { siteanalytics = {}; };
+        siteanalytics.gn_tracking_defaults = {google: '',comscore: {},quantcast:''};
+        siteanalytics.website_id = 180;
+        siteanalytics.cdn_hostname = 'cdn.siteanalytics.evolvemediametrics.com';
+        </script>
+        <script type="text/javascript" src='http://cdn.siteanalytics.evolvemediametrics.com/js/siteanalytics.js'></script>
+        <!-- END SITE ANALYTICS //-->
+
+</head>
+
+<body>
+
+<a href="javascript: history.go(-1)">Back to the previous page</a>
+
+<div>
+</div>
+
+<div style="width: 720px; text-align: center; color: #ff0000; font-weight: bold; font-size: 1em;">
+
+                       <!-- AddThis Button BEGIN -->
+                                <div class="addthis_toolbox addthis_default_style" style="margin: auto 0 auto 0; padding-left: 185px;">
+                                <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+                                <a class="addthis_button_tweet"></a>
+                                <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+                                <a class="addthis_counter addthis_pill_style"></a>
+                                </div>
+                                <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4e8ea9f77f69af2f"></script>
+                        <!-- AddThis Button END -->
+
+</div>
+
+<br />
+
+<div style="float: left; min-width: 560px;">
+<pre>
+Artist: Eminem
+Album:  Eminem Presents: The Re-Up
+Song:   No Apologies
+Typed by: roach1984@hotmail.com
+
+In my mind I'm a fighter, my hearts a lighter
+My soul is the fluid, my flow sparks it right up
+But arsenic writer, often with arth-er-itis
+Carpel-tunnel, Marshal with start shit-itis
+Hard-headed and hot-headed
+Bull-headed and pig-headed
+Dick-headed a prick, a big headache I'm sick
+Quick with it for every lyric spit it
+There are 6 critics who wait, for me to slip with it
+So quick this dynamite stick, bury the wick
+It's gonna ex-plode any minute, some lunatic
+Lit it and its not Nelly, do not tell me to stop yelling
+When I stop selling I'll quit so, stop dwelling
+I am not failing, you fuckers are not ready
+Cause I got jelly, like Beyonce's pot belly
+This is destiny, yes money
+I'm off running, so get off of me
+I'm not slowing the softening
+
+No apologies, nah suckers I'm not sorry
+You can all sue me; y'all could be the cause of me
+No apologies, y'all feeling the force of me
+No remorse for me, like there was no recourse (nah) for me
+No apologies, not even acknowledging you at all
+Till I get a call that God's coming
+No apologies, laugh fuckers, its all funny
+I can spit in your face while you're standing across from me
+No apologies
+
+My head hits the pillow, a weeping willow
+I can't sleep, a pain so deep it bellows
+But these cellos, help just to keep me mellow
+Hands on my head, touch knees to elbows
+I'm hunched over emotion just flows over
+These cold shoulders are both frozen
+You don't know me
+I keep saying it, I can't stress it enough
+So keep playing it, and stand next to the subs
+I choke mics like affixation
+When I'm strangling my own throat masturbating
+Fuck yeah I'm a basket case
+And I mastered this rap shit till my ass gets wasted
+Till my assassination, till I'm slain cuz of some fags infatuation
+.44 Mag's fascination a taste for disaster and if that's the case then
+
+No apologies, nah suckers I'm not sorry
+You can all sue me; y'all could be the cause of me
+No apologies, y'all feeling the force of me
+No remorse for me, like there was no recourse (nah) for me
+No apologies, not even acknowledging you at all
+Till I get a call that God's coming
+No apologies, laugh fuckers it's all funny
+I could spit in your face while you're standing across from me
+No apologies
+
+This song isn't for you it's for me
+A true MC, it's what he'll do
+Just to see if he still has it
+And if his skills mastered
+He's able to spill raps long after he's killed that's a
+Real MC got you feeling me
+Whether willing or unwillingly, you still agree
+As long as there's still this hunger, and will in me
+Then expect a longer life expectancy
+I'd be a savage beast if I ain't had this outlet to salvage me
+Inside, I'd be exploding soaked in self loathing
+And mourning so I'm warning you don't coax me
+It's silly, but really its sheep in wolves clothing
+Who only reacts when he gets pushed don't be
+fooled, the press blows up this whole thing
+It's stupid, they don't know cuz they don't see
+That I'm wounded, all they did was ballooned it
+I'm sick of talking bout these tattoos Cartoon did
+That's why I tuned it OUT I'm sick of duking
+They can suck my dick while I'm puking, and you too you can
+
+Expect no sympathy from me
+I'm an MC, this is how I'm supposed to be
+Cold as a G, my hearts frozen it don't even beat
+So expect no apologies
+Expect no sympathy from me
+I'm an MC, this is how I'm supposed to be
+Cold as a G, my hearts frozen it don't even beat
+So expect no apologies</pre>
+</div>
+
+<div style="float: left;">
+</div>
+
+</body></html>

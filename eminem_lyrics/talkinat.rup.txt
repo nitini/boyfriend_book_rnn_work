@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+        <meta http-equiv="charset" content="ISO-8859-1" />
+        <meta http-equiv="content-language" content="English" />
+        <meta http-equiv="vw96.object type" content="Document" />
+        <meta name="resource-type" content="document" />
+        <meta name="distribution" content="Global" />
+        <meta name="rating" content="General" />
+        <meta name="robots" content="all" />
+        <meta name="revist-after" content="2 days" />
+        <link rel="shortcut icon" href="http://www.ohhla.com/favicon.ico" />
+        <title>The Original Hip-Hop (Rap) Lyrics Archive</title>
+
+        <!-- link rel="stylesheet" type="text/css" href="http://ohhla.com/files/main.css" / -->
+	        <!-- BEGIN SITE ANALYTICS //-->
+        <script type="text/javascript">
+        if (typeof siteanalytics == 'undefined') { siteanalytics = {}; };
+        siteanalytics.gn_tracking_defaults = {google: '',comscore: {},quantcast:''};
+        siteanalytics.website_id = 180;
+        siteanalytics.cdn_hostname = 'cdn.siteanalytics.evolvemediametrics.com';
+        </script>
+        <script type="text/javascript" src='http://cdn.siteanalytics.evolvemediametrics.com/js/siteanalytics.js'></script>
+        <!-- END SITE ANALYTICS //-->
+
+</head>
+
+<body>
+
+<a href="javascript: history.go(-1)">Back to the previous page</a>
+
+<div>
+</div>
+
+<div style="width: 720px; text-align: center; color: #ff0000; font-weight: bold; font-size: 1em;">
+
+                       <!-- AddThis Button BEGIN -->
+                                <div class="addthis_toolbox addthis_default_style" style="margin: auto 0 auto 0; padding-left: 185px;">
+                                <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+                                <a class="addthis_button_tweet"></a>
+                                <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+                                <a class="addthis_counter addthis_pill_style"></a>
+                                </div>
+                                <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4e8ea9f77f69af2f"></script>
+                        <!-- AddThis Button END -->
+
+</div>
+
+<br />
+
+<div style="float: left; min-width: 560px;">
+<pre>
+Artist: Ca$his
+Album:  Eminem Presents The Re-Up
+Song:   Talkin' All That
+Typed by: Nickolye16@aol.com 
+
+[Ca$his]
+Uh, yeah, yeah yeah yeah yeah
+We're renegades, yeah yeah yeah yeah
+We're renegades, yeah yeah yeah yeah
+(Hit me up mayn!)
+
+Bitch I'm from the {?}, yo' hood ain't no realer
+You the pussy ass nigga livin next to the killer
+I'm the killer that moved out of the block
+And head back to the hood, when I'm movin my rock
+You can find me, on a dark road, dark clothes
+Lle', in the console and God knows I make grip off blow
+Shit - I could get rich off blows
+My nation affiation pitch forks I've chose
+What the fuck you gon' do? We bang back hammers
+I'm a six point star, in a gray bandanna
+I'd die for this, nigga you rhyme for this
+Pussy I ride for this, and did time for this
+That's why I'm convinced you fear, that I'm convicted
+Until elevens in soaps, and some gangsta shit man
+Guess who gorillas leave tats infragments
+Two shots through your cabbage, and gas from Ca$h
+
+[Chorus: Ca$his]
+Pussy niggaz always talkin that shit
+What you flaggin, who you bangin with? (I don't give a fuck)
+You can live in the hood and shit
+But remember who you bangin with (I don't give a fuck)
+Pussy niggaz talkin all that shit
+What you flaggin in your bangin whip? (I don't give a fuck)
+You can live in the hood and shit
+But remember who you bangin with (cause I don't give a fuck)
+
+[Ca$his]
+Tip our levels and scarce piece, a meal beast
+We'll creep one deep, slump seat, dump heat
+Niggaz scream "Fuck me" he lucky, when I blast it
+I left respect enough for an open casket
+Way to go Ca$his, boost up my ego
+Let loose, out sunroof with my Eagle
+Folk of the century, rollin with peoples
+The omen the sequel, the more they will see you
+Close kin, molotov close to no skin
+His momma pretends that she doesn't, know him
+I'm the reason, for the whole "Say No" slogan
+Doped in folk and loc'ed if provokin
+Got a brand new thing, with the scope in
+Leave your family, with the wake for hostin
+I'll collect enough snow, 'til my hands the Aspens
+I'm the realest nigga 'round here, ask for Ca$his folk
+
+[Chorus]
+
+[Ca$his]
+Loadin the cup folk, loadin it up tote
+Hang fire up I, choke from the gun smoke
+That's on the boss mayn, my Nina Ross came
+Place gangbangers, into a coffin
+This is renegades, Rick not really paid
+Gave Ca$h pistols, now they milli sprayed
+Full bricks of raw, nigga that's really weight
+While my workers foldin, now that's really cake
+Give it right back to 'em, watch it regenerate
+I'm a degenerate black bandit, livin ape
+Niggaz dig in they pockets like DJ's dig in crates
+If you cuttin my profits, you gon' in to dish some cake
+Heckler Koch and, glass and vodka
+I'm the independent kingpin, cocaine Koch
+Fo' thieve blow weed, plus sold O-Z
+Niggaz never son me, I was born O.G. fo'
+
+[Chorus]
+
+[Eminem - echoing]
+Aiyyo Alchemist!
+Let's play 'em some of that new Stat Quo shit man</pre>
+</div>
+
+<div style="float: left;">
+</div>
+
+</body></html>

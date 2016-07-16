@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+        <meta http-equiv="charset" content="ISO-8859-1" />
+        <meta http-equiv="content-language" content="English" />
+        <meta http-equiv="vw96.object type" content="Document" />
+        <meta name="resource-type" content="document" />
+        <meta name="distribution" content="Global" />
+        <meta name="rating" content="General" />
+        <meta name="robots" content="all" />
+        <meta name="revist-after" content="2 days" />
+        <link rel="shortcut icon" href="http://www.ohhla.com/favicon.ico" />
+        <title>The Original Hip-Hop (Rap) Lyrics Archive</title>
+
+        <!-- link rel="stylesheet" type="text/css" href="http://ohhla.com/files/main.css" / -->
+	        <!-- BEGIN SITE ANALYTICS //-->
+        <script type="text/javascript">
+        if (typeof siteanalytics == 'undefined') { siteanalytics = {}; };
+        siteanalytics.gn_tracking_defaults = {google: '',comscore: {},quantcast:''};
+        siteanalytics.website_id = 180;
+        siteanalytics.cdn_hostname = 'cdn.siteanalytics.evolvemediametrics.com';
+        </script>
+        <script type="text/javascript" src='http://cdn.siteanalytics.evolvemediametrics.com/js/siteanalytics.js'></script>
+        <!-- END SITE ANALYTICS //-->
+
+</head>
+
+<body>
+
+<a href="javascript: history.go(-1)">Back to the previous page</a>
+
+<div>
+</div>
+
+<div style="width: 720px; text-align: center; color: #ff0000; font-weight: bold; font-size: 1em;">
+
+                       <!-- AddThis Button BEGIN -->
+                                <div class="addthis_toolbox addthis_default_style" style="margin: auto 0 auto 0; padding-left: 185px;">
+                                <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+                                <a class="addthis_button_tweet"></a>
+                                <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+                                <a class="addthis_counter addthis_pill_style"></a>
+                                </div>
+                                <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4e8ea9f77f69af2f"></script>
+                        <!-- AddThis Button END -->
+
+</div>
+
+<br />
+
+<div style="float: left; min-width: 560px;">
+<pre>
+Artist: Jay-Z & Kanye West f/ Frank Ocean
+Album:  Watch the Throne
+Song:   Made in America
+Typed by: Nickolye16@aol.com 
+
+[Frank Ocean]
+It'll bring you out the, out the darkness
+
+[Chorus: Frank Ocean]
+Sweet King Martin, sweet Queen Coretta
+Sweet Brother Malcolm, sweet Queen Betty
+Sweet Mother Mary, sweet Father Joseph
+Sweet Jesus, we made it in America
+
+[Interlude: Frank Ocean]
+Sweet Baby Jesus, oooooh-ooh-ooh-ooooh
+Oh sweet Baby Jesus, we made it America
+Sweet Baby Jesus, oooooh
+Oh sweet Baby Jesus, we made it America
+Ahh, yes we did
+
+[Kanye West]
+I told my momma I was on the come up
+She said, "You goin to school, I'll give you a summer"
+Then she met No I.D. and gave me his number
+Ten years later she drivin a Hummer
+Niggaz hustle every day for a beat from 'Ye
+What I do? Turn around give them beats to Jay
+And I'm rappin on the beats they was s'posed to buy
+I guess I'm gettin high on my own supply
+Downtown mixin fabrics tryin to find the magic
+Started a little blog just to get some traffic
+Old folks'll tell you not to play in traffic
+Uh, a million hits and the web crashes
+Damn, South Park had 'em all laughin
+Now all my niggaz designin and we all swaggin
+Uh, ignore the critics just to say we did it
+This ain't no fashion show, motherfucker we live it
+
+[Chorus] + [Interlude]
+
+[Jay-Z]
+I pledge allegiance, uh, to my grandma
+for that banana pudding, our piece of Americana
+Uh, our apple pie was supplied through Arm & Hammer
+Uh, straight out the kitchen, shh, don't wake Nana
+Uh, built a republic, uh, that still stands
+I'm tryna lead a nation to leave to my little mans
+Uh, or my daughter, so I'm boilin this water
+The scales was lopsided, I'm just restorin order
+Hold up, here comes Grandma, uh, what's up YaYa?
+Uh, what's that smell? Oh I'm just boilin some agua
+Uh, no papa, uh, bad Santa
+Uh, the streets raised me, pardon my bad manners
+Uh, I got my liberty, uh, choppin grams up
+Uh, street justice, I pray God understand us
+Uh, I pledge allegiance, uh, to all the scramblers
+Uh.. this is the Star Spangled Banner
+
+[Chorus]
+
+...
+
+[Interlude]</pre>
+</div>
+
+<div style="float: left;">
+</div>
+
+</body></html>

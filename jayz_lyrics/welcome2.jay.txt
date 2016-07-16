@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+        <meta http-equiv="charset" content="ISO-8859-1" />
+        <meta http-equiv="content-language" content="English" />
+        <meta http-equiv="vw96.object type" content="Document" />
+        <meta name="resource-type" content="document" />
+        <meta name="distribution" content="Global" />
+        <meta name="rating" content="General" />
+        <meta name="robots" content="all" />
+        <meta name="revist-after" content="2 days" />
+        <link rel="shortcut icon" href="http://www.ohhla.com/favicon.ico" />
+        <title>The Original Hip-Hop (Rap) Lyrics Archive</title>
+
+        <!-- link rel="stylesheet" type="text/css" href="http://ohhla.com/files/main.css" / -->
+	        <!-- BEGIN SITE ANALYTICS //-->
+        <script type="text/javascript">
+        if (typeof siteanalytics == 'undefined') { siteanalytics = {}; };
+        siteanalytics.gn_tracking_defaults = {google: '',comscore: {},quantcast:''};
+        siteanalytics.website_id = 180;
+        siteanalytics.cdn_hostname = 'cdn.siteanalytics.evolvemediametrics.com';
+        </script>
+        <script type="text/javascript" src='http://cdn.siteanalytics.evolvemediametrics.com/js/siteanalytics.js'></script>
+        <!-- END SITE ANALYTICS //-->
+
+</head>
+
+<body>
+
+<a href="javascript: history.go(-1)">Back to the previous page</a>
+
+<div>
+</div>
+
+<div style="width: 720px; text-align: center; color: #ff0000; font-weight: bold; font-size: 1em;">
+
+                       <!-- AddThis Button BEGIN -->
+                                <div class="addthis_toolbox addthis_default_style" style="margin: auto 0 auto 0; padding-left: 185px;">
+                                <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+                                <a class="addthis_button_tweet"></a>
+                                <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+                                <a class="addthis_counter addthis_pill_style"></a>
+                                </div>
+                                <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4e8ea9f77f69af2f"></script>
+                        <!-- AddThis Button END -->
+
+</div>
+
+<br />
+
+<div style="float: left; min-width: 560px;">
+<pre>
+Artist: Jay-Z & Kanye West f/ Swizz Beatz
+Album:  Watch the Throne
+Song:   Welcome to the Jungle
+Typed by: OHHLA Webmaster DJ Flash
+
+[Intro: Swizz Beatz]
+Right... OH! OH~! Right?
+One two one two, ey
+Welcome to the jungle
+Welcome to the jungle well, yeah
+Welcome to the jungle
+Welcome to the jungle well
+
+[Kanye West]
+I asked her where she wanna be when she twenty-five
+She turned around and looked at me and she said "Alive"
+
+[Swizz Beatz]
+Welcome to the jungle, welcome to the jungle well
+
+[Jay-Z]
+Black Axl Rose, move halfs and wholes
+Come down to the jungle, just ask for Hov
+Move blocks and squares, move apples and pears
+Work pots and pans, must to cop me some Airs
+My uncle died, my daddy did too
+Paralyzed by the pain, I can barely move
+My nephew gone, my heart is torn
+Sometimes I look to the sky, ask why I was born
+My faith in God, every day is hard
+Every night is worse, that's why I pray so hard
+
+[Kanye West]
+Why I pray so hard, this is crazy God
+Just when I thought I had everything I lost it all
+So que sera, get a case of Ciroc
+Let it chase the pain, 'fore it goes too far
+
+[Jay-Z]
+My dreams is big, reality set in
+Let off a clip from a automatic weapon
+Through shots in the door, it died in Vegas
+Though it fought so hard, I knew it wouldn't make it
+I'm a tortured soul, I live in disguise
+Rest in peace to the leader of the Jackson 5
+I died in my sleep, I'm still "Big Pimpin"
+I ball at the mall, beginning of the endin
+Where the fuck is the sun? It's been a while
+Momma look at your son, what happened to my smile?
+My tears is tatted, my rag in my pocket
+I'm just lookin for love, I know somebody got it
+Champagne for the pain, weed for the low
+God damn I'm so high, where the fuck did I go?
+I'm losing myself, I'm stuck in the moment
+I look in the mirror, my only opponent
+Where the fuck is the press? Where the fuck is the Pres?
+Either they know or don't care I'm fuckin depressed
+No crying in public, just lyin to judges
+Riskin my life I'm already dyin so fuck it well
+
+[Swizz Beatz]
+Welcome to the jungle, welcome to the jungle well
+God dammit~!</pre>
+</div>
+
+<div style="float: left;">
+</div>
+
+</body></html>

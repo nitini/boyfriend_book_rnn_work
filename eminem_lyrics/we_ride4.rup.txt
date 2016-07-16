@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+        <meta http-equiv="charset" content="ISO-8859-1" />
+        <meta http-equiv="content-language" content="English" />
+        <meta http-equiv="vw96.object type" content="Document" />
+        <meta name="resource-type" content="document" />
+        <meta name="distribution" content="Global" />
+        <meta name="rating" content="General" />
+        <meta name="robots" content="all" />
+        <meta name="revist-after" content="2 days" />
+        <link rel="shortcut icon" href="http://www.ohhla.com/favicon.ico" />
+        <title>The Original Hip-Hop (Rap) Lyrics Archive</title>
+
+        <!-- link rel="stylesheet" type="text/css" href="http://ohhla.com/files/main.css" / -->
+	        <!-- BEGIN SITE ANALYTICS //-->
+        <script type="text/javascript">
+        if (typeof siteanalytics == 'undefined') { siteanalytics = {}; };
+        siteanalytics.gn_tracking_defaults = {google: '',comscore: {},quantcast:''};
+        siteanalytics.website_id = 180;
+        siteanalytics.cdn_hostname = 'cdn.siteanalytics.evolvemediametrics.com';
+        </script>
+        <script type="text/javascript" src='http://cdn.siteanalytics.evolvemediametrics.com/js/siteanalytics.js'></script>
+        <!-- END SITE ANALYTICS //-->
+
+</head>
+
+<body>
+
+<a href="javascript: history.go(-1)">Back to the previous page</a>
+
+<div>
+</div>
+
+<div style="width: 720px; text-align: center; color: #ff0000; font-weight: bold; font-size: 1em;">
+
+                       <!-- AddThis Button BEGIN -->
+                                <div class="addthis_toolbox addthis_default_style" style="margin: auto 0 auto 0; padding-left: 185px;">
+                                <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+                                <a class="addthis_button_tweet"></a>
+                                <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+                                <a class="addthis_counter addthis_pill_style"></a>
+                                </div>
+                                <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4e8ea9f77f69af2f"></script>
+                        <!-- AddThis Button END -->
+
+</div>
+
+<br />
+
+<div style="float: left; min-width: 560px;">
+<pre>
+Artist: Obie Trice & Ca$his
+Album:  Eminem Presents The Re-Up
+Song:   We Ride for Shady
+Typed by: Nickolye16@aol.com 
+
+[Obie Trice]
+We run this shit, fo'-five on the hip
+Been ridin for Shady, Shady {*echoes*}
+
+[Ca$his]
+Geah, Ca$his know
+Shady Records, the dream team, uh
+
+Sittin in the back of the, all-gray Acura
+Gun to the passenger for actin tough
+Turn the wheel in the passin, heart of an assassin
+Plus I'm on the draw down, quick as fuck
+Last move 'fore I give all street shit up
+Put a nigga in the ground face down, feet up
+This nigga here tried to cuff me for my re-up
+When I went to his crib he called police up
+Now you on the way to bein paraplegic
+for sendin messages through bitches like you go see us
+Shady, Ca$h king of the dope fiends plus
+Give 'em a square mile by blocks and I'm creamed up
+Took the bullet out of Obie head, put it in my pistol
+and use it, ammunition on the niggaz they hit
+Damn, I go to war on the regular man
+Cause I'm part of the dream team, you a regular man
+Far as rap I don't see no competitors and
+you see things like me, with my medal in hand
+I'm a state case boy with a federal plan
+A hundred in beats, beatin the shit out skinheads
+I'm the spirit of a G bringin lyrics of the street
+I'm Ca$his, a real dope boy on the beat (beat)
+Slumped in the seat tucked clutchin the heat
+Basically, you niggaz can't fuck with me, hah
+
+[Chorus One: Ca$his]
+We run this shit, fo'-five on the hip
+Out to ride for Shady, yeah
+Y'all niggaz ain't hard, y'all niggaz ain't real
+Y'all niggaz ain't crazy
+Bring it on if you want, you don't know
+the homicides that I've done lately
+We run this shit, fo'-five on the hip
+Out to ride for Shady
+
+[Obie Trice]
+Yeah, Trice is back on the Alche' track
+With Ca$his, capitalizin on this mic in fact
+We fuckin with the captain of rap
+My nigga with the Nike cap keep the continuity quite exact
+So allure your cats into the second classic
+We're mature as the number uno aspect, as yet
+Who's to pass the driver?
+O tries to flow to die fo' and the death blow survive (woo!)
+I echo through your external vibe
+with internal experiences I've acquired (uhh)
+I'm probably the most honest hip-hopper alive
+A victim depictin images from my own eyes (yeah!)
+Never livin through homes, why?
+Homie got his own set of cajones, stand up guy
+It's Ca$his, O. Tri', rappers we blow by
+This is as accurate as the masses will have it, no lie
+Nigga!
+
+[Chorus Two: Obie Trice]
+We run this shit, fo'-five on the hip
+Been ridin for Shady (Shady, Shady)
+Y'all niggaz ain't G.O.A.T., y'all niggaz ain't skill
+Y'all niggaz ain't crazy (crazy)
+Bring it on if you want, you don't know
+the homicides that I got lately (nigga!)
+We run this shit, fo'-five on the hip
+Been ridin for Shady (Shady)
+
+[Chorus One] w/ minor variation
+
+{"A-A-A-A-A-A-A-Alchemist"}</pre>
+</div>
+
+<div style="float: left;">
+</div>
+
+</body></html>

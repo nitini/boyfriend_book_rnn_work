@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+        <meta http-equiv="charset" content="ISO-8859-1" />
+        <meta http-equiv="content-language" content="English" />
+        <meta http-equiv="vw96.object type" content="Document" />
+        <meta name="resource-type" content="document" />
+        <meta name="distribution" content="Global" />
+        <meta name="rating" content="General" />
+        <meta name="robots" content="all" />
+        <meta name="revist-after" content="2 days" />
+        <link rel="shortcut icon" href="http://www.ohhla.com/favicon.ico" />
+        <title>The Original Hip-Hop (Rap) Lyrics Archive</title>
+
+        <!-- link rel="stylesheet" type="text/css" href="http://ohhla.com/files/main.css" / -->
+	        <!-- BEGIN SITE ANALYTICS //-->
+        <script type="text/javascript">
+        if (typeof siteanalytics == 'undefined') { siteanalytics = {}; };
+        siteanalytics.gn_tracking_defaults = {google: '',comscore: {},quantcast:''};
+        siteanalytics.website_id = 180;
+        siteanalytics.cdn_hostname = 'cdn.siteanalytics.evolvemediametrics.com';
+        </script>
+        <script type="text/javascript" src='http://cdn.siteanalytics.evolvemediametrics.com/js/siteanalytics.js'></script>
+        <!-- END SITE ANALYTICS //-->
+
+</head>
+
+<body>
+
+<a href="javascript: history.go(-1)">Back to the previous page</a>
+
+<div>
+</div>
+
+<div style="width: 720px; text-align: center; color: #ff0000; font-weight: bold; font-size: 1em;">
+
+                       <!-- AddThis Button BEGIN -->
+                                <div class="addthis_toolbox addthis_default_style" style="margin: auto 0 auto 0; padding-left: 185px;">
+                                <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+                                <a class="addthis_button_tweet"></a>
+                                <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+                                <a class="addthis_counter addthis_pill_style"></a>
+                                </div>
+                                <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4e8ea9f77f69af2f"></script>
+                        <!-- AddThis Button END -->
+
+</div>
+
+<br />
+
+<div style="float: left; min-width: 560px;">
+<pre>
+Artist: Jay-Z & Kanye West f/ Mr. Hudson
+Album:  Watch the Throne
+Song:   Why I Love You
+Typed by: OHHLA Webmaster DJ Flash
+
+[Chorus 4X: Mr. Hudson]
+Ooohh! I love you so
+But why I love you, I'll never know
+
+[Jay-Z]
+Picture if you will that the throne was burnin, Rome was burnin
+And I'm sittin in the corner all alone burnin
+Why does it always end up like this?
+Something that we don't determine
+Same people that I fought for
+That I fight for, that I ride for
+That I live for, that I die for
+be the reason that these niggaz is alive for; and they want me dead
+But I'm so sorry but I just can't die for you
+But I can make 'em put their hands in the sky for you
+We waiting for the fireworks like July 4th
+Get fly more, get high more, cry boy, why for?
+When the grief is over, beef is over
+I'll be fly when Easter's over
+I tried to teach niggaz how to be kings
+And all they ever wanted to be was soldiers
+So the love is gone, 'til blood is drawn
+So we no longer wear the same uniform
+Fuck you squares, the circle got smaller
+The castle got bigger, the walls got taller
+And truth be told after all that said
+Niggaz still got love for you
+
+[Chorus]
+
+[Jay-Z] + (Kanye West)
+Showed love to you niggaz
+You ripped out my heart and you stepped on it
+I picked up the pieces 'fore you swept on it
+God damn this shit leaves a mess don't it?
+Shit feelin like death don't it
+Charge it to the game, whatever's left on it
+I spent about a minute, maybe less on it
+Fly pelican fly, turn the jets on it
+But first I shall digress on it
+Wasn't I a good king?
+(Maybe too much of a good thing, huh?)
+Didn't I spoil you?
+Me or the money, what you loyal to?
+(Huh, I gave you my loyalty)
+Made you royalty, and royalties
+(Took care of these niggaz lawyer fees)
+And this is how niggaz rewarded me (damn!)
+
+[Chorus]
+
+[Jay-Z] + (Kanye West) & {Both}
+Bustin at me, b-b-b-bustin at me
+But I'm bulletproof, bitch you can't get nothin past me
+Got body armor (a nigga gotta watch the throne)
+And I'm bustin back, so niggaz in the glass house should not throw stones
+What do you do when the love turns tp hate?
+(Gotta separate from these fuckin fakes)
+Caesar didn't see it so he ceased to exist
+So the nigga that killed him had keys to his shit
+Am I my brother's keeper? (Only if that nigga don't creep up)
+Got a pistol under my pillow (I've never been a deep sleeper)
+P-p-p-paranoia (cause the nigga that said he'll)
+Blast for ya (is now) blastin for ya
+That's an assassin for ya
+(These niggaz got a shot they'll shoot)
+Please lord (forgive him)
+For these niggaz (not know) what they (do)
+{OOH~!}</pre>
+</div>
+
+<div style="float: left;">
+</div>
+
+</body></html>

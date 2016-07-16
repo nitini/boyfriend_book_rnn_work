@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+        <meta http-equiv="charset" content="ISO-8859-1" />
+        <meta http-equiv="content-language" content="English" />
+        <meta http-equiv="vw96.object type" content="Document" />
+        <meta name="resource-type" content="document" />
+        <meta name="distribution" content="Global" />
+        <meta name="rating" content="General" />
+        <meta name="robots" content="all" />
+        <meta name="revist-after" content="2 days" />
+        <link rel="shortcut icon" href="http://www.ohhla.com/favicon.ico" />
+        <title>The Original Hip-Hop (Rap) Lyrics Archive</title>
+
+        <!-- link rel="stylesheet" type="text/css" href="http://ohhla.com/files/main.css" / -->
+	        <!-- BEGIN SITE ANALYTICS //-->
+        <script type="text/javascript">
+        if (typeof siteanalytics == 'undefined') { siteanalytics = {}; };
+        siteanalytics.gn_tracking_defaults = {google: '',comscore: {},quantcast:''};
+        siteanalytics.website_id = 180;
+        siteanalytics.cdn_hostname = 'cdn.siteanalytics.evolvemediametrics.com';
+        </script>
+        <script type="text/javascript" src='http://cdn.siteanalytics.evolvemediametrics.com/js/siteanalytics.js'></script>
+        <!-- END SITE ANALYTICS //-->
+
+</head>
+
+<body>
+
+<a href="javascript: history.go(-1)">Back to the previous page</a>
+
+<div>
+</div>
+
+<div style="width: 720px; text-align: center; color: #ff0000; font-weight: bold; font-size: 1em;">
+
+                       <!-- AddThis Button BEGIN -->
+                                <div class="addthis_toolbox addthis_default_style" style="margin: auto 0 auto 0; padding-left: 185px;">
+                                <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+                                <a class="addthis_button_tweet"></a>
+                                <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+                                <a class="addthis_counter addthis_pill_style"></a>
+                                </div>
+                                <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4e8ea9f77f69af2f"></script>
+                        <!-- AddThis Button END -->
+
+</div>
+
+<br />
+
+<div style="float: left; min-width: 560px;">
+<pre>
+Artist: Jay-Z & Kanye West f/ Otis Redding
+Album:  Watch the Throne
+Song:   Otis
+Typed by: Nickolye16@aol.com 
+
+[Otis Redding]
+It makes it easier, easier to bear, yeah
+You won't regret it, no no
+No, girls they don't forget it
+LOVE is their home, happiness, yeah
+Squee... squee... squee... squeeze her
+Don't tease her, never leave her
+
+[Jay-Z]
+Sounds so soulful, don't you agree?
+OWW! Uhh
+
+I invented swag
+Poppin bottles, puttin supermodels in the cab
+Proof...
+I guess I got my swagger back, truth
+New watch alert, Hublot's
+Or the big face Roley, I got two of those
+Arm out the window through the city, I maneuver slow
+Cock back, snap back, see my cut through the holes; go
+
+[Kanye West]
+"Damn Yeezy and Hov', where the hell you been?"
+Niggaz talkin real reckless, stuntmen
+I adopted these niggaz, Phillip Drummond 'em
+Now I'm 'bout to make 'em tuck they whole summer in
+They say I'm crazy, well I'm 'bout to go dumb again
+They ain't see me cause I pulled up in my other Benz
+Last week I was in my other other Benz
+Throw your diamonds up cause we in this bitch another 'gain
+
+[Jay-Z]
+Yeah, photo shoot fresh, lookin like wealth
+I'm 'bout to call the paparazzi on myself
+Uh, live from the Mercer
+Run up on Yeezy the wrong way I might murk ya
+Flee in the G-450 I might surface
+Political refugee asylum can be purchased
+Uh, everything's for sale
+I got five passports, I'm never goin to jail
+
+[Kanye West]
+I made "Jesus Walks" I'm never goin to hell
+Couture level flow, it's never goin on sale
+Luxury rap, the Hermes of verses
+Sophisticated ignorance, write my curses in cursive
+I get it custom, you a customer
+You ain't 'custommed to goin through customs, you ain't been nowhere, huh?
+And all the ladies in the house got 'em showin off
+I'm done, I'll hit you up maña-naaaaaaaaaa!
+
+[Jay-Z]
+Welcome to Havana
+Smokin Cubanas with Castro in cabanas
+Viva México, Cubano
+Dominicano, all the plugs that I know
+Drivin Benzes, with no benefits
+Not bad, huh? For some immigrants
+Build your fences, we diggin tunnels
+Can't you see we gettin money up under you?
+
+[Kanye West] + (Jay-Z)
+Can't you see the private jets flyin over you?
+Maybach bumper sticker read "What would Hova do?"
+Jay is chillin (uhh) 'Ye is chillin (uhh)
+What more can I say? (What more can I say?) We killin 'em
+Hold up, before we end this campaign
+As you can see we done bodied the damn lanes
+Lord, please let them accept the things they can't change
+And pray that all of their pain be champagne
+
+[Otis Redding]
+AHHHHHHHHHHHHHHHH! Scream it! {*3X*}</pre>
+</div>
+
+<div style="float: left;">
+</div>
+
+</body></html>

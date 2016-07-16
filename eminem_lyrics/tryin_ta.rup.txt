@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+        <meta http-equiv="charset" content="ISO-8859-1" />
+        <meta http-equiv="content-language" content="English" />
+        <meta http-equiv="vw96.object type" content="Document" />
+        <meta name="resource-type" content="document" />
+        <meta name="distribution" content="Global" />
+        <meta name="rating" content="General" />
+        <meta name="robots" content="all" />
+        <meta name="revist-after" content="2 days" />
+        <link rel="shortcut icon" href="http://www.ohhla.com/favicon.ico" />
+        <title>The Original Hip-Hop (Rap) Lyrics Archive</title>
+
+        <!-- link rel="stylesheet" type="text/css" href="http://ohhla.com/files/main.css" / -->
+	        <!-- BEGIN SITE ANALYTICS //-->
+        <script type="text/javascript">
+        if (typeof siteanalytics == 'undefined') { siteanalytics = {}; };
+        siteanalytics.gn_tracking_defaults = {google: '',comscore: {},quantcast:''};
+        siteanalytics.website_id = 180;
+        siteanalytics.cdn_hostname = 'cdn.siteanalytics.evolvemediametrics.com';
+        </script>
+        <script type="text/javascript" src='http://cdn.siteanalytics.evolvemediametrics.com/js/siteanalytics.js'></script>
+        <!-- END SITE ANALYTICS //-->
+
+</head>
+
+<body>
+
+<a href="javascript: history.go(-1)">Back to the previous page</a>
+
+<div>
+</div>
+
+<div style="width: 720px; text-align: center; color: #ff0000; font-weight: bold; font-size: 1em;">
+
+                       <!-- AddThis Button BEGIN -->
+                                <div class="addthis_toolbox addthis_default_style" style="margin: auto 0 auto 0; padding-left: 185px;">
+                                <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+                                <a class="addthis_button_tweet"></a>
+                                <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+                                <a class="addthis_counter addthis_pill_style"></a>
+                                </div>
+                                <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=ra-4e8ea9f77f69af2f"></script>
+                        <!-- AddThis Button END -->
+
+</div>
+
+<br />
+
+<div style="float: left; min-width: 560px;">
+<pre>
+Artist: Stat Quo
+Album:  Eminem Presents The Re-Up
+Song:   Tryin' Ta Win
+Typed by: Nickolye16@aol.com 
+
+[Stat Quo]
+Uhh, uhh, uhh
+Stat Quo, Alchemist, YEA!
+
+Direct respect, due to stress I almost lost my life
+My baby momma so much drama I gotta pay that price
+I'm a trip, I hate hoes on one hand
+The other hand I want me a wife
+Cop the Jag then lace her with ice
+Leave the mall with bags, yeah right!
+Skeet on that freak then dip the same night
+Fly a kite bitch, booty colder than a ice pick
+Fuck you and your best friend, I'm quite sick
+Plus it's my third leg make 'em throw fits
+I don't trust 'em nor love her - that's some bullshit!
+Ol' girl pregnant, now she's headed
+to the delivery room to have yo' baby
+Dawg, that's your lady - muh'fucker you crazy!
+Fuck that broad, she's shady
+Aftermath bitch I'm sway-zy
+How is latex lazy, that pussy had my vision hazy
+But Zaire's here, my only son and baby
+I mean Zaire's here, my only son and baby
+
+[Chorus: repeat 2X]
+I lost a whole lotta dollars, a whole lotta friends
+Who can I trust in the end?
+As the, love keeps spinnin, we all keep sinnin
+All cause we tryin to win (all cause we tryin to win)
+
+[Stat Quo]
+I don't roll with a whole lot of niggaz
+The mo' niggaz you roll with, the mo' niggaz wanna KILL YA
+Thought they was your la familia
+Now you're tied up blindfolded, and death is near ya
+Fucked in the game and act like dames
+Over fame just watch the change, change
+Muh'fuckers so quick to blame
+All the beef fly like planes, make it sayin the same
+Look what +Ca$h Money+ did to B.G., Juvenile and Wayne
+The root of evil with much disdain
+Of course they go against the grain
+to maintain, tryin to obtain big thangs
+Jealousy and hunger make the tec go {*boom*}
+Now you on the flo', blood leakin out your brain
+Mannn, that's the way it is
+That's how it be, that's how we live
+Watch your back, cause these kids
+tote ammo and they'll split your wig
+
+[Chorus] – 2X w/ ad libs
+
+{*music fades*}
+[Eminem]  Shady Narcotics
+[50 Cent] Sh-Sh-Sh-Sh-Sh-Sh-Shady!</pre>
+</div>
+
+<div style="float: left;">
+</div>
+
+</body></html>
