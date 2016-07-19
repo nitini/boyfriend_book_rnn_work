@@ -1,11 +1,18 @@
+#%%
+from __future__ import print_function
 import json
 import pandas as pd
 import file_paths as fp
 import sys
 import numpy as np
 import time
+import os
+
+def clear():
+    print('\n'*60)
 
 #%%
+
 def extract_stanzas(file_name):
     hit_pre = 0
     hit_pre_end = 0
@@ -67,17 +74,18 @@ def compile_stanzas(lyric_folders):
                 continue
             stanza_data = extract_stanzas(folder + file)
             stanzas = pd.concat([stanzas, stanza_data],ignore_index=True)
-
     return stanzas
 
 
-
-def extract_songs(song_folder):
-    song_files = os.listdir(song_folder)
-    for song_file in song_files:
-        lyrics = strip_html(song_folder + song_file)
-
-    return
-
+def main():
+    #%%
+    lyrics = compile_stanzas(['./eminem_lyrics/', './jayz_lyrics/'])
+    lyrics = lyrics[lyrics.len_of_stanza != 7].copy()
+    lyrics = lyrics[lyrics.len_of_stanza != 9].copy()
+    lyrics = lyrics[lyrics.len_of_stanza != 0].copy()
 
 
+    #%%
+    stanza_lengths = lyrics[['len_of_stanza','stanza']].groupby(['len_of_stanza']).count()
+    stanza_lengths.reset_index(inplace=True)
+    stanza_lengths.sort_values(by='len_of_stanza', inplace=True)

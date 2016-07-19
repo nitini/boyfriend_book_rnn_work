@@ -44,7 +44,7 @@ def convert_text_to_data(text, seq_len):
 
 
 def pad_sequences(data, feat, fixed_length):
-    padded_tweets = data.apply(lambda x: x[feat] + str('~' * (fixed_length - len(x[feat])))
+    padded_tweets = data.apply(lambda x: str('~' * (fixed_length - len(x[feat]) - 1)) + '>' + x[feat]
                                if len(x[feat]) < fixed_length else x[feat][0:fixed_length],
                                axis=1)
     return padded_tweets
@@ -53,7 +53,6 @@ def pad_sequences(data, feat, fixed_length):
 def shift_sequences(data, feat, seq_len):
     shifted_tweets = data[feat].apply(lambda x: str(x + ' ')[1:seq_len + 1])
     return shifted_tweets
-
 
 def vectorize_sequences(sequences, chars, char_indices):
     """
@@ -80,7 +79,7 @@ def vectorize_sequences(sequences, chars, char_indices):
     
 
 def get_chars(data, feat):
-    text = ''
+    text = '~'
 
     for i in range(data.shape[0]):
         text = text + ' ' + data[feat].iloc[i]
@@ -115,6 +114,33 @@ def build_model(infer, batch_size, seq_len, vocab_size, lstm_size, num_layers):
     model.add(Activation('softmax'))
     model.compile(loss='categorical_crossentropy', optimizer='rmsprop')
     return model
+
+def build_model_variable_length(batch_size,
+                                seq_len,
+                                vocab_size,
+                                lstm_size,
+                                num_layers,
+                                model_weights_file):
+
+    model = Sequential()
+    model.add(LSTM(lstm_size,
+                   return_sequences=True,
+                   batch_input_shape=(batch_size, seq_len, vocab_size),
+                   stateful=True))
+
+    model.add(Dropout(0.2))
+    for l in range(num_layers - 1):
+        model.add(LSTM(lstm_size, return_sequences=True, stateful=True))
+        model.add(Dropout(0.2))
+
+    model.add(TimeDistributed(Dense(vocab_size)))
+    model.add(Activation('softmax'))
+    model.compile(loss='categorical_crossentropy', optimizer='rmsprop')
+
+    model.load_weights(model_weights_file)
+    #model.reset_states()
+    return model
+
 
 
 def modify_prob_dist(a, temperature=1.0):
@@ -191,7 +217,7 @@ def sample_given_model(test_model,
 
         sampled.append(sample)
     
-    return ''.join([indices_char[c] for c in sampled])
+    return ''.join([char_indices[c] for c in sampled])
 
 
 def make_model_name(model_version):
@@ -262,7 +288,7 @@ def check_terminate_training_early(loss_values):
     return 0
 
 
-def train_batches(training_model, X, y, epoch, BATCH_SIZE, NUM_SAMPLES, loss_values):    
+def train_batches(training_model, X, y, epoch, BATCH_SIZE, NUM_SAMPLES, loss_values, output_file):
     
     for i, (start, end) in enumerate(yield_batches(BATCH_SIZE, NUM_SAMPLES)):
         batch_X = X[start:end,:,:]
@@ -271,16 +297,156 @@ def train_batches(training_model, X, y, epoch, BATCH_SIZE, NUM_SAMPLES, loss_val
         loss_values.append(loss)
         if check_terminate_training_early(loss_values) == 1:
             return 1
-            
+
+        print("Batch " + str(i) + ' / ' + str(NUM_SAMPLES / BATCH_SIZE) + ' of Epoch ' + str(epoch), file=output_file)
         print("Batch " + str(i) + ' / ' + str(NUM_SAMPLES / BATCH_SIZE) + ' of Epoch ' + str(epoch))
         sys.stdout.flush()
-        print('Loss on batch ' + str(i) + ':' + str(loss))
+        print('Loss on batch ' + str(i) + ': ' + str(loss), file=output_file)
+        print('Loss on batch ' + str(i) + ': ' + str(loss))
         sys.stdout.flush()  
     return 0
 
+def train_variable_length_model():
+    #%%
+
+    lyrics_200_400 = pd.read_pickle('./lyrics_pickles/lyrics_200_400.pkl')
+    lyrics_800_1000 = pd.read_pickle('./lyrics_pickles/lyrics_800_1000.pkl')
+
+    feat = 'stanza'
+
+    lyrics_full = pd.concat([lyrics_200_400, lyrics_800_1000], ignore_index=True)
+
+    chars, char_indices, indices_char = get_chars(lyrics_full,
+                                                  feat)
+
+    LAYERS = 3
+    LSTM_SIZE = 512
+    EPOCHS = 50
+    BATCH_SIZE = 32
+    VOCAB_SIZE = len(chars)
+
+    build_first_model = 0
+
+    model_name = make_model_name('7')
+
+    output_file = open('./output_' + model_name + '.txt', 'wb')
+
+    model_weights_file_name = ''
+
+    primer_texts = ['my ',
+                    'i ',
+                    'you ']
+
+    diversities = [0.2, 0.5, 1.0, 1.2]
+
+    for epoch in range(EPOCHS):
+
+        loss_values = []
+
+        print("----- Epoch: " + str(epoch))
+        sys.stdout.flush()
+        print("---------- Epoch: " + str(epoch) + " ---------- ", file=output_file)
+
+        print("", file=output_file)
+
+        for lyrics in [lyrics_200_400, lyrics_800_1000]:
+
+            SEQ_LEN = int(np.max(lyrics.len_of_stanza))
+            sample_length = SEQ_LEN
+            lyrics['padded_stanza'] = pad_sequences(lyrics, feat, SEQ_LEN)
+            lyrics['shifted_stanza'] = shift_sequences(lyrics, 'padded_stanza', SEQ_LEN)
+            NUM_SAMPLES = (lyrics.shape[0] / BATCH_SIZE) * BATCH_SIZE
+
+            lyrics = lyrics.iloc[0:NUM_SAMPLES].copy()
+
+            X_seq_vectors = vectorize_sequences(lyrics['padded_stanza'],
+                                                chars,
+                                                char_indices)
+
+            y_seq_vectors = vectorize_sequences(lyrics['shifted_stanza'],
+                                                chars,
+                                                char_indices)
+
+            training_model = build_model(0,
+                                         BATCH_SIZE,
+                                         SEQ_LEN,
+                                         VOCAB_SIZE,
+                                         LSTM_SIZE,
+                                         LAYERS
+                                         )
+
+            if build_first_model != 0:
+                training_model = build_model_variable_length(BATCH_SIZE,
+                                                             SEQ_LEN,
+                                                             VOCAB_SIZE,
+                                                             LSTM_SIZE,
+                                                             LAYERS,
+                                                             model_weights_file_name)
+                build_first_model = 1
+
+            terminate_flag = train_batches(training_model,
+                                           X_seq_vectors,
+                                           y_seq_vectors,
+                                           epoch,
+                                           BATCH_SIZE,
+                                           NUM_SAMPLES,
+                                           loss_values,
+                                           output_file)
+
+            model_weights_file_name = save_model_weights(training_model,
+                                                         model_name,
+                                                         0)
+
+            if terminate_flag == 1:
+                print("Loss has seemed to asymptote, terminating program", file=output_file)
+                break
+
+            test_model = build_model(1,
+                                     BATCH_SIZE,
+                                     SEQ_LEN,
+                                     VOCAB_SIZE,
+                                     LSTM_SIZE,
+                                     LAYERS)
+
+            for primer in primer_texts:
+                print("----- Sentence seed: " + primer + " ----- ", file=output_file)
+                print("----- Sample Length: " + str(sample_length) + " -----",file=output_file)
+                print('', file=output_file)
+                for diversity in diversities:
+                    #print("----- Sentence seed: " + primer + " ----- ")
+                    sys.stdout.flush()
+                    #print("Diversity: " + str(diversity))
+                    sys.stdout.flush()
+                    print("Diversity: " + str(diversity), file=output_file)
+
+                    sampled_text = sample(test_model,
+                                          model_weights_file_name,
+                                          char_indices,
+                                          indices_char,
+                                          diversity,
+                                          sample_length,
+                                          primer)
+
+                    #print("Generated Text: " + sampled_text)
+                    sys.stdout.flush()
+                    print("Generated Text: " + sampled_text, file=output_file)
+                    print("", file=output_file)
+
+
+
+
+
+
+
+
+
 #%%
 def main():
-    
+
+    train_variable_length_model()
+
+    """
+
     SEQ_LEN = 70
     BATCH_SIZE = 512
     LAYERS = 3
@@ -300,7 +466,7 @@ def main():
        
     chars, char_indices, indices_char = get_chars(text_data, feat)
     
-    NUM_SAMPLES = (text_data.shape[0]  / BATCH_SIZE) * BATCH_SIZE
+    NUM_SAMPLES = (text_data.shape[0] / BATCH_SIZE) * BATCH_SIZE
     VOCAB_SIZE = len(chars)
     
     text_data[feat] = pad_sequences(text_data, feat, SEQ_LEN)
@@ -335,8 +501,7 @@ def main():
     
     if in_gcp == 1:
         output_file = open(fp.goog_file_path + 'output_' + model_name + '.txt', 'wb')
-        
-    
+
     print('', file=output_file)
     print("---------- Training Info: ---------- ", file=output_file)
     print('', file=output_file)
@@ -348,7 +513,7 @@ def main():
     print("Number of batches per epoch: " + str(NUM_SAMPLES / BATCH_SIZE), file=output_file)
     print("Generated sentence length: " + str(sample_length), file=output_file)
     print("Sentence Seeds: " + str(primer_texts), file=output_file)
-    print("Diversities: "  + str(diversities), file=output_file)
+    print("Diversities: " + str(diversities), file=output_file)
     print('', file=output_file)
     
     notes = "Unweighted Twitter data, semi-long sentence"
@@ -417,6 +582,7 @@ def main():
                 sys.stdout.flush()
                 print("Generated Text: " + sampled_text, file=output_file)
                 print("", file=output_file)
+    """
 
 if __name__ == '__main__':
     main()
