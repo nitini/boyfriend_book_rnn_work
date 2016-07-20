@@ -112,7 +112,7 @@ def build_model(infer, batch_size, seq_len, vocab_size, lstm_size, num_layers):
 
     model.add(TimeDistributed(Dense(vocab_size)))
     model.add(Activation('softmax'))
-    model.compile(loss='categorical_crossentropy', optimizer='rmsprop')
+    model.compile(loss='categorical_crossentropy', optimizer='rmsprop', sample_weight_mode='temporal')
     return model
 
 def build_model_variable_length(batch_size,
@@ -135,7 +135,7 @@ def build_model_variable_length(batch_size,
 
     model.add(TimeDistributed(Dense(vocab_size)))
     model.add(Activation('softmax'))
-    model.compile(loss='categorical_crossentropy', optimizer='rmsprop')
+    model.compile(loss='categorical_crossentropy', optimizer='rmsprop', sample_weight_mode='temporal')
 
     model.load_weights(model_weights_file)
     #model.reset_states()
@@ -288,12 +288,13 @@ def check_terminate_training_early(loss_values):
     return 0
 
 
-def train_batches(training_model, X, y, epoch, BATCH_SIZE, NUM_SAMPLES, loss_values, output_file):
+def train_batches(training_model, X, y, sample_weights, epoch, BATCH_SIZE, NUM_SAMPLES, loss_values, output_file):
     
     for i, (start, end) in enumerate(yield_batches(BATCH_SIZE, NUM_SAMPLES)):
         batch_X = X[start:end,:,:]
         batch_y = y[start:end,:,:]
-        loss = training_model.train_on_batch(batch_X, batch_y)
+        batch_sample_weights = sample_weights[start:end][:]
+        loss = training_model.train_on_batch(batch_X, batch_y, sample_weight=batch_sample_weights)
         loss_values.append(loss)
         if check_terminate_training_early(loss_values) == 1:
             return 1
@@ -305,6 +306,15 @@ def train_batches(training_model, X, y, epoch, BATCH_SIZE, NUM_SAMPLES, loss_val
         print('Loss on batch ' + str(i) + ': ' + str(loss))
         sys.stdout.flush()  
     return 0
+
+def create_sample_weights(num_samples, max_seq_len, data, feat):
+    sample_weights = np.ones((num_samples, max_seq_len))
+    for i in range(sample_weights.shape[0]):
+        padded_sequence = data[feat].iloc[i]
+        for c, j in zip(padded_sequence, range(sample_weights.shape[1])):
+            if c == '~':
+                sample_weights[i,j] = 0
+    return sample_weights
 
 def train_variable_length_model():
     #%%
@@ -384,9 +394,12 @@ def train_variable_length_model():
                                                              model_weights_file_name)
                 build_first_model = 1
 
+            sample_weights = create_sample_weights(NUM_SAMPLES, SEQ_LEN, lyrics, 'padded_stanza')
+
             terminate_flag = train_batches(training_model,
                                            X_seq_vectors,
                                            y_seq_vectors,
+                                           sample_weights,
                                            epoch,
                                            BATCH_SIZE,
                                            NUM_SAMPLES,
