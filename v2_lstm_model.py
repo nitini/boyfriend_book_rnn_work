@@ -19,6 +19,7 @@ import pandas as pd
 import file_paths as fp
 import sys
 from keras.utils.data_utils import get_file
+from keras.optimizers import RMSprop
 
 def clear():
     print("\n"*600)
@@ -112,7 +113,8 @@ def build_model(infer, batch_size, seq_len, vocab_size, lstm_size, num_layers):
 
     model.add(TimeDistributed(Dense(vocab_size)))
     model.add(Activation('softmax'))
-    model.compile(loss='categorical_crossentropy', optimizer='rmsprop', sample_weight_mode='temporal')
+    rmsprop = RMSprop(lr=0.001, rho=0.9, epsilon=1e-08)
+    model.compile(loss='categorical_crossentropy', optimizer=rmsprop, sample_weight_mode='temporal')
     return model
 
 def build_model_variable_length(batch_size,
@@ -135,7 +137,8 @@ def build_model_variable_length(batch_size,
 
     model.add(TimeDistributed(Dense(vocab_size)))
     model.add(Activation('softmax'))
-    model.compile(loss='categorical_crossentropy', optimizer='rmsprop', sample_weight_mode='temporal')
+    rmsprop = RMSprop(lr=0.001, rho=0.9, epsilon=1e-08)
+    model.compile(loss='categorical_crossentropy', optimizer=rmsprop, sample_weight_mode='temporal')
 
     model.load_weights(model_weights_file)
     #model.reset_states()
@@ -295,17 +298,17 @@ def train_batches(training_model, X, y, sample_weights, epoch, BATCH_SIZE, NUM_S
         batch_y = y[start:end,:,:]
         batch_sample_weights = sample_weights[start:end][:]
         loss = training_model.train_on_batch(batch_X, batch_y, sample_weight=batch_sample_weights)
-        loss_values.append(loss)
+        loss_values[i] = loss
         if check_terminate_training_early(loss_values) == 1:
             return 1
 
-        print("Batch " + str(i) + ' / ' + str(NUM_SAMPLES / BATCH_SIZE) + ' of Epoch ' + str(epoch), file=output_file)
+        #print("Batch " + str(i) + ' / ' + str(NUM_SAMPLES / BATCH_SIZE) + ' of Epoch ' + str(epoch), file=output_file)
         print("Batch " + str(i) + ' / ' + str(NUM_SAMPLES / BATCH_SIZE) + ' of Epoch ' + str(epoch))
         sys.stdout.flush()
-        print('Loss on batch ' + str(i) + ': ' + str(loss), file=output_file)
+        #print('Loss on batch ' + str(i) + ': ' + str(loss), file=output_file)
         print('Loss on batch ' + str(i) + ': ' + str(loss))
         sys.stdout.flush()  
-    return 0
+    return 0, loss_values
 
 def create_sample_weights(num_samples, max_seq_len, data, feat):
     sample_weights = np.ones((num_samples, max_seq_len))
@@ -314,7 +317,137 @@ def create_sample_weights(num_samples, max_seq_len, data, feat):
         for c, j in zip(padded_sequence, range(sample_weights.shape[1])):
             if c == '~':
                 sample_weights[i,j] = 0
+
     return sample_weights
+
+def train_one_sample_at_a_time():
+    pass
+
+
+def train_variable_length_model_swapped():
+    #%%
+
+    lyrics_200_400 = pd.read_pickle('./lyrics_pickles/lyrics_200_400.pkl')
+    lyrics_800_1000 = pd.read_pickle('./lyrics_pickles/lyrics_800_1000.pkl')
+
+    feat = 'stanza'
+
+    #lyrics_full = pd.concat([lyrics_200_400, lyrics_800_1000], ignore_index=True)
+
+    lyrics_full = pd.read_pickle('./lyrics_pickles/mnm_jyz_stanzas.pkl')
+
+    chars, char_indices, indices_char = get_chars(lyrics_full,
+                                                  feat)
+
+
+    #figure out way to batch lyrics into stanza length intervals
+
+    lyrics_less_100 = lyrics_full[lyrics_full.len_of_stanza < 100].copy()
+    lyrics_100_300 = lyrics_full[(lyrics_full.len_of_stanza > 100) & (lyrics_full.len_of_stanza < 300)].copy()
+    lyrics_300_600 = lyrics_full[(lyrics_full.len_of_stanza > 300) & (lyrics_full.len_of_stanza < 600)].copy()
+    lyrics_600_800 = lyrics_full[(lyrics_full.len_of_stanza > 600) & (lyrics_full.len_of_stanza < 800)].copy()
+    lyrics_800_1100 = lyrics_full[(lyrics_full.len_of_stanza > 800) & (lyrics_full.len_of_stanza < 1100)].copy()
+    lyrics_more_1100 = lyrics_full[(lyrics_full.len_of_stanza > 1100)].copy()
+
+    stanzas_batches = [lyrics_less_100,
+                       lyrics_100_300,
+                       lyrics_300_600,
+                       lyrics_600_800,
+                       lyrics_800_1100,
+                       lyrics_more_1100]
+
+    LAYERS = 3
+    LSTM_SIZE = 512
+    EPOCHS = 16
+    BATCH_SIZE = 32
+    VOCAB_SIZE = len(chars)
+
+    build_first_model = 1
+
+    model_name = make_model_name('7')
+
+    output_file = open('./output_' + model_name + '.txt', 'wb')
+
+    model_weights_file_name = ''
+
+    primer_texts = ['my ',
+                    'i ',
+                    'you ']
+
+    diversities = [0.2, 0.5, 1.0, 1.2]
+
+    stanza_batches_counter = 0
+    num_stanza_batches = len([lyrics_200_400, lyrics_800_1000])
+
+    for lyrics in stanzas_batches:
+
+        SEQ_LEN = int(np.max(lyrics.len_of_stanza))
+        sample_length = SEQ_LEN
+        lyrics['padded_stanza'] = pad_sequences(lyrics, feat, SEQ_LEN)
+        lyrics['shifted_stanza'] = shift_sequences(lyrics, 'padded_stanza', SEQ_LEN)
+        NUM_SAMPLES = (lyrics.shape[0] / BATCH_SIZE) * BATCH_SIZE
+
+        loss_values = np.empty(NUM_SAMPLES / BATCH_SIZE)
+
+        lyrics = lyrics.iloc[0:NUM_SAMPLES].copy()
+
+        X_seq_vectors = vectorize_sequences(lyrics['padded_stanza'],
+                                            chars,
+                                            char_indices)
+
+        y_seq_vectors = vectorize_sequences(lyrics['shifted_stanza'],
+                                            chars,
+                                            char_indices)
+
+        training_model = build_model(0,
+                                     BATCH_SIZE,
+                                     SEQ_LEN,
+                                     VOCAB_SIZE,
+                                     LSTM_SIZE,
+                                     LAYERS
+                                     )
+
+        if build_first_model != 0:
+            training_model = build_model_variable_length(BATCH_SIZE,
+                                                         SEQ_LEN,
+                                                         VOCAB_SIZE,
+                                                         LSTM_SIZE,
+                                                         LAYERS,
+                                                         model_weights_file_name)
+            build_first_model = 1
+
+        sample_weights = create_sample_weights(NUM_SAMPLES, SEQ_LEN, lyrics, 'padded_stanza')
+
+        print(str(stanza_batches_counter) + ' of ' + str(num_stanza_batches) + " stanza batches", file=output_file)
+        print("Padded " + str(SEQ_LEN) + " length stanzas", file=output_file)
+        print("Number of batches: " + str(NUM_SAMPLES / BATCH_SIZE), file=output_file)
+        print("Number of samples: " + str(NUM_SAMPLES), file=output_file)
+        print("", file=output_file)
+
+        for epoch in range(EPOCHS):
+            print("----- Epoch: " + str(epoch))
+            sys.stdout.flush()
+            print("---------- Epoch: " + str(epoch) + " ---------- ", file=output_file)
+
+            terminate_flag, loss_values = train_batches(training_model,
+                                                        X_seq_vectors,
+                                                        y_seq_vectors,
+                                                        sample_weights,
+                                                        epoch,
+                                                        BATCH_SIZE,
+                                                        NUM_SAMPLES,
+                                                        loss_values,
+                                                        output_file)
+
+            print("Epoch: " + str(epoch), file=output_file)
+            print(np.array_str(loss_values), file=output_file)
+            print("", file=output_file)
+
+        model_weights_file_name = save_model_weights(training_model,
+                                                        model_name,
+                                                        0)
+
+        stanza_batches_counter += 1
 
 def train_variable_length_model():
     #%%
@@ -325,6 +458,8 @@ def train_variable_length_model():
     feat = 'stanza'
 
     lyrics_full = pd.concat([lyrics_200_400, lyrics_800_1000], ignore_index=True)
+
+    #figure out way to batch lyrics into stanza length intervals
 
     chars, char_indices, indices_char = get_chars(lyrics_full,
                                                   feat)
@@ -351,21 +486,25 @@ def train_variable_length_model():
 
     for epoch in range(EPOCHS):
 
-        loss_values = []
-
         print("----- Epoch: " + str(epoch))
         sys.stdout.flush()
         print("---------- Epoch: " + str(epoch) + " ---------- ", file=output_file)
 
         print("", file=output_file)
 
+        stanza_batches_counter = 0
+        num_stanza_batches = len([lyrics_200_400, lyrics_800_1000])
+
         for lyrics in [lyrics_200_400, lyrics_800_1000]:
+
 
             SEQ_LEN = int(np.max(lyrics.len_of_stanza))
             sample_length = SEQ_LEN
             lyrics['padded_stanza'] = pad_sequences(lyrics, feat, SEQ_LEN)
             lyrics['shifted_stanza'] = shift_sequences(lyrics, 'padded_stanza', SEQ_LEN)
             NUM_SAMPLES = (lyrics.shape[0] / BATCH_SIZE) * BATCH_SIZE
+
+            loss_values = np.empty(NUM_SAMPLES / BATCH_SIZE)
 
             lyrics = lyrics.iloc[0:NUM_SAMPLES].copy()
 
@@ -396,15 +535,25 @@ def train_variable_length_model():
 
             sample_weights = create_sample_weights(NUM_SAMPLES, SEQ_LEN, lyrics, 'padded_stanza')
 
-            terminate_flag = train_batches(training_model,
-                                           X_seq_vectors,
-                                           y_seq_vectors,
-                                           sample_weights,
-                                           epoch,
-                                           BATCH_SIZE,
-                                           NUM_SAMPLES,
-                                           loss_values,
-                                           output_file)
+            terminate_flag, loss_values = train_batches(training_model,
+                                                        X_seq_vectors,
+                                                        y_seq_vectors,
+                                                        sample_weights,
+                                                        epoch,
+                                                        BATCH_SIZE,
+                                                        NUM_SAMPLES,
+                                                        loss_values,
+                                                        output_file)
+
+            print("Epoch: " + str(epoch), file=output_file)
+            print(str(stanza_batches_counter) + ' of ' + str(num_stanza_batches) + " stanza batches", file=output_file)
+            print("Losses for padded " + str(SEQ_LEN) + " length stanzas", file=output_file)
+            print("Number of batches: " + str(NUM_SAMPLES / BATCH_SIZE), file=output_file)
+            print("Number of samples: " + str(NUM_SAMPLES), file=output_file)
+            print(np.array_str(loss_values), file=output_file)
+            print("", file=output_file)
+
+            stanza_batches_counter += 1
 
             model_weights_file_name = save_model_weights(training_model,
                                                          model_name,
@@ -422,15 +571,15 @@ def train_variable_length_model():
                                      LAYERS)
 
             for primer in primer_texts:
-                print("----- Sentence seed: " + primer + " ----- ", file=output_file)
-                print("----- Sample Length: " + str(sample_length) + " -----",file=output_file)
-                print('', file=output_file)
+                #print("----- Sentence seed: " + primer + " ----- ", file=output_file)
+                #print("----- Sample Length: " + str(sample_length) + " -----",file=output_file)
+                #print('', file=output_file)
                 for diversity in diversities:
                     #print("----- Sentence seed: " + primer + " ----- ")
                     sys.stdout.flush()
                     #print("Diversity: " + str(diversity))
                     sys.stdout.flush()
-                    print("Diversity: " + str(diversity), file=output_file)
+                    #print("Diversity: " + str(diversity), file=output_file)
 
                     sampled_text = sample(test_model,
                                           model_weights_file_name,
@@ -442,8 +591,8 @@ def train_variable_length_model():
 
                     #print("Generated Text: " + sampled_text)
                     sys.stdout.flush()
-                    print("Generated Text: " + sampled_text, file=output_file)
-                    print("", file=output_file)
+                    #print("Generated Text: " + sampled_text, file=output_file)
+                    #print("", file=output_file)
 
 
 
@@ -456,7 +605,7 @@ def train_variable_length_model():
 #%%
 def main():
 
-    train_variable_length_model()
+    train_variable_length_model_swapped()
 
     """
 
