@@ -320,12 +320,96 @@ def create_sample_weights(num_samples, max_seq_len, data, feat):
 
     return sample_weights
 
-def train_one_sample_at_a_time():
-    pass
+def train_one_sample_at_a_time(lyrics, feat):
 
+    chars, char_indices, indices_char = get_chars(lyrics, feat)
+
+    LAYERS = 3
+    LSTM_SIZE = 512
+    EPOCHS = 100
+    BATCH_SIZE = 1
+    VOCAB_SIZE = len(chars)
+
+    build_first_model = 0
+
+    model_name = make_model_name('8')
+
+    output_file = open('./output_' + model_name + '.txt', 'wb')
+
+    model_weights_file_name = ''
+
+    primer_texts = ['my ',
+                    'i ',
+                    'you ']
+
+    diversities = [0.2, 0.5, 1.0, 1.2]
+
+    for epoch in range(EPOCHS):
+        print("----- Epoch: " + str(epoch))
+        sys.stdout.flush()
+        print("---------- Epoch: " + str(epoch) + " ---------- ", file=output_file)
+
+        for i in range(lyrics.shape[0]):
+
+            print("Stanza " + str(i) + " / " + str(lyrics.shape[0]))
+            print("Stanza " + str(i) + " / " + str(lyrics.shape[0]), file=output_file)
+
+            SEQ_LEN = len(lyrics.stanza.iloc[i])
+            NUM_SAMPLES = 1
+
+            lyric = lyrics.iloc[i:i+1].copy()
+
+            loss_values = np.empty(1 / 1)
+
+            X_seq_vectors = vectorize_sequences(lyric['stanza'],
+                                                chars,
+                                                char_indices)
+
+            y_seq_vectors = vectorize_sequences(lyric['stanza'],
+                                                chars,
+                                                char_indices)
+
+            training_model = build_model(0,
+                                         BATCH_SIZE,
+                                         SEQ_LEN,
+                                         VOCAB_SIZE,
+                                         LSTM_SIZE,
+                                         LAYERS
+                                         )
+
+            if build_first_model != 0:
+                training_model = build_model_variable_length(BATCH_SIZE,
+                                                             SEQ_LEN,
+                                                             VOCAB_SIZE,
+                                                             LSTM_SIZE,
+                                                             LAYERS,
+                                                             model_weights_file_name)
+                build_first_model = 1
+
+            sample_weights = create_sample_weights(NUM_SAMPLES, SEQ_LEN, lyric, 'stanza')
+
+            terminate_flag, loss_values = train_batches(training_model,
+                                                        X_seq_vectors,
+                                                        y_seq_vectors,
+                                                        sample_weights,
+                                                        epoch,
+                                                        BATCH_SIZE,
+                                                        NUM_SAMPLES,
+                                                        loss_values,
+                                                        output_file)
+
+            model_weights_file_name = save_model_weights(training_model,
+                                                         model_name,
+                                                         0)
+
+            print("Epoch: " + str(epoch), file=output_file)
+            print("Loss for " + str(SEQ_LEN) + " length stanza", file=output_file)
+            print("Number of batches: " + str(NUM_SAMPLES / BATCH_SIZE), file=output_file)
+            print("Number of samples: " + str(NUM_SAMPLES), file=output_file)
+            print(np.array_str(loss_values), file=output_file)
+            print("", file=output_file)
 
 def train_variable_length_model_swapped():
-    #%%
 
     lyrics_200_400 = pd.read_pickle('./lyrics_pickles/lyrics_200_400.pkl')
     lyrics_800_1000 = pd.read_pickle('./lyrics_pickles/lyrics_800_1000.pkl')
@@ -338,9 +422,6 @@ def train_variable_length_model_swapped():
 
     chars, char_indices, indices_char = get_chars(lyrics_full,
                                                   feat)
-
-
-    #figure out way to batch lyrics into stanza length intervals
 
     lyrics_less_100 = lyrics_full[lyrics_full.len_of_stanza < 100].copy()
     lyrics_100_300 = lyrics_full[(lyrics_full.len_of_stanza > 100) & (lyrics_full.len_of_stanza < 300)].copy()
@@ -377,7 +458,7 @@ def train_variable_length_model_swapped():
     diversities = [0.2, 0.5, 1.0, 1.2]
 
     stanza_batches_counter = 0
-    num_stanza_batches = len([lyrics_200_400, lyrics_800_1000])
+    num_stanza_batches = len(stanza_batches)
 
     for lyrics in stanzas_batches:
 
@@ -450,7 +531,6 @@ def train_variable_length_model_swapped():
         stanza_batches_counter += 1
 
 def train_variable_length_model():
-    #%%
 
     lyrics_200_400 = pd.read_pickle('./lyrics_pickles/lyrics_200_400.pkl')
     lyrics_800_1000 = pd.read_pickle('./lyrics_pickles/lyrics_800_1000.pkl')
@@ -595,17 +675,17 @@ def train_variable_length_model():
                     #print("", file=output_file)
 
 
-
-
-
-
-
-
-
 #%%
 def main():
 
-    train_variable_length_model_swapped()
+    #train_variable_length_model_swapped()
+
+    lyrics = pd.read_pickle('./lyrics_pickles/mnm_lyrics.pkl')
+
+    lyrics.sort_values(by='len_of_stanza',inplace=True)
+
+    train_one_sample_at_a_time(lyrics, 'stanza')
+
 
     """
 

@@ -76,10 +76,11 @@ def compile_stanzas(lyric_folders):
             stanzas = pd.concat([stanzas, stanza_data],ignore_index=True)
     return stanzas
 
+#%%
 
 def main():
     #%%
-    lyrics = compile_stanzas(['./eminem_lyrics/', './jayz_lyrics/'])
+    lyrics = compile_stanzas(['./jayz_lyrics/'])
     lyrics = lyrics[lyrics.len_of_stanza != 7].copy()
     lyrics = lyrics[lyrics.len_of_stanza != 9].copy()
     lyrics = lyrics[lyrics.len_of_stanza != 0].copy()
