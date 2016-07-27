@@ -359,13 +359,15 @@ def train_one_sample_at_a_time(lyrics, feat):
 
             lyric = lyrics.iloc[i:i+1].copy()
 
+            lyric['shifted_stanza'] = shift_sequences(lyric, 'stanza', SEQ_LEN)
+
             loss_values = np.empty(1 / 1)
 
             X_seq_vectors = vectorize_sequences(lyric['stanza'],
                                                 chars,
                                                 char_indices)
 
-            y_seq_vectors = vectorize_sequences(lyric['stanza'],
+            y_seq_vectors = vectorize_sequences(lyric['shifted_stanza'],
                                                 chars,
                                                 char_indices)
 
