@@ -113,8 +113,8 @@ def build_model(infer, batch_size, seq_len, vocab_size, lstm_size, num_layers):
 
     model.add(TimeDistributed(Dense(vocab_size)))
     model.add(Activation('softmax'))
-    rmsprop = RMSprop(lr=0.001, rho=0.9, epsilon=1e-08)
-    model.compile(loss='categorical_crossentropy', optimizer=rmsprop, sample_weight_mode='temporal')
+    #rmsprop = RMSprop(lr=0.001, rho=0.9, epsilon=1e-08)
+    model.compile(loss='categorical_crossentropy', optimizer='adagrad', sample_weight_mode='temporal')
     return model
 
 def build_model_variable_length(batch_size,
@@ -137,8 +137,8 @@ def build_model_variable_length(batch_size,
 
     model.add(TimeDistributed(Dense(vocab_size)))
     model.add(Activation('softmax'))
-    rmsprop = RMSprop(lr=0.001, rho=0.9, epsilon=1e-08)
-    model.compile(loss='categorical_crossentropy', optimizer=rmsprop, sample_weight_mode='temporal')
+    #rmsprop = RMSprop(lr=0.001, rho=0.9, epsilon=1e-08)
+    model.compile(loss='categorical_crossentropy', optimizer='adagrad', sample_weight_mode='temporal')
 
     model.load_weights(model_weights_file)
     #model.reset_states()
@@ -534,27 +534,36 @@ def train_variable_length_model_swapped():
 
 def train_variable_length_model():
 
-    lyrics_200_400 = pd.read_pickle('./lyrics_pickles/lyrics_200_400.pkl')
-    lyrics_800_1000 = pd.read_pickle('./lyrics_pickles/lyrics_800_1000.pkl')
-
     feat = 'stanza'
 
-    lyrics_full = pd.concat([lyrics_200_400, lyrics_800_1000], ignore_index=True)
-
-    #figure out way to batch lyrics into stanza length intervals
+    lyrics_full = pd.read_pickle('./lyrics_pickles/mnm_jyz_stanzas.pkl')
 
     chars, char_indices, indices_char = get_chars(lyrics_full,
                                                   feat)
 
+    lyrics_less_100 = lyrics_full[lyrics_full.len_of_stanza < 100].copy()
+    lyrics_100_300 = lyrics_full[(lyrics_full.len_of_stanza > 100) & (lyrics_full.len_of_stanza < 300)].copy()
+    lyrics_300_600 = lyrics_full[(lyrics_full.len_of_stanza > 300) & (lyrics_full.len_of_stanza < 600)].copy()
+    lyrics_600_800 = lyrics_full[(lyrics_full.len_of_stanza > 600) & (lyrics_full.len_of_stanza < 800)].copy()
+    lyrics_800_1100 = lyrics_full[(lyrics_full.len_of_stanza > 800) & (lyrics_full.len_of_stanza < 1100)].copy()
+    lyrics_more_1100 = lyrics_full[(lyrics_full.len_of_stanza > 1100)].copy()
+
+    stanzas_batches = [lyrics_less_100,
+                       lyrics_100_300,
+                       lyrics_300_600,
+                       lyrics_600_800,
+                       lyrics_800_1100,
+                       lyrics_more_1100]
+
     LAYERS = 3
-    LSTM_SIZE = 512
+    LSTM_SIZE = 256
     EPOCHS = 50
     BATCH_SIZE = 32
     VOCAB_SIZE = len(chars)
 
     build_first_model = 0
 
-    model_name = make_model_name('7')
+    model_name = make_model_name('10')
 
     output_file = open('./output_' + model_name + '.txt', 'wb')
 
@@ -575,15 +584,16 @@ def train_variable_length_model():
         print("", file=output_file)
 
         stanza_batches_counter = 0
-        num_stanza_batches = len([lyrics_200_400, lyrics_800_1000])
+        num_stanza_batches = len(stanzas_batches)
 
-        for lyrics in [lyrics_200_400, lyrics_800_1000]:
+        for lyrics in stanzas_batches:
 
 
             SEQ_LEN = int(np.max(lyrics.len_of_stanza))
             sample_length = SEQ_LEN
             lyrics['padded_stanza'] = pad_sequences(lyrics, feat, SEQ_LEN)
             lyrics['shifted_stanza'] = shift_sequences(lyrics, 'padded_stanza', SEQ_LEN)
+
             NUM_SAMPLES = (lyrics.shape[0] / BATCH_SIZE) * BATCH_SIZE
 
             loss_values = np.empty(NUM_SAMPLES / BATCH_SIZE)
@@ -680,14 +690,15 @@ def train_variable_length_model():
 #%%
 def main():
 
+    train_variable_length_model()
+
     #train_variable_length_model_swapped()
 
-    lyrics = pd.read_pickle('./lyrics_pickles/mnm_lyrics.pkl')
+    #lyrics = pd.read_pickle('./lyrics_pickles/mnm_lyrics.pkl')
 
-    lyrics.sort_values(by='len_of_stanza',inplace=True, ascending=False)
+    #lyrics.sort_values(by='len_of_stanza', inplace=True, ascending=True)
 
-    train_one_sample_at_a_time(lyrics, 'stanza')
-
+    #train_one_sample_at_a_time(lyrics, 'stanza')
 
     """
 

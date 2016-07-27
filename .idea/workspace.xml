@@ -26,8 +26,8 @@
       <file leaf-file-name="v2_lstm_model.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/v2_lstm_model.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="675">
-              <caret line="372" column="0" selection-start-line="372" selection-start-column="0" selection-end-line="372" selection-end-column="0" />
+            <state relative-caret-position="630">
+              <caret line="178" column="0" selection-start-line="178" selection-start-column="0" selection-end-line="178" selection-end-column="0" />
               <folding>
                 <element signature="e#90#127#0" expanded="true" />
               </folding>
@@ -465,8 +465,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/v2_lstm_model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="675">
-          <caret line="372" column="0" selection-start-line="372" selection-start-column="0" selection-end-line="372" selection-end-column="0" />
+        <state relative-caret-position="630">
+          <caret line="178" column="0" selection-start-line="178" selection-start-column="0" selection-end-line="178" selection-end-column="0" />
           <folding>
             <element signature="e#90#127#0" expanded="true" />
           </folding>
