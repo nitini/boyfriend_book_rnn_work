@@ -324,15 +324,15 @@ def train_one_sample_at_a_time(lyrics, feat):
 
     chars, char_indices, indices_char = get_chars(lyrics, feat)
 
-    LAYERS = 3
-    LSTM_SIZE = 512
+    LAYERS = 2
+    LSTM_SIZE = 128
     EPOCHS = 100
     BATCH_SIZE = 1
     VOCAB_SIZE = len(chars)
 
     build_first_model = 0
 
-    model_name = make_model_name('8')
+    model_name = make_model_name('9')
 
     output_file = open('./output_' + model_name + '.txt', 'wb')
 
@@ -682,7 +682,7 @@ def main():
 
     lyrics = pd.read_pickle('./lyrics_pickles/mnm_lyrics.pkl')
 
-    lyrics.sort_values(by='len_of_stanza',inplace=True)
+    lyrics.sort_values(by='len_of_stanza',inplace=True, ascending=False)
 
     train_one_sample_at_a_time(lyrics, 'stanza')
 
